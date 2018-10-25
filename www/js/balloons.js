@@ -1,2 +1,2 @@
 // var balloons=document.getElementsByClassName("balloon");
-TweenMax.to(".balloon", 3, {y:-300});
+TweenMax.to(".balloon", 10, {y:-1000});
