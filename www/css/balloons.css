@@ -11,3 +11,6 @@ body{
     position: relative;
     bottom:-100% ;    
 }
+.hidden{
+    visibility: hidden;
+}
