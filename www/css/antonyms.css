@@ -35,6 +35,7 @@ Antonyms interface's rules
 -------------------------------------------------------------------------- */
 
 .imgBackground {
+  display: flex;
   width: 100%;
   height: 100%;
   background-image: url("../img/antonyms/background.png");
@@ -42,22 +43,36 @@ Antonyms interface's rules
 	background-repeat: no-repeat;
   margin: 0px;
   padding: 0px;
-
-}
-
-/*.cardsContainer {
-  display: flex;
   justify-content: center;
-  background-color: transparent;
-  width: 100%;
-  height: 63%;
-  position: absolute;
-  top: 22%;
 }
 
-.cardsBox {
+.cardsContainer {
   display: flex;
+  flex-direction: column;
+  width: 79%;
+  height: 60%;
+  margin-top: 12%;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardsRow {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardContainer {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.card {
   width: 70%;
   height: 100%;
-  background-color: red;
-}*/
+}
