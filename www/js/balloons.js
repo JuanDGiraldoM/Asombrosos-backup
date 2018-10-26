@@ -29,7 +29,7 @@ for (i = 0; i < 2; i++) {
     document.getElementById("theBalloon").insertAdjacentHTML('beforeend', "<img class='balloon' id='balloon9' src='img/balMenta.png'style='left:"+ (Math.floor(Math.random() * ancho / 100 * 35) + 20)+" '/>");
 }
 
-TweenMax.to(".balloon", 10, { y: -1000});
+TweenMax.to(".balloon", 3, { y: -1000});
 
 var balloons = document.querySelector("#theBalloon");
 var manager = new Hammer.Manager(balloons);
