@@ -8,13 +8,13 @@ body{
     position:fixed;
 }
 .balloon{
-    position: relative;
-    bottom:-100% ;    
+    position: fixed;
+    /* bottom:-100% ;     */
 }
 .hidden{
     visibility: hidden;
 }
 #theBalloon{
     position: fixed;
-    bottom:-100% ;
+    bottom:0px ;
 }
