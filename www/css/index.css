@@ -3,10 +3,33 @@ body {
   overflow: hidden;
 }
 /* line 5, ../sass/index.scss */
-body #menu img {
-  max-width: 100%;
+body #menu #about {
+  background: url("../img/about.png");
+  width: 167px;
+  height: 60px;
+  left: 700px;
 }
 /* line 13, ../sass/index.scss */
-body #load img {
+body #menu #play {
+  background: url("../img/play.png");
+  width: 199px;
+  height: 73px;
+  left: 500px;
+}
+/* line 21, ../sass/index.scss */
+body #menu button:hover {
+  filter: invert(100%);
+}
+/* line 26, ../sass/index.scss */
+body #menu button {
+  position: absolute;
+  top: 1300px;
+  margin: auto;
+  transition: 0.15s;
+  outline: 0px;
+  border: 0px;
+}
+/* line 39, ../sass/index.scss */
+body div img {
   max-width: 100%;
 }

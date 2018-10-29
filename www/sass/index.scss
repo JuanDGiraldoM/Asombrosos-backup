@@ -2,13 +2,39 @@ body
 {
     #menu
     {
-        img
+        #about
         {
-            max-width: 100%;
+            background: url("../img/about.png");
+            width: 167px;
+            height: 60px;
+            left: 700px;
+        }
+
+        #play
+        {
+            background: url("../img/play.png");
+            width: 199px;
+            height: 73px;
+            left: 500px;
+        }
+
+        button:hover
+        {
+            filter: invert(100%);
+        }
+
+        button
+        {
+            position: absolute;
+            top: 1300px;
+            margin: auto;
+            transition: 0.15s;
+            outline: 0px;
+            border: 0px;
         }
     }
 
-    #load
+    div
     {
         img
         {
