@@ -1,5 +1,5 @@
 window.onload = inicializar();
-var acerca,juego;
+var acerca,juego,back;
 
 function inicializar()
 {
@@ -17,12 +17,14 @@ function initVariables()
 {
     acerca = document.getElementById('about');
     juego = document.getElementById('play');
+    back = document.getElementById('back');
 }
 
 function initEventos()
 {
     acerca.addEventListener('click', toAbout);
     juego.addEventListener('click', toGame);
+    back.addEventListener('click', function() { location.href = "#menu"});
 }
 
 function toAbout()

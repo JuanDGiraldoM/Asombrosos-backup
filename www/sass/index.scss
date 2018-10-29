@@ -1,5 +1,28 @@
 body
 {
+    #viewAbout
+    {
+        #back:hover
+        {
+            filter: invert(100%);
+        }
+
+        #back
+        {
+            transition: 0.15s;
+            background: url("../img/back.png");
+            position: absolute;
+            left: 100px;
+            top: 2200px;
+            
+            margin: auto;
+            outline: 0px;
+            border: 0px;
+            width: 82px;
+            height: 82px;
+        }
+    }
+
     #menu
     {
         #about

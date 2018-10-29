@@ -3,24 +3,41 @@ body {
   overflow: hidden;
 }
 /* line 5, ../sass/index.scss */
+body #viewAbout #back:hover {
+  filter: invert(100%);
+}
+/* line 10, ../sass/index.scss */
+body #viewAbout #back {
+  transition: 0.15s;
+  background: url("../img/back.png");
+  position: absolute;
+  left: 100px;
+  top: 2200px;
+  margin: auto;
+  outline: 0px;
+  border: 0px;
+  width: 82px;
+  height: 82px;
+}
+/* line 28, ../sass/index.scss */
 body #menu #about {
   background: url("../img/about.png");
   width: 167px;
   height: 60px;
   left: 700px;
 }
-/* line 13, ../sass/index.scss */
+/* line 36, ../sass/index.scss */
 body #menu #play {
   background: url("../img/play.png");
   width: 199px;
   height: 73px;
   left: 500px;
 }
-/* line 21, ../sass/index.scss */
+/* line 44, ../sass/index.scss */
 body #menu button:hover {
   filter: invert(100%);
 }
-/* line 26, ../sass/index.scss */
+/* line 49, ../sass/index.scss */
 body #menu button {
   position: absolute;
   top: 1300px;
@@ -29,7 +46,7 @@ body #menu button {
   outline: 0px;
   border: 0px;
 }
-/* line 39, ../sass/index.scss */
+/* line 62, ../sass/index.scss */
 body div img {
   max-width: 100%;
 }
