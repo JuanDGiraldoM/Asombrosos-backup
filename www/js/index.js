@@ -36,6 +36,8 @@ function toGame()
 {
     location.href = "#initGame1";
     setTimeout(function() {
+
         location.href = "#initGame2";
+        setTimeout(function() { location.href = "#listGames";}, 12000);
     }, 12000);
 }
