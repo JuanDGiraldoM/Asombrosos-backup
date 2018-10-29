@@ -1,4 +1,12 @@
-/* line 3, ../sass/index.scss */
-body img {
+/* line 1, ../sass/index.scss */
+body {
+  overflow: hidden;
+}
+/* line 5, ../sass/index.scss */
+body #menu img {
+  max-width: 100%;
+}
+/* line 13, ../sass/index.scss */
+body #load img {
   max-width: 100%;
 }
