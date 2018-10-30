@@ -50,3 +50,26 @@ body #menu button {
 body div img {
   max-width: 100%;
 }
+body #galery{
+  background: url("../img/Galeria-muestra.png");
+}
+body #listGames #btnGalery{
+
+  background: url("../img/Boton-Galeria-personajes.png");
+  width: 6.5%;
+  height: 14%;
+  border: 0px;
+  margin-left: -89%;
+}
+
+body #listGames button{
+  position: absolute;
+}
+
+body #listGames #back2MainScreen{
+  background: url("../img/Boton-atras.png");
+  width: 6.5%;
+  height: 14%;
+  border: 0px;
+  margin-left: -96%;
+}
