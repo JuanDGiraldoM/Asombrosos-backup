@@ -73,6 +73,7 @@ Antonyms interface's rules
 }
 
 .card {
+  position: relative;
   width: 70%;
   height: 100%;
 }
