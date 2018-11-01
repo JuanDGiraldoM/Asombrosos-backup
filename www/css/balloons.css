@@ -7,14 +7,24 @@ body{
     height: 100%;
     position:fixed;
 }
+/* .balloon{
+    position: fixed;
+    bottom:-100% ;     
+} */
 .balloon{
     position: fixed;
-    /* bottom:-100% ;     */
+    /*bottom:-100px ;*/     
 }
+
 .hidden{
     visibility: hidden;
 }
+/* #theBalloon{
+    position: fixed;
+    bottom:0px ;
+} */
+
 #theBalloon{
     position: fixed;
     bottom:0px ;
-}
+} 
