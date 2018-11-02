@@ -16,11 +16,11 @@ body{
     position: fixed;
     bottom:-100% ;     
 } */
+
 .balloon{
     position: fixed;
-    /*bottom:-100px ;*/     
+    /* bottom:0% ;      */
 }
-
 .hidden{
     visibility: hidden;
 }
@@ -28,7 +28,40 @@ body{
     position: fixed;
     bottom:0px ;
 } */
-
+/* #balloon1{
+    position: absolute;
+    bottom: -100px;
+}
+#balloon2{
+    position: absolute;
+    bottom: -100px;
+}
+#balloon3{
+    position: absolute;
+    bottom: -100px;
+}
+#balloon4{
+    position: absolute;
+    bottom: -100px;
+}
+#balloon5{
+    position: absolute;
+    bottom: -100px;
+}
+#balloon6{
+    position: absolute;
+    bottom: -100px;
+}#balloon7{
+    position: absolute;
+    bottom: -100px;
+}
+#balloon8{
+    position: absolute;
+    bottom: -100px;
+}#balloon9{
+    position: absolute;
+    bottom: -100px;
+} */
 #theBalloon{
     position: fixed;
     bottom:0px ;
