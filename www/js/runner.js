@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var playerY = cHeight*0.2;
 	var yVelocity = 0.3;
 	var xVelocity = -0.2;
-<<<<<<< HEAD
 	var yLimit = cHeight*1.5;
 
 	var frames = 0;
@@ -37,9 +36,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     gifler('img/RAYO-CORRIENDO-PERSONAJE.gif')
     .frames('canvas.noPikachu', onDrawFrame);
-=======
-	var yLimit = cHeight-30;
->>>>>>> 8208b5f8a7dd1dc7d83b9f238d4e68f855a4a193
 
 	function startup() {
 		var el = document.getElementsByTagName("canvas")[0];
@@ -76,15 +72,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			playerY += yVelocity;
 			playerX += xVelocity;
 		} 
-<<<<<<< HEAD
 		//else if (playerY == yLimit-20) {
 		//	yVelocity = 3;
 		//}
-=======
-		// else if (playerY == yLimit-20) {
-		// 	yVelocity = 3;
-		// } 
->>>>>>> 8208b5f8a7dd1dc7d83b9f238d4e68f855a4a193
 		else if(playerX > 70){
 			playerX -= 0.6;
 		}
