@@ -32,7 +32,6 @@
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css" >
         <link rel="stylesheet" type="text/css" href="css/balloons.css">
         <title>Balloons Game</title>
     </head>
@@ -46,23 +45,18 @@
         </section> -->
         <section id="balloonGame" >
             <img src="img/balloons/balBackground.png" class="bgImage"/>
-            <h2 id="scoreTitle" class="partialScore animated fadeout">Puntuación</h2>
-            <h2 id="balloonsScore" class="partialScore animated fadeout"></h2>
-            <button id="toScore" class="animated fadein gameFinished" >A puntuación</button>
-            <button id="restartGame" class="animated fadein gameFinished">Reiniciar</button>
-            <h1 id="gameFinishedMessage" class="animated fadein gameFinished">¡EL JUEGO TERMINÓ!</h1>
+            <h2 id="scoreTitle" class="partialScore">Puntuación</h2>
+            <h2 id="balloonsScore" class="partialScore"></h2>
             <div id="theBalloon"></div>
         </section>
-        <section id="balloonsScoreSection" class="loader hidden">
+        <section id="balloonsScoreSection">
             <img src="img/balloons/balScoreBackground.png" class="bgImage"/>
             <h1 id="finalScore"></h1>
         </section>
-        
-
-
         <!--Scripts-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.js"></script>
+       
+        <script src="libs/hammer.min.js"></script>
+        <script src="libs/TweenMax.min.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/balloons.js"></script>
 
