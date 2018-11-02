@@ -1,47 +1,62 @@
-window.onload= init;
+window.onload = init;
 var score;
-var gameSection, scoreSection, btnToScore;
+var gameSection, scoreSection, btnToScore,introSection;
 var balloon1, balloon2, balloon3, balloon4, ballon5, balloon6, balloon7, balloon8, balloon9;
-var hidenBalloon;
+var hiddenBalloon;
 var partialScore = 0;
-var finalScore = 0;
+var finalScore;
 var theBalloon;
 
 function init() {
+    // introSection=document.getElementById('balloonIntro');
     score = document.getElementById('balloonsScore');
+    finalScore=document.getElementById('finalScore');
     gameSection = document.getElementById('balloonGame');
     scoreSection = document.getElementById('balloonsScoreSection');
     btnToScore = document.getElementById('toScore');
     btnToScore.addEventListener('click', changeToScore);
     gameSection.addEventListener('animationend', dissapear);
     scoreSection.addEventListener('animationend', dissapear);
+    // introSection.addEventListener('animationstart', loading);
+    // introSection.addEventListener('animationEnd', loading);
+
+    // function loading(){
+    //     introSection.style.display="none";
+    //     introSection.classList.add("animationOut");
+    //     gameSection.classList.add('animation');
+    //     gameSection.style="block";
+    //     gameSection.classList.add("animationIn");
+    // }
+    
+    
     var i = 0;
-    var taps=0;
+    
     var ancho = screen.height;
     for (i = 0; i < 2; i++) {
-        
-        document.getElementById("theBalloon").insertAdjacentHTML('beforeend', "<img class='balloon' id='balloon1' src='img/balMorado.png' style='right:"+ (Math.floor(Math.random() * ancho/100*5 )+(Math.floor(Math.random()*ancho)) )+"px '/>");
-        TweenMax.to("#balloon1", i+((Math.floor(Math.random()*ancho))*0.01+5), { y: -1000});
-        document.getElementById("theBalloon").insertAdjacentHTML('beforeend', "<img class='balloon' id='balloon2' src='img/balRosa.png'style='right:"+ (Math.floor(Math.random() * ancho/100*15 )+(Math.floor(Math.random()*ancho)) )+"px '/>");
-        TweenMax.to("#balloon2", i+((Math.floor(Math.random()*ancho))*0.01+6), { y: -1000});
-        document.getElementById("theBalloon").insertAdjacentHTML('beforeend', "<img class='balloon' id='balloon3' src='img/balVerde.png'style='right:"+ (Math.floor(Math.random() * ancho/100*25 )+(Math.floor(Math.random()*ancho)))+"px '/>");
-        TweenMax.to("#balloon3", i+((Math.floor(Math.random()*ancho))*0.01+7), { y: -1000});
-        document.getElementById("theBalloon").insertAdjacentHTML('beforeend', "<img class='balloon' id='balloon4' src='img/balAzul.png'style='right:"+ (Math.floor(Math.random() * ancho/100*35 )+(Math.floor(Math.random()*ancho)) )+"px '/>");
-        TweenMax.to("#balloon4", i+((Math.floor(Math.random()*ancho))*0.01+8), { y: -1000});
-        document.getElementById("theBalloon").insertAdjacentHTML('beforeend', "<img class='balloon' id='balloon5' src='img/balLila.png'style='left:"+ (Math.floor(Math.random() * ancho/100*45)+(Math.floor(Math.random()*ancho)) )+"px '/>");
-        TweenMax.to("#balloon5", i+((Math.floor(Math.random()*ancho))*0.01+9), { y: -1000});
-        document.getElementById("theBalloon").insertAdjacentHTML('beforeend', "<img class='balloon' id='balloon6' src='img/balNaranja.png'style='left:"+ (Math.floor(Math.random() * ancho/100*55)+(Math.floor(Math.random()*ancho)))+"px '/>");
-        TweenMax.to("#balloon6", 1+((Math.floor(Math.random()*ancho))*0.01+10), { y: -1000});
-        document.getElementById("theBalloon").insertAdjacentHTML('beforeend', "<img class='balloon' id='balloon7' src='img/balRojo.png'style='left:"+(Math.floor(Math.random() * ancho/100*65)+(Math.floor(Math.random()*ancho)))+"px '/>");
-        TweenMax.to("#balloon7", i+((Math.floor(Math.random()*ancho))*0.01+11), { y: -1000});
-        document.getElementById("theBalloon").insertAdjacentHTML('beforeend', "<img class='balloon' id='balloon8' src='img/balSalmon.png'style='left:"+ (Math.floor(Math.random() * ancho/100*75)+(Math.floor(Math.random()*ancho)))+"px '/>");
-        TweenMax.to("#balloon8", i+((Math.floor(Math.random()*ancho))*0.01+12), { y: -1000});
-        document.getElementById("theBalloon").insertAdjacentHTML('beforeend', "<img class='balloon' id='balloon9' src='img/balMenta.png'style='left:"+ (Math.floor(Math.random() * ancho/100*85)+(Math.floor(Math.random()*ancho)))+"px '/>");
-        TweenMax.to("#balloon9", i+((Math.floor(Math.random()*ancho))*0.01+13), { y: -1000});
+
+        document.getElementById("theBalloon").insertAdjacentHTML('beforeend', "<img class='balloon' id='balloon1' src='img/balloons/balMorado.png' style='right:" + (Math.floor(Math.random() * ancho / 100 * 25) + (Math.floor(Math.random() * ancho))) + "px '/>");
+        TweenMax.to("#balloon1", i + ((Math.floor(Math.random() * ancho)) * 0.01 + 20), { y: -1000 });
+        document.getElementById("theBalloon").insertAdjacentHTML('beforeend', "<img class='balloon' id='balloon2' src='img/balloons/balRosa.png'style='right:" + (Math.floor(Math.random() * ancho / 100 * 35) + (Math.floor(Math.random() * ancho))) + "px '/>");
+        TweenMax.to("#balloon2", i + ((Math.floor(Math.random() * ancho)) * 0.01 + 20), { y: -1000 });
+        document.getElementById("theBalloon").insertAdjacentHTML('beforeend', "<img class='balloon' id='balloon3' src='img/balloons/balVerde.png'style='right:" + (Math.floor(Math.random() * ancho / 100 * 45) + (Math.floor(Math.random() * ancho))) + "px '/>");
+        TweenMax.to("#balloon3", i + ((Math.floor(Math.random() * ancho)) * 0.01 + 20), { y: -1000 });
+        document.getElementById("theBalloon").insertAdjacentHTML('beforeend', "<img class='balloon' id='balloon4' src='img/balloons/balAzul.png'style='right:" + (Math.floor(Math.random() * ancho / 100 * 55) + (Math.floor(Math.random() * ancho))) + "px '/>");
+        TweenMax.to("#balloon4", i + ((Math.floor(Math.random() * ancho)) * 0.01 + 20), { y: -1000 });
+        document.getElementById("theBalloon").insertAdjacentHTML('beforeend', "<img class='balloon' id='balloon5' src='img/balloons/balLila.png'style='left:" + (Math.floor(Math.random() * ancho / 100 * 65) + (Math.floor(Math.random() * ancho))) + "px '/>");
+        TweenMax.to("#balloon5", i + ((Math.floor(Math.random() * ancho)) * 0.01 + 20), { y: -1000 });
+        document.getElementById("theBalloon").insertAdjacentHTML('beforeend', "<img class='balloon' id='balloon6' src='img/balloons/balNaranja.png'style='left:" + (Math.floor(Math.random() * ancho / 100 * 75) + (Math.floor(Math.random() * ancho))) + "px '/>");
+        TweenMax.to("#balloon6", 1 + ((Math.floor(Math.random() * ancho)) * 0.01 + 20), { y: -1000 });
+        document.getElementById("theBalloon").insertAdjacentHTML('beforeend', "<img class='balloon' id='balloon7' src='img/balloons/balRojo.png'style='left:" + (Math.floor(Math.random() * ancho / 100 * 85) + (Math.floor(Math.random() * ancho))) + "px '/>");
+        TweenMax.to("#balloon7", i + ((Math.floor(Math.random() * ancho)) * 0.01 + 20), { y: -1000 });
+        document.getElementById("theBalloon").insertAdjacentHTML('beforeend', "<img class='balloon' id='balloon8' src='img/balloons/balSalmon.png'style='left:" + (Math.floor(Math.random() * ancho / 100 * 95) + (Math.floor(Math.random() * ancho))) + "px '/>");
+        TweenMax.to("#balloon8", i + ((Math.floor(Math.random() * ancho)) * 0.01 + 20), { y: -1000 });
+        document.getElementById("theBalloon").insertAdjacentHTML('beforeend', "<img class='balloon' id='balloon9' src='img/balloons/balMenta.png'style='left:" + (Math.floor(Math.random() * ancho / 100 * 105) + (Math.floor(Math.random() * ancho))) + "px '/>");
+        TweenMax.to("#balloon9", i + ((Math.floor(Math.random() * ancho)) * 0.01 + 20), { y: -1000 });
+
+
     }
-    var ancho = screen.height;
     theBalloon=document.getElementById('theBalloon');
-    hidenBalloon = theBalloon.getElementsByClassName('hidden');
+    hiddenBalloon = theBalloon.getElementsByClassName('hidden');
     //TweenMax.to(".balloon", 10, { y: -1000});
     var balloons = document.querySelector("#theBalloon");
     var manager = new Hammer.Manager(balloons);
@@ -52,10 +67,12 @@ function init() {
     manager.on('tap', tap);
     function tap(e) {
         e.target.classList.toggle('hidden');
-        
         // console.log(hidenBalloon.length);
-        score.innerHTML=hidenBalloon.length;
+        partialScore=hiddenBalloon.length;
+        score.innerHTML=partialScore;
+        finalScore.innerHTML=partialScore;
     }
+    
     
     function changeToScore(event) {
         gameSection.classList.remove('animationIn');
@@ -73,4 +90,6 @@ function init() {
         }
     }
 
+    
+        
 }
