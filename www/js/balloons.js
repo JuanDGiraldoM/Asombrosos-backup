@@ -1,8 +1,5 @@
 window.onload = init;
-window.addEventListener("load", function(){
-   var loader = document.getElementsByClassName('loader'); 
-   loader.classList = "hidden";
-});
+
 var unloaded_candles, loaded_candles, loading_screen;
 var score;
 var gameSection, scoreSection, btnToScore,introSection,btnToGame;
@@ -14,18 +11,12 @@ var theBalloon;
 
 function init() {
     // introSection=document.getElementById('balloonIntro');
-    // btnToGame=document.getElementById('toGame');
     score = document.getElementById('balloonsScore');
     btnRestart=document.getElementById('restartGame');
     finalScore=document.getElementById('finalScore');
     gameSection = document.getElementById('balloonGame');
     scoreSection = document.getElementById('balloonsScoreSection');
-    btnToScore = document.getElementById('toScore');
-    btnToScore.addEventListener('click', changeToScore);
-    btnRestart.addEventListener('click', init);
-
-    // btnToGame.addEventListener('click', changeToGame);
-    
+   
     var i = 0;
     var cont = 100;
     var ancho = screen.height;
@@ -69,27 +60,23 @@ function init() {
         score.innerHTML=partialScore;
         finalScore.innerHTML=partialScore;
     }
-    
-    
-    function changeToScore(event) {
+     
+    setTimeout(function(){
+        // console.log("Cambio de section");
         gameSection.classList.remove('animationIn');
         gameSection.classList.add('animationOut');
         scoreSection.style.display = "block";
         scoreSection.classList.add('animationIn');
-    }
-    // function changeToGame(event) {
+        
+    },15000);
+
+    // var time=setTimeout(function(){
+    //     // console.log("Cambio de section");
     //     introSection.classList.remove('animationIn');
     //     introSection.classList.add('animationOut');
     //     gameSection.style.display = "block";
     //     gameSection.classList.add('animationIn');
-    // }
+        
+    // },15000);
 
-    function dissapear(event) {
-        var element = event.target;
-        if (element.classList.contains('animationOut')) {
-            element.style.display = "none";
-            element.classList.remove('animationOut');
-            element.classList.remove('animationIn');
-        }
-    }      
 }
