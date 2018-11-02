@@ -32,6 +32,7 @@
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css" >
         <link rel="stylesheet" type="text/css" href="css/balloons.css">
         <title>Balloons Game</title>
     </head>
@@ -41,13 +42,16 @@
             <video class="introVideo" autoplay>
                 <source src="img/balloons/balIntro.mp4" type="video/mp4">
             </video>
+            <input class="changeScreen" id="toGame" type="image" alt="Submit">
         </section> -->
         <section id="balloonGame">
             <img src="img/balloons/balBackground.png" class="bgImage"/>
-            <h2 id="scoreTitle" class="partialScore">Globos explotados</h2>
-            <h2 id="balloonsScore" class="partialScore"></h2>
+            <h2 id="scoreTitle" class="partialScore animated fadeout">Puntuación</h2>
+            <h2 id="balloonsScore" class="partialScore animated fadeout"></h2>
+            <button id="toScore" class="animated fadein gameFinished" >A puntuación</button>
+            <button id="restartGame" class="animated fadein gameFinished">Reiniciar</button>
+            <h1 id="gameFinishedMessage" class="animated fadein gameFinished">¡EL JUEGO TERMINÓ!</h1>
             <div id="theBalloon"></div>
-            <input id="toScore" type="image" alt="Submit">
         </section>
         <section id="balloonsScoreSection">
             <img src="img/balloons/balScoreBackground.png" class="bgImage"/>
