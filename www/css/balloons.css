@@ -18,7 +18,7 @@ body{
 } */
 
 .balloon{
-    position: fixed;
+    position: relative;
     /* bottom:0% ;      */
 }
 .hidden{
@@ -64,7 +64,7 @@ body{
 } */
 #theBalloon{
     position: fixed;
-    bottom:0px ;
+    bottom:-700% ;
 } 
 .partialScore{
     display: flex;
@@ -96,14 +96,19 @@ body{
 #toScore{
     position: fixed;
 }
-@keyframes fadeInOut {
+@keyframes fadeOut {
     from {opacity: 0;}
-    to {opacity: 1;}
+    to {visibility: hidden;}
+    /* 100%{
+        opacity: 0;
+        visibility: hidden;
+    } */
+
 }
 
 @keyframes fadeOutIn {
     from {opacity: 1;}
-    to {opacity: 0;}
+    to {visibility: hidden;}
 }
 
 #balloonGame.animationIn{
@@ -148,3 +153,8 @@ body{
     animation-duration: 3s;
     animation-fill-mode: forwards;
 } */
+
+.loader .hidden{
+    animation: fadeOut 1s;
+    animation-fill-mode: forwards;
+}
