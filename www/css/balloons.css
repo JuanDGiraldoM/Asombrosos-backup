@@ -33,16 +33,21 @@ body{
     position: fixed;
     bottom:0px ;
 } 
-#balloonsScore{
+.partialScore{
     display: flex;
     position: fixed;
     justify-content: flex-end;
-    margin: 2% 2%;
     font-size: 200%;
     color: rgb(255, 185, 46);
     text-shadow: 2px 2px 0 rgb(122, 89, 23);
     font-family: "Carnival Centenary";
+}
+#balloonsScore{
+    margin: 15% 80%;
 
+}
+#scoreTitle{
+    margin: 2% 70%;
 }
 #finalScore{
     display: flex;
