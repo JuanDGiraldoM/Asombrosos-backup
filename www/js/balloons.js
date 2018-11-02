@@ -5,8 +5,8 @@ window.addEventListener("load", function(){
 });
 var unloaded_candles, loaded_candles, loading_screen;
 var score;
-var gameSection, scoreSection, btnToScore,introSection;
-var balloon1, balloon2, balloon3, balloon4, ballon5, balloon6, balloon7, balloon8, balloon9;
+var gameSection, scoreSection, btnToScore,introSection,btnToGame;
+var balloon1, balloon2, balloon3, balloon4, ballon5, balloon6, balloon7, balloon8, balloon9,btnRestart;
 var hiddenBalloon;
 var partialScore = 0;
 var finalScore;
@@ -14,25 +14,17 @@ var theBalloon;
 
 function init() {
     // introSection=document.getElementById('balloonIntro');
+    // btnToGame=document.getElementById('toGame');
     score = document.getElementById('balloonsScore');
+    btnRestart=document.getElementById('restartGame');
     finalScore=document.getElementById('finalScore');
     gameSection = document.getElementById('balloonGame');
     scoreSection = document.getElementById('balloonsScoreSection');
     btnToScore = document.getElementById('toScore');
     btnToScore.addEventListener('click', changeToScore);
-    gameSection.addEventListener('animationend', dissapear);
-    scoreSection.addEventListener('animationend', dissapear);
-    // introSection.addEventListener('animationstart', loading);
-    // introSection.addEventListener('animationEnd', loading);
+    btnRestart.addEventListener('click', init);
 
-    // function loading(){
-    //     introSection.style.display="none";
-    //     introSection.classList.add("animationOut");
-    //     gameSection.classList.add('animation');
-    //     gameSection.style="block";
-    //     gameSection.classList.add("animationIn");
-    // }
-    
+    // btnToGame.addEventListener('click', changeToGame);
     
     var i = 0;
     var cont = 100;
@@ -85,6 +77,12 @@ function init() {
         scoreSection.style.display = "block";
         scoreSection.classList.add('animationIn');
     }
+    // function changeToGame(event) {
+    //     introSection.classList.remove('animationIn');
+    //     introSection.classList.add('animationOut');
+    //     gameSection.style.display = "block";
+    //     gameSection.classList.add('animationIn');
+    // }
 
     function dissapear(event) {
         var element = event.target;
