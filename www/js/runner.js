@@ -6,11 +6,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var playerX = 50;
 	var playerY = cHeight-30;
 	var yVelocity = 0.3;
+	var xVelocity = -0.2;
 	var yLimit = cHeight-30;
 
 	function startup() {
 		var el = document.getElementsByTagName("canvas")[0];
-		el.addEventListener("touchstart", ()=>{yVelocity = -3; playerY-=10}, false);
+		el.addEventListener("touchstart", ()=>{yVelocity = -2; xVelocity = 0.5; playerY-=10}, false);
 		//el.addEventListener("touchend", handleEnd, false);
 		//el.addEventListener("touchcancel", handleCancel, false);
 		//el.addEventListener("touchleave", handleLeave, false);
@@ -18,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	}
 
 	gravity = function (velocity) {
-    	return velocity + 0.1;
+    	return velocity + 0.08;
 	};
 	
 	drawRect = function (x, y, radius, color) {
@@ -41,8 +42,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		} else if (playerY < yLimit) {
 			yVelocity = gravity(yVelocity);
 			playerY += yVelocity;
-		} else if (playerY == yLimit-20) {
-			yVelocity = 3;
+			playerX += xVelocity;
+		} 
+		// else if (playerY == yLimit-20) {
+		// 	yVelocity = 3;
+		// } 
+		else if(playerX > 70){
+			playerX -= 0.6;
+		}
+		if(playerY < 0){
+			playerY = 0.05;
+			yVelocity = 0.5;
 		}
 		
 		clearScreen();
