@@ -1,0 +1,63 @@
+/* ==========================================================================
+Base styles: opinionated defaults
+========================================================================== */
+
+html {
+  color: #222;
+  font-size: 1em;
+  line-height: 1.4;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================================================
+                          Author's custom styles
+========================================================================== */
+
+body {
+  overflow: hidden;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.runner {
+  display:block;
+  background-image: url('../img/RAYO-CORRIENDO-PERSONAJE.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: 0;
+  top: 62vh;
+  width: 9%;
+  height: 100%;
+  left: 15vw;
+
+}
+
+#runnerScreen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+
+#runnerCanvas {
+	width: 100%;
+	height: 100%;
+	background-image: url('../img/Runner.png');
+	animation: l_2_r 10000s linear infinite;
+	background-size: cover;
+}
+
+@-webkit-keyframes l_2_r {
+    from {background-position: -50% 0;}
+    to {background-position: 100000% 0;}
+}
+
+@keyframes moveIt {
+  from {background-position: bottom left;}
+  to {background-position: top right;}
+}
