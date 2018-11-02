@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var yVelocity = 0.3;
 	var xVelocity = -0.2;
 	var yLimit = cHeight-30;
+	var progress = 100;
 
 	function startup() {
 		var el = document.getElementsByTagName("canvas")[0];
@@ -23,11 +24,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	};
 	
 	drawRect = function (x, y, radius, color) {
-	    var canvas = document.getElementById("runnerCanvas");
-	    var ctx = canvas.getContext("2d");
+		var canvas = document.getElementById("runnerCanvas");
+		var ctx = canvas.getContext('2d');		
 	    ctx.beginPath();
-	    ctx.rect(x, y ,10 ,10);
+	    ctx.rect(x, y ,50 ,10);
 		ctx.stroke();
+		ctx.fillRect(0,0,progress,10);
 	};
 
 	clearScreen = function () {
@@ -43,6 +45,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			yVelocity = gravity(yVelocity);
 			playerY += yVelocity;
 			playerX += xVelocity;
+			progress -= 0.1;
 		} 
 		// else if (playerY == yLimit-20) {
 		// 	yVelocity = 3;
