@@ -1,5 +1,5 @@
 
-var ma_arrayCard=[];
+/*var ma_arrayCard=[];
 ma_arrayCard[0]=["img/antonyms/anger.png","ma1"];
 ma_arrayCard[1]=["img/antonyms/calm.png","ma1"];
 ma_arrayCard[2]=["img/antonyms/fear.png","ma2"];
@@ -7,14 +7,19 @@ ma_arrayCard[3]=["img/antonyms/pride.png","ma4"];
 ma_arrayCard[4]=["img/antonyms/happiness.png","ma3"];
 ma_arrayCard[5]=["img/antonyms/sadness.png","ma3"];
 ma_arrayCard[6]=["img/antonyms/surprise.png","ma2"];
-ma_arrayCard[7]=["img/antonyms/disappointment.png","ma4"];
+ma_arrayCard[7]=["img/antonyms/disappointment.png","ma4"];*/
 
-var ma_card1, ma_card2, ma_card3, ma_card4, ma_card5, ma_card6, ma_card7, ma_card8;
+//var ma_card1, ma_card2, ma_card3, ma_card4, ma_card5, ma_card6, ma_card7, ma_card8;
 var ma_currentImg;
 var MA_COUNT;
 var MA_COUNTFINAL=4;
 var cards = [1,2,3,4,5,6,7,8];
 var cardsPairs = [[1,2],[2,1],[3,4],[4,3],[5,6],[6,5],[7,8],[8,7]];
+var initialImg;
+var lastImg;
+var changeCard;
+var cardHeight;
+var cardWidth;
 
 window.onload=init;
 
@@ -61,8 +66,6 @@ function init(){
     ma_card8.addEventListener('click', verifyMatch);*/
 
     MA_COUNT=0;
-
-
     renderCards();
     setCardsDimensions();
 }
@@ -79,30 +82,43 @@ function shuffle(a) {
 }
 
 function verifyMatch(e){
-    console.log(e);
-    var cardHeight = e.target.height;
-    var cardWidth = e.target.width;
+    cardHeight = e.target.height;
+    cardWidth = e.target.width;
+
     if(!ma_currentImg){
         ma_currentImg=e.target;
-        new TweenMax.fromTo(ma_currentImg, 0.3, {width:cardWidth, height:cardHeight}, {width:cardHeight+10, height:cardHeight+10});
+        new TweenMax.fromTo(ma_currentImg, 0.1, {width:cardWidth, height:cardHeight, borderColor:'rgba(255,0,0,0.0)', borderStyle:'none', ease:Power0.easeIn}, {width:cardHeight+10, height:cardHeight+10,
+          borderStyle:'solid', borderColor:'rgba(255,0,0,1.0)', ease:Power0.easeOut});
+        initialImg = ma_currentImg;
     }else if(ma_currentImg.id != e.target.id){
-        /*var ma_attr=ma_currentImg.getAttribute("data-ma");
-        var ma_sattr=this.getAttribute("data-ma");*/
-        if(!cardsPairs.includes([ma_currentImg.id,e.target.id])){
-          console.log("no");
-            new TweenMax.fromTo(ma_currentImg, 0.3, {width:cardHeight+10, height:cardHeight+10}, {width:cardWidth, height:cardHeight});
+        if(!compareArrays(cardsPairs,[parseInt(ma_currentImg.id),parseInt(e.target.id)])){
+            new TweenMax.fromTo(ma_currentImg, 0.1, {width:cardHeight+10, height:cardHeight+10, borderStyle:'solid', borderColor:'rgba(255,0,0,1.0)', ease:Power0.easeIn}, {width:cardWidth, height:cardHeight, borderStyle:'none',
+              borderColor:'rgba(255,0,0,0.0)', ease:Power0.easeOut});
         }else{
-            new TweenMax.fromTo(e.target, 0.3, {width:cardWidth, height:cardHeight}, {width:cardHeight+10, height:cardHeight+10});
-            e.target.removeEventListener('click',verifyMatch);
-            ma_currentImg.removeEventListener('click',verifyMatch);
+          lastImg = e.target;
+            new TweenMax.fromTo(e.target, 0.1, {width:cardWidth, height:cardHeight, borderColor:'rgba(255,0,0,0.0)', borderStyle:'none', ease:Power0.easeIn}, {width:cardHeight+10, height:cardHeight+10,
+              borderColor:'rgba(255,0,0,1.0)', borderStyle:'solid', ease:Power0.easeOut, onComplete: function(){
+              changeCard = new TweenMax.to([initialImg, e.target], 0.7, {rotationY:'-180', onComplete:resizeCards});
+              new TweenMax.set([initialImg, e.target], {delay:0.2, borderStyle:'none', onStart:changeForWood});
+              e.target.onclick = null;
+              initialImg.onclick = null;
+            }});
             MA_COUNT++;
             if(MA_COUNT == MA_COUNTFINAL){
                 console.log("Ganaste");
             }
         }
-        ma_currentImg=undefined;
+        ma_currentImg=null;
     }
+}
 
+function changeForWood() {
+  initialImg.src = "img/antonyms/wood.png";
+  lastImg.src = "img/antonyms/wood.png";
+}
+
+function resizeCards() {
+  new TweenMax.fromTo([initialImg, lastImg], 0.05, {width:cardHeight+10, height:cardHeight+10, ease:Power0.easeIn}, {width:cardWidth, height:cardHeight, ease:Power0.easeOut});
 }
 
 function renderCards() {
@@ -123,15 +139,19 @@ function renderCards() {
 
 function setCardsDimensions() {
   var cardContainer = document.getElementById('cardContainer1');
-  var cardContainerStyles = window.getComputedStyle(cardContainer);
   var cardHeight = cardContainer.clientHeight;
-  //var cardHeight = cardContainerStyles.getPropertyValue('height');
-  console.log(cardHeight);
   var cards = document.querySelectorAll('.card');
+
   for(var i=0; i<cards.length; i++){
       cards[i].style.width = (cardHeight-15) + 'px';
       cards[i].style.height = (cardHeight-15) + 'px';
   }
+}
 
-
+function compareArrays(a, b) {
+  var b_string = JSON.stringify(b);
+  var contains = a.some(function(ele){
+    return JSON.stringify(ele) === b_string;
+  });
+  return contains;
 }
