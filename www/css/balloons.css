@@ -19,17 +19,21 @@ body{
 
 .balloon{
     position: absolute;
-    bottom:-300px ; 
+    bottom:-600px ; 
     width: 90px;
     height: 90px;     
 }
 .hidden{
     visibility: hidden;
 }
-/* #theBalloon{
+#container{
     position: fixed;
-    bottom:0px ;
-} */
+}
+
+#theBalloon{
+    position: absolute;
+    bottom:-300px ;
+}
 /* #balloon1{
     position: absolute;
     bottom: -100px;

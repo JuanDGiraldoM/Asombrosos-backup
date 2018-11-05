@@ -47,7 +47,6 @@ function init() {
     for (i = 0; i < this.balloons; i++) {
         var newBalloon = new Balloon();
         newBalloon.ball();
-
     };
 
     function Balloon(left, top) {
@@ -56,6 +55,7 @@ function init() {
         this.animate = function() {
             TweenMax.to("#balloon" + this.id, (Math.floor(Math.random() * ancho)) * 0.01 +3, {ease: Power0.easeOut, y: -1000});
         }
+        
         this.ball = function() {
             document.getElementById("theBalloon").insertAdjacentHTML('beforeend', "<img class='balloon' id='balloon"+this.id+"' src='img/balloons/"+colours[Math.floor(Math.random() * colours.length)]  +"' style='left:" + (Math.floor(Math.random() * 600 ) ) + "px '/>");  
             balloonsArr.push(this);
