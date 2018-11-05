@@ -69,9 +69,10 @@ function init() {
         scoreSection.classList.add('animationIn');
         
     },15000);
-
+    // var video=document.querySelector('.introVideo');
     // var time=setTimeout(function(){
     //     // console.log("Cambio de section");
+    //     video.pause();
     //     introSection.classList.remove('animationIn');
     //     introSection.classList.add('animationOut');
     //     gameSection.style.display = "block";

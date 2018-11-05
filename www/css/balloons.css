@@ -108,6 +108,9 @@ body{
     from {opacity: 1;}
     to {opacity: 0;}
 }
+/* #balloonGame{
+    display: none;
+} */
 #balloonGame.animationIn{
     animation-name: fadeInOut;
     animation-duration: 2s;
