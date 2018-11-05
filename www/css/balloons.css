@@ -70,16 +70,15 @@ body{
     position: fixed;
     justify-content: flex-end;
     font-size: 200%;
-    color: rgb(255, 185, 46);
-    text-shadow: 2px 2px 0 rgb(122, 89, 23);
+    color: rgb(232, 62, 85);
     font-family: "Carnival Centenary";
 }
 #balloonsScore{
-    margin: 8% 80%;
+    margin: 8% 85%;
 
 }
 #scoreTitle{
-    margin: 2% 70%;
+    margin: 2% 75%;
 }
 #finalScore{
     display: flex;
@@ -88,7 +87,6 @@ body{
     margin: 2% 2%;
     font-size: 2rem;
     color: white;
-    text-shadow: 2px 2px 0 rgb(122, 89, 23);
     font-family: "Carnival Centenary";
 }
 
