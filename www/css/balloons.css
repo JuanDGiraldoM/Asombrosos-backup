@@ -18,8 +18,10 @@ body{
 } */
 
 .balloon{
-    position: relative;
-    /* bottom:0% ;      */
+    position: absolute;
+    bottom:-300px ; 
+    width: 90px;
+    height: 90px;     
 }
 .hidden{
     visibility: hidden;
@@ -62,10 +64,7 @@ body{
     position: absolute;
     bottom: -100px;
 } */
-#theBalloon{
-    position: fixed;
-    bottom:-700% ;
-} 
+
 .partialScore{
     display: flex;
     position: fixed;
