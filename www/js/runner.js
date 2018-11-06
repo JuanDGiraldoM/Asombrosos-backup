@@ -1,3 +1,4 @@
+//DEPRONTO HACER QUE EL SEGUNDO SALTO SEA MAS CORTO(?)
 document.addEventListener("DOMContentLoaded", function(event) { 
 	var canvas = document.getElementById('runnerCanvas');
 	var ctx = canvas.getContext('2d');
