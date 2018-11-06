@@ -2,6 +2,7 @@
 document.addEventListener("DOMContentLoaded", function(event) { 
 	var canvas = document.getElementById('runnerCanvas');
 	var ctx = canvas.getContext('2d');
+	var splashRunner = document.getElementById('splashRunner');
 	var cWidth = ctx.canvas.offsetWidth;
 	var cHeight = ctx.canvas.offsetHeight;
 	var playerX = cWidth*0.15;
@@ -15,36 +16,43 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var frames = 0;
 	var barrel = document.getElementById("barrel");
 
-	var barrelX = cWidth*0.15;
 	var barrelY = cHeight*0.67;
-	var xBarrelVelocity = 0.3;
-	var yBarrelLimit = cHeight*0.55;
+	var xBarrelVelocity = 0;
 	var ratioBarrelW = 152/cWidth, ratioBarrelH = 201/cHeight;
-	var barrelWidth = cWidth*ratioBarrelW*0.37;
-	var barrelHeight = cHeight*ratioBarrelH*0.37;
+	var barrelWidth = cWidth*ratioBarrelW*0.3;
+	var barrelHeight = cHeight*ratioBarrelH*0.3;
+
+	var barrelsX = [cWidth+50,cWidth+400,cWidth+750,cWidth+750+barrelWidth];
+	var collitionsN = 0;
+
+	splashRunner.addEventListener("ended", ()=> {
+		splashRunner.style.display = "none";
+		setTimeout(()=> {
+			xBarrelVelocity = -5;
+			setTimeout(()=> {
+				xBarrelVelocity = -8;
+			},5000);
+			setTimeout(()=> {
+				xBarrelVelocity = -10;
+			},12000);
+		},1000);
+	},false);
+
 
 	function onDrawFrame(ctx, frame) {
+
 		// Match width/height to remove distortion
 		ctx.canvas.width  = ctx.canvas.offsetWidth;
 
 		ctx.canvas.height = ctx.canvas.offsetHeight;
 
-		// Determine how many pikachus will fit on screen
-		//var n = Math.floor((ctx.canvas.width)/150)
-
-		//for(var x = 0; x < n; x++) {
-		// Draw a pikachu
-		//var left = 150;
 		ctx.globalCompositeOperation = 'source-over';
 		ctx.drawImage(frame.buffer, playerX, playerY, playerWidth, playerHeight);
-		ctx.drawImage(barrel, barrelX, barrelY, barrelWidth, barrelHeight);
+		for (var i = 0; i < barrelsX.length ; i++) {
+			barrelsX[i] += xBarrelVelocity;
+			ctx.drawImage(barrel, barrelsX[i], barrelY, barrelWidth, barrelHeight);
+		}
 
-		// Composite a color
-		//var hue = (frames * 10 + x * 50) % 360;
-		//ctx.globalCompositeOperation = 'source-atop';
-		//ctx.fillStyle = 'hsla(' + hue + ', 100%, 50%, 0.5)';
-		//ctx.fillRect(left, 0, 150, this.height);
-		//}
 		frames++;
 	}
 
@@ -60,21 +68,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			}
 			touchN++;
 		}, {passive:true});
-		//el.addEventListener("touchend", handleEnd, false);
-		//el.addEventListener("touchcancel", handleCancel, false);
-		//el.addEventListener("touchleave", handleLeave, false);
-		//el.addEventListener("touchmove", handleMove, false);
 	}
 
 	gravity = function (velocity) {
     	return velocity + 0.055;
 	};
 	
-	drawRect = function (x, y, radius, color) {
+	drawRect = function (x, y, w, h) {
 	    var canvas = document.getElementById("runnerCanvas");
 	    var ctx = canvas.getContext("2d");
 	    ctx.beginPath();
-	    ctx.rect(x, y ,10 ,10);
+	    ctx.rect(x, y, w, h);
 		ctx.stroke();
 	};
 
@@ -96,7 +100,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		}
 		//clearScreen();
 		//drawRect(playerX, playerY, 10, 10);
+		/*
+			posicion del jugador -> playerX playerY
+			lo gordito del jugador -> playerWidth playerHeight
 
+			posicion de la caja -> barrelsX barrelY
+			lo gordito de la caja -> barrelWidth barrelHeight
+		*/
 		
 		/*
 		var velx = .25;
@@ -110,6 +120,22 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			drawRect(playerX, playerY, 10, 10)
 
 		*/
+		for (var i = 0; i < barrelsX.length ; i++) {
+			//drawRect(playerX,playerY,playerWidth*0.9,playerHeight);
+			//drawRect(barrelsX[i], barrelY, barrelWidth, barrelHeight);
+
+			if (playerX + playerWidth*0.9 >= barrelsX[i] && playerX + playerWidth*0.9 <= barrelsX[i] + barrelWidth) {
+				if (playerY + playerHeight*0.95 >= barrelY) {
+					console.log("chocaste");
+					collitionsN++;
+					if (collitionsN > 8) {
+						console.log("bajaste energia :c");
+					}
+				} else {
+					collitionsN = 0;
+				}
+			}
+		}
 
 
 		setTimeout(main, 10);
@@ -117,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	startup();
 	main();
-
+	splashRunner.play();
 });
 
 
