@@ -5,74 +5,102 @@
 
 .phonemenu{
 	background-image:url("../img/backgrounds/BackgroundPantallaCarga.gif");
+	background-size: cover;
 }
 
 .phonelevel{
 	background-image:url("../img/backgrounds/BackgroundCasetasFeria.png");
+	background-size: cover;
 }
 
 .phoneinfo{
 	background-image:url("../img/backgrounds/BackgroundCreditos.png");
+	background-size: cover;
+
 }
 
 .phoneabout{
+	background-image:url("../img/backgrounds/BackgroundInfoSobreJuego.png");
+	background-size: cover;
+}
+.phoneFuper{
 	background-image:url("../img/backgrounds/BackgroundFuper.png");
+	background-size: cover;
+}
+.phoneCredits{
+	background-image:url("../img/backgrounds/BackgroundCreditos.png");
+	background-size: cover;
 }
 
-.imgcenter {
-	display:block;
-	margin:auto;
-	margin:15px 80px 15px 80px;
+#btnPlay{
+	position: fixed;
+	bottom:25%;
+    right:40%;
+}
+.imgleftback{
+	position: fixed;
+	left: 1%;
+	top: 1%;
+	width: 8%;
+	height: 13%;
+}
+#imgGalleria{
+	position: fixed;
+	left: 9%;
+	top: 1%;
+	width: 8%;
+	height: 13%;
+}
+#btnAbout{
+	position: fixed;
+    bottom:10%;
+    right:40%;
+}
+.carpas{
+	width: 16%;
+	height: 46%;
 }
 
-.imgleftback {
-	display:block;
-	margin:left;
-  	width: 22%;
-  	height: 12%;
+#carpa1{
+	left:27%;
+	top: 3%;
+	position: absolute;
 }
-
-.btnPlay{
-	position:absolute;
-    bottom:25%;
-    right:25%;
-    max-width:50%;
+#carpa2{
+	left: 62%;
+	top: 3%;
+	position: absolute;
 }
-
-.btnAbout{
-	position:absolute;
-    bottom:7.2%;
-    right:25%;
-    max-width:50%;
+#carpa3{
+	left: 47%;
+	bottom: 20%;
+	position: absolute;
 }
-
-.justify{
-	text-align:justify;
+#carpa4{
+	right: 4%;
+	bottom: 12%;
+	position: absolute;
 }
-
-.center{
-	text-align: center;
+#btnFuper{
+	position: fixed;
+	left: 40%;
+	top:40%
 }
-
-.field{
-	font-family: Courier New, Courier, Mono;
-	resize: horizontal;
-	width: 95%;
-	outline: 0px;
-	font-size: 38px;
-	margin:4px 3px 0px 3px;
-	background-color: transparent; 
-	border-radius: 15px;
-	padding: 3px 0px 0px 3px;
-	letter-spacing: 0.74em;
-	color: white;
-	text-transform: uppercase;
+#btnCredits{
+	position: fixed;
+	left: 30%;
+	top:60%;
 }
-
-#num1{
-	margin: 36px 3px 0px 3px;
+#btnLegal{
+	position: fixed;
+	top:60%;
+	right: 30%;
 }
-
+#btnToFuper{
+	position: fixed;
+	bottom:10%;
+	right: 10%;
+}
 body{
 	margin: 0px;
 	padding: 0px;
