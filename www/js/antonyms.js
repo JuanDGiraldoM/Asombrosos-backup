@@ -98,8 +98,8 @@ function verifyMatch(e){
           lastImg = e.target;
             new TweenMax.fromTo(e.target, 0.1, {width:cardWidth, height:cardHeight, borderColor:'rgba(255,0,0,0.0)', borderStyle:'none', ease:Power0.easeIn}, {width:cardHeight+10, height:cardHeight+10,
               borderColor:'rgba(255,0,0,1.0)', borderStyle:'solid', ease:Power0.easeOut, onComplete: function(){
-              changeCard = new TweenMax.to([initialImg, e.target], 0.7, {rotationY:'-180', onComplete:resizeCards});
-              new TweenMax.set([initialImg, e.target], {delay:0.2, borderStyle:'none', onStart:changeForWood});
+              changeCard = new TweenMax.to([initialImg, e.target], 0.7, {delay:1, rotationY:'-180', onComplete:resizeCards});
+              new TweenMax.set([initialImg, e.target], {delay:1.2, borderStyle:'none', onStart:changeForWood});
               e.target.onclick = null;
               initialImg.onclick = null;
             }});
