@@ -1,37 +1,50 @@
 document.addEventListener("DOMContentLoaded", function(event) { 
 	var canvas = document.getElementById('runnerCanvas');
 	var ctx = canvas.getContext('2d');
-	var cWidth = canvas.width;
-	var cHeight = canvas.height;
-	var playerX = cWidth*0.3;
+	var cWidth = ctx.canvas.offsetWidth;
+	var cHeight = ctx.canvas.offsetHeight;
+	var playerX = cWidth*0.15;
 	var playerY = cHeight*0.2;
 	var yVelocity = 0.3;
-	var xVelocity = -0.2;
-	var yLimit = cHeight*1.5;
-
+	var yLimit = cHeight*0.55;
+	var ratioW = 166/cWidth, ratioH = 288/cHeight;
+	var playerWidth = cWidth*ratioW*0.4;
+	var playerHeight = cHeight*ratioH*0.4;
+	var touchN = 0;
 	var frames = 0;
+	var barrel = document.getElementById("barrel");
+
+	var barrelX = cWidth*0.15;
+	var barrelY = cHeight*0.67;
+	var xBarrelVelocity = 0.3;
+	var yBarrelLimit = cHeight*0.55;
+	var ratioBarrelW = 152/cWidth, ratioBarrelH = 201/cHeight;
+	var barrelWidth = cWidth*ratioBarrelW*0.37;
+	var barrelHeight = cHeight*ratioBarrelH*0.37;
 
 	function onDrawFrame(ctx, frame) {
-	// Match width/height to remove distortion
-	ctx.canvas.width  = ctx.canvas.offsetWidth;
-	ctx.canvas.height = ctx.canvas.offsetHeight;
+		// Match width/height to remove distortion
+		ctx.canvas.width  = ctx.canvas.offsetWidth;
 
-	// Determine how many pikachus will fit on screen
-	//var n = Math.floor((ctx.canvas.width)/150)
+		ctx.canvas.height = ctx.canvas.offsetHeight;
 
-	//for(var x = 0; x < n; x++) {
-	// Draw a pikachu
-	var left = 150;
-	ctx.globalCompositeOperation = 'source-over';
-	ctx.drawImage(frame.buffer, playerX + left, playerY, 83, 144);
+		// Determine how many pikachus will fit on screen
+		//var n = Math.floor((ctx.canvas.width)/150)
 
-	// Composite a color
-	//var hue = (frames * 10 + x * 50) % 360;
-	//ctx.globalCompositeOperation = 'source-atop';
-	//ctx.fillStyle = 'hsla(' + hue + ', 100%, 50%, 0.5)';
-	//ctx.fillRect(left, 0, 150, this.height);
-	//}
-	frames++;
+		//for(var x = 0; x < n; x++) {
+		// Draw a pikachu
+		//var left = 150;
+		ctx.globalCompositeOperation = 'source-over';
+		ctx.drawImage(frame.buffer, playerX, playerY, playerWidth, playerHeight);
+		ctx.drawImage(barrel, barrelX, barrelY, barrelWidth, barrelHeight);
+
+		// Composite a color
+		//var hue = (frames * 10 + x * 50) % 360;
+		//ctx.globalCompositeOperation = 'source-atop';
+		//ctx.fillStyle = 'hsla(' + hue + ', 100%, 50%, 0.5)';
+		//ctx.fillRect(left, 0, 150, this.height);
+		//}
+		frames++;
 	}
 
     gifler('img/RAYO-CORRIENDO-PERSONAJE.gif')
@@ -39,7 +52,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	function startup() {
 		var el = document.getElementsByTagName("canvas")[0];
-		el.addEventListener("touchstart", ()=>{yVelocity = -2; xVelocity = 0.5; playerY-=10}, false);
+		el.addEventListener("touchstart", ()=>{
+			if (touchN < 2) {
+				yVelocity = -3; 
+				playerY-=10; 
+			}
+			touchN++;
+		}, {passive:true});
 		//el.addEventListener("touchend", handleEnd, false);
 		//el.addEventListener("touchcancel", handleCancel, false);
 		//el.addEventListener("touchleave", handleLeave, false);
@@ -47,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	}
 
 	gravity = function (velocity) {
-    	return velocity + 0.08;
+    	return velocity + 0.055;
 	};
 	
 	drawRect = function (x, y, radius, color) {
@@ -66,28 +85,38 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	main = function () {
 		if (playerY == yLimit && yVelocity < 0) {
-			//holi
 		} else if (playerY < yLimit) {
 			yVelocity = gravity(yVelocity);
 			playerY += yVelocity;
-			playerX += xVelocity;
-		} 
-		//else if (playerY == yLimit-20) {
-		//	yVelocity = 3;
-		//}
-		else if(playerX > 70){
-			playerX -= 0.6;
+		} else if (playerY == yLimit-20) {
+			yVelocity = 3;
+		}else{
+			touchN = 0;
 		}
-		if(playerY < 0){
-			playerY = 0.05;
-			yVelocity = 0.5;
-		}
-		
 		//clearScreen();
 		//drawRect(playerX, playerY, 10, 10);
+
+		
+		/*
+		var velx = .25;
+		// s -> 0		10		20		
+		// v -> .25		.75		1.25		
+		settimeout con cada uno de esos^
+		var lista = [obst1, obst2 ....]
+
+		foreach obst in lista:
+			obst += velx
+			drawRect(playerX, playerY, 10, 10)
+
+		*/
+
+
 		setTimeout(main, 10);
 	};
 
 	startup();
 	main();
+
 });
+
+
