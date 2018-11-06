@@ -12,16 +12,9 @@ body{
     height: 100%;
     position:fixed;
 }
-/* .balloon{
-    position: fixed;
-    bottom:-100% ;     
-} */
-
 .balloon{
     position: absolute;
     bottom:-600px ; 
-    width: 90px;
-    height: 90px;     
 }
 .hidden{
     visibility: hidden;
@@ -34,40 +27,6 @@ body{
     position: absolute;
     bottom:-300px ;
 }
-/* #balloon1{
-    position: absolute;
-    bottom: -100px;
-}
-#balloon2{
-    position: absolute;
-    bottom: -100px;
-}
-#balloon3{
-    position: absolute;
-    bottom: -100px;
-}
-#balloon4{
-    position: absolute;
-    bottom: -100px;
-}
-#balloon5{
-    position: absolute;
-    bottom: -100px;
-}
-#balloon6{
-    position: absolute;
-    bottom: -100px;
-}#balloon7{
-    position: absolute;
-    bottom: -100px;
-}
-#balloon8{
-    position: absolute;
-    bottom: -100px;
-}#balloon9{
-    position: absolute;
-    bottom: -100px;
-} */
 
 .partialScore{
     display: flex;
@@ -109,9 +68,7 @@ body{
     from {opacity: 1;}
     to {opacity: 0;}
 }
-/* #balloonGame{
-    display: none;
-} */
+
 #balloonGame.animationIn{
     animation-name: fadeInOut;
     animation-duration: 2s;
@@ -137,20 +94,7 @@ body{
     animation-duration: 2s;
     animation-fill-mode: forwards;
 }
-/* #balloonIntro{
-    display: block;
-}
-#balloonIntro.animationIn{
-    animation-name: fadeInOut;
-    animation-duration: 2s;
-    animation-fill-mode: forwards;
-}
 
-#balloonIntro.animationOut{
-    animation-name: fadeOutIn;
-    animation-duration: 2s;
-    animation-fill-mode: forwards;
-} */
 #finalScore{
     margin:22% 63%;
     display: flex;

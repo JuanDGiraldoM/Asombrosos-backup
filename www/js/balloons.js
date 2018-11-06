@@ -1,6 +1,5 @@
 window.onload = init;
 
-var unloaded_candles, loaded_candles, loading_screen;
 var score;
 var gameSection, scoreSection, btnToScore,introSection,btnToGame;
 var balloon1, balloon2, balloon3, balloon4, ballon5, balloon6, balloon7, balloon8, balloon9,btnRestart;
@@ -8,10 +7,11 @@ var hiddenBalloon;
 var partialScore = 0;
 var finalScore;
 var theBalloon;
-var colours = ["balMorado.png", "balRosa.png", "balVerde.png", "balAzul.png", "balLila.png", "balNaranja.png", "balRojo.png", "balSalmon.png","balMenta.png"];
+var ballColours = ["balMorado.png", "balRosa.png", "balVerde.png", "balAzul.png", "balLila.png", "balNaranja.png", "balRojo.png", "balSalmon.png","balMenta.png"];
+var ballTime = [3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
+var ballPos= [-1000,-900]
 var balCountVideo,balIntroVideo;
 function init() {
-    // introSection=document.getElementById('balloonIntro');
     score = document.getElementById('balloonsScore');
     finalScore=document.getElementById('finalScore');
     gameSection = document.getElementById('balloonGame');
@@ -33,8 +33,10 @@ function init() {
         openBalloonGame();
     }
     function openBalloonGame (){
+        music.play();
         this.balloons = 60;
         this.balloonsArr = [];
+        var height = window.innerHeight;
         var ancho = screen.height;
   
         for (i = 0; i < this.balloons; i++) {
@@ -46,19 +48,30 @@ function init() {
             this.id = balloonsArr.length;
           
             this.animate = function() {
-                TweenMax.to("#balloon" + this.id, (Math.floor(Math.random() * ancho)) * 0.01 +3, {ease: Power0.easeOut, y: -1000});
+                TweenMax.to("#balloon" + this.id,ballTime[Math.floor(Math.random() * ballTime.length)] , {ease: Power0.easeOut, top: ballPos[Math.floor(Math.random() * ballPos.length)] });
+                //TweenMax.to("#balloon" + this.id,ballTime[Math.floor(Math.random() * ballTime.length)] , {ease: Power1.easeIn, top: ballPos[Math.floor(Math.random() * ballPos.length)] });
+                //TweenMax.to("#balloon" + this.id,ballTime[Math.floor(Math.random() * ballTime.length)] , {ease: Power2.easeIn, top: ballPos[Math.floor(Math.random() * ballPos.length)] });
+                //TweenMax.to("#balloon" + this.id,ballTime[Math.floor(Math.random() * ballTime.length)] , {ease: Power3.easeIn, top: ballPos[Math.floor(Math.random() * ballPos.length)] });
+                //TweenLite.to("#balloon" + this.id,ballTime[Math.floor(Math.random() * ballTime.length)] , {ease: Expo.easeIn, top: ballPos[Math.floor(Math.random() * ballPos.length)] });
+                //TweenMax.to("#balloon" + this.id,ballTime[Math.floor(Math.random() * ballTime.length)] , {ease: Expo.easeInOut, top: ballPos[Math.floor(Math.random() * ballPos.length)] });
             }
             
             this.ball = function() {
-                document.getElementById("theBalloon").insertAdjacentHTML('beforeend', "<img class='balloon' id='balloon"+this.id+"' src='img/balloons/"+colours[Math.floor(Math.random() * colours.length)]  +"' style='left:" + (Math.floor(Math.random() * 600 ) ) + "px '/>");  
+                
+                var image = document.createElement("img");
+                image.id = "balloon" + this.id;
+                image.className = "balloon";
+                image.src = "img/balloons/" + ballColours[Math.floor(Math.random() * ballColours.length)];
+                image.style.left = (Math.floor(Math.random() * 600 ) ) + "px";
+                document.getElementById("theBalloon").insertAdjacentElement('beforeend', image); 
                 balloonsArr.push(this);
+
                 this.animate();
             }
         }
     
         theBalloon=document.getElementById('theBalloon');
         hiddenBalloon = theBalloon.getElementsByClassName('hidden');
-        //TweenMax.to(".balloon", 10, { y: -1000});
         var balloons = document.querySelector("#theBalloon");
         var manager = new Hammer.Manager(balloons);
         var Tap = new Hammer.Tap({
@@ -81,17 +94,8 @@ function init() {
             gameSection.classList.add('animationOut');
             scoreSection.style.display = "block";
             scoreSection.classList.add('animationIn');
+            music.pause();
             
         },15000);
-        // setTimeout(function(){
-        //     console.log("Cambio de section");
-        //     introSection.classList.remove('animationIn');
-        //     introSection.classList.add('animationOut');
-        //     gameSection.style.display = "block";
-        //     gameSection.classList.add('animationIn');
-            
-        // },3000);
     }
-    
-
 }
