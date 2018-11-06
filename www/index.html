@@ -1,49 +1,84 @@
-<!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
-<html>
+<!doctype html>
+<html lang="en">
     <head>
-        <!--
-        Customize this policy to fit your own app's needs. For more guidance, see:
-            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
-        Some notes:
-            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-                * Enable inline JS: add 'unsafe-inline' to default-src
-        -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-        <title>Hello World</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <title>Navegación - Asombrosos</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
+
     <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+        <section class="phoneload" id="loadp">
+            <div id="time"></div>
+        </section>
+
+        <section class="phonemenu" id="menup">
+                <div id="jugarButton">
+                    <img src="img/buttons/ButtonPlay.png" class="btnPlay">
+                </div>
+                <div id="aboutButton">
+                    <img src="img/buttons/ButtonAcerca.png" class="btnAbout">
+                </div>
+        </section>
+
+        <section class="phonelevel" id="levelp">
+            <div id="levelpBackButton">
+                <img src="img/buttons/ButtonAtras.png" class="imgleftback">
             </div>
-        </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
+            <div id="lvl1Button">
+                carpa1
+            </div>
+            <div id="lvl2Button">
+                carpa2
+            </div>
+            <div id="lvl3Button">
+                carpa3
+            </div>
+            <div id="lvl4Button">
+                carpa4
+            </div>
+        </section>
+
+        <section class="phonegame1" id="gamep1">
+            <div id="gamep1BackButton">
+                <img src="img/buttons/ButtonAtras.png" class="imgleftback">
+            </div>
+            aqui el juego 1
+        </section>
+
+        <section class="phonegame1" id="gamep2">
+            <div id="gamep2BackButton">
+                <img src="img/buttons/ButtonAtras.png" class="imgleftback">
+            </div>
+            aqui el juego 2
+        </section>
+
+        <section class="phonegame1" id="gamep3">
+            <div id="gamep3BackButton">
+                <img src="img/buttons/ButtonAtras.png" class="imgleftback">
+            </div>
+            aqui el juego 3
+        </section>
+
+        <section class="phonegame1" id="gamep4">
+            <div id="gamep4BackButton">
+                <img src="img/buttons/ButtonAtras.png" class="imgleftback">
+            </div>
+            aqui el juego 4
+        </section>
+
+        <section class="phoneinfo" id="infop">
+            <div id="infopBackButton">
+                <img src="img/buttons/ButtonAtras.png" class="imgleftback">
+            </div>
+        </section>
+
+        <section class="phoneabout" id="aboutp">
+            <div id="aboutpBackButton">
+                <img src="img/buttons/ButtonAtras.png" class="imgleftback">
+            </div> 
+        </section>
+
+        <script type="text/javascript" src="js/main.js"></script>
     </body>
 </html>
