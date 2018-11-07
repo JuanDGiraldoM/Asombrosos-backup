@@ -1,122 +1,136 @@
-.phoneload{
-	background-image:url("../img/backgrounds/Cargando.gif");
-	background-size: cover;
+.phoneload {
+    background-image: url("../img/backgrounds/Cargando.gif");
+    background-size: cover;
 }
 
-.phonemenu{
-	background-image:url("../img/backgrounds/BackgroundPantallaCarga.gif");
-	background-size: cover;
+.phonemenu {
+    background-image: url("../img/backgrounds/BackgroundPantallaCarga.gif");
+    background-size: cover;
 }
 
-.phonelevel{
-	background-image:url("../img/backgrounds/BackgroundCasetasFeria.png");
-	background-size: cover;
+.phonelevel {
+    background-image: url("../img/backgrounds/BackgroundCasetasFeria.png");
+    background-size: cover;
 }
 
-.phoneinfo{
-	background-image:url("../img/backgrounds/BackgroundCreditos.png");
-	background-size: cover;
-
+.phoneinfo {
+    background-image: url("../img/backgrounds/BackgroundCreditos.png");
+    background-size: cover;
 }
 
-.phoneabout{
-	background-image:url("../img/backgrounds/BackgroundInfoSobreJuego.png");
-	background-size: cover;
-}
-.phoneFuper{
-	background-image:url("../img/backgrounds/BackgroundFuper.png");
-	background-size: cover;
-}
-.phoneCredits{
-	background-image:url("../img/backgrounds/BackgroundCreditos.png");
-	background-size: cover;
+.phoneabout {
+    background-image: url("../img/backgrounds/BackgroundInfoSobreJuego.png");
+    background-size: cover;
 }
 
-#btnPlay{
-	position: fixed;
-	bottom:25%;
-    right:40%;
-}
-.imgleftback{
-	position: fixed;
-	left: 1%;
-	top: 1%;
-	width: 8%;
-	height: 13%;
-}
-#imgGalleria{
-	position: fixed;
-	left: 9%;
-	top: 1%;
-	width: 8%;
-	height: 13%;
-}
-#btnAbout{
-	position: fixed;
-    bottom:10%;
-    right:40%;
-}
-.carpas{
-	width: 16%;
-	height: 46%;
+.phoneFuper {
+    background-image: url("../img/backgrounds/BackgroundFuper.png");
+    background-size: cover;
 }
 
-#carpa1{
-	left:27%;
-	top: 3%;
-	position: absolute;
+.phoneCredits {
+    background-image: url("../img/backgrounds/BackgroundCreditos.png");
+    background-size: cover;
 }
-#carpa2{
-	left: 62%;
-	top: 3%;
-	position: absolute;
+
+#btnPlay {
+    position: fixed;
+    bottom: 25%;
+    right: 40%;
 }
-#carpa3{
-	left: 47%;
-	bottom: 20%;
-	position: absolute;
+
+.imgleftback {
+    position: fixed;
+    left: 1%;
+    top: 1%;
+    width: 8%;
+    height: 13%;
 }
-#carpa4{
-	right: 4%;
-	bottom: 12%;
-	position: absolute;
+
+#imgGalleria {
+    position: fixed;
+    left: 9%;
+    top: 1%;
+    width: 8%;
+    height: 13%;
 }
-#btnFuper{
-	position: fixed;
-	left: 40%;
-	top:40%
+
+#btnAbout {
+    position: fixed;
+    bottom: 10%;
+    right: 40%;
 }
-#btnCredits{
-	position: fixed;
-	left: 30%;
-	top:60%;
+
+.carpas {
+    width: 16%;
+    height: 46%;
 }
-#btnLegal{
-	position: fixed;
-	top:60%;
-	right: 30%;
+
+#carpa1 {
+    left: 27%;
+    top: 3%;
+    position: absolute;
 }
-#btnToFuper{
-	position: fixed;
-	bottom:10%;
-	right: 10%;
+
+#carpa2 {
+    left: 62%;
+    top: 3%;
+    position: absolute;
 }
-body{
-	margin: 0px;
-	padding: 0px;
-	height: 100vh;
-	width: 100vw;
+
+#carpa3 {
+    left: 47%;
+    bottom: 20%;
+    position: absolute;
 }
+
+#carpa4 {
+    right: 4%;
+    bottom: 12%;
+    position: absolute;
+}
+
+#btnFuper {
+    position: fixed;
+    left: 40%;
+    top: 40%;
+}
+
+#btnCredits {
+    position: fixed;
+    left: 30%;
+    top: 60%;
+}
+
+#btnLegal {
+    position: fixed;
+    top: 60%;
+    right: 30%;
+}
+
+#btnToFuper {
+    position: fixed;
+    bottom: 10%;
+    right: 10%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
 section {
-	max-width: 100%;
-	max-height: 100%;
-	display: none;
-	width: 100%;
-	height: 100%;
-	background-repeat: no-repeat;
-	background-position: center; 
-	background-attachment: fixed;
-	background-size: 365px 645px;
-	/*background-size: 720px 1280px;*/
-	text-align:center;
+    max-width: 100%;
+    max-height: 100%;
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: 365px 645px;
+    /*background-size: 720px 1280px;*/
+    text-align: center;
 }

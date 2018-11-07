@@ -1,87 +1,95 @@
 window.onload = init;
 var lvlup = false;
-function init (){
-	var jugarButton,aboutButton,lvl1Button,lvl2Button,lvl3Button,lvl4Button;
-	var levelpBackButton,gamep1BackButton,gamep2BackButton,gamep3BackButton,gamep4BackButton;
-	var aboutpBackButton, galleriaBackButton,galleriapBackButton, fuperButton, fuperBackButton,creditsBackButton,aboutCreditsButton;
-	var btntoPage;
-	function show (id) {
-		document.getElementById(id).style.display = "block";
-	}
+function init() {
+    var jugarButton, aboutButton, lvl1Button, lvl2Button, lvl3Button, lvl4Button;
+    var levelpBackButton, gamep1BackButton, gamep2BackButton, gamep3BackButton, gamep4BackButton;
+    var aboutpBackButton,
+        galleriaBackButton,
+        galleriapBackButton,
+        fuperButton,
+        fuperBackButton,
+        creditsBackButton,
+        aboutCreditsButton;
+    var btntoPage;
+    function show(id) {
+        document.getElementById(id).style.display = "block";
+    }
 
-	function hide (id) {
-		document.getElementById(id).style.display = "none";
-	}
+    function hide(id) {
+        document.getElementById(id).style.display = "none";
+    }
 
-	var navigate = function(actual, next) {
-		return function () {
-			hide(actual);
-			show(next);
-		}
-	}
+    var navigate = function(actual, next) {
+        return function() {
+            hide(actual);
+            show(next);
+        };
+    };
 
-	// Navigation
-	document.getElementById("loadp").style.display = "block";
+    // Navigation
+    document.getElementById("loadp").style.display = "block";
 
-	setTimeout(()=>{document.getElementById("loadp").style.display = "none"; document.getElementById("menup").style.display = "block";},2000);
+    setTimeout(() => {
+        document.getElementById("loadp").style.display = "none";
+        document.getElementById("menup").style.display = "block";
+    }, 2000);
 
-	jugarButton = document.querySelector("#jugarButton");
-	jugarButton.addEventListener('click', navigate('menup', 'levelp'));
+    jugarButton = document.querySelector("#jugarButton");
+    jugarButton.addEventListener("click", navigate("menup", "levelp"));
 
-	aboutButton = document.querySelector("#aboutButton");
-	aboutButton.addEventListener('click', navigate('menup', 'aboutp'));
+    aboutButton = document.querySelector("#aboutButton");
+    aboutButton.addEventListener("click", navigate("menup", "aboutp"));
 
-	lvl1Button = document.querySelector("#lvl1Button");
-	lvl1Button.addEventListener('click', navigate('levelp', 'gamep1'));
+    lvl1Button = document.querySelector("#lvl1Button");
+    lvl1Button.addEventListener("click", navigate("levelp", "gamep1"));
 
-	lvl2Button = document.querySelector("#lvl2Button");
-	lvl2Button.addEventListener('click', navigate('levelp', 'gamep2'));
+    lvl2Button = document.querySelector("#lvl2Button");
+    lvl2Button.addEventListener("click", navigate("levelp", "gamep2"));
 
-	lvl3Button = document.querySelector("#lvl3Button");
-	lvl3Button.addEventListener('click', navigate('levelp', 'gamep3'));
+    lvl3Button = document.querySelector("#lvl3Button");
+    lvl3Button.addEventListener("click", navigate("levelp", "gamep3"));
 
-	lvl4Button = document.querySelector("#lvl4Button");
-	lvl4Button.addEventListener('click', navigate('levelp', 'gamep4'));
-		
-	levelpBackButton = document.querySelector("#levelpBackButton");
-	levelpBackButton.addEventListener('click', navigate('levelp', 'menup'));
+    lvl4Button = document.querySelector("#lvl4Button");
+    lvl4Button.addEventListener("click", navigate("levelp", "gamep4"));
 
-	gamep1BackButton = document.querySelector("#gamep1BackButton");
-	gamep1BackButton.addEventListener('click', navigate('gamep1', 'levelp'));
+    levelpBackButton = document.querySelector("#levelpBackButton");
+    levelpBackButton.addEventListener("click", navigate("levelp", "menup"));
 
-	gamep2BackButton = document.querySelector("#gamep2BackButton");
-	gamep2BackButton.addEventListener('click', navigate('gamep2', 'levelp'));
+    gamep1BackButton = document.querySelector("#gamep1BackButton");
+    gamep1BackButton.addEventListener("click", navigate("gamep1", "levelp"));
 
-	gamep3BackButton = document.querySelector("#gamep3BackButton");
-	gamep3BackButton.addEventListener('click', navigate('gamep3', 'levelp'));
+    gamep2BackButton = document.querySelector("#gamep2BackButton");
+    gamep2BackButton.addEventListener("click", navigate("gamep2", "levelp"));
 
-	gamep4BackButton = document.querySelector("#gamep4BackButton");
-	gamep4BackButton.addEventListener('click', navigate('gamep4', 'levelp'));
+    gamep3BackButton = document.querySelector("#gamep3BackButton");
+    gamep3BackButton.addEventListener("click", navigate("gamep3", "levelp"));
 
-	aboutpBackButton = document.querySelector("#aboutpBackButton");
-	aboutpBackButton.addEventListener('click', navigate('aboutp', 'menup'));
+    gamep4BackButton = document.querySelector("#gamep4BackButton");
+    gamep4BackButton.addEventListener("click", navigate("gamep4", "levelp"));
 
-	galleriaBackButton = document.querySelector("#galleriapBackButton");
-	galleriaBackButton.addEventListener('click', navigate('galleriap', 'menup'));
+    aboutpBackButton = document.querySelector("#aboutpBackButton");
+    aboutpBackButton.addEventListener("click", navigate("aboutp", "menup"));
 
-	galleriapBackButton = document.querySelector("#imgGalleria");
-	galleriapBackButton.addEventListener('click', navigate('levelp', 'galleriap'));
+    galleriaBackButton = document.querySelector("#galleriapBackButton");
+    galleriaBackButton.addEventListener("click", navigate("galleriap", "menup"));
 
-	fuperButton=document.querySelector("#btnFuper");
-	fuperButton.addEventListener('click',navigate('aboutp','fuperp'));
+    galleriapBackButton = document.querySelector("#imgGalleria");
+    galleriapBackButton.addEventListener("click", navigate("levelp", "galleriap"));
 
-	fuperBackButton=document.querySelector("#fuperBackButton");
-	fuperBackButton.addEventListener('click',navigate('fuperp','aboutp'));
+    fuperButton = document.querySelector("#btnFuper");
+    fuperButton.addEventListener("click", navigate("aboutp", "fuperp"));
 
-	creditsBackButton=document.querySelector("#creditsBackButton");
-	creditsBackButton.addEventListener('click',navigate('creditsp','aboutp'));
+    fuperBackButton = document.querySelector("#fuperBackButton");
+    fuperBackButton.addEventListener("click", navigate("fuperp", "aboutp"));
 
-	aboutCreditsButton=document.querySelector("#btnCredits");
-	aboutCreditsButton.addEventListener('click',navigate('aboutp','creditsp'));
+    creditsBackButton = document.querySelector("#creditsBackButton");
+    creditsBackButton.addEventListener("click", navigate("creditsp", "aboutp"));
 
-	btntoPage=document.querySelector("#btnToFuper");
-	btntoPage.addEventListener('click',function(){
-		location.href = "http://fundacionfuper.org/";
-	});
+    aboutCreditsButton = document.querySelector("#btnCredits");
+    aboutCreditsButton.addEventListener("click", navigate("aboutp", "creditsp"));
 
+    btntoPage = document.querySelector("#btnToFuper");
+    btntoPage.addEventListener("click", function() {
+        location.href = "http://fundacionfuper.org/";
+    });
 }
