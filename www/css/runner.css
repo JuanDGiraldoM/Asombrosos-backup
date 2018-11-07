@@ -27,6 +27,8 @@ body {
   top: 0;
   width: 100vw;
   height: 100vh;
+  background-color: white;
+  z-index: 2;
 }
 
 #runnerScreen {
@@ -99,4 +101,14 @@ Runners interface's rules
 .card {
   width: 70%;
   height: 100%;
+}
+
+
+/* --------------------------------------------------------------------------
+Runners Health bar
+-------------------------------------------------------------------------- */
+#barraEnergia{
+  position: absolute;
+  right: 7px;
+  top: 7px;
 }

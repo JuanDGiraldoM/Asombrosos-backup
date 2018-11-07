@@ -9,7 +9,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var playerY = cHeight*0.2;
 	var yVelocity = 0.3;
 	var xVelocity = -0.2;
-	var progress = 100;
+	var progress = 230;
+	var barraY = 11;
+	var barraX = 514;
+	var barraRadius = 20;
 
 	var yLimit = cHeight*0.55;
 	var ratioW = 166/cWidth, ratioH = 288/cHeight;
@@ -71,38 +74,58 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			}
 			touchN++;
 		}, {passive:true});
+
 	}
 
 	gravity = function (velocity) {
     	return velocity + 0.055;
 	};
 	
-	drawRect = function (x, y, w, h) {
+	drawRect = function (x, y, w, h, radius) {
 	    var canvas = document.getElementById("runnerCanvas");
-	    var ctx = canvas.getContext("2d");
-	    ctx.beginPath();
-	    ctx.rect(x, y, w, h);
-		ctx.stroke();
-		ctx.fillRect(0,0,progress,10);
+		var ctx = canvas.getContext("2d");
+		var r = x + w;
+		var b = y + h;
+		ctx.beginPath();
+		ctx.strokeStyle="#B786B7";
+		ctx.fillStyle="#B786B7";
+		ctx.lineWidth="1";
+		ctx.moveTo(x+radius, y);
+		ctx.lineTo(r-radius, y);
+		ctx.quadraticCurveTo(r, y, r, y+radius);
+		ctx.lineTo(r, y+h-radius);
+		ctx.quadraticCurveTo(r, b, r-radius, b);
+		ctx.lineTo(x+radius, b);
+		ctx.quadraticCurveTo(x, b, x, b-radius);
+		ctx.lineTo(x, y+radius);
+		ctx.quadraticCurveTo(x, y, x+radius, y);
+		ctx.lineJoin = "round";
+		ctx.lineWidth = barraRadius;
+		ctx.strokeRect(barraX + (barraRadius/2),barraY + (barraRadius/2),progress -barraRadius,27 - barraRadius);
+		ctx.fillRect(barraX + (barraRadius/2),barraY + (barraRadius/2),progress -barraRadius,27 - barraRadius);
 	};
 
 	clearScreen = function () {
 	    var canvas = document.getElementById("runnerCanvas");
 	    var ctx = canvas.getContext("2d");
-	    ctx.clearRect(0, 0, cWidth, cHeight);
+		ctx.clearRect(0, 0, cWidth, cHeight);
+		
 	};
-
 	main = function () {
 		if (playerY == yLimit && yVelocity < 0) {
 		} else if (playerY < yLimit) {
 			yVelocity = gravity(yVelocity);
 			playerY += yVelocity;
+			progress -= 0.1;
 		} else if (playerY == yLimit-20) {
 			yVelocity = 3;
 		}else{
 			touchN = 0;
 		}
-		//clearScreen();
+		
+		drawRect(barraX, barraY, 220, 27, barraRadius);
+
+
 		//drawRect(playerX, playerY, 10, 10);
 		/*
 			posicion del jugador -> playerX playerY
@@ -147,6 +170,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	startup();
 	main();
+	drawRect(barraX, barraY, 220, 27, barraRadius);
+
 	splashRunner.play();
 });
 
