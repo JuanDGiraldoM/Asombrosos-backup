@@ -1,24 +1,25 @@
 window.onload = init;
 
-var score;
-var gameSection, scoreSection, btnToScore,introSection,btnToGame;
+var balScore;
+var balGameSection, balScoreSection, btnToScore,btnToGame;
 var balloon1, balloon2, balloon3, balloon4, ballon5, balloon6, balloon7, balloon8, balloon9,btnRestart;
 var hiddenBalloon;
-var partialScore = 0;
-var finalScore;
+var balPartialScore = 0;
+var balFinalScore;
 var theBalloon;
 var ballColours = ["balMorado.png", "balRosa.png", "balVerde.png", "balAzul.png", "balLila.png", "balNaranja.png", "balRojo.png", "balSalmon.png","balMenta.png"];
 var ballTime = [3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
 var ballPos= [-1000,-900]
-var balCountVideo,balIntroVideo;
+var balCountVideo,balIntroVideo,divGame;
 function init() {
-    score = document.getElementById('balloonsScore');
-    finalScore=document.getElementById('finalScore');
-    gameSection = document.getElementById('balloonGame');
-    scoreSection = document.getElementById('balloonsScoreSection');
+    balScore = document.querySelector('#balloonsScore');
+    balFinalScore=document.querySelector('#balFinalScore');
+    balGameSection = document.querySelector('#balloonGame');
+    balScoreSection = document.querySelector('#balloonsScoreSection');
     balCountVideo=document.querySelector("#balCount");
-    balIntroVideo=document.querySelector("#introVideo");
+    balIntroVideo=document.querySelector("#balIntroVideo");
     balIntroVideo.play();
+    divGame=document.querySelector("#divBalBackground");
     balIntroVideo.onended = skipIntroBalVideo;
 
     function skipIntroBalVideo(){
@@ -33,6 +34,7 @@ function init() {
         openBalloonGame();
     }
     function openBalloonGame (){
+        // divGame.style.display="block";
         music.play();
         this.balloons = 60;
         this.balloonsArr = [];
@@ -83,17 +85,17 @@ function init() {
         function tap(e) {
             e.target.classList.toggle('hidden');
             // console.log(hidenBalloon.length);
-            partialScore=hiddenBalloon.length;
-            score.innerHTML=partialScore;
-            finalScore.innerHTML=partialScore;
+            balPartialScore=hiddenBalloon.length;
+            balScore.innerHTML=balPartialScore;
+            balFinalScore.innerHTML=balPartialScore;
         }
          
         setTimeout(function(){
-            console.log("Cambio de section");
-            gameSection.classList.remove('animationIn');
-            gameSection.classList.add('animationOut');
-            scoreSection.style.display = "block";
-            scoreSection.classList.add('animationIn');
+            // console.log("Cambio de section");
+            balGameSection.classList.remove('animationIn');
+            balGameSection.classList.add('animationOut');
+            balScoreSection.style.display = "block";
+            balScoreSection.classList.add('animationIn');
             music.pause();
             
         },15000);
