@@ -71,7 +71,7 @@ function init() {
     aboutpBackButton.addEventListener("click", navigate("aboutp", "menup"));
 
     galleriaBackButton = document.querySelector("#galleriapBackButton");
-    galleriaBackButton.addEventListener("click", navigate("galleriap", "menup"));
+    galleriaBackButton.addEventListener("click", navigate("galleriap", "levelp"));
 
     galleriapBackButton = document.querySelector("#imgGalleria");
     galleriapBackButton.addEventListener("click", navigate("levelp", "galleriap"));
