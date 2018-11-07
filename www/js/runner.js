@@ -44,43 +44,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		},1000);
 	},false);
 
-
-	function onDrawFrame(ctx, frame) {
-
-		// Match width/height to remove distortion
-		ctx.canvas.width  = ctx.canvas.offsetWidth;
-
-		ctx.canvas.height = ctx.canvas.offsetHeight;
-
-		ctx.globalCompositeOperation = 'source-over';
-		ctx.drawImage(frame.buffer, playerX, playerY, playerWidth, playerHeight);
-		for (var i = 0; i < barrelsX.length ; i++) {
-			barrelsX[i] += xBarrelVelocity;
-			ctx.drawImage(barrel, barrelsX[i], barrelY, barrelWidth, barrelHeight);
-		}
-
-		frames++;
-	}
-
-    gifler('img/RAYO-CORRIENDO-PERSONAJE.gif')
-    .frames('canvas.noPikachu', onDrawFrame);
-
-	function startup() {
-		var el = document.getElementsByTagName("canvas")[0];
-		el.addEventListener("touchstart", ()=>{
-			if (touchN < 2) {
-				yVelocity = -3; 
-				playerY-=10; 
-			}
-			touchN++;
-		}, {passive:true});
-
-	}
-
-	gravity = function (velocity) {
-    	return velocity + 0.055;
-	};
-	
 	drawRect = function (x, y, w, h, radius) {
 	    var canvas = document.getElementById("runnerCanvas");
 		var ctx = canvas.getContext("2d");
@@ -104,6 +67,45 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		ctx.strokeRect(barraX + (barraRadius/2),barraY + (barraRadius/2),progress -barraRadius,27 - barraRadius);
 		ctx.fillRect(barraX + (barraRadius/2),barraY + (barraRadius/2),progress -barraRadius,27 - barraRadius);
 	};
+	
+	function onDrawFrame(ctx, frame) {
+
+		// Match width/height to remove distortion
+		ctx.canvas.width  = ctx.canvas.offsetWidth;
+
+		ctx.canvas.height = ctx.canvas.offsetHeight;
+
+		ctx.globalCompositeOperation = 'source-over';
+		ctx.drawImage(frame.buffer, playerX, playerY, playerWidth, playerHeight);
+		for (var i = 0; i < barrelsX.length ; i++) {
+			barrelsX[i] += xBarrelVelocity;
+			ctx.drawImage(barrel, barrelsX[i], barrelY, barrelWidth, barrelHeight);
+		}
+		drawRect(barraX, barraY, 220, 27, barraRadius);
+
+		frames++;
+	}
+
+    gifler('img/RAYO-CORRIENDO-PERSONAJE.gif')
+    .frames('canvas.noPikachu', onDrawFrame);
+
+	function startup() {
+		var el = document.getElementsByTagName("canvas")[0];
+		el.addEventListener("touchstart", ()=>{
+			if (touchN < 2) {
+				yVelocity = -3; 
+				playerY-=10; 
+			}
+			touchN++;
+		}, {passive:true});
+
+	}
+
+	gravity = function (velocity) {
+    	return velocity + 0.055;
+	};
+	
+	
 
 	clearScreen = function () {
 	    var canvas = document.getElementById("runnerCanvas");
@@ -123,8 +125,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			touchN = 0;
 		}
 		
-		drawRect(barraX, barraY, 220, 27, barraRadius);
-
+		
 
 		//drawRect(playerX, playerY, 10, 10);
 		/*
