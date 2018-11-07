@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var frames = 0;
 	var barrel = document.getElementById("barrel");
 
-	var barrelY = cHeight*0.67;
+	var barrelY = cHeight*0.7;
 	var xBarrelVelocity = 0;
 	var ratioBarrelW = 152/cWidth, ratioBarrelH = 201/cHeight;
 	var barrelWidth = cWidth*ratioBarrelW*0.3;
