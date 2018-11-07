@@ -3,12 +3,40 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var ctx = canvas.getContext('2d');
 	var cWidth = canvas.width;
 	var cHeight = canvas.height;
-	var playerX = 50;
-	var playerY = cHeight-30;
+	var playerX = cWidth*0.3;
+	var playerY = cHeight*0.2;
 	var yVelocity = 0.3;
 	var xVelocity = -0.2;
-	var yLimit = cHeight-30;
 	var progress = 100;
+	var yLimit = cHeight*1.5;
+
+	var frames = 0;
+
+	function onDrawFrame(ctx, frame) {
+	// Match width/height to remove distortion
+	ctx.canvas.width  = ctx.canvas.offsetWidth;
+	ctx.canvas.height = ctx.canvas.offsetHeight;
+
+	// Determine how many pikachus will fit on screen
+	//var n = Math.floor((ctx.canvas.width)/150)
+
+	//for(var x = 0; x < n; x++) {
+	// Draw a pikachu
+	var left = 150;
+	ctx.globalCompositeOperation = 'source-over';
+	ctx.drawImage(frame.buffer, playerX + left, playerY, 83, 144);
+
+	// Composite a color
+	//var hue = (frames * 10 + x * 50) % 360;
+	//ctx.globalCompositeOperation = 'source-atop';
+	//ctx.fillStyle = 'hsla(' + hue + ', 100%, 50%, 0.5)';
+	//ctx.fillRect(left, 0, 150, this.height);
+	//}
+	frames++;
+	}
+
+    gifler('img/RAYO-CORRIENDO-PERSONAJE.gif')
+    .frames('canvas.noPikachu', onDrawFrame);
 
 	function startup() {
 		var el = document.getElementsByTagName("canvas")[0];
@@ -47,9 +75,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			playerX += xVelocity;
 			progress -= 0.1;
 		} 
-		// else if (playerY == yLimit-20) {
-		// 	yVelocity = 3;
-		// } 
+		//else if (playerY == yLimit-20) {
+		//	yVelocity = 3;
+		//}
 		else if(playerX > 70){
 			playerX -= 0.6;
 		}
@@ -58,8 +86,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			yVelocity = 0.5;
 		}
 		
-		clearScreen();
-		drawRect(playerX, playerY, 10, 10);
+		//clearScreen();
+		//drawRect(playerX, playerY, 10, 10);
 		setTimeout(main, 10);
 	};
 
