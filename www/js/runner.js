@@ -1,38 +1,62 @@
+//DEPRONTO HACER QUE EL SEGUNDO SALTO SEA MAS CORTO(?)
 document.addEventListener("DOMContentLoaded", function(event) { 
 	var canvas = document.getElementById('runnerCanvas');
 	var ctx = canvas.getContext('2d');
-	var cWidth = canvas.width;
-	var cHeight = canvas.height;
-	var playerX = cWidth*0.3;
+	var splashRunner = document.getElementById('splashRunner');
+	var cWidth = ctx.canvas.offsetWidth;
+	var cHeight = ctx.canvas.offsetHeight;
+	var playerX = cWidth*0.15;
 	var playerY = cHeight*0.2;
 	var yVelocity = 0.3;
 	var xVelocity = -0.2;
 	var progress = 100;
-	var yLimit = cHeight*1.5;
 
+	var yLimit = cHeight*0.55;
+	var ratioW = 166/cWidth, ratioH = 288/cHeight;
+	var playerWidth = cWidth*ratioW*0.4;
+	var playerHeight = cHeight*ratioH*0.4;
+	var touchN = 0;
 	var frames = 0;
+	var barrel = document.getElementById("barrel");
+
+	var barrelY = cHeight*0.67;
+	var xBarrelVelocity = 0;
+	var ratioBarrelW = 152/cWidth, ratioBarrelH = 201/cHeight;
+	var barrelWidth = cWidth*ratioBarrelW*0.3;
+	var barrelHeight = cHeight*ratioBarrelH*0.3;
+
+	var barrelsX = [cWidth+50,cWidth+400,cWidth+750,cWidth+750+barrelWidth];
+	var collitionsN = 0;
+
+	splashRunner.addEventListener("ended", ()=> {
+		splashRunner.style.display = "none";
+		setTimeout(()=> {
+			xBarrelVelocity = -5;
+			setTimeout(()=> {
+				xBarrelVelocity = -8;
+			},5000);
+			setTimeout(()=> {
+				xBarrelVelocity = -10;
+			},12000);
+		},1000);
+	},false);
+
 
 	function onDrawFrame(ctx, frame) {
-	// Match width/height to remove distortion
-	ctx.canvas.width  = ctx.canvas.offsetWidth;
-	ctx.canvas.height = ctx.canvas.offsetHeight;
 
-	// Determine how many pikachus will fit on screen
-	//var n = Math.floor((ctx.canvas.width)/150)
+		// Match width/height to remove distortion
+		ctx.canvas.width  = ctx.canvas.offsetWidth;
 
-	//for(var x = 0; x < n; x++) {
-	// Draw a pikachu
-	var left = 150;
-	ctx.globalCompositeOperation = 'source-over';
-	ctx.drawImage(frame.buffer, playerX + left, playerY, 83, 144);
+		ctx.canvas.height = ctx.canvas.offsetHeight;
 
-	// Composite a color
-	//var hue = (frames * 10 + x * 50) % 360;
-	//ctx.globalCompositeOperation = 'source-atop';
-	//ctx.fillStyle = 'hsla(' + hue + ', 100%, 50%, 0.5)';
-	//ctx.fillRect(left, 0, 150, this.height);
-	//}
-	frames++;
+		ctx.globalCompositeOperation = 'source-over';
+		ctx.drawImage(frame.buffer, playerX, playerY, playerWidth, playerHeight);
+		for (var i = 0; i < barrelsX.length ; i++) {
+			barrelsX[i] += xBarrelVelocity;
+			ctx.drawImage(barrel, barrelsX[i], barrelY, barrelWidth, barrelHeight);
+		}
+
+		frames++;
 	}
 
     gifler('img/RAYO-CORRIENDO-PERSONAJE.gif')
@@ -40,22 +64,24 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	function startup() {
 		var el = document.getElementsByTagName("canvas")[0];
-		el.addEventListener("touchstart", ()=>{yVelocity = -2; xVelocity = 0.5; playerY-=10}, false);
-		//el.addEventListener("touchend", handleEnd, false);
-		//el.addEventListener("touchcancel", handleCancel, false);
-		//el.addEventListener("touchleave", handleLeave, false);
-		//el.addEventListener("touchmove", handleMove, false);
+		el.addEventListener("touchstart", ()=>{
+			if (touchN < 2) {
+				yVelocity = -3; 
+				playerY-=10; 
+			}
+			touchN++;
+		}, {passive:true});
 	}
 
 	gravity = function (velocity) {
-    	return velocity + 0.08;
+    	return velocity + 0.055;
 	};
 	
-	drawRect = function (x, y, radius, color) {
-		var canvas = document.getElementById("runnerCanvas");
-		var ctx = canvas.getContext('2d');		
+	drawRect = function (x, y, w, h) {
+	    var canvas = document.getElementById("runnerCanvas");
+	    var ctx = canvas.getContext("2d");
 	    ctx.beginPath();
-	    ctx.rect(x, y ,50 ,10);
+	    ctx.rect(x, y, w, h);
 		ctx.stroke();
 		ctx.fillRect(0,0,progress,10);
 	};
@@ -68,29 +94,60 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	main = function () {
 		if (playerY == yLimit && yVelocity < 0) {
-			//holi
 		} else if (playerY < yLimit) {
 			yVelocity = gravity(yVelocity);
 			playerY += yVelocity;
-			playerX += xVelocity;
-			progress -= 0.1;
-		} 
-		//else if (playerY == yLimit-20) {
-		//	yVelocity = 3;
-		//}
-		else if(playerX > 70){
-			playerX -= 0.6;
+		} else if (playerY == yLimit-20) {
+			yVelocity = 3;
+		}else{
+			touchN = 0;
 		}
-		if(playerY < 0){
-			playerY = 0.05;
-			yVelocity = 0.5;
-		}
-		
 		//clearScreen();
 		//drawRect(playerX, playerY, 10, 10);
+		/*
+			posicion del jugador -> playerX playerY
+			lo gordito del jugador -> playerWidth playerHeight
+
+			posicion de la caja -> barrelsX barrelY
+			lo gordito de la caja -> barrelWidth barrelHeight
+		*/
+		
+		/*
+		var velx = .25;
+		// s -> 0		10		20		
+		// v -> .25		.75		1.25		
+		settimeout con cada uno de esos^
+		var lista = [obst1, obst2 ....]
+
+		foreach obst in lista:
+			obst += velx
+			drawRect(playerX, playerY, 10, 10)
+
+		*/
+		for (var i = 0; i < barrelsX.length ; i++) {
+			//drawRect(playerX,playerY,playerWidth*0.9,playerHeight);
+			//drawRect(barrelsX[i], barrelY, barrelWidth, barrelHeight);
+
+			if (playerX + playerWidth*0.9 >= barrelsX[i] && playerX + playerWidth*0.9 <= barrelsX[i] + barrelWidth) {
+				if (playerY + playerHeight*0.95 >= barrelY) {
+					console.log("chocaste");
+					collitionsN++;
+					if (collitionsN > 8) {
+						console.log("bajaste energia :c");
+					}
+				} else {
+					collitionsN = 0;
+				}
+			}
+		}
+
+
 		setTimeout(main, 10);
 	};
 
 	startup();
 	main();
+	splashRunner.play();
 });
+
+
