@@ -92,7 +92,7 @@ function init() {
     susyCertificate = document.querySelector("#susyCertificate");
     rayoCertificate = document.querySelector("#rayoCertificate");
     milagroCertificate = document.querySelector("#milagroCertificate");
-    gatunaCertificate = document.querySelector("#susyCertificate");
+    gatunaCertificate = document.querySelector("#gatunaCertificate");
     btnSusy = document.querySelector("#btnSusy");
     btnRayo = document.querySelector("#btnRayo");
     btnMilagro = document.querySelector("#btnMilagro");
