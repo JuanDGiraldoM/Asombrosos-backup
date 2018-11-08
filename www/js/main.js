@@ -56,7 +56,7 @@ function init() {
     lvl1Button.addEventListener("click", navigate("levelp", "gamep1"));
 
     lvl2Button = document.querySelector("#lvl2Button");
-    lvl2Button.addEventListener("click", navigate("levelp", "wordsScreen"));
+    lvl2Button.addEventListener("click", openGame);
 
     lvl3Button = document.querySelector("#lvl3Button");
     lvl3Button.addEventListener("click", navigate("levelp", "gamep3"));
@@ -153,4 +153,10 @@ function toBackRayo() {
 function toBackGatuna() {
     gatunaCertificate.style.display = "none";
     gallery.style.display = "block";
+}
+
+function openGame(index) {
+    document.getElementById("levelp").style.display = "none";
+    document.getElementById("wordsScreen").style.display = "block";
+    openWordsGame();
 }
