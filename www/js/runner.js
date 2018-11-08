@@ -29,20 +29,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var barrelHeight = cHeight*ratioBarrelH*0.3;
 
 	var barrelsX = [cWidth+50,cWidth+400,cWidth+750,cWidth+750+barrelWidth];
+	
+
 	var collitionsN = 0;
 
-	splashRunner.addEventListener("ended", ()=> {
-		splashRunner.style.display = "none";
+
+
+	setTimeout(()=> {
+		xBarrelVelocity = -5;
 		setTimeout(()=> {
-			xBarrelVelocity = -5;
-			setTimeout(()=> {
-				xBarrelVelocity = -8;
-			},5000);
-			setTimeout(()=> {
-				xBarrelVelocity = -10;
-			},12000);
-		},1000);
-	},false);
+			xBarrelVelocity = -8;
+		},6000);
+		setTimeout(()=> {
+			xBarrelVelocity = -10;
+		},13000);
+	},1000);
 
 	drawRect = function (x, y, w, h, radius) {
 	    var canvas = document.getElementById("runnerCanvas");
@@ -67,9 +68,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		ctx.strokeRect(barraX + (barraRadius/2),barraY + (barraRadius/2),progress -barraRadius,27 - barraRadius);
 		ctx.fillRect(barraX + (barraRadius/2),barraY + (barraRadius/2),progress -barraRadius,27 - barraRadius);
 	};
-	
-	function onDrawFrame(ctx, frame) {
 
+	function onDrawFrame(ctx, frame) {
 		// Match width/height to remove distortion
 		ctx.canvas.width  = ctx.canvas.offsetWidth;
 
@@ -104,15 +104,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	gravity = function (velocity) {
     	return velocity + 0.055;
 	};
-	
-	
 
 	clearScreen = function () {
 	    var canvas = document.getElementById("runnerCanvas");
 	    var ctx = canvas.getContext("2d");
-		ctx.clearRect(0, 0, cWidth, cHeight);
-		
+		ctx.clearRect(0, 0, cWidth, cHeight);	
 	};
+
 	main = function () {
 		if (playerY == yLimit && yVelocity < 0) {
 		} else if (playerY < yLimit) {
@@ -126,7 +124,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		}
 		
 		
-
 		//drawRect(playerX, playerY, 10, 10);
 		/*
 			posicion del jugador -> playerX playerY
@@ -165,15 +162,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			}
 		}
 
-
 		setTimeout(main, 10);
 	};
 
 	startup();
 	main();
 	drawRect(barraX, barraY, 220, 27, barraRadius);
-
-	splashRunner.play();
 });
-
-
