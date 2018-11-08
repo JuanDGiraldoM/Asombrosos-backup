@@ -1,5 +1,5 @@
 var lvlup = false;
-var countVideo;
+var countVideo, backgroundMusic;
 
 var app = {
     initialize: function() {
@@ -25,6 +25,7 @@ function init() {
         aboutCreditsButton;
     var btntoPage;
     countVideo = document.getElementById("countVideo");
+    backgroundMusic = document.getElementById("backgroundMusic");
 
     var navigate = function(actual, next) {
         return function() {
@@ -57,7 +58,7 @@ function init() {
 
     wordsScreenBackButton = document.querySelector("#wordsScreenBackButton");
     wordsScreenBackButton.addEventListener("click", function() {
-        finalizeGame(2);
+        closeGame(2);
     });
 
     lvl3Button = document.querySelector("#lvl3Button");
@@ -173,7 +174,8 @@ function openGame(index) {
 
     countVideo.onended = function () {
         hide("countVideoScreen");
-        
+        backgroundMusic.play();
+
         switch (index) {
             case 2:
                 show("wordsScreen");
@@ -183,10 +185,24 @@ function openGame(index) {
     };
 }
 
-function finalizeGame(index) {
+function finalizeGame(index, isWinner) {
+    backgroundMusic.pause();
+    
+    switch (index) {
+        case 2:
+            // finalizeWordsGame();
+            break;
+    }
+}
+
+function closeGame(index) {
+    backgroundMusic.pause();
+
     switch (index) {
         case 2:
             finalizeWordsGame();
+            hide("wordsScreen");
+            show("levelp");
             break;
     }
 }
