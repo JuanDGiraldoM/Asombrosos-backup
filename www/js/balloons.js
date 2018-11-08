@@ -9,7 +9,7 @@ var balFinalScore=0;
 var theBalloon;
 var ballColours = ["balMorado.png", "balRosa.png", "balVerde.png", "balAzul.png", "balLila.png", "balNaranja.png", "balRojo.png", "balSalmon.png", "balMenta.png"];
 var ballTime = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-var ballPos = [-1000, -900]
+var ballPos = [-1000, -950]
 var balSound;
 function init() {
     balPartialScore=0;
@@ -36,7 +36,7 @@ function init() {
     //     openBalloonGame();
     // }
     music.play();
-    this.balloons = 60;
+    this.balloons = 50;
     this.balloonsArr = [];
     var height = window.innerHeight;
     var ancho = screen.height;
