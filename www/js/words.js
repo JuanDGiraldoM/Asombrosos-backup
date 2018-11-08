@@ -7,7 +7,6 @@ function openWordsGame() {
     wordsScore = 0;
     timeFall = 8;
     timeLaunch = 1250;
-    musicaFondo.play();
     wordsContainer.style.visibility = "visible";
     animateWords();
     updateScore();
@@ -124,9 +123,9 @@ function openWordsGame() {
                     posCircleX >= positionSusy.left &&
                     posCircleX <= positionSusy.right
                 ) {
-                    explosion.pause();
-                    explosion.currentTime = 0;
-                    explosion.play();
+                    explotion.pause();
+                    explotion.currentTime = 0;
+                    explotion.play();
                     wordsScore += 5;
                     word.className = "word animated fadeOut faster";
                     updateScore();
@@ -171,11 +170,9 @@ function finalizeWordsGame() {
         if (winner) {
             var scoreContainer = document.querySelector("#wordsScore");
             scoreContainer.innerHTML = "<p>Has ganado</p>";
-            musicaFondo.pause();
         } else {
             var scoreContainer = document.querySelector("#wordsScore");
             scoreContainer.innerHTML = "<p>Has fallado</p>";
-            musicaFondo.pause();
         }
     }
 }
