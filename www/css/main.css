@@ -229,11 +229,9 @@ section {
 }
 
 .wordsContainer {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     justify-content: flex-end;
-    background-image: url("../img/words/parque.png");
+    background-image: url("../assets/img/backgrounds/BackgroundWords.png");
     height: 100%;
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -254,8 +252,6 @@ section {
 }
 
 #wordsScore {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     padding: 0 2%;
     height: 0;
