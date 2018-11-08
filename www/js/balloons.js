@@ -18,7 +18,7 @@ function startBalloonGame() {
     balCountVideo = document.querySelector("#balCount");
     balSound = document.querySelector("#balExplotion");
    
-    music.play();
+    // music.play();
     this.balloons = 50;
     this.balloonsArr = [];
     var height = window.innerHeight;
@@ -79,20 +79,7 @@ function startBalloonGame() {
         balScoreSection.style.display = "block";
         balloonGame.style.display = "none";
         balScoreSection.classList.add('animationIn');
-        music.pause();
-
+        backgroundMusic.pause();
     }, 15000);
 
-}
-function finalizeBalloonGame(){
-    setTimeout(function () {
-        // console.log("Cambio de section");
-        balGameSection.classList.remove('animationIn');
-        balGameSection.classList.add('animationOut');
-        balScoreSection.style.display = "block";
-        balloonGame.style.display = "none";
-        balScoreSection.classList.add('animationIn');
-        music.pause();
-
-    }, 15000);
 }

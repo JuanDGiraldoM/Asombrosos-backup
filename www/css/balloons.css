@@ -1,40 +1,22 @@
-html {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  overflow: hidden;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
 @font-face {
     font-family: "Carnival Centenary";
     src: url("../dist/Carnival\ Centenary.otf");
 }
-
-#balloonGameBackground {
-    width: 100%;
-    height: 100%;
-    padding: 0px;
-    margin: 0px;
-    visibility: hidden;
-}
-
 #balloonGame{
     width: 100%;
     height: 100%;
     background-image: url('../assets/img/balloons/balBackground.png');
     background-size: cover;
+    position: fixed;
 }
 
 .balScoreBackground{
+    width: 100%;
+    height: 100%;
     background-image: url('../assets/img/balloons/balScoreBackground.png');
+    background-size: cover;
+    position: fixed;
 }
-
 .balloon{
     position: absolute;
     bottom:-600px ; 
