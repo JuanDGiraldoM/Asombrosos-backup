@@ -4,8 +4,8 @@ function init() {
     var jugarButton, aboutButton, lvl1Button, lvl2Button, lvl3Button, lvl4Button;
     var levelpBackButton, gamep1BackButton, gamep2BackButton, gamep3BackButton, gamep4BackButton;
     var aboutpBackButton,
-        galleriaBackButton,
-        galleriapBackButton,
+        galleryBackButton,
+        gallerypBackButton,
         fuperButton,
         fuperBackButton,
         creditsBackButton,
@@ -70,11 +70,11 @@ function init() {
     aboutpBackButton = document.querySelector("#aboutpBackButton");
     aboutpBackButton.addEventListener("click", navigate("aboutp", "menup"));
 
-    galleriaBackButton = document.querySelector("#galleriapBackButton");
-    galleriaBackButton.addEventListener("click", navigate("galleriap", "levelp"));
+    galleryBackButton = document.querySelector("#gallerypBackButton");
+    galleryBackButton.addEventListener("click", navigate("galleryp", "levelp"));
 
-    galleriapBackButton = document.querySelector("#imgGalleria");
-    galleriapBackButton.addEventListener("click", navigate("levelp", "galleriap"));
+    gallerypBackButton = document.querySelector("#imggallery");
+    gallerypBackButton.addEventListener("click", navigate("levelp", "galleryp"));
 
     fuperButton = document.querySelector("#btnFuper");
     fuperButton.addEventListener("click", navigate("aboutp", "fuperp"));
@@ -88,8 +88,57 @@ function init() {
     aboutCreditsButton = document.querySelector("#btnCredits");
     aboutCreditsButton.addEventListener("click", navigate("aboutp", "creditsp"));
 
+    gallery = document.querySelector(".gallery");
+    susyCertificate = document.querySelector("#susyCertificate");
+    rayoCertificate = document.querySelector("#rayoCertificate");
+    milagroCertificate = document.querySelector("#milagroCertificate");
+    gatunaCertificate = document.querySelector("#susyCertificate");
+    btnSusy = document.querySelector("#btnSusy");
+    btnRayo = document.querySelector("#btnRayo");
+    btnMilagro = document.querySelector("#btnMilagro");
+    btnGatuna = document.querySelector("#btnGatuna");
+
+    btnSusy.addEventListener("click", () => {
+        gallery.style.display = "none";
+        susyCertificate.style.display = "block";
+    });
+    btnRayo.addEventListener("click", () => {
+        gallery.style.display = "none";
+        rayoCertificate.style.display = "block";
+    });
+
+    btnMilagro.addEventListener("click", () => {
+        gallery.style.display = "none";
+        milagroCertificate.style.display = "block";
+    });
+
+    btnGatuna.addEventListener("click", () => {
+        gallery.style.display = "none";
+        gatunaCertificate.style.display = "block";
+    });
+
     btntoPage = document.querySelector("#btnToFuper");
     btntoPage.addEventListener("click", function() {
         location.href = "http://fundacionfuper.org/";
     });
+}
+
+function toBackSusy() {
+    susyCertificate.style.display = "none";
+    gallery.style.display = "block";
+}
+
+function toBackMilagro() {
+    milagroCertificate.style.display = "none";
+    gallery.style.display = "block";
+}
+
+function toBackRayo() {
+    rayoCertificate.style.display = "none";
+    gallery.style.display = "block";
+}
+
+function toBackGatuna() {
+    gatunaCertificate.style.display = "none";
+    gallery.style.display = "block";
 }
