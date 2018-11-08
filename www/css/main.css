@@ -3,42 +3,42 @@
     ========================================================================== */
 
 .phoneload {
-    background-image: url("../img/backgrounds/Cargando.gif");
+    background-image: url("../assets/img/backgrounds/Cargando.gif");
     background-size: cover;
 }
 
 .phonemenu {
-    background-image: url("../img/backgrounds/BackgroundPantallaCarga.gif");
+    background-image: url("../assets/img/backgrounds/BackgroundPantallaCarga.gif");
     background-size: cover;
 }
 
 .phonelevel {
-    background-image: url("../img/backgrounds/BackgroundCasetasFeria.png");
+    background-image: url("../assets/img/backgrounds/BackgroundCasetasFeria.png");
     background-size: cover;
 }
 
 .phoneinfo {
-    background-image: url("../img/backgrounds/BackgroundCreditos.png");
+    background-image: url("../assets/img/backgrounds/BackgroundCreditos.png");
     background-size: cover;
 }
 
 .phoneabout {
-    background-image: url("../img/backgrounds/BackgroundInfoSobreJuego.png");
+    background-image: url("../assets/img/backgrounds/BackgroundInfoSobreJuego.png");
     background-size: cover;
 }
 
 .phoneFuper {
-    background-image: url("../img/backgrounds/BackgroundFuper.png");
+    background-image: url("../assets/img/backgrounds/BackgroundFuper.png");
     background-size: cover;
 }
 
 .phoneCredits {
-    background-image: url("../img/backgrounds/BackgroundCreditos.png");
+    background-image: url("../assets/img/backgrounds/BackgroundCreditos.png");
     background-size: cover;
 }
 
 .phoneagallery {
-    background: url("../img/backgrounds/BackgroundGaleria.png");
+    background: url("../assets/img/backgrounds/BackgroundGaleria.png");
     background-size: cover;
 }
 
@@ -138,7 +138,7 @@
 
 #susyCertificate {
     justify-content: flex-end;
-    background-image: url("../img/navigation/CertSusy.png");
+    background-image: url("../assets/img/navigation/CertSusy.png");
     height: 100%;
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -147,7 +147,7 @@
 
 #rayoCertificate {
     justify-content: flex-end;
-    background-image: url("../img/navigation/CertRayo.png");
+    background-image: url("../assets/img/navigation/CertRayo.png");
     height: 100%;
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -156,7 +156,7 @@
 
 #milagroCertificate {
     height: 100%;
-    background-image: url("../img/navigation/CertMilagro.png");
+    background-image: url("../assets/img/navigation/CertMilagro.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     justify-content: flex-end;
@@ -165,7 +165,7 @@
 
 #gatunaCertificate {
     height: 100%;
-    background-image: url("../img/navigation/CertGatuna.png");
+    background-image: url("../assets/img/navigation/CertGatuna.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     justify-content: flex-end;
