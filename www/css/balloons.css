@@ -2,7 +2,14 @@
     font-family: "Carnival Centenary";
     src: url("../typ/Carnival\ Centenary.otf");
 }
-
+/* .balGameBackground{
+    background-image: url('../img/balloons/balBackground.png');
+    background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+.balScoreBackground{
+    background-image: url('../img/balloons/balScoreBackground.png');
+} */
 body{
     margin:0px;
     padding: 0px;
@@ -43,15 +50,6 @@ body{
 #balScoreTitle{
     margin: 2% 75%;
 }
-/* #balFinalScore{
-    display: flex;
-    position: fixed;
-    justify-content: flex-end;
-    margin: 2% 2%;
-    font-size: 2rem;
-    color: white;
-    font-family: "Carnival Centenary";
-} */
 
 #toScore{
     position: fixed;
@@ -104,11 +102,11 @@ body{
     text-shadow: 2px 2px 0 rgb(122, 89, 23);
     font-size:600%;
 }
-#balIntroVideo{
+/* #balIntroVideo{
     width: 100%;
     height: 100%;
-}
-#balCount{
+} */
+/* #balCount{
     width: 100%;
     height: 100%;
-}
+} */
