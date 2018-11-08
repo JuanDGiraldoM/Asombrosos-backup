@@ -1,8 +1,20 @@
-window.onload = init;
 var lvlup = false;
+
+var app = {
+    initialize: function() {
+        document.addEventListener("deviceready", this.onDeviceReady.bind(this), false);
+        init();
+    },
+    onDeviceReady: function() {
+        this.receivedEvent("deviceready");
+    },
+    receivedEvent: function(id) {}
+};
+app.initialize();
+
 function init() {
     var jugarButton, aboutButton, lvl1Button, lvl2Button, lvl3Button, lvl4Button;
-    var levelpBackButton, gamep1BackButton, gamep2BackButton, gamep3BackButton, gamep4BackButton;
+    var levelpBackButton, gamep1BackButton, wordsScreenBackButton, gamep3BackButton, gamep4BackButton;
     var aboutpBackButton,
         galleryBackButton,
         gallerypBackButton,
@@ -44,7 +56,7 @@ function init() {
     lvl1Button.addEventListener("click", navigate("levelp", "gamep1"));
 
     lvl2Button = document.querySelector("#lvl2Button");
-    lvl2Button.addEventListener("click", navigate("levelp", "gamep2"));
+    lvl2Button.addEventListener("click", navigate("levelp", "wordsScreen"));
 
     lvl3Button = document.querySelector("#lvl3Button");
     lvl3Button.addEventListener("click", navigate("levelp", "gamep3"));
@@ -58,8 +70,8 @@ function init() {
     gamep1BackButton = document.querySelector("#gamep1BackButton");
     gamep1BackButton.addEventListener("click", navigate("gamep1", "levelp"));
 
-    gamep2BackButton = document.querySelector("#gamep2BackButton");
-    gamep2BackButton.addEventListener("click", navigate("gamep2", "levelp"));
+    wordsScreenBackButton = document.querySelector("#wordsScreenBackButton");
+    wordsScreenBackButton.addEventListener("click", navigate("wordsScreen", "levelp"));
 
     gamep3BackButton = document.querySelector("#gamep3BackButton");
     gamep3BackButton.addEventListener("click", navigate("gamep3", "levelp"));

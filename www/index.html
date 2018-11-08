@@ -79,20 +79,14 @@
             Emociones
         </section>
 
-        <!-- Words -->
-        <section class="phonegame2" id="gamep2">
-            <div id="gamep2BackButton"><img src="assets/img/buttons/ButtonAtras.png" class="imgleftback"/></div>
+        <section class="phonegame2" id="wordsScreen">
+            <div id="wordsScreenBackButton"><img src="assets/img/buttons/ButtonAtras.png" class="imgleftback"/></div>
             <audio id="explosion" src="assets/audio/boom.mp3"></audio>
-            <div id="wordsGame" class="container">
-                <div id="score"></div>
+            <div id="wordsGame" class="wordsContainer">
+                <div id="wordsScore"></div>
                 <div id="words"></div>
-                <div id="player"><img id="susy" src="assets/assets/img/words/susy_canasta.png" alt="susy_canasta.png"/></div>
+                <div id="wordsPlayer"><img id="susy" src="assets/img/words/susy_canasta.png" alt="susy_canasta.png"/></div>
             </div>
-            <div>
-                <img src="assets/assets/img/de nuevo.gif" class="retryImg"/>
-                <img src="assets/assets/img/boton-jugar.png" class="playButton" onclick="location.reload()"/>
-            </div>
-
         </section>
 
         <section class="phonegame3" id="gamep3">
@@ -108,6 +102,7 @@
         <!-- Scripts -->
 
         <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/words.js"></script>
     </body>
 
 </html>
