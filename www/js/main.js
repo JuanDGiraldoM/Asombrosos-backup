@@ -63,7 +63,7 @@ function init() {
     });
 
     lvl3Button = document.querySelector("#lvl3Button");
-    lvl3Button.addEventListener("click", navigate("levelp", "gamep3"));
+    lvl3Button.addEventListener("click", navigate("levelp", "balloonGameBackground"));
 
     lvl4Button = document.querySelector("#lvl4Button");
     lvl4Button.addEventListener("click", navigate("levelp", "gamep4"));
@@ -75,7 +75,7 @@ function init() {
     gamep1BackButton.addEventListener("click", navigate("gamep1", "levelp"));
 
     gamep3BackButton = document.querySelector("#gamep3BackButton");
-    gamep3BackButton.addEventListener("click", navigate("gamep3", "levelp"));
+    gamep3BackButton.addEventListener("click", navigate("balloonGameBackground", "levelp"));
 
     gamep4BackButton = document.querySelector("#gamep4BackButton");
     gamep4BackButton.addEventListener("click", navigate("gamep4", "levelp"));
@@ -197,6 +197,10 @@ function playGame() {
                 show("wordsScreen");
                 openWordsGame();
                 break;
+            case 3:
+                show("balloonGameBackground");
+                startBalloonGame();
+                break;
         }
     };
 }
@@ -221,5 +225,11 @@ function closeGame() {
             hide("wordsScreen");
             show("levelp");
             break;
+        case 2:
+            finalizeBalloonGame();
+            hide("balloonGameBackground");
+            show("levelp");
+            break;
+            
     }
 }

@@ -1,0 +1,118 @@
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow: hidden;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+    font-family: "Carnival Centenary";
+    src: url("../dist/Carnival\ Centenary.otf");
+}
+
+#balloonGameBackground {
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    visibility: hidden;
+}
+
+#balloonGame{
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/img/balloons/balBackground.png');
+    background-size: cover;
+}
+
+.balScoreBackground{
+    background-image: url('../assets/img/balloons/balScoreBackground.png');
+}
+
+.balloon{
+    position: absolute;
+    bottom:-600px ; 
+}
+.hidden{
+    visibility: hidden;
+}
+
+#theBalloon{
+    position: absolute;
+    bottom:-300px ;
+}
+
+.balPartialScore{
+    display: flex;
+    position: fixed;
+    justify-content: flex-end;
+    font-size: 200%;
+    color: rgb(232, 62, 85);
+    font-family: "Carnival Centenary";
+}
+#balloonsScore{
+    margin: 8% 85%;
+
+}
+#balScoreTitle{
+    margin: 2% 75%;
+}
+
+#toScore{
+    position: fixed;
+}
+#toGame{
+    position: absolute;
+}
+@keyframes fadeInOut {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeOutIn {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+
+#balloonGame.animationIn{
+    animation-name: fadeInOut;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+#balloonGame.animationOut{
+    animation-name: fadeOutIn;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+#balloonsScoreSection{
+    display: none;
+}
+#balloonsScoreSection.animationIn{
+    animation-name: fadeInOut;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+#balloonsScoreSection.animationOut{
+    animation-name: fadeOutIn;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+#balFinalScore{
+    margin:22% 63%;
+    display: flex;
+    position: fixed;
+    color: white;
+    font-family: "Carnival Centenary";
+    text-shadow: 2px 2px 0 rgb(122, 89, 23);
+    font-size:600%;
+}
+

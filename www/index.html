@@ -5,6 +5,7 @@
         <meta charset="utf-8"/>
         <link rel="stylesheet" type="text/css" href="css/main.css"/>
         <link rel="stylesheet" type="text/css" href="dist/animate.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/balloons.css"/>
         <title>Asombrosos</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
     </head>
@@ -106,9 +107,17 @@
             </div>
         </section>
 
-        <section class="phonegame3" id="gamep3">
+        <section class="phonegame3" id="balloonGameBackground">
             <div id="gamep3BackButton"><img src="assets/img/buttons/ButtonAtras.png" class="imgleftback"/></div>
-            Globos
+            <div id="balloonGame">
+                <h2 id="balScoreTitle" class="balPartialScore">Puntaje</h2>
+                <h2 id="balloonsScore" class="balPartialScore">0</h2>
+                <div id="theBalloon"></div>
+                <audio id="balExplotion" src="assets/audio/balloon.mp3"></audio>
+            </div>
+            <div id="balloonsScoreSection" class="balScoreBackground">
+                <h1 id="balFinalScore">0</h1>
+            </div>
         </section>
 
         <section class="phonegame4" id="gamep4">
@@ -119,6 +128,7 @@
         <!-- Scripts -->
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/words.js"></script>
+        <script type="text/javascript" src="js/balloons.js"></script>
 
         <!-- Scripts Dist -->
         <script type="text/javascript" src="dist/hammer.min.js"></script>
