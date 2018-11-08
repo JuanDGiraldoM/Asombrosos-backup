@@ -3,6 +3,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var canvas = document.getElementById('runnerCanvas');
 	var ctx = canvas.getContext('2d');
 	var splashRunner = document.getElementById('splashRunner');
+	var barraEnergia = document.getElementById('barraEnergia');
+	var barraEnergiaLeft = barraEnergia.getBoundingClientRect().left;
+	var barraEnergiaTop = barraEnergia.getBoundingClientRect().top;
+	console.log(`top: ${barraEnergiaTop} y left: ${barraEnergiaLeft}`);
+	
 	var cWidth = ctx.canvas.offsetWidth;
 	var cHeight = ctx.canvas.offsetHeight;
 	var playerX = cWidth*0.15;
@@ -10,8 +15,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var yVelocity = 0.3;
 	var xVelocity = -0.2;
 	var progress = 230;
-	var barraY = 11;
-	var barraX = 514;
+	var barraY = barraEnergiaTop + 4;
+	var barraX = barraEnergiaLeft + 30;
 	var barraRadius = 20;
 
 	var yLimit = cHeight*0.55;
