@@ -5,3 +5,4 @@ plugins/*
 *.json
 *.keystore
 *.apk
+*.bat

@@ -1,0 +1,215 @@
+/* ==========================================================================
+    Navigation
+    ========================================================================== */
+
+.phoneload {
+    background-image: url("../img/backgrounds/Cargando.gif");
+    background-size: cover;
+}
+
+.phonemenu {
+    background-image: url("../img/backgrounds/BackgroundPantallaCarga.gif");
+    background-size: cover;
+}
+
+.phonelevel {
+    background-image: url("../img/backgrounds/BackgroundCasetasFeria.png");
+    background-size: cover;
+}
+
+.phoneinfo {
+    background-image: url("../img/backgrounds/BackgroundCreditos.png");
+    background-size: cover;
+}
+
+.phoneabout {
+    background-image: url("../img/backgrounds/BackgroundInfoSobreJuego.png");
+    background-size: cover;
+}
+
+.phoneFuper {
+    background-image: url("../img/backgrounds/BackgroundFuper.png");
+    background-size: cover;
+}
+
+.phoneCredits {
+    background-image: url("../img/backgrounds/BackgroundCreditos.png");
+    background-size: cover;
+}
+
+.phoneagallery {
+    background: url("../img/backgrounds/BackgroundGaleria.png");
+    background-size: cover;
+}
+
+#btnPlay {
+    position: fixed;
+    bottom: 25%;
+    right: 40%;
+}
+
+.imgleftback {
+    position: fixed;
+    left: 1%;
+    top: 1%;
+    width: 8%;
+    height: 13%;
+}
+
+#imggallery {
+    position: fixed;
+    left: 9%;
+    top: 1%;
+    width: 8%;
+    height: 13%;
+}
+
+#btnAbout {
+    position: fixed;
+    bottom: 10%;
+    right: 40%;
+}
+
+.carpas {
+    width: 16%;
+    height: 46%;
+}
+
+#carpa1 {
+    left: 27%;
+    top: 3%;
+    position: absolute;
+}
+
+#carpa2 {
+    left: 62%;
+    top: 3%;
+    position: absolute;
+}
+
+#carpa3 {
+    left: 47%;
+    bottom: 20%;
+    position: absolute;
+}
+
+#carpa4 {
+    right: 4%;
+    bottom: 12%;
+    position: absolute;
+}
+
+#btnFuper {
+    position: fixed;
+    left: 40%;
+    top: 40%;
+}
+
+#btnCredits {
+    position: fixed;
+    left: 30%;
+    top: 60%;
+}
+
+#btnLegal {
+    position: fixed;
+    top: 60%;
+    right: 30%;
+}
+
+#btnToFuper {
+    position: fixed;
+    bottom: 10%;
+    right: 10%;
+}
+
+/* ==========================================================================
+    gallery
+    ========================================================================== */
+
+#characters {
+    position: fixed;
+    top: 38%;
+    left: 16.7%;
+    z-index: 3;
+    width: 66.5%;
+    height: 55%;
+}
+
+#susyCertificate {
+    justify-content: flex-end;
+    background-image: url("../img/navigation/CertSusy.png");
+    height: 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: none;
+}
+
+#rayoCertificate {
+    justify-content: flex-end;
+    background-image: url("../img/navigation/CertRayo.png");
+    height: 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: none;
+}
+
+#milagroCertificate {
+    height: 100%;
+    background-image: url("../img/navigation/CertMilagro.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    justify-content: flex-end;
+    display: none;
+}
+
+#gatunaCertificate {
+    height: 100%;
+    background-image: url("../img/navigation/CertGatuna.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    justify-content: flex-end;
+    display: none;
+}
+
+.btnCharacter {
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 24%;
+    height: 80%;
+    border: 0;
+    display: inline-block;
+    z-index: 5;
+}
+
+.btnBackGaleria {
+    position: absolute;
+    top: 3%;
+    left: 47%;
+    width: 9%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+section {
+    max-width: 100%;
+    max-height: 100%;
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: 365px 645px;
+    /*background-size: 720px 1280px;*/
+    text-align: center;
+}
+
+/* ==========================================================================
+    Games
+    ========================================================================== */
