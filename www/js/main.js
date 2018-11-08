@@ -1,4 +1,5 @@
 var lvlup = false;
+var countVideo;
 
 var app = {
     initialize: function() {
@@ -23,13 +24,7 @@ function init() {
         creditsBackButton,
         aboutCreditsButton;
     var btntoPage;
-    function show(id) {
-        document.getElementById(id).style.display = "block";
-    }
-
-    function hide(id) {
-        document.getElementById(id).style.display = "none";
-    }
+    countVideo = document.getElementById("countVideo");
 
     var navigate = function(actual, next) {
         return function() {
@@ -56,7 +51,14 @@ function init() {
     lvl1Button.addEventListener("click", navigate("levelp", "gamep1"));
 
     lvl2Button = document.querySelector("#lvl2Button");
-    lvl2Button.addEventListener("click", openGame);
+    lvl2Button.addEventListener("click", function() {
+        openGame(2);
+    });
+
+    wordsScreenBackButton = document.querySelector("#wordsScreenBackButton");
+    wordsScreenBackButton.addEventListener("click", function() {
+        finalizeGame(2);
+    });
 
     lvl3Button = document.querySelector("#lvl3Button");
     lvl3Button.addEventListener("click", navigate("levelp", "gamep3"));
@@ -69,9 +71,6 @@ function init() {
 
     gamep1BackButton = document.querySelector("#gamep1BackButton");
     gamep1BackButton.addEventListener("click", navigate("gamep1", "levelp"));
-
-    wordsScreenBackButton = document.querySelector("#wordsScreenBackButton");
-    wordsScreenBackButton.addEventListener("click", navigate("wordsScreen", "levelp"));
 
     gamep3BackButton = document.querySelector("#gamep3BackButton");
     gamep3BackButton.addEventListener("click", navigate("gamep3", "levelp"));
@@ -135,6 +134,16 @@ function init() {
     });
 }
 
+function show(id) {
+    document.getElementById(id).style.display = "block";
+}
+
+function hide(id) {
+    document.getElementById(id).style.display = "none";
+}
+
+// Gallery
+
 function toBackSusy() {
     susyCertificate.style.display = "none";
     gallery.style.display = "block";
@@ -155,8 +164,29 @@ function toBackGatuna() {
     gallery.style.display = "block";
 }
 
+//Game functions
+
 function openGame(index) {
-    document.getElementById("levelp").style.display = "none";
-    document.getElementById("wordsScreen").style.display = "block";
-    openWordsGame();
+    hide("levelp");
+    show("countVideoScreen");
+    countVideo.play();
+
+    countVideo.onended = function () {
+        hide("countVideoScreen");
+        
+        switch (index) {
+            case 2:
+                show("wordsScreen");
+                openWordsGame();
+                break;
+        }
+    };
+}
+
+function finalizeGame(index) {
+    switch (index) {
+        case 2:
+            finalizeWordsGame();
+            break;
+    }
 }
