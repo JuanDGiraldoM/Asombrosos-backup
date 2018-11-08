@@ -1,5 +1,5 @@
 var lvlup = false;
-var countVideo, backgroundMusic;
+var countVideo, introVideo, backgroundMusic, indexGame;
 
 var app = {
     initialize: function() {
@@ -52,13 +52,14 @@ function init() {
     lvl1Button.addEventListener("click", navigate("levelp", "gamep1"));
 
     lvl2Button = document.querySelector("#lvl2Button");
-    lvl2Button.addEventListener("click", function() {
-        openGame(2);
+    lvl2Button.addEventListener("click", function () {
+        indexGame = 2;
+        openGame();
     });
 
     wordsScreenBackButton = document.querySelector("#wordsScreenBackButton");
-    wordsScreenBackButton.addEventListener("click", function() {
-        closeGame(2);
+    wordsScreenBackButton.addEventListener("click", function () {
+        closeGame();
     });
 
     lvl3Button = document.querySelector("#lvl3Button");
@@ -167,16 +168,31 @@ function toBackGatuna() {
 
 //Game functions
 
-function openGame(index) {
+function openGame() {
     hide("levelp");
+    show("gameVideoScreen");
+
+    switch (indexGame) {
+        case 2:
+            introVideo = document.getElementById("susyIntroVideo");
+            break;
+    }
+
+    introVideo.currentTime = 0;
+    introVideo.play();
+    introVideo.onended = playGame;
+}
+
+function playGame() {
+    introVideo.pause();
+    hide("gameVideoScreen");
     show("countVideoScreen");
     countVideo.play();
-
-    countVideo.onended = function () {
+    countVideo.onended = function() {
         hide("countVideoScreen");
         backgroundMusic.play();
 
-        switch (index) {
+        switch (indexGame) {
             case 2:
                 show("wordsScreen");
                 openWordsGame();
@@ -185,20 +201,21 @@ function openGame(index) {
     };
 }
 
-function finalizeGame(index, isWinner) {
+function finalizeGame(isWinner) {
     backgroundMusic.pause();
-    
-    switch (index) {
+
+    switch (indexGame) {
         case 2:
             // finalizeWordsGame();
             break;
     }
 }
 
-function closeGame(index) {
+function closeGame() {
     backgroundMusic.pause();
+    introVideo.pause();
 
-    switch (index) {
+    switch (indexGame) {
         case 2:
             finalizeWordsGame();
             hide("wordsScreen");
