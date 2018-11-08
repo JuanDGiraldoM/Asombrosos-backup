@@ -68,6 +68,7 @@ function init(){
     MA_COUNT=0;
     renderCards();
     setCardsDimensions();
+    setTimeout(maCountEnd,15000);
 }
 
 function shuffle(a) {
@@ -87,17 +88,17 @@ function verifyMatch(e){
 
     if(!ma_currentImg){
         ma_currentImg=e.target;
-        new TweenMax.fromTo(ma_currentImg, 0.1, {width:cardWidth, height:cardHeight, borderColor:'rgba(255,0,0,0.0)', borderStyle:'none', ease:Power0.easeIn}, {width:cardHeight+10, height:cardHeight+10,
-          borderStyle:'solid', borderColor:'rgba(255,0,0,1.0)', ease:Power0.easeOut});
+        new TweenMax.fromTo(ma_currentImg, 0.1, {width:cardWidth, height:cardHeight, borderColor:'rgba(15,94,94,0)', borderStyle:'none', ease:Power0.easeIn}, {width:cardHeight+10, height:cardHeight+10,
+          borderStyle:'solid', borderColor:'rgba(15,94,94,1.0)', ease:Power0.easeOut});
         initialImg = ma_currentImg;
     }else if(ma_currentImg.id != e.target.id){
         if(!compareArrays(cardsPairs,[parseInt(ma_currentImg.id),parseInt(e.target.id)])){
-            new TweenMax.fromTo(ma_currentImg, 0.1, {width:cardHeight+10, height:cardHeight+10, borderStyle:'solid', borderColor:'rgba(255,0,0,1.0)', ease:Power0.easeIn}, {width:cardWidth, height:cardHeight, borderStyle:'none',
-              borderColor:'rgba(255,0,0,0.0)', ease:Power0.easeOut});
+            new TweenMax.fromTo(ma_currentImg, 0.1, {width:cardHeight+10, height:cardHeight+10, borderStyle:'solid', borderColor:'rgba(15,94,94,1.0)', ease:Power0.easeIn}, {width:cardWidth, height:cardHeight, borderStyle:'none',
+              borderColor:'rgba(15,94,94,0)', ease:Power0.easeOut});
         }else{
           lastImg = e.target;
-            new TweenMax.fromTo(e.target, 0.1, {width:cardWidth, height:cardHeight, borderColor:'rgba(255,0,0,0.0)', borderStyle:'none', ease:Power0.easeIn}, {width:cardHeight+10, height:cardHeight+10,
-              borderColor:'rgba(255,0,0,1.0)', borderStyle:'solid', ease:Power0.easeOut, onComplete: function(){
+            new TweenMax.fromTo(e.target, 0.1, {width:cardWidth, height:cardHeight, borderColor:'rgba(15,94,94,0)', borderStyle:'none', ease:Power0.easeIn}, {width:cardHeight+10, height:cardHeight+10,
+              borderColor:'rgba(15,94,94,1.0)', borderStyle:'solid', ease:Power0.easeOut, onComplete: function(){
               changeCard = new TweenMax.to([initialImg, e.target], 0.7, {delay:1, rotationY:'-180', onComplete:resizeCards});
               new TweenMax.set([initialImg, e.target], {delay:1.2, borderStyle:'none', onStart:changeForWood});
               e.target.onclick = null;
@@ -154,4 +155,10 @@ function compareArrays(a, b) {
     return JSON.stringify(ele) === b_string;
   });
   return contains;
+}
+
+function maCountEnd(){
+  if(MA_COUNT != MA_COUNTFINAL){
+    console.log("Perdiste");
+  }
 }
