@@ -1,58 +1,14 @@
-var height = window.innerHeight,
-    width = window.innerWidth;
-
-var app = {
-    // Application Constructor
-    initialize: function() {
-        document.addEventListener("deviceready", this.onDeviceReady.bind(this), false);
-        init();
-    },
-
-    // deviceready Event Handler
-    //
-    // Bind any cordova events here. Common events are:
-    // 'pause', 'resume', etc.
-    onDeviceReady: function() {
-        this.receivedEvent("deviceready");
-    },
-
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {}
-};
-
-app.initialize();
-
-function init() {
-    // introVideo = document.querySelector("#introVideo");
-    container = document.querySelector(".container");
+function openWordsGame() {
+    (height = window.innerHeight), (width = window.innerWidth);
+    wordsContainer = document.querySelector(".wordsContainer");
     wordScreen = document.querySelector("#wordsScreen");
     winner = true;
     active = true;
-    score = 0;
+    wordsScore = 0;
     timeFall = 8;
     timeLaunch = 1250;
-    openGame();
-    // introVideo.style.visibility = "visible";
-    // introVideo.play();
-    // introVideo.onended = skipIntroVideo;
-}
-
-function skipIntroVideo() {
-    countVideo = document.querySelector("#countVideo");
-    introVideo.parentNode.removeChild(introVideo);
-    countVideo.style.visibility = "visible";
-    countVideo.play();
-    countVideo.onended = skipCountVideo;
-}
-
-function skipCountVideo() {
-    countVideo.parentNode.removeChild(countVideo);
-    openGame();
-}
-
-function openGame() {
     musicaFondo.play();
-    container.style.visibility = "visible";
+    wordsContainer.style.visibility = "visible";
     animateWords();
     updateScore();
     animateSusy();
@@ -63,7 +19,6 @@ function openGame() {
         clearInterval(launchInterval);
         animateWords();
     }, 5000);
-    // setTimeout(finalizeGame, 15000);
 
     function animateSusy() {
         var susy = document.querySelector("#susy"),
@@ -172,14 +127,14 @@ function openGame() {
                     explosion.pause();
                     explosion.currentTime = 0;
                     explosion.play();
-                    score += 5;
+                    wordsScore += 5;
                     word.className = "word animated fadeOut faster";
                     updateScore();
                     validateScore();
                 } else if (posCircleY >= positionSusy.bottom && !word.className.includes("animated")) {
                     word.className = "word animated flash faster";
                     winner = false;
-                    setTimeout(finalizeGame, 500);
+                    setTimeout(finalizeWordsGame, 500);
                 }
             });
         } else {
@@ -188,8 +143,8 @@ function openGame() {
     }
 
     function updateScore() {
-        var scoreContainer = document.querySelector("#score");
-        scoreContainer.innerHTML = "<p>Puntaje: " + String(score) + "</p>";
+        var scoreContainer = document.querySelector("#wordsScore");
+        scoreContainer.innerHTML = "<p>Puntaje: " + String(wordsScore) + "</p>";
         scoreContainer.className = "animated pulse faster";
         setTimeout(function() {
             scoreContainer.className = "";
@@ -197,49 +152,30 @@ function openGame() {
     }
 
     function validateScore() {
-        if (score >= 100) {
-            finalizeGame();
+        if (wordsScore >= 100) {
+            finalizeWordsGame();
         }
     }
 }
 
-function finalizeGame() {
+function finalizeWordsGame() {
     if (active) {
         active = false;
         clearInterval(collisionInterval);
         clearInterval(launchInterval);
         clearInterval(speedInterval);
 
-        var retryImg,
-            buttonPlay,
-            video,
-            canvas = document.querySelector("#words");
+        var canvas = document.querySelector("#words");
         canvas.innerHTML = "";
-        // container.style.display = "none";
 
         if (winner) {
-            // video = document.createElement("video");
-            // video.src = "assets/video/desbloqueo susy.mp4";
-            // wordScreen.appendChild(video);
-            // video.style.visibility = "visible";
-            // video.play();
-            var scoreContainer = document.querySelector("#score");
+            var scoreContainer = document.querySelector("#wordsScore");
             scoreContainer.innerHTML = "<p>Has ganado</p>";
             musicaFondo.pause();
         } else {
-            var scoreContainer = document.querySelector("#score");
+            var scoreContainer = document.querySelector("#wordsScore");
             scoreContainer.innerHTML = "<p>Has fallado</p>";
             musicaFondo.pause();
-            // retryImg = document.querySelector(".retryImg");
-            // buttonPlay = document.querySelector(".playButton");
-            // retryImg.style.visibility = "visible";
-            // musicaFondo.pause();
-            // setTimeout(function() {
-            //     buttonPlay.style.left = (width - buttonPlay.width) / 2 + "px";
-            //     buttonPlay.style.top = (height - buttonPlay.height) / 2 + "px";
-            //     buttonPlay.style.visibility = "visible";
-            //     buttonPlay.className = "playButton animated bounceIn";
-            // }, 1000);
         }
     }
 }
