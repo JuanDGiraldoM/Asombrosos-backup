@@ -96,6 +96,7 @@ function init() {
         balGameSection.classList.remove('animationIn');
         balGameSection.classList.add('animationOut');
         balScoreSection.style.display = "block";
+        balloonGame.style.display = "none";
         balScoreSection.classList.add('animationIn');
         music.pause();
 
