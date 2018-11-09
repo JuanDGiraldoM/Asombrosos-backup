@@ -62,10 +62,19 @@
         <section class="phoneagallery" id="galleryp">
             <div id="gallerypBackButton"><img src="assets/img/buttons/ButtonAtras.png" class="imgleftback"/></div>
             <div id="characters" class="gallery">
-                <img id="btnGatuna" class="btnCharacter" src="assets/img/navigation/Gatuna.png"/>
-                <img id="btnSusy" class="btnCharacter" src="assets/img/navigation/Susy.png"/>
-                <img id="btnMilagro" class="btnCharacter" src="assets/img/navigation/Milagro.png">
-                <img id="btnRayo" class="btnCharacter" src="assets/img/navigation/Rayo.png"/>
+                <div id="charactersLocked">
+                    <img id="btnUnGatuna" class="btnCharacter" src="assets/img/navigation/locked.png"/>
+                    <img id="btnUnSusy" class="btnCharacter" src="assets/img/navigation/locked.png"/>
+                    <img id="btnUnMilagro" class="btnCharacter" src="assets/img/navigation/locked.png">
+                    <img id="btnUnRayo" class="btnCharacter" src="assets/img/navigation/locked.png"/>
+
+                </div>
+                <div id="charactersUnlocked">
+                    <img id="btnGatuna" class="btnUnCharacter" src="assets/img/navigation/Gatuna.png"/>
+                    <img id="btnSusy" class="btnUnCharacter" src="assets/img/navigation/Susy.png"/>
+                    <img id="btnMilagro" class="btnUnCharacter" src="assets/img/navigation/Milagro.png">
+                    <img id="btnRayo" class="btnUnCharacter" src="assets/img/navigation/Rayo.png"/>
+                </div>
             </div>
             <div id="susyCertificate">
                 <img src="assets/img/buttons/ButtonCertificado.png" class="btnBackGaleria" onclick="toBackSusy()">
@@ -84,17 +93,16 @@
         <!-- Game's Videos -->
 
         <section class="phoneVideo" id="gameVideoScreen">
-            <div class="antonymsVideo">
-                <video class="introV" src="assets/video/GatunaIntro.mp4" id="gatunaIntroVideo" onclick="playGame()"></video>
-            </div>
-            <div class="wordsVideos">
+                <video src="" id="gameVideo" onclick="playGame()"></video>
+            
+            <!-- <div class="wordsVideos">
                 <video class="introV" src="assets/video/Susy Intro.mp4" id="susyIntroVideo" onclick="playGame()"></video>
                 <video class="introV" src="assets/video/Susy Unlock.mp4" id="susyUnlockVideo"></video>
             </div>
             <div class="balloonsVideo">
                 <video class="introV" src="assets/video/MilagroIntro.mp4" id="milagroIntroVideo" onclick="playGame()"></video>
                 <video class="introV" src="assets/video/MilagroUnlock.mp4" id="milagroUnlockVideo"></video>
-            </div>
+            </div> -->
         </section>
 
         <section class="phoneVideo" id="countVideoScreen">
@@ -111,7 +119,7 @@
 
         <!-- Unlock Character -->
 
-        <section class="phoneVideo" id="unlockScreen">
+        <!-- <section class="phoneVideo" id="unlockScreen">
             <div id="unlockBackButton">
                 <img src="assets/img/buttons/ButtonAtras.png" class="imgleftback"/>
             </div>
@@ -127,7 +135,7 @@
             <div class="balloonsVideo">
                 <video class="introV" src="assets/video/MilagroUnlock.mp4" id="milagroUnlockVideo"></video>
             </div>
-        </section>
+        </section> -->
 
         <!-- Games -->
 

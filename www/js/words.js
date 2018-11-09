@@ -123,8 +123,9 @@ function openWordsGame() {
                     posCircleX >= positionSusy.left &&
                     posCircleX <= positionSusy.right
                 ) {
-                    explotion.pause();
-                    explotion.currentTime = 0;
+                    // explotion.pause();
+                    // explotion.currentTime = 0;
+                    explotion.load();
                     explotion.play();
                     wordsScore += 5;
                     word.className = "word animated fadeOut faster";
@@ -170,9 +171,11 @@ function finalizeWordsGame() {
         if (winner) {
             var scoreContainer = document.querySelector("#wordsScore");
             scoreContainer.innerHTML = "<p>Has ganado</p>";
+            victory('Susy',1);
         } else {
             var scoreContainer = document.querySelector("#wordsScore");
             scoreContainer.innerHTML = "<p>Has fallado</p>";
+            victory('Susy',0);
         }
     }
 }
