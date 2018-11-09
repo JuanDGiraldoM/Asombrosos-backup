@@ -185,6 +185,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			}
 		}
 
+		if (playerX + playerWidth*0.9 >= metaX && playerX + playerWidth*0.9 <= metaX + barrelWidth) {
+			//alert("yayyy ganaste!");
+			xBarrelVelocity = 0;
+			runnerCanvas.style.display = "none";
+			var rayoGano = document.getElementById("rayoGano");
+			rayoGano.style.display = "block";
+			rayoGano.play();
+		}
+
 		setTimeout(main, 10);
 	};
 
