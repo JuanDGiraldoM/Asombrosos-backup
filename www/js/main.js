@@ -299,7 +299,7 @@ function finalizeGame(isWinner) {
                 hide("balloonGameBackground");
                 break;
             case 4:
-                //TO-DO: Something should be done here
+                hide("runnerScreen");
                 break;
         }
         var playAgainScreen = document.getElementById("playAgain");
@@ -322,6 +322,11 @@ function closeGame() {
         case 2:
             finalizeWordsGame();
             hide("wordsScreen");
+            show("levelp");
+            break;
+        case 4:
+            closeRunnerGame();
+            hide("runnerScreen");
             show("levelp");
             break;
     }
