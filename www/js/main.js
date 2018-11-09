@@ -1,5 +1,5 @@
 var lvlup = false;
-var countVideo, gameVideo, backgroundMusic, indexGame;
+var countVideo, gameVideo, backgroundMusic, indexGame, unlockVideoSrc;
 
 var app = {
     initialize: function() {
@@ -212,8 +212,9 @@ function toBackGatuna() {
 
 //Game functions
 
-function openGame(index, introVideoSrc, unlockVideoSrc) {
+function openGame(index, introVideoSrc, unlockVidSrc) {
     indexGame = index;
+    unlockVideoSrc = unlockVidSrc;
     backgroundMusic.pause();
     gameVideo.src = introVideoSrc;
     hide("levelp");
@@ -252,12 +253,40 @@ function playGame() {
 }
 
 function finalizeGame(isWinner) {
-    // backgroundMusic.pause();
-
-    switch (indexGame) {
-        case 2:
-            // finalizeWordsGame();
-            break;
+    backgroundMusic.pause();
+    if (isWinner) {
+        switch (indexGame) {
+            case 1:
+                hide("antonymsScreen");
+                break;
+            case 2:
+                hide("wordsScreen");
+                break;
+            case 3:
+                hide("ballonsScreen");
+                break;
+        }
+        show("gameVideoScreen");
+        gameVideo.src = unlockVideoSrc;
+        gameVideo.style.display = "block";
+        gameVideo.load();
+        gameVideo.play();
+    } else {
+        switch (indexGame) {
+            case 1:
+                hide("antonymsScreen");
+                break;
+            case 2:
+                hide("wordsScreen");
+                break;
+            case 2:
+                hide("balloonGameBackground");
+                break;
+        }
+        var playAgainScreen = document.getElementById("playAgain");
+        playAgainScreen.style.display = "block";
+        var playAgain = document.getElementById("againVideo");
+        playAgain.play();
     }
 }
 
@@ -276,24 +305,6 @@ function closeGame() {
             show("levelp");
             break;
     }
-}
-
-function lostGame() {
-    switch (indexGame) {
-        case 1:
-            hide("antonymsScreen");
-            break;
-        case 2:
-            hide("wordsScreen");
-            break;
-        case 2:
-            hide("balloonGameBackground");
-            break;
-    }
-    var playAgainScreen = document.getElementById("playAgain");
-    playAgainScreen.style.display = "block";
-    var playAgain = document.getElementById("againVideo");
-    playAgain.play();
 }
 
 function playAgain() {
@@ -321,28 +332,6 @@ function playAgain() {
     };
 }
 
-function Win() {
-    backgroundMusic.pause();
-    switch (indexGame) {
-        case 1:
-            hide("antonymsScreen");
-            show("unlockScreen");
-            gameVideo = document.getElementById("gatunaUnlockVideo");
-            break;
-        case 2:
-            show("wordsScreen");
-            openWordsGame();
-            break;
-        case 3:
-            show("ballonsScreen");
-            startBalloonGame();
-            break;
-    }
-
-    gameVideo.style.display = "block";
-    gameVideo.currentTime = 0;
-    gameVideo.play();
-}
 function victory(character, unlocked) {
     localStorage.setItem(character, unlocked);
 }
