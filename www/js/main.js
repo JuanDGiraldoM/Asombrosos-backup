@@ -356,16 +356,3 @@ function getUnlockedCharacters(){
             document.querySelector("#btnRayo").style.visibility = "visible";
         }
 }
-
-function finalizeGameBalloon(isWinner) {
-    backgroundMusic.pause();
-    show("gameVideoScreen");
-    gameVideo.src = unlockVideoSrc;
-    gameVideo.style.display = "block";
-    gameVideo.load();
-    gameVideo.play();
-    var btnBack=document.getElementById('unlockBackButton');
-    var btnGallery=document.getElementById('unlockGalleryButton');
-    btnBack.style.display='block';
-    btnGallery.style.display='block';
-}

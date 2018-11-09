@@ -83,7 +83,7 @@ function startBalloonGame() {
         if(balPartialScore==0){
             victory("Milagro",0);
         }else{
-            finalizeGameBalloon(true);
+            finalizeGame(true);
             victory("Milagro",1);
         }
         
