@@ -267,10 +267,5 @@ section {
     height: 15%;
     width: 22%;
     top: 60%;
-    left: 40%;
-}
-
-@font-face {
-    font-family: "Carnival Centenary";
-    src: url("../dist/Carnival\ Centenary.otf");
+    left: 39%;
 }
