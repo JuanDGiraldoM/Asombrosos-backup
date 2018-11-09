@@ -1,5 +1,5 @@
 var lvlup = false;
-var countVideo, introVideo, backgroundMusic, indexGame;
+var countVideo, gameVideo, backgroundMusic, indexGame;
 
 var app = {
     initialize: function() {
@@ -28,7 +28,7 @@ function init() {
         // unlockBackBtn,
         // fromUnlockToG;
     var btntoPage;
-    introVideo = document.getElementById("introVideo");
+    gameVideo = document.getElementById("gameVideo");
     countVideo = document.getElementById("countVideo");
     backgroundMusic = document.getElementById("backgroundMusic");
 
@@ -196,29 +196,29 @@ function toBackGatuna() {
 function openGame(index, introVideoSrc, unlockVideoSrc) {
     indexGame = index;
     backgroundMusic.pause();
-    introVideo.src = introVideoSrc;
+    gameVideo.src = introVideoSrc;
     // switch (indexGame) {
     //     case 1:
-    //         introVideo = document.getElementById("gatunaIntroVideo");
+    //         gameVideo = document.getElementById("gatunaIntroVideo");
     //         break;
     //     case 2:
-    //         introVideo = document.getElementById("susyIntroVideo");
+    //         gameVideo = document.getElementById("susyIntroVideo");
     //         break;
     //     case 3:
-    //         introVideo = document.getElementById("milagroIntroVideo");
+    //         gameVideo = document.getElementById("milagroIntroVideo");
     //         break;
     // }
     hide("levelp");
     show("gameVideoScreen");
-    introVideo.style.display = "block";
-    introVideo.load();
-    introVideo.play();
-    introVideo.onended = playGame;
+    gameVideo.style.display = "block";
+    gameVideo.load();
+    gameVideo.play();
+    gameVideo.onended = playGame;
 }
 
 function playGame() {
-    introVideo.pause();
-    introVideo.style.display = "none";
+    gameVideo.pause();
+    gameVideo.style.display = "none";
     hide("gameVideoScreen");
     show("countVideoScreen");
     countVideo.play();
@@ -255,7 +255,7 @@ function finalizeGame(isWinner) {
 
 function closeGame() {
     // backgroundMusic.pause();
-    introVideo.pause();
+    gameVideo.pause();
 
     switch (indexGame) {
         case 1:
@@ -321,7 +321,7 @@ function Win() {
         case 1:
             hide("antonymsScreen");
             show("unlockScreen");
-            introVideo = document.getElementById("gatunaUnlockVideo");
+            gameVideo = document.getElementById("gatunaUnlockVideo");
             break;
         case 2:
             show("wordsScreen");
@@ -333,7 +333,7 @@ function Win() {
             break;
     }
 
-    introVideo.style.display = "block";
-    introVideo.currentTime = 0;
-    introVideo.play();
+    gameVideo.style.display = "block";
+    gameVideo.currentTime = 0;
+    gameVideo.play();
 }
