@@ -10,6 +10,7 @@ var lastImg;
 var changeCard;
 var cardHeight;
 var cardWidth;
+var cardsArray;
 
 function openAntonymsGame(){
 
@@ -53,6 +54,7 @@ function verifyMatch(e){
               borderColor:'rgba(15,94,94,0)', ease:Power0.easeOut});
         }else{
           lastImg = e.target;
+          blockCards(true, cardsArray, initialImg.id, lastImg.id);
           MA_PAIRS--;
             new TweenMax.fromTo(e.target, 0.1, {width:cardWidth, height:cardHeight, borderColor:'rgba(15,94,94,0)', borderStyle:'none', ease:Power0.easeIn}, {width:cardHeight+10, height:cardHeight+10,
               borderColor:'rgba(15,94,94,1.0)', borderStyle:'solid', ease:Power0.easeOut, onComplete: function(){
@@ -68,7 +70,16 @@ function verifyMatch(e){
     }
 }
 
+function blockCards(option, array, card1, card2) {
+  for(var i=0; i<array.length; i++){
+    if (array[i].id != card1 && array[i].id != card2) {
+      array[i].onclick = option ? null : verifyMatch;
+    }
+  }
+}
+
 function completePairs() {
+  blockCards(false, cardsArray, initialImg.id, lastImg.id);
   if(MA_COUNT == MA_COUNTFINAL && MA_PAIRS == 0){
       console.log("Ganaste");
       Win();
@@ -103,11 +114,11 @@ function renderCards() {
 function setCardsDimensions() {
   var cardContainer = document.getElementById('cardContainer1');
   var cardHeight = cardContainer.clientHeight;
-  var cards = document.querySelectorAll('.card');
+  cardsArray = document.querySelectorAll('.card');
 
-  for(var i=0; i<cards.length; i++){
-      cards[i].style.width = (cardHeight-15) + 'px';
-      cards[i].style.height = (cardHeight-15) + 'px';
+  for(var i=0; i<cardsArray.length; i++){
+      cardsArray[i].style.width = (cardHeight-15) + 'px';
+      cardsArray[i].style.height = (cardHeight-15) + 'px';
   }
 }
 
