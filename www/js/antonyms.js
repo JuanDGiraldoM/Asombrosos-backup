@@ -71,7 +71,7 @@ function verifyMatch(e){
 function completePairs() {
   if(MA_COUNT == MA_COUNTFINAL && MA_PAIRS == 0){
       console.log("Ganaste");
-      Win();
+      finalizeGame(true);
   }
 }
 
@@ -124,6 +124,6 @@ function maCountEnd(){
   if(MA_COUNT != MA_COUNTFINAL && screen.style.display == 'block'){
     console.log("Perdiste");
     victory("Gatuna",0);
-    lostGame();
+    finalizeGame(false);
   }
 }
