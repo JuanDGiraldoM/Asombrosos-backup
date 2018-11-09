@@ -79,7 +79,9 @@ function init() {
     });
 
     lvl4Button = document.querySelector("#lvl4Button");
-    lvl4Button.addEventListener("click", navigate("levelp", "gamep4"));
+    lvl4Button.addEventListener("click", ()=>{
+        openGame(4, "assets/video/MilagroIntro.mp4", "assets/video/MilagroUnlock.mp4");
+    });
 
     levelpBackButton = document.querySelector("#levelpBackButton");
     levelpBackButton.addEventListener("click", navigate("levelp", "menup"));
@@ -248,7 +250,7 @@ function playGame() {
                 startBalloonGame();
                 break;
             case 4:
-                show("runnerScreenGame");
+                show("runnerScreen");
                 openRunnerGame();
                 break;
         }
@@ -267,6 +269,9 @@ function finalizeGame(isWinner) {
                 break;
             case 3:
                 hide("ballonsScreen");
+                break;
+            case 4:
+                hide("runnerScreen")
                 break;
         }
         show("gameVideoScreen");
@@ -289,11 +294,16 @@ function finalizeGame(isWinner) {
             case 2:
                 hide("balloonGameBackground");
                 break;
+            case 4:
+                //TO-DO: Something should be done here
+                break;
+
         }
         var playAgainScreen = document.getElementById("playAgain");
         playAgainScreen.style.display = "block";
         var playAgain = document.getElementById("againVideo");
         playAgain.play();
+        getUnlockedCharacters();
     }
 }
 
@@ -307,11 +317,11 @@ function closeGame() {
             show("levelp");
             break;
         case 2:
-            finalizeWordsGame();
             hide("wordsScreen");
             show("levelp");
             break;
     }
+    getUnlockedCharacters();
 }
 
 function playAgain() {

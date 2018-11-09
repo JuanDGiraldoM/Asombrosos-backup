@@ -24,12 +24,16 @@ function openRunnerGame() {
 	var playerX = cWidth*0.15;
 	var playerY = cHeight*0.2;
 	var yVelocity = 0.3;
+	var ratioW = 166/cWidth;
+    var ratioH = 288/cHeight;
 	var playerWidth = cWidth*ratioW*0.4;
 	var playerHeight = cHeight*ratioH*0.4;
 
 
 	// Variables para la imagen de meta
 	var meta = document.getElementById("meta");
+	var ratioMetaW = 538/cWidth;
+	var ratioMetaH = 636/cHeight;
 	var metaWidth = cWidth*ratioMetaW*0.45;
 	var metaHeight = cHeight*ratioMetaH*0.45;
 	var metaY = cHeight*0.12;
@@ -37,17 +41,15 @@ function openRunnerGame() {
 
     // Variables para los barriles 
 	var barrel = document.getElementById("barrel");
-	var ratioMetaW = 538/cWidth, ratioMetaH = 636/cHeight;
-    var ratioW = 166/cWidth;
-    var ratioH = 288/cHeight;
+	
+    var ratioW = 152/cWidth;
+    var ratioH = 201/cHeight;
 	var barrelY = cHeight*0.7;
 	var xBarrelVelocity = 0;
 	var ratioBarrelW = 152/cWidth, ratioBarrelH = 201/cHeight;
 	var barrelWidth = cWidth*ratioBarrelW*0.3;
 	var barrelHeight = cHeight*ratioBarrelH*0.3;
 	var barrelsX = [cWidth+50,cWidth+750,cWidth+750+barrelWidth,cWidth+1100,cWidth+1450,cWidth+1800,cWidth+2300,cWidth+2300+barrelWidth,cWidth+2300+barrelWidth*2,cWidth+2750];
-
-	
 
 	setTimeout(()=> {
 		xBarrelVelocity = -5;
@@ -87,12 +89,12 @@ function openRunnerGame() {
 		}
 	};
 
-
 	gifler('assets/img/runner/RAYO-CORRIENDO-PERSONAJE.gif')
     .frames('canvas.noPikachu', onDrawFrame);
 
 	function onDrawFrame(ctx, frame) {
 		// Match width/height to remove distortion
+		
 		ctx.canvas.width  = ctx.canvas.offsetWidth;
 
 		ctx.canvas.height = ctx.canvas.offsetHeight;
@@ -165,8 +167,8 @@ function openRunnerGame() {
 
 		if (playerX + playerWidth*0.9 >= metaX && playerX + playerWidth*0.9 <= metaX + barrelWidth) {
 			xBarrelVelocity = 0;
-			runnerCanvas.style.display = "none";
 			victory("Rayo",1);
+			finalizeGame(true);
 		}
 
 		setTimeout(main, 10);
@@ -174,5 +176,5 @@ function openRunnerGame() {
 
 	startup();
 	main();
-	
-}
+	drawRect(barraX, barraY, 220, 27, barraRadius);
+};
