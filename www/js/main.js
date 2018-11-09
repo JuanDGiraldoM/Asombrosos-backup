@@ -226,6 +226,7 @@ function openGame(index, introVideoSrc, unlockVidSrc) {
 }
 
 function playGame() {
+    gameVideo.onended = null;
     gameVideo.pause();
     gameVideo.style.display = "none";
     hide("gameVideoScreen");
