@@ -113,6 +113,7 @@ function verifyMatch(e){
             MA_COUNT++;
             if(MA_COUNT == MA_COUNTFINAL){
                 console.log("Ganaste");
+                victory("Gatuna",1);
                 Win();
             }
         }
@@ -168,6 +169,7 @@ function maCountEnd(){
   var screen=document.getElementById('antonymsScreen');
   if(MA_COUNT != MA_COUNTFINAL && screen.style.display == 'block'){
     console.log("Perdiste");
+    victory("Gatuna",0);
     lostGame();
   }
 }
