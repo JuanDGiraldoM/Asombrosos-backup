@@ -158,7 +158,7 @@ audio {
 
 #susyCertificate {
     justify-content: flex-end;
-    background-image: url("../assets/img/navigation/CertSusy.png");
+    background-image: url("../assets/img/navigation/certificado_susy.png");
     height: 100%;
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -167,7 +167,7 @@ audio {
 
 #rayoCertificate {
     justify-content: flex-end;
-    background-image: url("../assets/img/navigation/CertRayo.png");
+    background-image: url("../assets/img/navigation/certificado_rayo.png");
     height: 100%;
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -176,7 +176,7 @@ audio {
 
 #milagroCertificate {
     height: 100%;
-    background-image: url("../assets/img/navigation/CertMilagro.png");
+    background-image: url("../assets/img/navigation/certificado_milagro.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     justify-content: flex-end;
@@ -185,7 +185,7 @@ audio {
 
 #gatunaCertificate {
     height: 100%;
-    background-image: url("../assets/img/navigation/CertGatuna.png");
+    background-image: url("../assets/img/navigation/certificado_gatuna.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     justify-content: flex-end;
