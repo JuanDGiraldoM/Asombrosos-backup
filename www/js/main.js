@@ -24,7 +24,9 @@ function init() {
         creditsBackButton,
         aboutCreditsButton,
         backButtonplayAgain,
-        btnPlayAgain;
+        btnPlayAgain,
+        btnUnlockBack,
+        btnUnlockGallery;
     // unlockBackBtn,
     // fromUnlockToG;
     var btntoPage;
@@ -90,11 +92,21 @@ function init() {
     btnPlayAgain = document.querySelector("#btnPlayAgainDiv");
     btnPlayAgain.addEventListener("click", playAgain);
 
-    // unlockBackBtn = document.getElementById("unlockBackButton");
-    // unlockBackBtn.addEventListener("click", navigate("unlockScreen", "levelp"));
+    btnUnlockBack = document.getElementById("unlockBackButton");
+    btnUnlockBack.addEventListener("click", function(){
+        hide("gameVideoScreen");
+        show("levelp");
+        this.style.display='none';
+        btnUnlockGallery.style.display='none';
+    });
 
-    // fromUnlockToG = document.getElementById("unlockGalleryButton");
-    // fromUnlockToG.addEventListener("click", navigate("unlockScreen", "galleryp"));
+    btnUnlockGallery = document.getElementById("unlockGalleryButton");
+    btnUnlockGallery.addEventListener("click", function(){
+        hide("gameVideoScreen");
+        show("galleryp");
+        this.style.display='none';
+        btnUnlockBack.style.display='none';
+    });
 
     ballonsScreenBackButton = document.querySelector("#ballonsScreenBackButton");
     ballonsScreenBackButton.addEventListener("click", navigate("ballonsScreen", "levelp"));
@@ -272,6 +284,10 @@ function finalizeGame(isWinner) {
         gameVideo.style.display = "block";
         gameVideo.load();
         gameVideo.play();
+        var btnBack=document.getElementById('unlockBackButton');
+        var btnGallery=document.getElementById('unlockGalleryButton');
+        btnBack.style.display='block';
+        btnGallery.style.display='block';
     } else {
         switch (indexGame) {
             case 1:

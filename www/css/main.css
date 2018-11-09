@@ -248,7 +248,23 @@ section {
     left: 41%;
 }
 
+#unlockBackButton{
+    display: none;
+    position: absolute;
+    z-index: 1;
+}
 
+#unlockGalleryButton{
+    display: none;
+    position: absolute;
+    top:61%;
+    left: 23%;
+    z-index: 1;
+}
+
+#ugb{
+    width: 40%;
+}
 
 @font-face {
     font-family: "Carnival Centenary";
