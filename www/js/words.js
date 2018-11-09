@@ -170,9 +170,11 @@ function finalizeWordsGame() {
         if (winner) {
             var scoreContainer = document.querySelector("#wordsScore");
             scoreContainer.innerHTML = "<p>Has ganado</p>";
+            victory('Susy',1);
         } else {
             var scoreContainer = document.querySelector("#wordsScore");
             scoreContainer.innerHTML = "<p>Has fallado</p>";
+            victory('Susy',0);
         }
     }
 }
