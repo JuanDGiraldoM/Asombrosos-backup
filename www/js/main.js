@@ -25,8 +25,8 @@ function init() {
         aboutCreditsButton,
         backButtonplayAgain,
         btnPlayAgain;
-        // unlockBackBtn,
-        // fromUnlockToG;
+    // unlockBackBtn,
+    // fromUnlockToG;
     var btntoPage;
     gameVideo = document.getElementById("gameVideo");
     countVideo = document.getElementById("countVideo");
@@ -112,33 +112,25 @@ function init() {
     galleryBackButton.addEventListener("click", navigate("galleryp", "levelp"));
 
     gallerypBackButton = document.querySelector("#imggallery");
-    gallerypBackButton.addEventListener("click", function(){
-        hide('levelp');
-        show('galleryp');
-        var milagroUnlocked=localStorage.getItem("Milagro");
-        var susyUnlocked=localStorage.getItem("Susy");
-        var rayoUnlocked=localStorage.getItem("Rayo");
-        var gatunaUnlocked=localStorage.getItem("Gatuna");
-        if(milagroUnlocked==1){
-            document.querySelector("#btnMilagro").style.visibility="visible";
-            
+    gallerypBackButton.addEventListener("click", function() {
+        hide("levelp");
+        show("galleryp");
+        var milagroUnlocked = localStorage.getItem("Milagro");
+        var susyUnlocked = localStorage.getItem("Susy");
+        var rayoUnlocked = localStorage.getItem("Rayo");
+        var gatunaUnlocked = localStorage.getItem("Gatuna");
+        if (milagroUnlocked == 1) {
+            document.querySelector("#btnMilagro").style.visibility = "visible";
         }
-        if(susyUnlocked==1){
-            document.querySelector("#btnSusy").style.visibility="visible";
-            
+        if (susyUnlocked == 1) {
+            document.querySelector("#btnSusy").style.visibility = "visible";
         }
-        if(gatunaUnlocked==1){
-            document.querySelector("#btnGatuna").style.visibility="visible";
-            
+        if (gatunaUnlocked == 1) {
+            document.querySelector("#btnGatuna").style.visibility = "visible";
         }
-        if(rayoUnlocked==1){
-            document.querySelector("#btnRayo").style.visibility="visible";
-            
+        if (rayoUnlocked == 1) {
+            document.querySelector("#btnRayo").style.visibility = "visible";
         }
-
-
-       
-       
     });
 
     fuperButton = document.querySelector("#btnFuper");
@@ -186,10 +178,6 @@ function init() {
     btntoPage.addEventListener("click", function() {
         location.href = "http://fundacionfuper.org/";
     });
-
-
-    
-
 }
 
 function show(id) {
@@ -228,17 +216,6 @@ function openGame(index, introVideoSrc, unlockVideoSrc) {
     indexGame = index;
     backgroundMusic.pause();
     gameVideo.src = introVideoSrc;
-    // switch (indexGame) {
-    //     case 1:
-    //         gameVideo = document.getElementById("gatunaIntroVideo");
-    //         break;
-    //     case 2:
-    //         gameVideo = document.getElementById("susyIntroVideo");
-    //         break;
-    //     case 3:
-    //         gameVideo = document.getElementById("milagroIntroVideo");
-    //         break;
-    // }
     hide("levelp");
     show("gameVideoScreen");
     gameVideo.style.display = "block";
@@ -285,7 +262,6 @@ function finalizeGame(isWinner) {
 }
 
 function closeGame() {
-    // backgroundMusic.pause();
     gameVideo.pause();
 
     switch (indexGame) {
@@ -302,8 +278,6 @@ function closeGame() {
 }
 
 function lostGame() {
-    // backgroundMusic.pause();
-
     switch (indexGame) {
         case 1:
             hide("antonymsScreen");
@@ -368,6 +342,6 @@ function Win() {
     gameVideo.currentTime = 0;
     gameVideo.play();
 }
-function victory(character, unlocked){
-    localStorage.setItem(character,unlocked);
+function victory(character, unlocked) {
+    localStorage.setItem(character, unlocked);
 }
