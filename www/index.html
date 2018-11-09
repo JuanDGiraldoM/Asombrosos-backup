@@ -8,6 +8,7 @@
         <link rel="stylesheet" type="text/css" href="css/balloons.css"/>
         <link rel="stylesheet" type="text/css" href="css/antonyms.css"/>
         <link rel="stylesheet" type="text/css" href="css/words.css"/>
+        <link rel="stylesheet" type="text/css" href="css/runner.css"/>
         <title>Asombrosos</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
     </head>
@@ -142,14 +143,21 @@
 
         <section class="phonegame4" id="gamep4">
             <div id="gamep4BackButton"><img src="assets/img/buttons/ButtonAtras.png" class="imgleftback"/></div>
-            Corre a la Meta
+            <div id="runnerScreen">
+              <img id="barrel" src="img/Barril-Obstaculos.png" style="display: none;">
+              <img id="meta" src="img/meta.png" style="display: none;">
+              <img id="barraEnergia" src="img/Barra.png" alt="">
+              <canvas id="runnerCanvas" class="noPikachu">Este navegador no soporta canvas</canvas>
+            </div>
         </section>
+
 
         <!-- Scripts -->
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/words.js"></script>
         <script type="text/javascript" src="js/balloons.js"></script>
         <script type="text/javascript" src="js/antonyms.js"></script>
+        <script type="text/javascript" src="js/runner.js"></script>
 
         <!-- Scripts Dist -->
         <script type="text/javascript" src="dist/hammer.min.js"></script>

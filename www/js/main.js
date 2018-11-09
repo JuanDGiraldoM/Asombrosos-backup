@@ -249,6 +249,8 @@ function playGame() {
                 show("ballonsScreen");
                 startBalloonGame();
                 break;
+            case 4:
+                show("")
         }
     };
 }
