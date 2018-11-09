@@ -2,8 +2,8 @@ function openWordsGame() {
     (height = window.innerHeight), (width = window.innerWidth);
     wordsContainer = document.querySelector(".wordsContainer");
     wordScreen = document.querySelector("#wordsScreen");
-    winner = true;
-    active = true;
+    winner = false;
+    active = false;
     wordsScore = 0;
     timeFall = 8;
     timeLaunch = 1250;
@@ -123,8 +123,6 @@ function openWordsGame() {
                     posCircleX >= positionSusy.left &&
                     posCircleX <= positionSusy.right
                 ) {
-                    // explotion.pause();
-                    // explotion.currentTime = 0;
                     explotion.load();
                     explotion.play();
                     wordsScore += 5;
@@ -134,6 +132,7 @@ function openWordsGame() {
                 } else if (posCircleY >= positionSusy.bottom && !word.className.includes("animated")) {
                     word.className = "word animated flash faster";
                     winner = false;
+                    active = true;
                     setTimeout(finalizeWordsGame, 500);
                 }
             });
@@ -153,35 +152,32 @@ function openWordsGame() {
 
     function validateScore() {
         if (wordsScore >= 100) {
+            winner = true;
+            active = true;
             finalizeWordsGame();
         }
     }
 }
 
 function finalizeWordsGame() {
+    clearInterval(collisionInterval);
+    clearInterval(launchInterval);
+    clearInterval(speedInterval);
+    var canvas = document.querySelector("#words");
+    canvas.innerHTML = "";
+
     if (active) {
         active = false;
-        clearInterval(collisionInterval);
-        clearInterval(launchInterval);
-        clearInterval(speedInterval);
-
-        var canvas = document.querySelector("#words");
-        canvas.innerHTML = "";
-
         if (winner) {
-            var scoreContainer = document.querySelector("#wordsScore");
-            scoreContainer.innerHTML = "<p>Has ganado</p>";
-            victory('Susy',1);
-            setTimeout(function(){
+            victory("Susy", 1);
+            setTimeout(function() {
                 finalizeGame(true);
-            },500);
+            }, 600);
         } else {
-            var scoreContainer = document.querySelector("#wordsScore");
-            scoreContainer.innerHTML = "<p>Has fallado</p>";
-            victory('Susy',0);
-            setTimeout(function(){
+            victory("Susy", 0);
+            setTimeout(function() {
                 finalizeGame(false);
-            },500);
+            }, 600);
         }
     }
 }

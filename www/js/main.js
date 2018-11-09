@@ -95,19 +95,19 @@ function init() {
     btnPlayAgain.addEventListener("click", playAgain);
 
     btnUnlockBack = document.getElementById("unlockBackButton");
-    btnUnlockBack.addEventListener("click", function(){
+    btnUnlockBack.addEventListener("click", function() {
         hide("gameVideoScreen");
         show("levelp");
-        this.style.display='none';
-        btnUnlockGallery.style.display='none';
+        this.style.display = "none";
+        btnUnlockGallery.style.display = "none";
     });
 
     btnUnlockGallery = document.getElementById("unlockGalleryButton");
-    btnUnlockGallery.addEventListener("click", function(){
+    btnUnlockGallery.addEventListener("click", function() {
         hide("gameVideoScreen");
         show("galleryp");
-        this.style.display='none';
-        btnUnlockBack.style.display='none';
+        this.style.display = "none";
+        btnUnlockBack.style.display = "none";
         getUnlockedCharacters();
     });
 
@@ -268,10 +268,10 @@ function finalizeGame(isWinner) {
                 hide("wordsScreen");
                 break;
             case 3:
-                hide("ballonsScreen");
+                hide("balloonsScoreSection");
                 break;
             case 4:
-                hide("runnerScreen")
+                hide("runnerScreen");
                 break;
         }
         show("gameVideoScreen");
@@ -279,10 +279,10 @@ function finalizeGame(isWinner) {
         gameVideo.style.display = "block";
         gameVideo.load();
         gameVideo.play();
-        var btnBack=document.getElementById('unlockBackButton');
-        var btnGallery=document.getElementById('unlockGalleryButton');
-        btnBack.style.display='block';
-        btnGallery.style.display='block';
+        var btnBack = document.getElementById("unlockBackButton");
+        var btnGallery = document.getElementById("unlockGalleryButton");
+        btnBack.style.display = "block";
+        btnGallery.style.display = "block";
     } else {
         switch (indexGame) {
             case 1:
@@ -291,13 +291,12 @@ function finalizeGame(isWinner) {
             case 2:
                 hide("wordsScreen");
                 break;
-            case 2:
+            case 3:
                 hide("balloonGameBackground");
                 break;
             case 4:
                 //TO-DO: Something should be done here
                 break;
-
         }
         var playAgainScreen = document.getElementById("playAgain");
         playAgainScreen.style.display = "block";
@@ -317,6 +316,7 @@ function closeGame() {
             show("levelp");
             break;
         case 2:
+            finalizeWordsGame();
             hide("wordsScreen");
             show("levelp");
             break;
@@ -352,21 +352,23 @@ function playAgain() {
 function victory(character, unlocked) {
     localStorage.setItem(character, unlocked);
 }
-function getUnlockedCharacters(){
+
+function getUnlockedCharacters() {
     var milagroUnlocked = localStorage.getItem("Milagro");
-        var susyUnlocked = localStorage.getItem("Susy");
-        var rayoUnlocked = localStorage.getItem("Rayo");
-        var gatunaUnlocked = localStorage.getItem("Gatuna");
-        if (milagroUnlocked == 1) {
-            document.querySelector("#btnMilagro").style.visibility = "visible";
-        }
-        if (susyUnlocked == 1) {
-            document.querySelector("#btnSusy").style.visibility = "visible";
-        }
-        if (gatunaUnlocked == 1) {
-            document.querySelector("#btnGatuna").style.visibility = "visible";
-        }
-        if (rayoUnlocked == 1) {
-            document.querySelector("#btnRayo").style.visibility = "visible";
-        }
+    var susyUnlocked = localStorage.getItem("Susy");
+    var rayoUnlocked = localStorage.getItem("Rayo");
+    var gatunaUnlocked = localStorage.getItem("Gatuna");
+    if (milagroUnlocked == 1) {
+        document.querySelector("#btnMilagro").style.visibility = "visible";
+    }
+    if (susyUnlocked == 1) {
+        document.querySelector("#btnSusy").style.visibility = "visible";
+    }
+    if (gatunaUnlocked == 1) {
+        document.querySelector("#btnGatuna").style.visibility = "visible";
+    }
+    if (rayoUnlocked == 1) {
+        document.querySelector("#btnRayo").style.visibility = "visible";
+    }
+    gameVideo.pause();
 }
