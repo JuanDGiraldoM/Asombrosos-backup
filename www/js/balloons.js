@@ -80,6 +80,13 @@ function startBalloonGame() {
         balloonGame.style.display = "none";
         balScoreSection.classList.add('animationIn');
         backgroundMusic.pause();
+        if(balPartialScore==0){
+            victory("Milagro",0);
+        }else{
+            victory("Milagro",1);
+        }
+        
     }, 15000);
 
 }
+

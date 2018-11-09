@@ -189,8 +189,17 @@ audio {
     border: 0;
     display: inline-block;
     z-index: 5;
+    
 }
-
+.btnUnCharacter{
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 24%;
+    height: 80%;
+    border: 0;
+    display: inline-block;
+    z-index: 5;
+}
 .btnBackGaleria {
     position: absolute;
     top: 5%;
@@ -277,5 +286,17 @@ section {
 }
 
 #explotion {
+    visibility: hidden;
+}
+#btnGatuna{
+    visibility: hidden;
+}
+#btnSusy{
+    visibility: hidden;
+}
+#btnMilagro{
+    visibility: hidden;
+}
+#btnRayo{
     visibility: hidden;
 }

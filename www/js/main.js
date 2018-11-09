@@ -137,6 +137,19 @@ function init() {
     btntoPage.addEventListener("click", function() {
         location.href = "http://fundacionfuper.org/";
     });
+
+
+    // if(localStorage.getItem("Milagro",1)){
+    //     document.querySelector("#btnMilagro").style.visibility="visible";
+    // }else{
+    //     document.querySelector("#btnMilagro").style.visibility="hidden";
+    // }
+    // if(localStorage.getItem("Susy",1)){
+    //     document.querySelector("#btnSusy").style.visibility="visible";
+    // }else{
+    //     document.querySelector("#btnSusy").style.visibility="hidden";
+    // }
+
 }
 
 function show(id) {
@@ -234,4 +247,8 @@ function closeGame() {
         
             
     }
+}
+
+function victory(character, unlocked){
+    localStorage.setItem(character,unlocked);
 }
