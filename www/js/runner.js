@@ -37,7 +37,7 @@ function openRunnerGame() {
 	var metaWidth = cWidth*ratioMetaW*0.45;
 	var metaHeight = cHeight*ratioMetaH*0.45;
 	var metaY = cHeight*0.12;
-	var metaX = cWidth+3100;
+	var metaX = cWidth+3200;
 
     // Variables para los barriles 
 	var barrel = document.getElementById("barrel");

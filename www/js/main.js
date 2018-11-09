@@ -79,8 +79,8 @@ function init() {
     });
 
     lvl4Button = document.querySelector("#lvl4Button");
-    lvl4Button.addEventListener("click", ()=>{
-        openGame(4, "assets/video/MilagroIntro.mp4", "assets/video/MilagroUnlock.mp4");
+    lvl4Button.addEventListener("click", function() {
+        openGame(4, "assets/video/RayoIntro.mp4", "assets/video/RayoUnlock.mp4");
     });
 
     levelpBackButton = document.querySelector("#levelpBackButton");
