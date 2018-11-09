@@ -193,10 +193,25 @@ audio {
     width: 24%;
     height: 80%;
     border: 0;
-    display: inline-block;
     z-index: 5;
 }
-
+.btnUnCharacter {
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 24%;
+    height: 80%;
+    border: 0;
+    z-index: 5;
+    visibility: hidden;
+}
+#charactersUnlocked{
+    position: absolute;
+    visibility: hidden;
+}
+#charactersLocked{
+    position: absolute;
+    visibility: visible;
+}
 .btnBackGaleria {
     position: absolute;
     top: 5%;
