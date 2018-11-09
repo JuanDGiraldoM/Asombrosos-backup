@@ -26,6 +26,14 @@ body {
   font-family: "Carnival Centenary";
   src: url("../typ/Carnival\ Centenary.otf");
 }
+/* #videoPerder{
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: cadetblue;
+  display: none;
+} */
 
 #runnerScreen {
   width: 100%;

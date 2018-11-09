@@ -80,14 +80,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		ctx.strokeRect(barraX + (barraRadius/2),barraY + (barraRadius/2),progress -barraRadius,27 - barraRadius);
 		ctx.fillRect(barraX + (barraRadius/2),barraY + (barraRadius/2),progress -barraRadius,27 - barraRadius);
 		if(progress <= 12){
-			ctx.clearRect(barraEnergiaLeft + 21, barraEnergiaTop, cWidth, 32);		
+			ctx.clearRect(barraEnergiaLeft + 21, barraEnergiaTop, cWidth, 32);	
+			perdisteCucho();	
 		}
 	};
 
 
 	gifler('img/RAYO-CORRIENDO-PERSONAJE.gif')
 	.frames('canvas.noPikachu', onDrawFrame);
-	
+	function perdisteCucho(){
+		
+	}
 	function onDrawFrame(ctx, frame) {
 		// Match width/height to remove distortion
 		ctx.canvas.width  = ctx.canvas.offsetWidth;
@@ -103,7 +106,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		
 		metaX += xBarrelVelocity;
 		ctx.drawImage(meta, metaX, metaY, metaWidth, metaHeight);
-		//drawRect(barraX, barraY, 220, 27, barraRadius);
 		drawRect(barraX, barraY, barraWidth, 27, barraRadius);
 
 		frames++;
