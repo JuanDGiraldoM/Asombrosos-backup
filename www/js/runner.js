@@ -1,4 +1,5 @@
-document.addEventListener("DOMContentLoaded", function(event) { 
+// document.addEventListener("DOMContentLoaded", function(event) {
+function openRunnerGame() { 
     var canvas = document.getElementById('runnerCanvas');
     var ctx = canvas.getContext('2d');
 	var cWidth = ctx.canvas.offsetWidth;
@@ -10,8 +11,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     
     // Variables barra de energia
 	var barraEnergia = document.getElementById('barraEnergia');
-	var barraEnergiaLeft = barraEnergia.getBoundingClientRect().left;
-	var barraEnergiaTop = barraEnergia.getBoundingClientRect().top;
+	var barraEnergiaLeft = barraEnergia.getBoundingClientRect().x;
+	var barraEnergiaTop = barraEnergia.getBoundingClientRect().y;
 	var progress = 224;
 	var barraY = barraEnergiaTop + 4;
 	var barraX = barraEnergiaLeft + 30;
@@ -82,18 +83,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		ctx.fillRect(barraX + (barraRadius/2),barraY + (barraRadius/2),progress -barraRadius,27 - barraRadius);
 		if(progress <= 12){
 			ctx.clearRect(barraEnergiaLeft + 21, barraEnergiaTop, cWidth, 32);	
-			perdisteCucho();	
+			victory("Rayo",0);	
 		}
 	};
 
 
 	gifler('assets/img/runner/RAYO-CORRIENDO-PERSONAJE.gif')
     .frames('canvas.noPikachu', onDrawFrame);
-    
-	function perdisteCucho(){
-		
-    }
-    
+
 	function onDrawFrame(ctx, frame) {
 		// Match width/height to remove distortion
 		ctx.canvas.width  = ctx.canvas.offsetWidth;
@@ -177,5 +174,5 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	startup();
 	main();
-	drawRect(barraX, barraY, 220, 27, barraRadius);
-});
+	
+}
