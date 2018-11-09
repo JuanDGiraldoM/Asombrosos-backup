@@ -14,7 +14,7 @@ body {
     Navigation
     ========================================================================== */
 
-.phoneload video{
+.phoneload video {
     height: 100%;
     width: 100%;
 }
@@ -200,6 +200,7 @@ audio {
     border: 0;
     z-index: 5;
 }
+
 .btnUnCharacter {
     background-repeat: no-repeat;
     background-size: cover;
@@ -209,14 +210,17 @@ audio {
     z-index: 5;
     visibility: hidden;
 }
-#charactersUnlocked{
+
+#charactersUnlocked {
     position: absolute;
     visibility: hidden;
 }
-#charactersLocked{
+
+#charactersLocked {
     position: absolute;
     visibility: visible;
 }
+
 .btnBackGaleria {
     position: absolute;
     top: 5%;
@@ -237,4 +241,3 @@ section {
     /*background-size: 720px 1280px;*/
     text-align: center;
 }
-
