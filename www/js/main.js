@@ -268,7 +268,7 @@ function finalizeGame(isWinner) {
                 hide("wordsScreen");
                 break;
             case 3:
-                hide("ballonsScreen");
+                hide("balloonsScoreSection");
                 break;
             case 4:
                 hide("runnerScreen")
@@ -283,6 +283,7 @@ function finalizeGame(isWinner) {
         var btnGallery=document.getElementById('unlockGalleryButton');
         btnBack.style.display='block';
         btnGallery.style.display='block';
+
     } else {
         switch (indexGame) {
             case 1:
@@ -291,7 +292,7 @@ function finalizeGame(isWinner) {
             case 2:
                 hide("wordsScreen");
                 break;
-            case 2:
+            case 3:
                 hide("balloonGameBackground");
                 break;
             case 4:
@@ -369,4 +370,6 @@ function getUnlockedCharacters(){
         if (rayoUnlocked == 1) {
             document.querySelector("#btnRayo").style.visibility = "visible";
         }
+    gameVideo.pause();
+
 }

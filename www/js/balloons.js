@@ -83,11 +83,11 @@ function startBalloonGame() {
         if(balPartialScore==0){
             victory("Milagro",0);
         }else{
-            finalizeGame(true);
             victory("Milagro",1);
         }
-        
+        // setTimeout(finalizeGame(true),18000);
     }, 15000);
+    
 
 }
 
