@@ -172,10 +172,12 @@ function finalizeWordsGame() {
             var scoreContainer = document.querySelector("#wordsScore");
             scoreContainer.innerHTML = "<p>Has ganado</p>";
             victory('Susy',1);
+            //setTimeout(finalizeGame(true),10000);
         } else {
             var scoreContainer = document.querySelector("#wordsScore");
             scoreContainer.innerHTML = "<p>Has fallado</p>";
             victory('Susy',0);
+            setTimeout(finalizeGame(false),5000);
         }
     }
 }
