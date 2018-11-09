@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" href="css/main.css"/>
         <link rel="stylesheet" type="text/css" href="dist/animate.min.css"/>
         <link rel="stylesheet" type="text/css" href="css/balloons.css"/>
+        <link rel="stylesheet" type="text/css" href="css/antonyms.css"/>
         <title>Asombrosos</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
     </head>
@@ -80,13 +81,16 @@
         <!-- Game's Videos -->
 
         <section class="phoneVideo" id="gameVideoScreen">
+            <div class="antonymsVideo">
+                <video class="introV" src="assets/video/GatunaIntro.mp4" id="gatunaIntroVideo" onclick="playGame()"></video>
+            </div>
             <div class="wordsVideos">
-                <video src="assets/video/Susy Intro.mp4" id="susyIntroVideo" onclick="playGame()"></video>
-                <video src="assets/video/Susy Unlock.mp4" id="susyUnlockVideo"></video>
+                <video class="introV" src="assets/video/Susy Intro.mp4" id="susyIntroVideo" onclick="playGame()"></video>
+                <video class="introV" src="assets/video/Susy Unlock.mp4" id="susyUnlockVideo"></video>
             </div>
             <div class="balloonsVideo">
-                <video src="assets/video/MilagroIntro.mp4" id="milagroIntroVideo" onclick="playGame()"></video>
-                <video src="assets/video/MilagroUnlock.mp4" id="milagroUnlockVideo"></video>
+                <video class="introV" src="assets/video/MilagroIntro.mp4" id="milagroIntroVideo" onclick="playGame()"></video>
+                <video class="introV" src="assets/video/MilagroUnlock.mp4" id="milagroUnlockVideo"></video>
             </div>
         </section>
 
@@ -94,11 +98,42 @@
             <video src="assets/video/Count.mp4" id="countVideo"></video>
         </section>
 
+        <!-- Play Again -->
+
+        <section class="phoneVideo" id="playAgain">
+            <div id="playAgainBackButton"><img src="assets/img/buttons/ButtonAtras.png" class="imgleftback"/></div>
+            <video src="assets/video/again.mp4" id="againVideo"></video>
+            <div id="btnPlayAgainDiv"><img src="assets/img/buttons/ButtonPlay.png" id="btnPlayAgain"/></div>
+        </section>
+
+        <!-- Unlock Character -->
+        <section class="phoneVideo" id="unlockScreen">
+            <div id="unlockBackButton">
+            <img src="assets/img/buttons/ButtonAtras.png" class="imgleftback" />
+            </div>
+            <div id="unlockGalleryButton">
+                <img id="unlockedChar" src="assets/img/buttons/ButtonToGallery.png" />
+            </div>
+            <div class="antonymsVideo">
+                <video class="introV" src="assets/video/GatunaUnlock.mp4" id="gatunaUnlockVideo"></video>
+            </div>
+            <div class="wordsVideos">
+                <video class="introV" src="assets/video/Susy Unlock.mp4" id="susyUnlockVideo"></video>
+            </div>
+            <div class="balloonsVideo">
+                <video class="introV" src="assets/video/MilagroUnlock.mp4" id="milagroUnlockVideo"></video>
+            </div>
+        </section>
+
         <!-- Games -->
 
-        <section class="phonegame1" id="gamep1">
-            <div id="gamep1BackButton"><img src="assets/img/buttons/ButtonAtras.png" class="imgleftback"/></div>
-            Emociones
+        <section class="phonegame1" id="antonymsScreen">
+                <div id="gamep1BackButton"><img src="assets/img/buttons/ButtonAtras.png" class="imgleftback"/></div>
+                <div class="imgBackground">
+                    <div class="cardsContainer" id="cardsContainer">
+                      
+                    </div>
+                </div>
         </section>
 
         <section class="phonegame2" id="wordsScreen">
@@ -133,6 +168,7 @@
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/words.js"></script>
         <script type="text/javascript" src="js/balloons.js"></script>
+        <script type="text/javascript" src="js/antonyms.js"></script>
 
         <!-- Scripts Dist -->
         <script type="text/javascript" src="dist/hammer.min.js"></script>

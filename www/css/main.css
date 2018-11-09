@@ -279,3 +279,39 @@ section {
 #explotion {
     visibility: hidden;
 }
+
+.introV{
+    display: none;
+}
+
+#btnPlayAgainDiv{
+    position: absolute;
+    left: 40%;
+    top: 50%;
+    z-index: 1;
+}
+
+#playAgainBackButton{
+    position: absolute;
+    z-index: 1;
+}
+
+#unlockBackButton{
+    z-index: 1;
+    position: absolute;
+}
+
+#unlockGalleryButton{
+    z-index: 1;
+    position: absolute;
+    left: 24%;
+    top: 59%;
+}
+
+#unlockedChar{
+    width: 43%;
+}
+
+#gamep1BackButton{
+    z-index: 1;
+}

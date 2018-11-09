@@ -22,10 +22,15 @@ function init() {
         fuperButton,
         fuperBackButton,
         creditsBackButton,
-        aboutCreditsButton;
+        aboutCreditsButton,
+        backButtonplayAgain,
+        btnPlayAgain,
+        unlockBackBtn,
+        fromUnlockToG;
     var btntoPage;
     countVideo = document.getElementById("countVideo");
     backgroundMusic = document.getElementById("backgroundMusic");
+
 
     var navigate = function(actual, next) {
         return function() {
@@ -49,7 +54,10 @@ function init() {
     aboutButton.addEventListener("click", navigate("menup", "aboutp"));
 
     lvl1Button = document.querySelector("#lvl1Button");
-    lvl1Button.addEventListener("click", navigate("levelp", "gamep1"));
+    lvl1Button.addEventListener("click", function () {
+        indexGame = 1;
+        openGame();
+    });
 
     lvl2Button = document.querySelector("#lvl2Button");
     lvl2Button.addEventListener("click", function () {
@@ -75,7 +83,18 @@ function init() {
     levelpBackButton.addEventListener("click", navigate("levelp", "menup"));
 
     gamep1BackButton = document.querySelector("#gamep1BackButton");
-    gamep1BackButton.addEventListener("click", navigate("gamep1", "levelp"));
+    gamep1BackButton.addEventListener("click", function(){
+        closeGame();
+    });
+
+    btnPlayAgain=document.querySelector("#btnPlayAgainDiv");
+    btnPlayAgain.addEventListener("click", playAgain);
+
+    unlockBackBtn=document.getElementById('unlockBackButton');
+    unlockBackBtn.addEventListener("click", navigate("unlockScreen", "levelp"));
+
+    fromUnlockToG=document.getElementById('unlockGalleryButton');
+    fromUnlockToG.addEventListener("click", navigate("unlockScreen", "galleryp"));
 
     gamep3BackButton = document.querySelector("#gamep3BackButton");
     gamep3BackButton.addEventListener("click", navigate("gamep3", "levelp"));
@@ -85,6 +104,9 @@ function init() {
 
     aboutpBackButton = document.querySelector("#aboutpBackButton");
     aboutpBackButton.addEventListener("click", navigate("aboutp", "menup"));
+
+    backButtonplayAgain=document.querySelector("#playAgainBackButton");
+    backButtonplayAgain.addEventListener("click", navigate("playAgain", "levelp"));
 
     galleryBackButton = document.querySelector("#gallerypBackButton");
     galleryBackButton.addEventListener("click", navigate("galleryp", "levelp"));
@@ -176,6 +198,9 @@ function openGame() {
     show("gameVideoScreen");
 
     switch (indexGame) {
+        case 1:
+            introVideo=document.getElementById('gatunaIntroVideo');
+            break;
         case 2:
             introVideo = document.getElementById("susyIntroVideo");
             break;
@@ -183,7 +208,7 @@ function openGame() {
             introVideo = document.getElementById("milagroIntroVideo");
         break;
     }
-
+    introVideo.style.display='block';
     introVideo.currentTime = 0;
     introVideo.play();
     introVideo.onended = playGame;
@@ -191,6 +216,7 @@ function openGame() {
 
 function playGame() {
     introVideo.pause();
+    introVideo.style.display='none';
     hide("gameVideoScreen");
     show("countVideoScreen");
     countVideo.play();
@@ -199,6 +225,10 @@ function playGame() {
         backgroundMusic.play();
 
         switch (indexGame) {
+            case 1:
+                show('antonymsScreen');
+                openAntonymsGame();
+                break;
             case 2:
                 show("wordsScreen");
                 openWordsGame();
@@ -226,6 +256,10 @@ function closeGame() {
     introVideo.pause();
 
     switch (indexGame) {
+        case 1:
+            hide('antonymsScreen');
+            show("levelp");
+            break;
         case 2:
             finalizeWordsGame();
             hide("wordsScreen");
@@ -234,4 +268,75 @@ function closeGame() {
         
             
     }
+}
+
+function lostGame(){
+    backgroundMusic.pause();
+    
+    switch (indexGame) {
+        case 1:
+            hide('antonymsScreen');
+            break;
+        case 2:
+            hide("wordsScreen");
+            break;
+        case 2:
+            hide("balloonGameBackground");
+            break;
+            
+    }
+    var playAgainScreen=document.getElementById('playAgain');
+    playAgainScreen.style.display='block';
+    var playAgain=document.getElementById('againVideo');
+    playAgain.play();
+    
+}
+
+function playAgain(){
+    
+    hide("playAgain");
+    show("countVideoScreen");
+    countVideo.play();
+    countVideo.onended = function() {
+        hide("countVideoScreen");
+        backgroundMusic.play();
+
+        switch (indexGame) {
+            case 1:
+                show('antonymsScreen');
+                openAntonymsGame();
+                break;
+            case 2:
+                show("wordsScreen");
+                openWordsGame();
+                break;
+            case 3:
+                show("gamep3");
+                startBalloonGame();
+                break;
+        }
+    };
+}
+
+function Win(){
+    backgroundMusic.pause();
+    switch (indexGame) {
+        case 1:
+            hide('antonymsScreen');
+            show("unlockScreen");
+            introVideo=document.getElementById('gatunaUnlockVideo');
+            break;
+        case 2:
+            show("wordsScreen");
+            openWordsGame();
+            break;
+        case 3:
+            show("gamep3");
+            startBalloonGame();
+            break;
+    }
+    
+    introVideo.style.display='block';
+    introVideo.currentTime = 0;
+    introVideo.play();
 }
