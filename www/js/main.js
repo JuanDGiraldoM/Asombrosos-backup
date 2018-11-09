@@ -15,7 +15,11 @@ app.initialize();
 
 function init() {
     var jugarButton, aboutButton, lvl1Button, lvl2Button, lvl3Button, lvl4Button;
-    var levelpBackButton, antonymsScreenBackButton, wordsScreenBackButton, ballonsScreenBackButton, gamep4BackButton;
+    var levelpBackButton,
+        antonymsScreenBackButton,
+        wordsScreenBackButton,
+        ballonsScreenBackButton,
+        runnerScreenBackButton;
     var aboutpBackButton,
         galleryBackButton,
         gallerypBackButton,
@@ -114,8 +118,8 @@ function init() {
     ballonsScreenBackButton = document.querySelector("#ballonsScreenBackButton");
     ballonsScreenBackButton.addEventListener("click", navigate("ballonsScreen", "levelp"));
 
-    gamep4BackButton = document.querySelector("#gamep4BackButton");
-    gamep4BackButton.addEventListener("click", navigate("gamep4", "levelp"));
+    runnerScreenBackButton = document.querySelector("#runnerScreenBackButton");
+    runnerScreenBackButton.addEventListener("click", navigate("ballonsScreen", "levelp"));
 
     aboutpBackButton = document.querySelector("#aboutpBackButton");
     aboutpBackButton.addEventListener("click", navigate("aboutp", "menup"));
