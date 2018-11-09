@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "Carnival Centenary";
+    src: url("../dist/Carnival\ Centenary.otf");
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -9,7 +14,7 @@ body {
     Navigation
     ========================================================================== */
 
-.phoneload video{
+.phoneload video {
     height: 100%;
     width: 100%;
 }
@@ -195,6 +200,7 @@ audio {
     border: 0;
     z-index: 5;
 }
+
 .btnUnCharacter {
     background-repeat: no-repeat;
     background-size: cover;
@@ -204,14 +210,17 @@ audio {
     z-index: 5;
     visibility: hidden;
 }
-#charactersUnlocked{
+
+#charactersUnlocked {
     position: absolute;
     visibility: hidden;
 }
-#charactersLocked{
+
+#charactersLocked {
     position: absolute;
     visibility: visible;
 }
+
 .btnBackGaleria {
     position: absolute;
     top: 5%;
@@ -231,6 +240,30 @@ section {
     background-size: 365px 645px;
     /*background-size: 720px 1280px;*/
     text-align: center;
+}
+
+#btnPlayAgainDiv{
+    position: absolute;
+    top: 50%;
+    left: 41%;
+}
+
+#unlockBackButton{
+    display: none;
+    position: absolute;
+    z-index: 1;
+}
+
+#unlockGalleryButton{
+    display: none;
+    position: absolute;
+    top:61%;
+    left: 23%;
+    z-index: 1;
+}
+
+#ugb{
+    width: 40%;
 }
 
 @font-face {

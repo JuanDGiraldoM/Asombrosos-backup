@@ -21,6 +21,7 @@ function openAntonymsGame(){
     }
 
     MA_COUNT=0;
+    MA_PAIRS = 4;
     renderCards();
     setCardsDimensions();
     setTimeout(maCountEnd,20000);
@@ -82,7 +83,7 @@ function completePairs() {
   blockCards(false, cardsArray, initialImg.id, lastImg.id);
   if(MA_COUNT == MA_COUNTFINAL && MA_PAIRS == 0){
       console.log("Ganaste");
-      Win();
+      finalizeGame(true);
   }
 }
 
@@ -135,6 +136,6 @@ function maCountEnd(){
   if(MA_COUNT != MA_COUNTFINAL && screen.style.display == 'block'){
     console.log("Perdiste");
     victory("Gatuna",0);
-    lostGame();
+    finalizeGame(false);
   }
 }
