@@ -123,8 +123,9 @@ function openWordsGame() {
                     posCircleX >= positionSusy.left &&
                     posCircleX <= positionSusy.right
                 ) {
-                    explotion.pause();
-                    explotion.currentTime = 0;
+                    // explotion.pause();
+                    // explotion.currentTime = 0;
+                    explotion.load();
                     explotion.play();
                     wordsScore += 5;
                     word.className = "word animated fadeOut faster";

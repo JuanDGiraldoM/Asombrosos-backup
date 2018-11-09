@@ -24,10 +24,11 @@ function init() {
         creditsBackButton,
         aboutCreditsButton,
         backButtonplayAgain,
-        btnPlayAgain,
-        unlockBackBtn,
-        fromUnlockToG;
+        btnPlayAgain;
+        // unlockBackBtn,
+        // fromUnlockToG;
     var btntoPage;
+    introVideo = document.getElementById("introVideo");
     countVideo = document.getElementById("countVideo");
     backgroundMusic = document.getElementById("backgroundMusic");
 
@@ -45,6 +46,8 @@ function init() {
     splashScreen.onended = function() {
         document.getElementById("loadp").style.display = "none";
         document.getElementById("menup").style.display = "block";
+        backgroundMusic.volume = 0.1;
+        backgroundMusic.play();
     };
 
     jugarButton = document.querySelector("#jugarButton");
@@ -55,14 +58,12 @@ function init() {
 
     lvl1Button = document.querySelector("#lvl1Button");
     lvl1Button.addEventListener("click", function() {
-        indexGame = 1;
-        openGame();
+        openGame(1, "assets/video/GatunaIntro.mp4", "assets/video/GatunaUnlock.mp4");
     });
 
     lvl2Button = document.querySelector("#lvl2Button");
     lvl2Button.addEventListener("click", function() {
-        indexGame = 2;
-        openGame();
+        openGame(2, "assets/video/SusyIntro.mp4", "assets/video/SusyUnlock.mp4");
     });
 
     wordsScreenBackButton = document.querySelector("#wordsScreenBackButton");
@@ -72,8 +73,7 @@ function init() {
 
     lvl3Button = document.querySelector("#lvl3Button");
     lvl3Button.addEventListener("click", function() {
-        indexGame = 3;
-        openGame();
+        openGame(3, "assets/video/MilagroIntro.mp4", "assets/video/MilagroUnlock.mp4");
     });
 
     lvl4Button = document.querySelector("#lvl4Button");
@@ -90,11 +90,11 @@ function init() {
     btnPlayAgain = document.querySelector("#btnPlayAgainDiv");
     btnPlayAgain.addEventListener("click", playAgain);
 
-    unlockBackBtn = document.getElementById("unlockBackButton");
-    unlockBackBtn.addEventListener("click", navigate("unlockScreen", "levelp"));
+    // unlockBackBtn = document.getElementById("unlockBackButton");
+    // unlockBackBtn.addEventListener("click", navigate("unlockScreen", "levelp"));
 
-    fromUnlockToG = document.getElementById("unlockGalleryButton");
-    fromUnlockToG.addEventListener("click", navigate("unlockScreen", "galleryp"));
+    // fromUnlockToG = document.getElementById("unlockGalleryButton");
+    // fromUnlockToG.addEventListener("click", navigate("unlockScreen", "galleryp"));
 
     ballonsScreenBackButton = document.querySelector("#ballonsScreenBackButton");
     ballonsScreenBackButton.addEventListener("click", navigate("ballonsScreen", "levelp"));
@@ -193,22 +193,25 @@ function toBackGatuna() {
 
 //Game functions
 
-function openGame() {
-    switch (indexGame) {
-        case 1:
-            introVideo = document.getElementById("gatunaIntroVideo");
-            break;
-        case 2:
-            introVideo = document.getElementById("susyIntroVideo");
-            break;
-        case 3:
-            introVideo = document.getElementById("milagroIntroVideo");
-            break;
-    }
+function openGame(index, introVideoSrc, unlockVideoSrc) {
+    indexGame = index;
+    backgroundMusic.pause();
+    introVideo.src = introVideoSrc;
+    // switch (indexGame) {
+    //     case 1:
+    //         introVideo = document.getElementById("gatunaIntroVideo");
+    //         break;
+    //     case 2:
+    //         introVideo = document.getElementById("susyIntroVideo");
+    //         break;
+    //     case 3:
+    //         introVideo = document.getElementById("milagroIntroVideo");
+    //         break;
+    // }
     hide("levelp");
     show("gameVideoScreen");
     introVideo.style.display = "block";
-    introVideo.currentTime = 0;
+    introVideo.load();
     introVideo.play();
     introVideo.onended = playGame;
 }
@@ -241,7 +244,7 @@ function playGame() {
 }
 
 function finalizeGame(isWinner) {
-    backgroundMusic.pause();
+    // backgroundMusic.pause();
 
     switch (indexGame) {
         case 2:
@@ -251,7 +254,7 @@ function finalizeGame(isWinner) {
 }
 
 function closeGame() {
-    backgroundMusic.pause();
+    // backgroundMusic.pause();
     introVideo.pause();
 
     switch (indexGame) {
@@ -268,7 +271,7 @@ function closeGame() {
 }
 
 function lostGame() {
-    backgroundMusic.pause();
+    // backgroundMusic.pause();
 
     switch (indexGame) {
         case 1:
