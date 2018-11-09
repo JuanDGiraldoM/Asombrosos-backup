@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var playerX = cWidth*0.15;
 	var playerY = cHeight*0.2;
 	var yVelocity = 0.3;
-	
+
 	var progress = 224;
 	var barraY = barraEnergiaTop + 4;
 	var barraX = barraEnergiaLeft + 30;
@@ -25,11 +25,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var playerHeight = cHeight*ratioH*0.4;
 	var touchN = 0;
 	var frames = 0;
-	var barrel = document.getElementById("barrel");
+	
 	var meta = document.getElementById("meta");
-	var metaX = 700;
+	var ratioMetaW = 538/cWidth, ratioMetaH = 636/cHeight;
+	var metaWidth = cWidth*ratioMetaW*0.45;
+	var metaHeight = cHeight*ratioMetaH*0.45;
+	var metaY = cHeight*0.12;
+	var metaX = cWidth+3100;
+	//var metaX = 300;
 
-
+	var barrel = document.getElementById("barrel");
 	var barrelY = cHeight*0.7;
 	var xBarrelVelocity = 0;
 	var ratioBarrelW = 152/cWidth, ratioBarrelH = 201/cHeight;
@@ -39,7 +44,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var barrelsX = [cWidth+50,cWidth+750,cWidth+750+barrelWidth,cWidth+1100,cWidth+1450,cWidth+1800,cWidth+2300,cWidth+2300+barrelWidth,cWidth+2300+barrelWidth*2,cWidth+2750];
 	var dmg = 3.01;
 	
-
 	var collitionsN = 0;
 
 	setTimeout(()=> {
@@ -92,7 +96,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			barrelsX[i] += xBarrelVelocity;
 			ctx.drawImage(barrel, barrelsX[i], barrelY, barrelWidth, barrelHeight);
 		}
-		ctx.drawImage(meta,metaX--, barrelY*0.06, barrelWidth*4, barrelHeight*4);
+		
+		metaX += xBarrelVelocity;
+		ctx.drawImage(meta, metaX, metaY, metaWidth, metaHeight);
 		drawRect(barraX, barraY, 220, 27, barraRadius);
 
 		frames++;
