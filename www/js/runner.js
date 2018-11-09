@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var playerX = cWidth*0.15;
 	var playerY = cHeight*0.2;
 	var yVelocity = 0.3;
+	
 	var progress = 224;
 	var barraY = barraEnergiaTop + 4;
 	var barraX = barraEnergiaLeft + 30;
@@ -35,13 +36,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var barrelWidth = cWidth*ratioBarrelW*0.3;
 	var barrelHeight = cHeight*ratioBarrelH*0.3;
 
-	var barrelsX = [cWidth+50,cWidth+400,cWidth+750,cWidth+750+barrelWidth];
+	var barrelsX = [cWidth+50,cWidth+750,cWidth+750+barrelWidth,cWidth+1100,cWidth+1450,cWidth+1800,cWidth+2300,cWidth+2300+barrelWidth,cWidth+2300+barrelWidth*2,cWidth+2750];
 	var dmg = 3.01;
 	
 
 	var collitionsN = 0;
-
-
 
 	setTimeout(()=> {
 		xBarrelVelocity = -5;
@@ -98,8 +97,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 		frames++;
 	}
-
-    
 
 	function startup() {
 		var el = document.getElementsByTagName("canvas")[0];
