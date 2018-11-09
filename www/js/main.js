@@ -90,7 +90,24 @@ function init() {
     galleryBackButton.addEventListener("click", navigate("galleryp", "levelp"));
 
     gallerypBackButton = document.querySelector("#imggallery");
-    gallerypBackButton.addEventListener("click", navigate("levelp", "galleryp"));
+    gallerypBackButton.addEventListener("click", function(){
+        hide('levelp');
+        show('galleryp');
+        if(localStorage.getItem("Milagro",1)){
+            document.querySelector("#btnUnMilagro").style.visibility="hidden";
+            document.querySelector("#btnMilagro").style.visibility="visible";
+        }else{
+            document.querySelector("#btnUnMilagro").visibility="visible";
+            document.querySelector("#btnMilagro").visibility="hidden";
+        }
+        if(localStorage.getItem("Susy",1)){
+            document.querySelector("#btnUnSusy").visibility="hidden";
+            document.querySelector("#btnSusy").visibility="visible";
+        }else{
+            document.querySelector("#btnUnSusy").visibility="visible";
+            document.querySelector("#btnSusy").visibility="hidden";
+        }
+    });
 
     fuperButton = document.querySelector("#btnFuper");
     fuperButton.addEventListener("click", navigate("aboutp", "fuperp"));
@@ -139,16 +156,7 @@ function init() {
     });
 
 
-    // if(localStorage.getItem("Milagro",1)){
-    //     document.querySelector("#btnMilagro").style.visibility="visible";
-    // }else{
-    //     document.querySelector("#btnMilagro").style.visibility="hidden";
-    // }
-    // if(localStorage.getItem("Susy",1)){
-    //     document.querySelector("#btnSusy").style.visibility="visible";
-    // }else{
-    //     document.querySelector("#btnSusy").style.visibility="hidden";
-    // }
+    
 
 }
 

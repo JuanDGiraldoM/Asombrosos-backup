@@ -181,24 +181,26 @@ audio {
     display: none;
 }
 
-.btnCharacter {
+.btnUnCharacter {
     background-repeat: no-repeat;
     background-size: cover;
     width: 24%;
     height: 80%;
     border: 0;
-    display: inline-block;
     z-index: 5;
+    display: none;
+    visibility: hidden;
     
 }
-.btnUnCharacter{
+.btnCharacter{
     background-repeat: no-repeat;
     background-size: cover;
     width: 24%;
     height: 80%;
     border: 0;
-    display: inline-block;
     z-index: 5;
+    display: inline-block;
+    visibility: visible;
 }
 .btnBackGaleria {
     position: absolute;
@@ -288,7 +290,7 @@ section {
 #explotion {
     visibility: hidden;
 }
-#btnGatuna{
+/*#btnGatuna{
     visibility: hidden;
 }
 #btnSusy{
@@ -296,7 +298,5 @@ section {
 }
 #btnMilagro{
     visibility: hidden;
-}
-#btnRayo{
-    visibility: hidden;
-}
+} */
+
