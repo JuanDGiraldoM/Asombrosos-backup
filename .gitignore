@@ -6,3 +6,4 @@ plugins/*
 *.keystore
 *.apk
 *.bat
+*.db
