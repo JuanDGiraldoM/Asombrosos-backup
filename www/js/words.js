@@ -2,7 +2,7 @@ function openWordsGame() {
     (height = window.innerHeight), (width = window.innerWidth);
     wordsContainer = document.querySelector(".wordsContainer");
     wordScreen = document.querySelector("#wordsScreen");
-    // winner = true;
+    winner = true;
     active = true;
     wordsScore = 0;
     timeFall = 8;
