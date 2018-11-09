@@ -42,13 +42,13 @@ body {
 	background-size: cover;
 }
 
-#rayoGano {
+/*#rayoGano {
   position: absolute;
   top: 0;
   width: 100vw;
   height: 100vh;
   display: none;
-}
+}*/
 
 @-webkit-keyframes l_2_r {
     from {background-position: -50% 0;}

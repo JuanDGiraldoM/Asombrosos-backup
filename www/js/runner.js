@@ -189,9 +189,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			//alert("yayyy ganaste!");
 			xBarrelVelocity = 0;
 			runnerCanvas.style.display = "none";
-			var rayoGano = document.getElementById("rayoGano");
-			rayoGano.style.display = "block";
-			rayoGano.play();
+			//var rayoGano = document.getElementById("rayoGano");
+			//rayoGano.style.display = "block";
+			//rayoGano.play();
+			victory("Rayo",1);
 		}
 
 		setTimeout(main, 10);
