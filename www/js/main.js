@@ -233,7 +233,7 @@ function playGame() {
     countVideo.onended = function() {
         hide("countVideoScreen");
         backgroundMusic.play();
-
+        backgroundMusic.volume = 0.5;
         switch (indexGame) {
             case 1:
                 show("antonymsScreen");
@@ -262,6 +262,7 @@ function finalizeGame(isWinner) {
 }
 
 function closeGame() {
+    backgroundMusic.volume = 0.1;
     gameVideo.pause();
 
     switch (indexGame) {
