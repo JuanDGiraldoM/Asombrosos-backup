@@ -52,7 +52,6 @@
     position: fixed;
     left: 1%;
     top: 1%;
-    width: 8%;
     height: 13%;
 }
 
@@ -60,7 +59,6 @@
     position: fixed;
     left: 9%;
     top: 1%;
-    width: 8%;
     height: 13%;
 }
 
@@ -219,15 +217,12 @@ section {
     text-align: center;
 }
 
-/* ==========================================================================
-    Games
-    ========================================================================== */
-
 @font-face {
     font-family: "Carnival Centenary";
     src: url("../dist/Carnival\ Centenary.otf");
 }
 
+<<<<<<< HEAD
 /*
  * Words
  */
@@ -315,3 +310,5 @@ section {
 #gamep1BackButton{
     z-index: 1;
 }
+=======
+>>>>>>> c340c7977249aa77abcb9bd02d5f94ba00f2b10d
