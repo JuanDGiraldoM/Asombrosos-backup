@@ -93,23 +93,30 @@ function init() {
     gallerypBackButton.addEventListener("click", function(){
         hide('levelp');
         show('galleryp');
-        if(localStorage.getItem("Milagro",1)){
+        var milagroUnlocked=localStorage.getItem("Milagro");
+        var susyUnlocked=localStorage.getItem("Susy");
+        var rayoUnlocked=localStorage.getItem("Rayo");
+        var gatunaUnlocked=localStorage.getItem("Gatuna");
+        if(milagroUnlocked==1){
             document.querySelector("#btnMilagro").style.visibility="visible";
             
-        }else{
-            document.querySelector("#btnMilagro").style.visibility="hidden";
         }
-       
-        
-        if(localStorage.getItem("Susy",1)){
+        if(susyUnlocked==1){
             document.querySelector("#btnSusy").style.visibility="visible";
-        }else{
-            document.querySelector("#btnUnSusy").style.visibility="visible";
             
         }
-        
-        
-        
+        if(gatunaUnlocked==1){
+            document.querySelector("#btnGatuna").style.visibility="visible";
+            
+        }
+        if(rayoUnlocked==1){
+            document.querySelector("#btnRayo").style.visibility="visible";
+            
+        }
+
+
+       
+       
     });
 
     fuperButton = document.querySelector("#btnFuper");

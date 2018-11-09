@@ -196,6 +196,7 @@ audio {
     height: 80%;
     border: 0;
     z-index: 5;
+    visibility: hidden;
 }
 #charactersUnlocked{
     position: absolute;
