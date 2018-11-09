@@ -106,6 +106,7 @@ function init() {
         show("galleryp");
         this.style.display='none';
         btnUnlockBack.style.display='none';
+        getUnlockedCharacters();
     });
 
     ballonsScreenBackButton = document.querySelector("#ballonsScreenBackButton");
@@ -127,22 +128,7 @@ function init() {
     gallerypBackButton.addEventListener("click", function() {
         hide("levelp");
         show("galleryp");
-        var milagroUnlocked = localStorage.getItem("Milagro");
-        var susyUnlocked = localStorage.getItem("Susy");
-        var rayoUnlocked = localStorage.getItem("Rayo");
-        var gatunaUnlocked = localStorage.getItem("Gatuna");
-        if (milagroUnlocked == 1) {
-            document.querySelector("#btnMilagro").style.visibility = "visible";
-        }
-        if (susyUnlocked == 1) {
-            document.querySelector("#btnSusy").style.visibility = "visible";
-        }
-        if (gatunaUnlocked == 1) {
-            document.querySelector("#btnGatuna").style.visibility = "visible";
-        }
-        if (rayoUnlocked == 1) {
-            document.querySelector("#btnRayo").style.visibility = "visible";
-        }
+        getUnlockedCharacters();
     });
 
     fuperButton = document.querySelector("#btnFuper");
@@ -351,4 +337,22 @@ function playAgain() {
 
 function victory(character, unlocked) {
     localStorage.setItem(character, unlocked);
+}
+function getUnlockedCharacters(){
+    var milagroUnlocked = localStorage.getItem("Milagro");
+        var susyUnlocked = localStorage.getItem("Susy");
+        var rayoUnlocked = localStorage.getItem("Rayo");
+        var gatunaUnlocked = localStorage.getItem("Gatuna");
+        if (milagroUnlocked == 1) {
+            document.querySelector("#btnMilagro").style.visibility = "visible";
+        }
+        if (susyUnlocked == 1) {
+            document.querySelector("#btnSusy").style.visibility = "visible";
+        }
+        if (gatunaUnlocked == 1) {
+            document.querySelector("#btnGatuna").style.visibility = "visible";
+        }
+        if (rayoUnlocked == 1) {
+            document.querySelector("#btnRayo").style.visibility = "visible";
+        }
 }

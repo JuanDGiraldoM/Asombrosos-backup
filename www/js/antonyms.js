@@ -72,6 +72,7 @@ function verifyMatch(e){
 function completePairs() {
   if(MA_COUNT == MA_COUNTFINAL && MA_PAIRS == 0){
       console.log("Ganaste");
+      victory("Gatuna",1);
       finalizeGame(true);
   }
 }
