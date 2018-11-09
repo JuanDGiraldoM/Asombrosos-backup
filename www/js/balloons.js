@@ -9,7 +9,7 @@ var ballTime = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 var ballPos = [-1000, -950]
 var balSound;
 function startBalloonGame() {
-    
+   
     balPartialScore=0;
     balFinalScore=0;
     balScore = document.querySelector('#balloonsScore');
