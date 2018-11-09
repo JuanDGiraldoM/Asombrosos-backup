@@ -52,19 +52,19 @@ function init() {
     lvl1Button.addEventListener("click", navigate("levelp", "gamep1"));
 
     lvl2Button = document.querySelector("#lvl2Button");
-    lvl2Button.addEventListener("click", function () {
+    lvl2Button.addEventListener("click", function() {
         indexGame = 2;
         openGame();
     });
 
     wordsScreenBackButton = document.querySelector("#wordsScreenBackButton");
-    wordsScreenBackButton.addEventListener("click", function () {
+    wordsScreenBackButton.addEventListener("click", function() {
         closeGame();
     });
 
     lvl3Button = document.querySelector("#lvl3Button");
-    lvl3Button.addEventListener("click", function(){
-        indexGame=3;
+    lvl3Button.addEventListener("click", function() {
+        indexGame = 3;
         openGame();
     });
 
@@ -172,17 +172,16 @@ function toBackGatuna() {
 //Game functions
 
 function openGame() {
-    hide("levelp");
-    show("gameVideoScreen");
-
     switch (indexGame) {
         case 2:
             introVideo = document.getElementById("susyIntroVideo");
             break;
         case 3:
             introVideo = document.getElementById("milagroIntroVideo");
-        break;
+            break;
     }
+    hide("levelp");
+    show("gameVideoScreen");
 
     introVideo.currentTime = 0;
     introVideo.play();
@@ -231,7 +230,5 @@ function closeGame() {
             hide("wordsScreen");
             show("levelp");
             break;
-        
-            
     }
 }
