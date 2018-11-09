@@ -303,6 +303,7 @@ function finalizeGame(isWinner) {
         playAgainScreen.style.display = "block";
         var playAgain = document.getElementById("againVideo");
         playAgain.play();
+        getUnlockedCharacters();
     }
 }
 
@@ -320,6 +321,7 @@ function closeGame() {
             show("levelp");
             break;
     }
+    getUnlockedCharacters();
 }
 
 function playAgain() {
