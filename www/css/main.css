@@ -242,28 +242,32 @@ section {
     text-align: center;
 }
 
-#btnPlayAgainDiv{
-    position: absolute;
-    top: 50%;
-    left: 41%;
+#btnPlayAgain {
+    position: fixed;
+    top: 37%;
+    left: 39%;
 }
 
-#unlockBackButton{
+#unlockBackButton {
     display: none;
     position: absolute;
     z-index: 1;
 }
 
-#unlockGalleryButton{
+#unlockGalleryButton {
     display: none;
     position: absolute;
-    top:61%;
+    top: 61%;
     left: 23%;
     z-index: 1;
 }
 
-#ugb{
-    width: 40%;
+#ugb {
+    position: fixed;
+    height: 15%;
+    width: 22%;
+    top: 60%;
+    left: 40%;
 }
 
 @font-face {
