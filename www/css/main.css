@@ -52,7 +52,6 @@
     position: fixed;
     left: 1%;
     top: 1%;
-    width: 8%;
     height: 13%;
 }
 
@@ -60,7 +59,6 @@
     position: fixed;
     left: 9%;
     top: 1%;
-    width: 8%;
     height: 13%;
 }
 
@@ -240,7 +238,7 @@ section {
 .wordsContainer {
     display: flex;
     justify-content: flex-end;
-    background-image: url("../assets/img/backgrounds/BackgroundWords.png");
+    background-image: url("../assets/img/words/BackgroundWords.png");
     height: 100%;
     background-size: 100% 100%;
     background-repeat: no-repeat;
