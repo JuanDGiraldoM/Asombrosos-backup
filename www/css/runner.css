@@ -26,7 +26,13 @@ body {
   font-family: "Carnival Centenary";
   src: url("../typ/Carnival\ Centenary.otf");
 }
-
+#splashRunner{
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: cadetblue;
+}
 #runnerScreen {
   width: 100%;
   height: 100%;
