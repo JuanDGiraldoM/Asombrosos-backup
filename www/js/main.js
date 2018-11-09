@@ -40,11 +40,12 @@ function init() {
 
     // Navigation
     document.getElementById("loadp").style.display = "block";
-
-    setTimeout(() => {
+    var splashScreen = document.getElementById("splashScreen");
+    splashScreen.play();
+    splashScreen.onended = function() {
         document.getElementById("loadp").style.display = "none";
         document.getElementById("menup").style.display = "block";
-    }, 2000);
+    };
 
     jugarButton = document.querySelector("#jugarButton");
     jugarButton.addEventListener("click", navigate("menup", "levelp"));
