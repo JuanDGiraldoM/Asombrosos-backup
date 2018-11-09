@@ -303,7 +303,6 @@ function closeGame() {
             show("levelp");
             break;
         case 2:
-            finalizeWordsGame();
             hide("wordsScreen");
             show("levelp");
             break;
