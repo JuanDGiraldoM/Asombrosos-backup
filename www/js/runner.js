@@ -87,11 +87,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	};
 
 
-	gifler('img/RAYO-CORRIENDO-PERSONAJE.gif')
-	.frames('canvas.noPikachu', onDrawFrame);
+	gifler('assets/img/runner/RAYO-CORRIENDO-PERSONAJE.gif')
+    .frames('canvas.noPikachu', onDrawFrame);
+    
 	function perdisteCucho(){
 		
-	}
+    }
+    
 	function onDrawFrame(ctx, frame) {
 		// Match width/height to remove distortion
 		ctx.canvas.width  = ctx.canvas.offsetWidth;

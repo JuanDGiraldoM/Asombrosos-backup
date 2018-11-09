@@ -248,7 +248,9 @@ function playGame() {
                 startBalloonGame();
                 break;
             case 4:
-                show("")
+                show("runnerScreenGame");
+                openRunnerGame();
+                break;
         }
     };
 }

@@ -3,12 +3,13 @@
     height: 100%;
     padding: 0px;
     margin: 0px;
+    overflow: hidden;
   }
   
   #runnerCanvas {
       width: 100%;
       height: 100%;
-      background-image: url('../img/Runner.png');
+      background-image: url('../assets/img/runner/Runner.png');
       animation: l_2_r 10000s linear infinite;
       background-size: cover;
   }
