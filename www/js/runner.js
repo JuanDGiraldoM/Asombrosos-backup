@@ -13,8 +13,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var playerX = cWidth*0.15;
 	var playerY = cHeight*0.2;
 	var yVelocity = 0.3;
-	var xVelocity = -0.2;
-	var progress = 230;
+	var progress = 224;
 	var barraY = barraEnergiaTop + 4;
 	var barraX = barraEnergiaLeft + 30;
 	var barraRadius = 20;
@@ -26,6 +25,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var touchN = 0;
 	var frames = 0;
 	var barrel = document.getElementById("barrel");
+	var meta = document.getElementById("meta");
+	var metaX = 700;
+
 
 	var barrelY = cHeight*0.7;
 	var xBarrelVelocity = 0;
@@ -34,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var barrelHeight = cHeight*ratioBarrelH*0.3;
 
 	var barrelsX = [cWidth+50,cWidth+400,cWidth+750,cWidth+750+barrelWidth];
+	var dmg = 3.01;
 	
 
 	var collitionsN = 0;
@@ -74,6 +77,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		ctx.fillRect(barraX + (barraRadius/2),barraY + (barraRadius/2),progress -barraRadius,27 - barraRadius);
 	};
 
+
+	gifler('img/RAYO-CORRIENDO-PERSONAJE.gif')
+	.frames('canvas.noPikachu', onDrawFrame);
+	
 	function onDrawFrame(ctx, frame) {
 		// Match width/height to remove distortion
 		ctx.canvas.width  = ctx.canvas.offsetWidth;
@@ -86,13 +93,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			barrelsX[i] += xBarrelVelocity;
 			ctx.drawImage(barrel, barrelsX[i], barrelY, barrelWidth, barrelHeight);
 		}
+		ctx.drawImage(meta,metaX--, barrelY*0.06, barrelWidth*4, barrelHeight*4);
 		drawRect(barraX, barraY, 220, 27, barraRadius);
 
 		frames++;
 	}
 
-    gifler('img/RAYO-CORRIENDO-PERSONAJE.gif')
-    .frames('canvas.noPikachu', onDrawFrame);
+    
 
 	function startup() {
 		var el = document.getElementsByTagName("canvas")[0];
@@ -121,7 +128,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		} else if (playerY < yLimit) {
 			yVelocity = gravity(yVelocity);
 			playerY += yVelocity;
-			progress -= 0.1;
 		} else if (playerY == yLimit-20) {
 			yVelocity = 3;
 		}else{
@@ -156,7 +162,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 			if (playerX + playerWidth*0.9 >= barrelsX[i] && playerX + playerWidth*0.9 <= barrelsX[i] + barrelWidth) {
 				if (playerY + playerHeight*0.95 >= barrelY) {
-					console.log("chocaste");
+					console.log("chocaste" + barrelsX.length + "  progress: "+progress);
+					progress -= dmg;
 					collitionsN++;
 					if (collitionsN > 8) {
 						console.log("bajaste energia :c");
