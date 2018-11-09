@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var barraY = barraEnergiaTop + 4;
 	var barraX = barraEnergiaLeft + 30;
 	var barraRadius = 20;
+	var barraWidth = 220;
 
 	var yLimit = cHeight*0.55;
 	var ratioW = 166/cWidth, ratioH = 288/cHeight;
@@ -37,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var barrelHeight = cHeight*ratioBarrelH*0.3;
 
 	var barrelsX = [cWidth+50,cWidth+750,cWidth+750+barrelWidth,cWidth+1100,cWidth+1450,cWidth+1800,cWidth+2300,cWidth+2300+barrelWidth,cWidth+2300+barrelWidth*2,cWidth+2750];
-	var dmg = 3.01;
+	var dmg = 1.33;
 	
 
 	var collitionsN = 0;
@@ -74,6 +75,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		ctx.lineWidth = barraRadius;
 		ctx.strokeRect(barraX + (barraRadius/2),barraY + (barraRadius/2),progress -barraRadius,27 - barraRadius);
 		ctx.fillRect(barraX + (barraRadius/2),barraY + (barraRadius/2),progress -barraRadius,27 - barraRadius);
+		if(progress <= 12){
+			ctx.clearRect(barraEnergiaLeft + 21, barraEnergiaTop, cWidth, 32);		
+		}
 	};
 
 
@@ -93,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			ctx.drawImage(barrel, barrelsX[i], barrelY, barrelWidth, barrelHeight);
 		}
 		ctx.drawImage(meta,metaX--, barrelY*0.06, barrelWidth*4, barrelHeight*4);
-		drawRect(barraX, barraY, 220, 27, barraRadius);
+		drawRect(barraX, barraY, barraWidth, 27, barraRadius);
 
 		frames++;
 	}
@@ -161,6 +165,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 				if (playerY + playerHeight*0.95 >= barrelY) {
 					console.log("chocaste" + barrelsX.length + "  progress: "+progress);
 					progress -= dmg;
+					if(progress < 16){
+						progress = 11;
+					}
 					collitionsN++;
 					if (collitionsN > 8) {
 						console.log("bajaste energia :c");
