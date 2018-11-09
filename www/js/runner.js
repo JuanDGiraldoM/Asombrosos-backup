@@ -156,9 +156,8 @@ function openRunnerGame() {
 						progress = 11;
 					}
 					collitionsN++;
-					if (collitionsN > 8) {
-						console.log("bajaste energia :c");
-					}
+					// if (collitionsN > 8) {
+					// }
 				} else {
 					collitionsN = 0;
 				}
@@ -178,3 +177,12 @@ function openRunnerGame() {
 	main();
 	drawRect(barraX, barraY, 220, 27, barraRadius);
 };
+
+function closeRunnerGame(){
+    var canvas = document.getElementById('runnerCanvas');
+	canvas.innerHTML = "";
+	var barraEnergia = document.getElementById('barraEnergia');
+	barraEnergia.style.display = "none";
+
+
+}
