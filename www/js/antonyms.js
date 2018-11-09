@@ -20,6 +20,7 @@ function openAntonymsGame(){
     }
 
     MA_COUNT=0;
+    MA_PAIRS = 4;
     renderCards();
     setCardsDimensions();
     setTimeout(maCountEnd,20000);
