@@ -269,3 +269,13 @@ section {
     top: 60%;
     left: 39%;
 }
+
+#tutorial1 video{
+    width: 100vw;
+    height: 100vh;
+}
+
+#tutorial2 video{
+    width: 100vw;
+    height: 100vh;
+}

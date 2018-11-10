@@ -2,14 +2,14 @@ var lvlup = false;
 var countVideo, gameVideo, backgroundMusic, indexGame, unlockVideoSrc;
 
 var app = {
-    initialize: function() {
+    initialize: function () {
         document.addEventListener("deviceready", this.onDeviceReady.bind(this), false);
         init();
     },
-    onDeviceReady: function() {
+    onDeviceReady: function () {
         this.receivedEvent("deviceready");
     },
-    receivedEvent: function(id) {}
+    receivedEvent: function (id) { }
 };
 app.initialize();
 
@@ -38,8 +38,8 @@ function init() {
     countVideo = document.getElementById("countVideo");
     backgroundMusic = document.getElementById("backgroundMusic");
 
-    var navigate = function(actual, next) {
-        return function() {
+    var navigate = function (actual, next) {
+        return function () {
             hide(actual);
             show(next);
         };
@@ -49,7 +49,7 @@ function init() {
     document.getElementById("loadp").style.display = "block";
     var splashScreen = document.getElementById("splashScreen");
     splashScreen.play();
-    splashScreen.onended = function() {
+    splashScreen.onended = function () {
         document.getElementById("loadp").style.display = "none";
         document.getElementById("menup").style.display = "block";
         backgroundMusic.volume = 0.1;
@@ -57,33 +57,50 @@ function init() {
     };
 
     jugarButton = document.querySelector("#jugarButton");
-    jugarButton.addEventListener("click", navigate("menup", "levelp"));
+    jugarButton.addEventListener("click", function () {
 
+        hide("menup");
+        show("tutorial1");
+        backgroundMusic.pause();
+        document.getElementById("vtutorial1").play();
+
+        document.getElementById("vtutorial1").onended = function(){
+            hide("tutorial1");
+            show("tutorial2");
+            document.getElementById("vtutorial2").play();
+
+            document.getElementById("vtutorial2").onended = function(){
+                hide("tutorial2");
+                show("levelp");
+            }
+        }
+     });
+     
     aboutButton = document.querySelector("#aboutButton");
     aboutButton.addEventListener("click", navigate("menup", "aboutp"));
 
     lvl1Button = document.querySelector("#lvl1Button");
-    lvl1Button.addEventListener("click", function() {
+    lvl1Button.addEventListener("click", function () {
         openGame(1, "assets/video/GatunaIntro.mp4", "assets/video/GatunaUnlock.mp4");
     });
 
     lvl2Button = document.querySelector("#lvl2Button");
-    lvl2Button.addEventListener("click", function() {
+    lvl2Button.addEventListener("click", function () {
         openGame(2, "assets/video/SusyIntro.mp4", "assets/video/SusyUnlock.mp4");
     });
 
     wordsScreenBackButton = document.querySelector("#wordsScreenBackButton");
-    wordsScreenBackButton.addEventListener("click", function() {
+    wordsScreenBackButton.addEventListener("click", function () {
         closeGame();
     });
 
     lvl3Button = document.querySelector("#lvl3Button");
-    lvl3Button.addEventListener("click", function() {
+    lvl3Button.addEventListener("click", function () {
         openGame(3, "assets/video/MilagroIntro.mp4", "assets/video/MilagroUnlock.mp4");
     });
 
     lvl4Button = document.querySelector("#lvl4Button");
-    lvl4Button.addEventListener("click", function() {
+    lvl4Button.addEventListener("click", function () {
         openGame(4, "assets/video/RayoIntro.mp4", "assets/video/RayoUnlock.mp4");
     });
 
@@ -91,7 +108,7 @@ function init() {
     levelpBackButton.addEventListener("click", navigate("levelp", "aboutp"));
 
     antonymsScreenBackButton = document.querySelector("#antonymsScreenBackButton");
-    antonymsScreenBackButton.addEventListener("click", function() {
+    antonymsScreenBackButton.addEventListener("click", function () {
         closeGame();
     });
 
@@ -99,7 +116,7 @@ function init() {
     btnPlayAgain.addEventListener("click", playAgain);
 
     btnUnlockBack = document.getElementById("unlockBackButton");
-    btnUnlockBack.addEventListener("click", function() {
+    btnUnlockBack.addEventListener("click", function () {
         hide("gameVideoScreen");
         show("levelp");
         this.style.display = "none";
@@ -107,7 +124,7 @@ function init() {
     });
 
     btnUnlockGallery = document.getElementById("unlockGalleryButton");
-    btnUnlockGallery.addEventListener("click", function() {
+    btnUnlockGallery.addEventListener("click", function () {
         hide("gameVideoScreen");
         show("galleryp");
         this.style.display = "none";
@@ -131,7 +148,7 @@ function init() {
     galleryBackButton.addEventListener("click", navigate("galleryp", "levelp"));
 
     gallerypBackButton = document.querySelector("#imggallery");
-    gallerypBackButton.addEventListener("click", function() {
+    gallerypBackButton.addEventListener("click", function () {
         hide("levelp");
         show("galleryp");
         getUnlockedCharacters();
@@ -179,7 +196,7 @@ function init() {
     });
 
     btntoPage = document.querySelector("#btnToFuper");
-    btntoPage.addEventListener("click", function() {
+    btntoPage.addEventListener("click", function () {
         location.href = "http://fundacionfuper.org/";
     });
 }
@@ -236,7 +253,7 @@ function playGame() {
     hide("gameVideoScreen");
     show("countVideoScreen");
     countVideo.play();
-    countVideo.onended = function() {
+    countVideo.onended = function () {
         hide("countVideoScreen");
         backgroundMusic.play();
         backgroundMusic.volume = 0.5;
@@ -337,7 +354,7 @@ function playAgain() {
     hide("playAgain");
     show("countVideoScreen");
     countVideo.play();
-    countVideo.onended = function() {
+    countVideo.onended = function () {
         hide("countVideoScreen");
         backgroundMusic.play();
 
