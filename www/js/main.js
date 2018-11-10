@@ -1,6 +1,7 @@
 var lvlup = false;
 var countVideo, gameVideo, backgroundMusic, indexGame, unlockVideoSrc;
-
+var tutorial1=document.querySelector("#vtutorial1");
+var tutorial2=document.querySelector("#vtutorial2");
 var app = {
     initialize: function () {
         document.addEventListener("deviceready", this.onDeviceReady.bind(this), false);
@@ -55,25 +56,25 @@ function init() {
         backgroundMusic.volume = 0.1;
         backgroundMusic.play();
     };
-
+    
     jugarButton = document.querySelector("#jugarButton");
     jugarButton.addEventListener("click", function () {
-
-        hide("menup");
-        show("tutorial1");
         backgroundMusic.pause();
-        document.getElementById("vtutorial1").play();
-
-        document.getElementById("vtutorial1").onended = function(){
+        hide("menup");
+        show("tutorial");
+        tutorial1.play();
+        tutorial1.style.display = "block";
+        tutorial2.style.display="none";
+        
+        tutorial1.onended = function(){
             hide("tutorial1");
             show("tutorial2");
-            document.getElementById("vtutorial2").play();
-
-            document.getElementById("vtutorial2").onended = function(){
-                hide("tutorial2");
-                show("levelp");
-            }
+            tutorial2.play();
+            tutorial2.style.display = "block";
+    
+            tutorial2.onended=toMenu;
         }
+        
     });
      
     aboutButton = document.querySelector("#aboutButton");
@@ -402,4 +403,13 @@ function getUnlockedCharacters() {
         document.querySelector("#btnRayo").style.visibility = "visible";
     }
     gameVideo.pause();
+}
+
+function toMenu(){
+    backgroundMusic.play();
+    tutorial1.pause();
+    tutorial2.pause();
+    hide("tutorial");
+    show("levelp");
+   
 }
