@@ -88,7 +88,7 @@ function init() {
     });
 
     levelpBackButton = document.querySelector("#levelpBackButton");
-    levelpBackButton.addEventListener("click", navigate("levelp", "menup"));
+    levelpBackButton.addEventListener("click", navigate("levelp", "aboutp"));
 
     antonymsScreenBackButton = document.querySelector("#antonymsScreenBackButton");
     antonymsScreenBackButton.addEventListener("click", function() {
