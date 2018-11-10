@@ -104,6 +104,11 @@ function init() {
         openGame(4, "assets/video/RayoIntro.mp4", "assets/video/RayoUnlock.mp4");
     });
 
+    runnerScreenBackButton = document.querySelector("#runnerScreenBackButton");
+    runnerScreenBackButton.addEventListener("click", function () {
+        closeGame();
+    });
+
     levelpBackButton = document.querySelector("#levelpBackButton");
     levelpBackButton.addEventListener("click", navigate("levelp", "aboutp"));
 

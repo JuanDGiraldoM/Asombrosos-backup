@@ -169,17 +169,16 @@ function openRunnerGame() {
 			xBarrelVelocity = 0;
 			victory("Rayo",1);
 			barraEnergia.style.display = "none";
-			
 		}
 
 		setTimeout(main, 10);
 	};
 
 	//finalizeGame(true);
-
+	drawRect(barraX, barraY, 220, 27, barraRadius);
 	startup();
 	main();
-	drawRect(barraX, barraY, 220, 27, barraRadius);
+	
 };
 
 function closeRunnerGame(){
@@ -187,6 +186,4 @@ function closeRunnerGame(){
 	canvas.innerHTML = "";
 	var barraEnergia = document.getElementById('barraEnergia');
 	barraEnergia.style.display = "none";
-
-
 }
