@@ -14,7 +14,7 @@ body {
     Navigation
     ========================================================================== */
 
-.phoneload video {
+video {
     height: 100%;
     width: 100%;
 }
@@ -132,11 +132,6 @@ body {
     position: fixed;
     bottom: 10%;
     right: 10%;
-}
-
-.phoneVideo video {
-    height: 100%;
-    width: 100%;
 }
 
 audio {
@@ -268,8 +263,4 @@ section {
     width: 22%;
     top: 60%;
     left: 39%;
-}
-.tutorialVideo video{
-    width: 100%;
-    height: 100%;
 }
