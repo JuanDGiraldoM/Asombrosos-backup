@@ -74,7 +74,7 @@ function init() {
                 show("levelp");
             }
         }
-     });
+    });
      
     aboutButton = document.querySelector("#aboutButton");
     aboutButton.addEventListener("click", navigate("menup", "aboutp"));
