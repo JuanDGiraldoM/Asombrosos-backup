@@ -174,7 +174,13 @@ function finalizeWordsGame() {
                 finalizeGame(true);
             }, 600);
         } else {
-            victory("Susy", 0);
+            var susyUnlocked = localStorage.getItem("Susy");
+            if(susyUnlocked == 0){
+                victory("Susy",1);
+            }
+            else{
+                victory("Susy",0); 
+            }
             setTimeout(function() {
                 finalizeGame(false);
             }, 600);

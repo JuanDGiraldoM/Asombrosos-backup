@@ -136,7 +136,13 @@ function maCountEnd(){
   var screen=document.getElementById('antonymsScreen');
   if(MA_COUNT != MA_COUNTFINAL && screen.style.display == 'block'){
     console.log("Perdiste");
-    victory("Gatuna",0);
+    var gatunaUnlocked = localStorage.getItem("Gatuna");
+    if(gatunaUnlocked == 1){
+      victory("Gatuna",1);
+    }
+    else{
+      victory("Gatuna",0);
+    }
     finalizeGame(false);
   }
 }
