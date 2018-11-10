@@ -1,6 +1,7 @@
 #balloonGame {
     width: 100%;
     height: 100%;
+    font-family: "Carnival Centenary";
     background-image: url("../assets/img/balloons/balBackground.png");
     background-size: cover;
     position: fixed;
@@ -28,21 +29,19 @@
     bottom: -300px;
 }
 
-.balPartialScore {
-    display: flex;
-    position: fixed;
-    justify-content: flex-end;
-    font-size: 200%;
-    color: rgb(232, 62, 85);
-    font-family: "Carnival Centenary";
-}
-
 #balloonsScore {
-    margin: 8% 85%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 2%;
+    height: 0;
+    font-size: 1.5rem;
+    color: #e83e55;
+    text-shadow: 2px 2px 0 #94528f;
 }
 
-#balScoreTitle {
-    margin: 2% 75%;
+#balloonsScore p {
+    margin: 0;
+    font-size: 150%;
 }
 
 #toScore {
