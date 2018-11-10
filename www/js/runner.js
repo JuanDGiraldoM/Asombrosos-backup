@@ -1,4 +1,3 @@
-// document.addEventListener("DOMContentLoaded", function(event) {
 function openRunnerGame() { 
     var canvas = document.getElementById('runnerCanvas');
     var ctx = canvas.getContext('2d');
@@ -7,7 +6,9 @@ function openRunnerGame() {
 	var yLimit = cHeight*0.55;
 	var touchN = 0;
 	var frames = 0;
-    var collitionsN = 0;
+	var collitionsN = 0;
+	var victoria = false;
+	var cancelMain;
     
     // Variables barra de energia
 	var barraEnergia = document.getElementById('barraEnergia');
@@ -18,7 +19,7 @@ function openRunnerGame() {
 	var barraX = barraEnergiaLeft + 30;
 	var barraRadius = 20;
 	var barraWidth = 220;
-	var dmg = 1.33;
+	var dmg = 2;
     
     // Variables de personaje
 	var playerX = cWidth*0.15;
@@ -85,7 +86,7 @@ function openRunnerGame() {
 		ctx.fillRect(barraX + (barraRadius/2),barraY + (barraRadius/2),progress -barraRadius,27 - barraRadius);
 		if(progress <= 12){
 			ctx.clearRect(barraEnergiaLeft + 21, barraEnergiaTop, cWidth, 32);	
-			victory("Rayo",0);	
+			victory("Rayo",0);
 		}
 	};
 
@@ -167,12 +168,11 @@ function openRunnerGame() {
 		if (playerX + playerWidth*0.9 >= metaX && playerX + playerWidth*0.9 <= metaX + barrelWidth) {
 			xBarrelVelocity = 0;
 			victory("Rayo",1);
-			finalizeGame(true);
+			finalizar(true);
 		}
-
-		setTimeout(main, 10);
+		cancelMain = setTimeout(main, 10);
 	};
-
+	
 	startup();
 	main();
 	drawRect(barraX, barraY, 220, 27, barraRadius);
@@ -183,6 +183,9 @@ function closeRunnerGame(){
 	canvas.innerHTML = "";
 	var barraEnergia = document.getElementById('barraEnergia');
 	barraEnergia.style.display = "none";
+}
 
-
+function finalizar(tmp){
+	clearInterval(cancelMain);
+	finalizeGame(tmp);
 }
