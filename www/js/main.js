@@ -1,6 +1,6 @@
 var lvlup = false;
 var countVideo, gameVideo, backgroundMusic, indexGame, unlockVideoSrc;
-
+var tutorialVideo = document.querySelector("#tutorialVideo");
 var app = {
     initialize: function() {
         document.addEventListener("deviceready", this.onDeviceReady.bind(this), false);
@@ -45,6 +45,11 @@ function init() {
         };
     };
 
+    var videos = document.getElementsByTagName("video");
+    for (let i = 0; i < videos.length; i++) {
+        videos[i].poster = "assets/img/backgrounds/BackgroundVideo.png";
+    }
+
     // Navigation
     document.getElementById("loadp").style.display = "block";
     var splashScreen = document.getElementById("splashScreen");
@@ -57,7 +62,15 @@ function init() {
     };
 
     jugarButton = document.querySelector("#jugarButton");
-    jugarButton.addEventListener("click", navigate("menup", "levelp"));
+    jugarButton.addEventListener("click", function() {
+        backgroundMusic.pause();
+        hide("menup");
+        show("tutorial");
+        tutorialVideo.src = "assets/video/Tutorial1.mp4";
+        tutorialVideo.onclick = skipIntro1;
+        tutorialVideo.onended = skipIntro1;
+        tutorialVideo.play();
+    });
 
     aboutButton = document.querySelector("#aboutButton");
     aboutButton.addEventListener("click", navigate("menup", "aboutp"));
@@ -87,8 +100,13 @@ function init() {
         openGame(4, "assets/video/RayoIntro.mp4", "assets/video/RayoUnlock.mp4");
     });
 
+    runnerScreenBackButton = document.querySelector("#runnerScreenBackButton");
+    runnerScreenBackButton.addEventListener("click", function() {
+        closeGame();
+    });
+
     levelpBackButton = document.querySelector("#levelpBackButton");
-    levelpBackButton.addEventListener("click", navigate("levelp", "menup"));
+    levelpBackButton.addEventListener("click", navigate("levelp", "aboutp"));
 
     antonymsScreenBackButton = document.querySelector("#antonymsScreenBackButton");
     antonymsScreenBackButton.addEventListener("click", function() {
@@ -122,7 +140,7 @@ function init() {
     runnerScreenBackButton.addEventListener("click", navigate("ballonsScreen", "levelp"));
 
     aboutpBackButton = document.querySelector("#aboutpBackButton");
-    aboutpBackButton.addEventListener("click", navigate("aboutp", "menup"));
+    aboutpBackButton.addEventListener("click", navigate("aboutp", "levelp"));
 
     backButtonplayAgain = document.querySelector("#playAgainBackButton");
     backButtonplayAgain.addEventListener("click", navigate("playAgain", "levelp"));
@@ -380,4 +398,18 @@ function getUnlockedCharacters() {
         document.querySelector("#btnRayo").style.visibility = "visible";
     }
     gameVideo.pause();
+}
+
+function skipIntro1() {
+    tutorialVideo.src = "assets/video/Tutorial2.mp4";
+    tutorialVideo.play();
+    tutorialVideo.onclick = toMenu;
+    tutorialVideo.onended = toMenu;
+}
+
+function toMenu() {
+    backgroundMusic.play();
+    tutorialVideo.pause();
+    hide("tutorial");
+    show("levelp");
 }
