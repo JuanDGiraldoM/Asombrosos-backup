@@ -60,6 +60,7 @@ function openRunnerGame() {
 			xBarrelVelocity = -10;
 		},13000);
 	},1000);
+	
 
 	drawRect = function (x, y, w, h, radius) {
 	    var canvas = document.getElementById("runnerCanvas");
@@ -168,11 +169,14 @@ function openRunnerGame() {
 		if (playerX + playerWidth*0.9 >= metaX && playerX + playerWidth*0.9 <= metaX + barrelWidth) {
 			xBarrelVelocity = 0;
 			victory("Rayo",1);
-			finalizeGame(true);
+			barraEnergia.style.display = "none";
+			
 		}
 
 		setTimeout(main, 10);
 	};
+
+	//finalizeGame(true);
 
 	startup();
 	main();
