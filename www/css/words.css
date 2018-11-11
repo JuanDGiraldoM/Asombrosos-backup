@@ -27,6 +27,7 @@
 }
 
 #wordsScore {
+    overflow: visible;
     display: flex;
     padding: 0 2%;
     height: 0;
@@ -37,6 +38,7 @@
 }
 
 #wordsScore p {
+    overflow: visible;
     z-index: 1;
     margin: 0;
     font-size: 150%;

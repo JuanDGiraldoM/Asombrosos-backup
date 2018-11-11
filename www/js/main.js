@@ -201,6 +201,19 @@ function init() {
     btntoPage.addEventListener("click", function() {
         window.open("http://fundacionfuper.org/", "_blank");
     });
+
+    function openGame(index, introVideoSrc, unlockVidSrc) {
+        indexGame = index;
+        unlockVideoSrc = unlockVidSrc;
+        backgroundMusic.pause();
+        gameVideo.src = introVideoSrc;
+        hide("levelp");
+        show("gameVideoScreen");
+        gameVideo.style.display = "block";
+        gameVideo.load();
+        gameVideo.play();
+        gameVideo.onended = playGame;
+    }
 }
 
 function show(id) {
@@ -234,19 +247,6 @@ function toBackGatuna() {
 }
 
 //Game functions
-
-function openGame(index, introVideoSrc, unlockVidSrc) {
-    indexGame = index;
-    unlockVideoSrc = unlockVidSrc;
-    backgroundMusic.pause();
-    gameVideo.src = introVideoSrc;
-    hide("levelp");
-    show("gameVideoScreen");
-    gameVideo.style.display = "block";
-    gameVideo.load();
-    gameVideo.play();
-    gameVideo.onended = playGame;
-}
 
 function playGame() {
     gameVideo.onended = null;
