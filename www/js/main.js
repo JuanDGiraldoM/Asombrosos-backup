@@ -107,6 +107,10 @@ function init() {
     antonymsScreenBackButton.addEventListener("click", function() {
         closeGame();
     });
+    ballonsScreenBackButton = document.querySelector("#ballonsScreenBackButton");
+    ballonsScreenBackButton.addEventListener("click", function() {
+        closeGame();
+    });
 
     btnPlayAgain = document.querySelector("#btnPlayAgainDiv");
     btnPlayAgain.addEventListener("click", playAgain);
@@ -127,9 +131,6 @@ function init() {
         btnUnlockBack.style.display = "none";
         getUnlockedCharacters();
     });
-
-    ballonsScreenBackButton = document.querySelector("#ballonsScreenBackButton");
-    ballonsScreenBackButton.addEventListener("click", navigate("ballonsScreen", "levelp"));
 
     runnerScreenBackButton = document.querySelector("#runnerScreenBackButton");
     runnerScreenBackButton.addEventListener("click", ()=> {
