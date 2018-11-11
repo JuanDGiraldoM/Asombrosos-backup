@@ -320,7 +320,7 @@ function finalizeGame(isWinner) {
                 hide("wordsScreen");
                 break;
             case 3:
-                hide("ballonsScreen");
+                hide("balloonsScoreSection");
                 break;
             case 4:
                 hide("runnerScreen");
@@ -349,7 +349,7 @@ function closeGame() {
             break;
         case 3:
             endBalloonsGame();
-            hide("ballonsScreen");
+            hide("balloonsScoreSection");
             show("levelp");
             break;
         case 4:

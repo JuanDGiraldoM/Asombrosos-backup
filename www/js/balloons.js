@@ -37,7 +37,8 @@ function startBalloonGame() {
     balScoreSection.style.display="none";
     theBalloon.style.display="block";
     
-    this.balloons = 10;
+    
+    this.balloons = 50;
     this.balloonsArr = [];
     var height = window.innerHeight;
     var ancho = screen.height;
@@ -68,20 +69,15 @@ function startBalloonGame() {
             balloonsArr.push(this);
 
             this.animate();
+
+            image.addEventListener('click',tap);
+
         };
     }
 
-    
-    var manager = new Hammer.Manager(theBalloon);
-    var Tap = new Hammer.Tap({
-        taps: 1
-    });
-
-    manager.add(Tap);
-    manager.on("tap", tap);
     function tap(e) {
-        // balSound.load();
-        // balSound.play();
+        balSound.load();
+        balSound.play();
         e.target.classList.toggle("hidden");
         balPartialScore = hiddenBalloon.length;
         balScore.innerHTML = "<p>Puntaje: " + String(balPartialScore) + "</p>";
@@ -91,6 +87,7 @@ function startBalloonGame() {
 }
 
 function endBalloonsGame() {
+    
     theBalloon.style.display="none";
     balGameSection.classList.remove("animationIn");
     balGameSection.classList.add("animationOut");
@@ -99,25 +96,23 @@ function endBalloonsGame() {
     balScoreSection.classList.add("animationIn");
     backgroundMusic.pause();
     var milagroUnlocked = localStorage.getItem("Milagro");
-    if (balPartialScore == 0 && milagroUnlocked == 0) {
-        victory("Milagro", 0);
-
-    } else {
-        victory("Milagro", 1);
-        // finalizeGame(true);
-        // setTimeout(finalizeGame(true),3000);
+    if(balPartialScore > 0 && milagroUnlocked==true){
+        victory("Milagro",1);
+    }else if(balPartialScore!=0 || 
+        (balPartialScore != 0 && milagroUnlocked==false)){
+        setTimeout(videoVictoryGame, 5000);
+        victory("Milagro",1);
+    }else if(balPartialScore==0 && 
+        milagroUnlocked==1){
+        victory("Milagro",1);
+    }else if(balPartialScore==0 && 
+        milagroUnlocked==0){
+        victory("Milagro",0);
     }
-<<<<<<< HEAD
-   
-=======
-    setTimeout(videoVictoryGame, 5000);
->>>>>>> a4bbf084c44f8ce68fb7cb8741424bb9e4f1f098
+    theBalloon.classList.remove("bottomBalloon");
 }
 
 function videoVictoryGame() {
-    balScoreSection.classList.remove("animationIn");
-    balScoreSection.classList.add("animationOut");
-    balScoreSection.classList.add("animationIn");
     backgroundMusic.pause();
     finalizeGame(true);
 }
