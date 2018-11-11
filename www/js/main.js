@@ -100,18 +100,16 @@ function init() {
         openGame(4, "assets/video/RayoIntro.mp4", "assets/video/RayoUnlock.mp4");
     });
 
-<<<<<<< HEAD
     //runnerScreenBackButton = document.querySelector("#runnerScreenBackButton");
     //runnerScreenBackButton.addEventListener("click", function() {
     //    closeGame();
     //});
-=======
+
     runnerScreenBackButton = document.querySelector("#runnerScreenBackButton");
     runnerScreenBackButton.addEventListener("click", function() {
         closeGame();
         closeRunnerGame();
     });
->>>>>>> af0e5c665991781e9b1dcb8771e147f97de897c8
 
     levelpBackButton = document.querySelector("#levelpBackButton");
     levelpBackButton.addEventListener("click", navigate("levelp", "aboutp"));
