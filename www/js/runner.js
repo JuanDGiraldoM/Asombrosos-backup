@@ -1,4 +1,3 @@
-var cancelMain;
 var victoria = false;
 
 function openRunnerGame() { 
@@ -86,9 +85,11 @@ function openRunnerGame() {
 		ctx.lineWidth = barraRadius;
 		ctx.strokeRect(barraX + (barraRadius/2),barraY + (barraRadius/2),progress -barraRadius,27 - barraRadius);
 		ctx.fillRect(barraX + (barraRadius/2),barraY + (barraRadius/2),progress -barraRadius,27 - barraRadius);
-		if(progress <= 12){
+		if(progress <= 12 && victoria == false){
 			ctx.clearRect(barraEnergiaLeft + 21, barraEnergiaTop, cWidth, 32);	
-			// victory("Rayo",0);
+			victory("Rayo",0);
+			finalizeGame(false);
+			victoria = true;
 		}
 	};
 
@@ -189,9 +190,7 @@ function closeRunnerGame(){
 	canvas.innerHTML = "";
 	var barraEnergia = document.getElementById('barraEnergia');
 	barraEnergia.style.display = "none";
+	victoria = false;
+	clearInterval(main);
 }
 
-	if(victoria){
-		victory("Rayo",1);
-		finalizeGame(true);
-	}

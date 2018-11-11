@@ -372,6 +372,10 @@ function playAgain() {
                 show("ballonsScreen");
                 startBalloonGame();
                 break;
+            case 4: 
+                show("runnerScreen");
+                openRunnerGame();
+                break;
         }
     };
 }
