@@ -178,17 +178,16 @@ function openRunnerGame() {
 		setTimeout(main, 10);
 	};
 
-	//finalizeGame(true);
-	drawRect(barraX, barraY, 220, 27, barraRadius);
 	startup();
 	main();
 	
 };
 
 function closeRunnerGame(){
-    var canvas = document.getElementById('runnerCanvas');
+	console.log("cerrando juego runner");
+    let canvas = document.getElementById('runnerCanvas');
 	canvas.innerHTML = "";
-	var barraEnergia = document.getElementById('barraEnergia');
+	let barraEnergia = document.getElementById('barraEnergia');
 	barraEnergia.style.display = "none";
 	victoria = false;
 	clearInterval(main);
