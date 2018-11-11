@@ -101,4 +101,13 @@ function endBalloonsGame() {
         victory("Milagro", 1);
         // setTimeout(finalizeGame(true),3000); ;
     }
+    setTimeout(videoVictoryGame, 5000);
+}
+
+function videoVictoryGame() {
+    balScoreSection.classList.remove("animationIn");
+    balScoreSection.classList.add("animationOut");
+    balScoreSection.classList.add("animationIn");
+    backgroundMusic.pause();
+    finalizeGame(true);
 }
