@@ -100,16 +100,15 @@ function init() {
         openGame(4, "assets/video/RayoIntro.mp4", "assets/video/RayoUnlock.mp4");
     });
 
-    runnerScreenBackButton = document.querySelector("#runnerScreenBackButton");
-    runnerScreenBackButton.addEventListener("click", function() {
-        closeGame();
-    });
-
     levelpBackButton = document.querySelector("#levelpBackButton");
     levelpBackButton.addEventListener("click", navigate("levelp", "aboutp"));
 
     antonymsScreenBackButton = document.querySelector("#antonymsScreenBackButton");
     antonymsScreenBackButton.addEventListener("click", function() {
+        closeGame();
+    });
+    ballonsScreenBackButton = document.querySelector("#ballonsScreenBackButton");
+    ballonsScreenBackButton.addEventListener("click", function() {
         closeGame();
     });
 
@@ -133,11 +132,13 @@ function init() {
         getUnlockedCharacters();
     });
 
-    ballonsScreenBackButton = document.querySelector("#ballonsScreenBackButton");
-    ballonsScreenBackButton.addEventListener("click", navigate("ballonsScreen", "levelp"));
-
     runnerScreenBackButton = document.querySelector("#runnerScreenBackButton");
-    runnerScreenBackButton.addEventListener("click", navigate("ballonsScreen", "levelp"));
+    runnerScreenBackButton.addEventListener("click", ()=> {
+        //navigate("runnerScreen", "levelp");
+        console.log("cerro runner");
+        closeGame();
+
+    });
 
     aboutpBackButton = document.querySelector("#aboutpBackButton");
     aboutpBackButton.addEventListener("click", navigate("aboutp", "levelp"));
@@ -279,6 +280,11 @@ function playGame() {
     };
 }
 
+function endVideo() {
+    var vid = document.getElementById('gameVideo');
+    vid.currentTime = vid.duration;
+}
+
 function finalizeGame(isWinner) {
     backgroundMusic.pause();
     if (isWinner) {
@@ -286,7 +292,7 @@ function finalizeGame(isWinner) {
             case 1:
                 hide("antonymsScreen");
                 break;
-            case 2:
+            case 2:     
                 hide("wordsScreen");
                 break;
             case 3:
@@ -294,6 +300,7 @@ function finalizeGame(isWinner) {
                 break;
             case 4:
                 hide("runnerScreen");
+                closeRunnerGame();
                 break;
         }
         show("gameVideoScreen");
@@ -317,6 +324,7 @@ function finalizeGame(isWinner) {
                 break;
             case 4:
                 hide("runnerScreen");
+                closeRunnerGame();
                 break;
         }
         document.getElementById("playAgain").style.display = "block";
@@ -339,7 +347,7 @@ function closeGame() {
             hide("wordsScreen");
             show("levelp");
             break;
-        case 4:
+        case 3:
             endBalloonsGame();
             hide("ballonsScreen");
             show("levelp");

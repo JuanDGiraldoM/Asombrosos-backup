@@ -1,6 +1,8 @@
-var victoria = false;
-
 function openRunnerGame() {
+    var canvasNode = document.createElement('canvas');
+    canvasNode.setAttribute("id", "runnerCanvas");
+    canvasNode.setAttribute("class", "noPikachu");
+    document.getElementById("runnerScreen").appendChild(canvasNode);
     var canvas = document.getElementById("runnerCanvas");
     var ctx = canvas.getContext("2d");
     var cWidth = ctx.canvas.offsetWidth;
@@ -11,7 +13,7 @@ function openRunnerGame() {
     var collitionsN = 0;
 
     // Variables barra de energia
-    var barraEnergia = document.getElementById("barraEnergia");
+	var barraEnergia = document.getElementById("barraEnergia");
     var barraEnergiaLeft = barraEnergia.getBoundingClientRect().x;
     var barraEnergiaTop = barraEnergia.getBoundingClientRect().y;
     var progress = 224;
@@ -19,7 +21,7 @@ function openRunnerGame() {
     var barraX = barraEnergiaLeft + 30;
     var barraRadius = 20;
     var barraWidth = 220;
-    var dmg = 2;
+    var dmg = 3.5;
 
     // Variables de personaje
     var playerX = cWidth * 0.15;
@@ -37,13 +39,12 @@ function openRunnerGame() {
     var metaWidth = cWidth * ratioMetaW * 0.45;
     var metaHeight = cHeight * ratioMetaH * 0.45;
     var metaY = cHeight * 0.12;
-    var metaX = cWidth + 3200;
+    var metaX = cWidth + 3700;
 
     // Variables para los barriles
     var barrel = document.getElementById("barrel");
+    var barrelBig = document.getElementById("barrelBig");
 
-    var ratioW = 152 / cWidth;
-    var ratioH = 201 / cHeight;
     var barrelY = cHeight * 0.7;
     var xBarrelVelocity = 0;
     var ratioBarrelW = 152 / cWidth,
@@ -61,6 +62,17 @@ function openRunnerGame() {
         cWidth + 2300 + barrelWidth,
         cWidth + 2300 + barrelWidth * 2,
         cWidth + 2750
+    ];
+
+    var barrelBigY = cHeight * 0.61;
+    var ratioBarrelBigW = 164 / cWidth,
+        ratioBarrelBigH = 328 / cHeight;
+    var barrelBigWidth = cWidth * ratioBarrelBigW * 0.35;
+    var barrelBigHeight = cHeight * ratioBarrelBigH * 0.3;
+    var barrelsBigX = [
+        cWidth + 3000,
+        cWidth + 3000 + barrelBigWidth,
+        cWidth + 3000 + barrelBigWidth * 2,
     ];
 
     setTimeout(() => {
@@ -95,12 +107,7 @@ function openRunnerGame() {
         ctx.lineWidth = barraRadius;
         ctx.strokeRect(barraX + barraRadius / 2, barraY + barraRadius / 2, progress - barraRadius, 27 - barraRadius);
         ctx.fillRect(barraX + barraRadius / 2, barraY + barraRadius / 2, progress - barraRadius, 27 - barraRadius);
-        if (progress <= 12 && victoria == false) {
-            ctx.clearRect(barraEnergiaLeft + 21, barraEnergiaTop, cWidth, 32);
-            victory("Rayo", 0);
-            finalizeGame(false);
-            victoria = true;
-        }
+        
     };
 
     gifler("assets/img/runner/RAYO-CORRIENDO-PERSONAJE.gif").frames("canvas.noPikachu", onDrawFrame);
@@ -118,13 +125,18 @@ function openRunnerGame() {
             barrelsX[i] += xBarrelVelocity;
             ctx.drawImage(barrel, barrelsX[i], barrelY, barrelWidth, barrelHeight);
         }
-
+        for (var i = 0; i < barrelsBigX.length; i++) {
+            barrelsBigX[i] += xBarrelVelocity;
+            ctx.drawImage(barrelBig, barrelsBigX[i], barrelBigY, barrelBigWidth, barrelBigHeight);
+            
+        }
+        
         metaX += xBarrelVelocity;
         ctx.drawImage(meta, metaX, metaY, metaWidth, metaHeight);
         drawRect(barraX, barraY, barraWidth, 27, barraRadius);
 
         frames++;
-    }
+	}
 
     function startup() {
         var el = document.getElementsByTagName("canvas")[0];
@@ -132,7 +144,7 @@ function openRunnerGame() {
             "touchstart",
             () => {
                 if (touchN < 2) {
-                    yVelocity = -3;
+					yVelocity = -3.5;
                     playerY -= 10;
                 }
                 touchN++;
@@ -142,7 +154,7 @@ function openRunnerGame() {
     }
 
     gravity = function(velocity) {
-        return velocity + 0.055;
+        return velocity + 0.09;
     };
 
     clearScreen = function() {
@@ -153,11 +165,12 @@ function openRunnerGame() {
 
     main = function() {
         if (playerY == yLimit && yVelocity < 0) {
-        } else if (playerY < yLimit) {
+		} 
+		else if (playerY < yLimit) {
             yVelocity = gravity(yVelocity);
             playerY += yVelocity;
-        } else if (playerY == yLimit - 20) {
-            yVelocity = 3;
+        // } else if (playerY == yLimit - 10) {
+        //     yVelocity = 4;
         } else {
             touchN = 0;
         }
@@ -174,34 +187,35 @@ function openRunnerGame() {
                         progress = 11;
                     }
                     collitionsN++;
-                    // if (collitionsN > 8) {
-                    // }
+                    
                 } else {
                     collitionsN = 0;
                 }
             }
         }
 
-        if (playerX + playerWidth * 0.9 >= metaX && playerX + playerWidth * 0.9 <= metaX + barrelWidth && !victoria) {
+        if (playerX + playerWidth * 0.9 >= metaX) {
             xBarrelVelocity = 0;
-            barraEnergia.style.display = "none";
             victory("Rayo", 1);
             finalizeGame(true);
-            victoria = true;
-        }
-        setTimeout(main, 10);
-    };
+		}
+		if (progress <= 12) {
+			ctx.clearRect(barraEnergiaLeft + 21, barraEnergiaTop, cWidth, 32);
+			victory("Rayo", 0);
+			finalizeGame(false);
+		}
+        setTimeout(main, 5);
+	};
 
     startup();
     main();
+
 }
 
 function closeRunnerGame() {
-    console.log("cerrando juego runner");
-    let canvas = document.getElementById("runnerCanvas");
-    canvas.innerHTML = "";
-    let barraEnergia = document.getElementById("barraEnergia");
+    var canvas = document.getElementById("runnerCanvas");
     barraEnergia.style.display = "none";
-    victoria = false;
+    canvas.parentNode.removeChild(canvas);
     clearInterval(main);
+    console.log("funciona");
 }
