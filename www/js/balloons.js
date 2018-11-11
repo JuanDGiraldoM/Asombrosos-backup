@@ -20,8 +20,7 @@ var ballPos = [-1000, -950];
 var balSound;
 
 function startBalloonGame() {
-    balPartialScore = 0;
-    balFinalScore = 0;
+    
     balScore = document.querySelector("#balloonsScore");
     balFinalScore = document.querySelector("#balFinalScore");
     balGameSection = document.getElementById("balloonGame");
@@ -36,7 +35,7 @@ function startBalloonGame() {
     balScoreSection.classList.remove("animationIn");
     balScoreSection.style.display="none";
     theBalloon.style.display="block";
-    
+
     
     this.balloons = 50;
     this.balloonsArr = [];
@@ -65,7 +64,8 @@ function startBalloonGame() {
             image.className = "balloon";
             image.src = "assets/img/balloons/" + ballColours[Math.floor(Math.random() * ballColours.length)];
             image.style.left = Math.floor(Math.random() * 600) + "px";
-            document.getElementById("theBalloon").insertAdjacentElement("beforeend", image);
+            //document.getElementById("theBalloon").insertAdjacentElement("beforeend", image);
+            document.getElementById("theBalloon").appendChild(image);
             balloonsArr.push(this);
 
             this.animate();
@@ -87,7 +87,18 @@ function startBalloonGame() {
 }
 
 function endBalloonsGame() {
-    
+    var canvas = document.querySelector("#theBalloon");
+    canvas.innerHTML = "";
+    // var balloonId;
+    // for(k = 0; k < 50; k++)
+    // {
+    //     balloonId =  document.getElementById("balloon" + k);
+    //     if(balloonId.classList.contains("hidden") == true){
+    //         balloonId.classList.remove("hidden");
+    //         balloonId.parentNode.removeChild(balloonId);
+    //     }
+        
+    // }
     theBalloon.style.display="none";
     balGameSection.classList.remove("animationIn");
     balGameSection.classList.add("animationOut");
@@ -109,6 +120,8 @@ function endBalloonsGame() {
         milagroUnlocked==0){
         victory("Milagro",0);
     }
+    console.log(hiddenBalloon.length);
+    
     theBalloon.classList.remove("bottomBalloon");
 }
 
