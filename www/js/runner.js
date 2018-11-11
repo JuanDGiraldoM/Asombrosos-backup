@@ -1,3 +1,6 @@
+var cancelMain;
+var victoria = false;
+
 function openRunnerGame() { 
     var canvas = document.getElementById('runnerCanvas');
     var ctx = canvas.getContext('2d');
@@ -7,8 +10,6 @@ function openRunnerGame() {
 	var touchN = 0;
 	var frames = 0;
 	var collitionsN = 0;
-	var victoria = false;
-	var cancelMain;
     
     // Variables barra de energia
 	var barraEnergia = document.getElementById('barraEnergia');
@@ -87,7 +88,7 @@ function openRunnerGame() {
 		ctx.fillRect(barraX + (barraRadius/2),barraY + (barraRadius/2),progress -barraRadius,27 - barraRadius);
 		if(progress <= 12){
 			ctx.clearRect(barraEnergiaLeft + 21, barraEnergiaTop, cWidth, 32);	
-			victory("Rayo",0);
+			// victory("Rayo",0);
 		}
 	};
 
@@ -166,13 +167,14 @@ function openRunnerGame() {
 			}
 		}
 
-		if (playerX + playerWidth*0.9 >= metaX && playerX + playerWidth*0.9 <= metaX + barrelWidth) {
+		if (playerX + playerWidth*0.9 >= metaX && playerX + playerWidth*0.9 <= metaX + barrelWidth && !victoria) {
 			xBarrelVelocity = 0;
-			victory("Rayo",1);
-			finalizar(true);
 			barraEnergia.style.display = "none";
+			victory("Rayo",1);
+			finalizeGame(true);
+			victoria = true;
 		}
-		cancelMain = setTimeout(main, 10);
+		setTimeout(main, 10);
 	};
 
 	//finalizeGame(true);
@@ -189,7 +191,7 @@ function closeRunnerGame(){
 	barraEnergia.style.display = "none";
 }
 
-function finalizar(tmp){
-	clearInterval(cancelMain);
-	finalizeGame(tmp);
-}
+	if(victoria){
+		victory("Rayo",1);
+		finalizeGame(true);
+	}
