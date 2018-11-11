@@ -349,7 +349,7 @@ function closeGame() {
             break;
         case 3:
             endBalloonsGame();
-            hide("balloonsScoreSection");
+            hide("ballonsScreen");
             show("levelp");
             break;
         case 4:
