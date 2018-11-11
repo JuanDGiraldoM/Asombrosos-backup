@@ -93,7 +93,8 @@ function endBalloonsGame() {
     balloonGame.style.display = "none";
     balScoreSection.classList.add("animationIn");
     backgroundMusic.pause();
-    if (balPartialScore == 0) {
+    var milagroUnlocked = localStorage.getItem("Milagro");
+    if (balPartialScore == 0 && milagroUnlocked == 0) {
         victory("Milagro", 0);
 
     } else {
