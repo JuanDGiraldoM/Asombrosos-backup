@@ -372,7 +372,7 @@ function playAgain() {
                 show("ballonsScreen");
                 startBalloonGame();
                 break;
-            case 4: 
+            case 4:
                 show("runnerScreen");
                 openRunnerGame();
                 break;
