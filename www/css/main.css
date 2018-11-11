@@ -20,22 +20,22 @@ video {
 }
 
 .phonemenu {
-    background-image: url("../assets/img/backgrounds/BackgroundPantallaCarga.gif");
+    background-image: url("../assets/img/backgrounds/BackgroundSplashScreen.gif");
     background-size: cover;
 }
 
 .phonelevel {
-    background-image: url("../assets/img/backgrounds/BackgroundCasetasFeria.png");
+    background-image: url("../assets/img/backgrounds/BackgroundLevels.png");
     background-size: cover;
 }
 
 .phoneinfo {
-    background-image: url("../assets/img/backgrounds/BackgroundCreditos.png");
+    background-image: url("../assets/img/backgrounds/BackgroundCredits.png");
     background-size: cover;
 }
 
 .phoneabout {
-    background-image: url("../assets/img/backgrounds/BackgroundInfoSobreJuego.png");
+    background-image: url("../assets/img/backgrounds/BackgroundInfo.png");
     background-size: cover;
 }
 
@@ -45,12 +45,12 @@ video {
 }
 
 .phoneCredits {
-    background-image: url("../assets/img/backgrounds/BackgroundCreditos.png");
+    background-image: url("../assets/img/backgrounds/BackgroundCredits.png");
     background-size: cover;
 }
 
 .phoneagallery {
-    background: url("../assets/img/backgrounds/BackgroundGaleria.png");
+    background: url("../assets/img/backgrounds/BackgroundGallery.png");
     background-size: cover;
 }
 
@@ -153,7 +153,7 @@ audio {
 
 #susyCertificate {
     justify-content: flex-end;
-    background-image: url("../assets/img/navigation/certificado_susy.png");
+    background-image: url("../assets/img/navigation/CertSusy.png");
     height: 100%;
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -162,7 +162,7 @@ audio {
 
 #rayoCertificate {
     justify-content: flex-end;
-    background-image: url("../assets/img/navigation/certificado_rayo.png");
+    background-image: url("../assets/img/navigation/CertRayo.png");
     height: 100%;
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -171,7 +171,7 @@ audio {
 
 #milagroCertificate {
     height: 100%;
-    background-image: url("../assets/img/navigation/certificado_milagro.png");
+    background-image: url("../assets/img/navigation/CertMilagro.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     justify-content: flex-end;
@@ -180,7 +180,7 @@ audio {
 
 #gatunaCertificate {
     height: 100%;
-    background-image: url("../assets/img/navigation/certificado_gatuna.png");
+    background-image: url("../assets/img/navigation/CertGatuna.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     justify-content: flex-end;
