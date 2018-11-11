@@ -288,6 +288,11 @@ function playGame() {
     };
 }
 
+function endVideo() {
+    var vid = document.getElementById('gameVideo');
+    vid.currentTime = vid.duration;
+}
+
 function finalizeGame(isWinner) {
     backgroundMusic.pause();
     if (isWinner) {
