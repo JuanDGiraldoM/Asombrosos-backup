@@ -24,7 +24,11 @@
     visibility: hidden;
 }
 
-#theBalloon {
+/* #theBalloon {
+    position: absolute;
+    bottom: -300px;
+} */
+.bottomBalloon{
     position: absolute;
     bottom: -300px;
 }
