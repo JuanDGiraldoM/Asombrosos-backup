@@ -1,6 +1,8 @@
-var victoria = false;
-
 function openRunnerGame() {
+    var canvasNode = document.createElement('canvas');
+    canvasNode.setAttribute("id", "runnerCanvas");
+    canvasNode.setAttribute("class", "noPikachu");
+    document.getElementById("runnerScreen").appendChild(canvasNode);
     var canvas = document.getElementById("runnerCanvas");
     var ctx = canvas.getContext("2d");
     var cWidth = ctx.canvas.offsetWidth;
@@ -95,12 +97,12 @@ function openRunnerGame() {
         ctx.lineWidth = barraRadius;
         ctx.strokeRect(barraX + barraRadius / 2, barraY + barraRadius / 2, progress - barraRadius, 27 - barraRadius);
         ctx.fillRect(barraX + barraRadius / 2, barraY + barraRadius / 2, progress - barraRadius, 27 - barraRadius);
-        if (progress <= 12 && victoria == false) {
-            ctx.clearRect(barraEnergiaLeft + 21, barraEnergiaTop, cWidth, 32);
-            victory("Rayo", 0);
-            finalizeGame(false);
-            victoria = true;
-        }
+        //if (progress <= 12 && victoria == false) {
+        //    ctx.clearRect(barraEnergiaLeft + 21, barraEnergiaTop, cWidth, 32);
+        //    victory("Rayo", 0);
+        //    finalizeGame(false);
+        //    victoria = true;
+        //}
     };
 
     gifler("assets/img/runner/RAYO-CORRIENDO-PERSONAJE.gif").frames("canvas.noPikachu", onDrawFrame);
@@ -182,26 +184,24 @@ function openRunnerGame() {
             }
         }
 
-        if (playerX + playerWidth * 0.9 >= metaX && playerX + playerWidth * 0.9 <= metaX + barrelWidth && !victoria) {
+        if (playerX + playerWidth * 0.9 >= metaX && playerX + playerWidth * 0.9 <= metaX + barrelWidth) {
             xBarrelVelocity = 0;
             barraEnergia.style.display = "none";
             victory("Rayo", 1);
             finalizeGame(true);
-            victoria = true;
         }
         setTimeout(main, 10);
     };
 
     startup();
     main();
+
 }
 
 function closeRunnerGame() {
-    console.log("cerrando juego runner");
-    let canvas = document.getElementById("runnerCanvas");
-    canvas.innerHTML = "";
-    let barraEnergia = document.getElementById("barraEnergia");
+    var canvas = document.getElementById("runnerCanvas");
     barraEnergia.style.display = "none";
-    victoria = false;
+    canvas.parentNode.removeChild(canvas);
     clearInterval(main);
+    console.log("funciona");
 }

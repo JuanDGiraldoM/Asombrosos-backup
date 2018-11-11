@@ -100,10 +100,10 @@ function init() {
         openGame(4, "assets/video/RayoIntro.mp4", "assets/video/RayoUnlock.mp4");
     });
 
-    runnerScreenBackButton = document.querySelector("#runnerScreenBackButton");
-    runnerScreenBackButton.addEventListener("click", function() {
-        closeGame();
-    });
+    //runnerScreenBackButton = document.querySelector("#runnerScreenBackButton");
+    //runnerScreenBackButton.addEventListener("click", function() {
+    //    closeGame();
+    //});
 
     levelpBackButton = document.querySelector("#levelpBackButton");
     levelpBackButton.addEventListener("click", navigate("levelp", "aboutp"));
@@ -137,7 +137,10 @@ function init() {
     ballonsScreenBackButton.addEventListener("click", navigate("ballonsScreen", "levelp"));
 
     runnerScreenBackButton = document.querySelector("#runnerScreenBackButton");
-    runnerScreenBackButton.addEventListener("click", navigate("ballonsScreen", "levelp"));
+    runnerScreenBackButton.addEventListener("click", ()=> {
+        //navigate("runnerScreen", "levelp");
+        closeGame();
+    });
 
     aboutpBackButton = document.querySelector("#aboutpBackButton");
     aboutpBackButton.addEventListener("click", navigate("aboutp", "levelp"));
@@ -294,6 +297,7 @@ function finalizeGame(isWinner) {
                 break;
             case 4:
                 hide("runnerScreen");
+                closeRunnerGame();
                 break;
         }
         show("gameVideoScreen");
