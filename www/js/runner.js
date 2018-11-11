@@ -184,7 +184,6 @@ function openRunnerGame() {
 
         if (playerX + playerWidth * 0.9 >= metaX && playerX + playerWidth * 0.9 <= metaX + barrelWidth && !victoria) {
             xBarrelVelocity = 0;
-            barraEnergia.style.display = "none";
             victory("Rayo", 1);
             finalizeGame(true);
             victoria = true;
