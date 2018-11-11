@@ -39,13 +39,12 @@ function openRunnerGame() {
     var metaWidth = cWidth * ratioMetaW * 0.45;
     var metaHeight = cHeight * ratioMetaH * 0.45;
     var metaY = cHeight * 0.12;
-    var metaX = cWidth + 3200;
+    var metaX = cWidth + 3700;
 
     // Variables para los barriles
     var barrel = document.getElementById("barrel");
+    var barrelBig = document.getElementById("barrelBig");
 
-    var ratioW = 152 / cWidth;
-    var ratioH = 201 / cHeight;
     var barrelY = cHeight * 0.7;
     var xBarrelVelocity = 0;
     var ratioBarrelW = 152 / cWidth,
@@ -63,6 +62,17 @@ function openRunnerGame() {
         cWidth + 2300 + barrelWidth,
         cWidth + 2300 + barrelWidth * 2,
         cWidth + 2750
+    ];
+
+    var barrelBigY = cHeight * 0.61;
+    var ratioBarrelBigW = 164 / cWidth,
+        ratioBarrelBigH = 328 / cHeight;
+    var barrelBigWidth = cWidth * ratioBarrelBigW * 0.35;
+    var barrelBigHeight = cHeight * ratioBarrelBigH * 0.3;
+    var barrelsBigX = [
+        cWidth + 3000,
+        cWidth + 3000 + barrelBigWidth,
+        cWidth + 3000 + barrelBigWidth * 2,
     ];
 
     setTimeout(() => {
@@ -120,7 +130,12 @@ function openRunnerGame() {
             barrelsX[i] += xBarrelVelocity;
             ctx.drawImage(barrel, barrelsX[i], barrelY, barrelWidth, barrelHeight);
         }
-
+        for (var i = 0; i < barrelsBigX.length; i++) {
+            barrelsBigX[i] += xBarrelVelocity;
+            ctx.drawImage(barrelBig, barrelsBigX[i], barrelBigY, barrelBigWidth, barrelBigHeight);
+            
+        }
+        
         metaX += xBarrelVelocity;
         ctx.drawImage(meta, metaX, metaY, metaWidth, metaHeight);
         drawRect(barraX, barraY, barraWidth, 27, barraRadius);
@@ -184,7 +199,27 @@ function openRunnerGame() {
             }
         }
 
-        if (playerX + playerWidth * 0.9 >= metaX && playerX + playerWidth * 0.9 <= metaX + barrelWidth) {
+        for (var i = 0; i < barrelsBigX.length; i++) {
+            if (
+                playerX + playerWidth * 0.9 >= barrelsBigX[i] &&
+                playerX + playerWidth * 0.9 <= barrelsBigX[i] + barrelBigWidth
+            ) {
+                if (playerY + playerHeight * 0.95 >= barrelBigY) {
+                    console.log("chocaste" + barrelsBigX.length + "  progress: " + progress);
+                    progress -= dmg;
+                    if (progress < 16) {
+                        progress = 11;
+                    }
+                    collitionsN++;
+                    // if (collitionsN > 8) {
+                    // }
+                } else {
+                    collitionsN = 0;
+                }
+            }
+        }
+
+        if (playerX + playerWidth * 0.9 >= metaX) {
             xBarrelVelocity = 0;
             victory("Rayo", 1);
             finalizeGame(true);
