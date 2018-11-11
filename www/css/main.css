@@ -146,6 +146,8 @@ audio {
     gallery
     ========================================================================== */
 
+/* filter: brightness(0.5); */
+
 #characters {
     position: fixed;
     top: 38%;
@@ -158,6 +160,8 @@ audio {
 #susyCertificate {
     justify-content: flex-end;
     background-image: url("../assets/img/navigation/CertSusy.png");
+    margin: auto;
+    width: 75%;
     height: 100%;
     background-size: 100% 100%;
     background-repeat: no-repeat;
