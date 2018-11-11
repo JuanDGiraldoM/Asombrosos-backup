@@ -18,7 +18,7 @@ function init() {
     var levelpBackButton,
         antonymsScreenBackButton,
         wordsScreenBackButton,
-        ballonsScreenBackButton,
+        balloonsScreenBackButton,
         runnerScreenBackButton;
     var aboutpBackButton,
         galleryBackButton,
@@ -107,8 +107,8 @@ function init() {
     antonymsScreenBackButton.addEventListener("click", function() {
         closeGame();
     });
-    ballonsScreenBackButton = document.querySelector("#ballonsScreenBackButton");
-    ballonsScreenBackButton.addEventListener("click", function() {
+    balloonsScreenBackButton = document.querySelector("#balloonsScreenBackButton");
+    balloonsScreenBackButton.addEventListener("click", function() {
         closeGame();
     });
 
@@ -269,7 +269,7 @@ function playGame() {
                 openWordsGame();
                 break;
             case 3:
-                show("ballonsScreen");
+                show("balloonsScreen");
                 startBalloonGame();
                 break;
             case 4:
@@ -296,7 +296,7 @@ function finalizeGame(isWinner) {
                 hide("wordsScreen");
                 break;
             case 3:
-                hide("ballonsScreen");
+                hide("balloonsScreen");
                 break;
             case 4:
                 hide("runnerScreen");
@@ -349,7 +349,7 @@ function closeGame() {
             break;
         case 3:
             endBalloonsGame();
-            hide("balloonsScoreSection");
+            hide("balloonsScreen");
             show("levelp");
             break;
         case 4:
@@ -379,7 +379,7 @@ function playAgain() {
                 openWordsGame();
                 break;
             case 3:
-                show("ballonsScreen");
+                show("balloonsScreen");
                 startBalloonGame();
                 break;
             case 4:
