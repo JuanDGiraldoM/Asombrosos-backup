@@ -107,5 +107,17 @@ function endBalloonsGame() {
         // finalizeGame(true);
         // setTimeout(finalizeGame(true),3000);
     }
+<<<<<<< HEAD
    
+=======
+    setTimeout(videoVictoryGame, 5000);
+>>>>>>> a4bbf084c44f8ce68fb7cb8741424bb9e4f1f098
+}
+
+function videoVictoryGame() {
+    balScoreSection.classList.remove("animationIn");
+    balScoreSection.classList.add("animationOut");
+    balScoreSection.classList.add("animationIn");
+    backgroundMusic.pause();
+    finalizeGame(true);
 }

@@ -13,7 +13,7 @@ function openRunnerGame() {
     var collitionsN = 0;
 
     // Variables barra de energia
-    var barraEnergia = document.getElementById("barraEnergia");
+	var barraEnergia = document.getElementById("barraEnergia");
     var barraEnergiaLeft = barraEnergia.getBoundingClientRect().x;
     var barraEnergiaTop = barraEnergia.getBoundingClientRect().y;
     var progress = 224;
@@ -21,7 +21,7 @@ function openRunnerGame() {
     var barraX = barraEnergiaLeft + 30;
     var barraRadius = 20;
     var barraWidth = 220;
-    var dmg = 2;
+    var dmg = 3.5;
 
     // Variables de personaje
     var playerX = cWidth * 0.15;
@@ -107,12 +107,7 @@ function openRunnerGame() {
         ctx.lineWidth = barraRadius;
         ctx.strokeRect(barraX + barraRadius / 2, barraY + barraRadius / 2, progress - barraRadius, 27 - barraRadius);
         ctx.fillRect(barraX + barraRadius / 2, barraY + barraRadius / 2, progress - barraRadius, 27 - barraRadius);
-        //if (progress <= 12 && victoria == false) {
-        //    ctx.clearRect(barraEnergiaLeft + 21, barraEnergiaTop, cWidth, 32);
-        //    victory("Rayo", 0);
-        //    finalizeGame(false);
-        //    victoria = true;
-        //}
+        
     };
 
     gifler("assets/img/runner/RAYO-CORRIENDO-PERSONAJE.gif").frames("canvas.noPikachu", onDrawFrame);
@@ -141,7 +136,7 @@ function openRunnerGame() {
         drawRect(barraX, barraY, barraWidth, 27, barraRadius);
 
         frames++;
-    }
+	}
 
     function startup() {
         var el = document.getElementsByTagName("canvas")[0];
@@ -150,7 +145,7 @@ function openRunnerGame() {
             () => {
                 if (touchN < 2) {
 					yVelocity = -3.5;
-                    playerY -= 6;
+                    playerY -= 10;
                 }
                 touchN++;
             },
@@ -199,33 +194,18 @@ function openRunnerGame() {
             }
         }
 
-        for (var i = 0; i < barrelsBigX.length; i++) {
-            if (
-                playerX + playerWidth * 0.9 >= barrelsBigX[i] &&
-                playerX + playerWidth * 0.9 <= barrelsBigX[i] + barrelBigWidth
-            ) {
-                if (playerY + playerHeight * 0.95 >= barrelBigY) {
-                    console.log("chocaste" + barrelsBigX.length + "  progress: " + progress);
-                    progress -= dmg;
-                    if (progress < 16) {
-                        progress = 11;
-                    }
-                    collitionsN++;
-                    // if (collitionsN > 8) {
-                    // }
-                } else {
-                    collitionsN = 0;
-                }
-            }
-        }
-
         if (playerX + playerWidth * 0.9 >= metaX) {
             xBarrelVelocity = 0;
             victory("Rayo", 1);
             finalizeGame(true);
-        }
+		}
+		if (progress <= 12) {
+			ctx.clearRect(barraEnergiaLeft + 21, barraEnergiaTop, cWidth, 32);
+			victory("Rayo", 0);
+			finalizeGame(false);
+		}
         setTimeout(main, 5);
-    };
+	};
 
     startup();
     main();
