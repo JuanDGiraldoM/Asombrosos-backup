@@ -87,7 +87,6 @@ function startBalloonGame() {
 }
 
 function endBalloonsGame() {
-    
     theBalloon.style.display="none";
     balGameSection.classList.remove("animationIn");
     balGameSection.classList.add("animationOut");
