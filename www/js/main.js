@@ -103,6 +103,7 @@ function init() {
     runnerScreenBackButton = document.querySelector("#runnerScreenBackButton");
     runnerScreenBackButton.addEventListener("click", function() {
         closeGame();
+        closeRunnerGame();
     });
 
     levelpBackButton = document.querySelector("#levelpBackButton");
@@ -286,7 +287,7 @@ function finalizeGame(isWinner) {
             case 1:
                 hide("antonymsScreen");
                 break;
-            case 2:
+            case 2:     
                 hide("wordsScreen");
                 break;
             case 3:
