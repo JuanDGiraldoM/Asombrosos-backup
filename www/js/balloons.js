@@ -4,6 +4,7 @@ var hiddenBalloon;
 var balPartialScore = 0;
 var balFinalScore = 0;
 var theBalloon;
+theBalloon = document.getElementById("theBalloon");
 var ballColours = [
     "balMorado.png",
     "balRosa.png",
@@ -28,6 +29,10 @@ function startBalloonGame() {
     balScoreSection = document.querySelector("#balloonsScoreSection");
     balCountVideo = document.querySelector("#balCount");
     balSound = document.querySelector("#balExplotion");
+    hiddenBalloon = theBalloon.getElementsByClassName("hidden");
+    balGameSection.style.display="block";
+    theBalloon.style.position="absolute";
+    theBalloon.classList.add("bottomBalloon");
 
     this.balloons = 50;
     this.balloonsArr = [];
@@ -62,10 +67,8 @@ function startBalloonGame() {
         };
     }
 
-    theBalloon = document.getElementById("theBalloon");
-    hiddenBalloon = theBalloon.getElementsByClassName("hidden");
-    var balloons = document.querySelector("#theBalloon");
-    var manager = new Hammer.Manager(balloons);
+    
+    var manager = new Hammer.Manager(theBalloon);
     var Tap = new Hammer.Tap({
         taps: 1
     });
@@ -80,10 +83,10 @@ function startBalloonGame() {
         balScore.innerHTML = "<p>Puntaje: " + String(balPartialScore) + "</p>";
         balFinalScore.innerHTML = balPartialScore;
     }
-    setTimeout(endGame, 15000);
+    setTimeout(endBalloonsGame, 15000);
 }
 
-function endGame() {
+function endBalloonsGame() {
     balGameSection.classList.remove("animationIn");
     balGameSection.classList.add("animationOut");
     balScoreSection.style.display = "block";
@@ -92,8 +95,9 @@ function endGame() {
     backgroundMusic.pause();
     if (balPartialScore == 0) {
         victory("Milagro", 0);
+
     } else {
         victory("Milagro", 1);
+        // setTimeout(finalizeGame(true),3000); ;
     }
-    // setTimeout(finalizeGame(true),3000);
 }
