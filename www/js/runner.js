@@ -205,12 +205,3 @@ function closeRunnerGame() {
     victoria = false;
     clearInterval(main);
 }
-
-function closeRunnerGame() {
-    var canvas = document.getElementById("runnerCanvas");
-    canvas.innerHTML = "";
-    var barraEnergia = document.getElementById("barraEnergia");
-    barraEnergia.style.display = "none";
-    victoria = false;
-    clearTimeout(main);
-}
