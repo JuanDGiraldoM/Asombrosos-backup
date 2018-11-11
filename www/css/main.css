@@ -3,6 +3,10 @@
     src: url("../dist/Carnival\ Centenary.otf");
 }
 
+html {
+    overflow: hidden !important;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -61,6 +65,8 @@ video {
 }
 
 .imgleftback {
+    content: " ";
+    display: table;
     position: fixed;
     left: 1%;
     top: 1%;

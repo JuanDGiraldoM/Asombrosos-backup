@@ -169,14 +169,14 @@ function init() {
     aboutCreditsButton.addEventListener("click", navigate("aboutp", "creditsp"));
 
     gallery = document.querySelector(".gallery");
-    susyCertificate = document.querySelector("#susyCertificate");
-    rayoCertificate = document.querySelector("#rayoCertificate");
-    milagroCertificate = document.querySelector("#milagroCertificate");
-    gatunaCertificate = document.querySelector("#gatunaCertificate");
-    btnSusy = document.querySelector("#btnSusy");
-    btnRayo = document.querySelector("#btnRayo");
-    btnMilagro = document.querySelector("#btnMilagro");
-    btnGatuna = document.querySelector("#btnGatuna");
+    var susyCertificate = document.querySelector("#susyCertificate");
+    var rayoCertificate = document.querySelector("#rayoCertificate");
+    var milagroCertificate = document.querySelector("#milagroCertificate");
+    var gatunaCertificate = document.querySelector("#gatunaCertificate");
+    var btnSusy = document.querySelector("#btnSusy");
+    var btnRayo = document.querySelector("#btnRayo");
+    var btnMilagro = document.querySelector("#btnMilagro");
+    var btnGatuna = document.querySelector("#btnGatuna");
 
     btnSusy.addEventListener("click", () => {
         gallery.style.display = "none";
@@ -199,7 +199,7 @@ function init() {
 
     btntoPage = document.querySelector("#btnToFuper");
     btntoPage.addEventListener("click", function() {
-        location.href = "http://fundacionfuper.org/";
+        window.open("http://fundacionfuper.org/", "_blank");
     });
 }
 
@@ -302,9 +302,8 @@ function finalizeGame(isWinner) {
         gameVideo.style.display = "block";
         gameVideo.load();
         gameVideo.play();
-        var btnBack = document.getElementById("unlockBackButton");
+        document.getElementById("unlockBackButton").style.display = "block";
         var btnGallery = document.getElementById("unlockGalleryButton");
-        btnBack.style.display = "block";
         btnGallery.style.display = "block";
     } else {
         switch (indexGame) {
@@ -321,10 +320,8 @@ function finalizeGame(isWinner) {
                 hide("runnerScreen");
                 break;
         }
-        var playAgainScreen = document.getElementById("playAgain");
-        playAgainScreen.style.display = "block";
-        var playAgain = document.getElementById("againVideo");
-        playAgain.play();
+        document.getElementById("playAgain").style.display = "block";
+        document.getElementById("againVideo").play();
         getUnlockedCharacters();
     }
 }
@@ -391,20 +388,16 @@ function victory(character, unlocked) {
 }
 
 function getUnlockedCharacters() {
-    var milagroUnlocked = localStorage.getItem("Milagro");
-    var susyUnlocked = localStorage.getItem("Susy");
-    var rayoUnlocked = localStorage.getItem("Rayo");
-    var gatunaUnlocked = localStorage.getItem("Gatuna");
-    if (milagroUnlocked == 1) {
+    if (localStorage.getItem("Milagro") == 1) {
         document.querySelector("#btnMilagro").style.visibility = "visible";
     }
-    if (susyUnlocked == 1) {
+    if (localStorage.getItem("Susy") == 1) {
         document.querySelector("#btnSusy").style.visibility = "visible";
     }
-    if (gatunaUnlocked == 1) {
+    if (localStorage.getItem("Gatuna") == 1) {
         document.querySelector("#btnGatuna").style.visibility = "visible";
     }
-    if (rayoUnlocked == 1) {
+    if (localStorage.getItem("Rayo") == 1) {
         document.querySelector("#btnRayo").style.visibility = "visible";
     }
     gameVideo.pause();
