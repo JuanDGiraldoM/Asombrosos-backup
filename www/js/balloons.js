@@ -4,7 +4,6 @@ var hiddenBalloon;
 var balPartialScore = 0;
 var balFinalScore = 0;
 var theBalloon;
-theBalloon = document.getElementById("theBalloon");
 var ballColours = [
     "balMorado.png",
     "balRosa.png",
@@ -25,15 +24,20 @@ function startBalloonGame() {
     balFinalScore = 0;
     balScore = document.querySelector("#balloonsScore");
     balFinalScore = document.querySelector("#balFinalScore");
-    balGameSection = document.querySelector("#balloonGame");
-    balScoreSection = document.querySelector("#balloonsScoreSection");
+    balGameSection = document.getElementById("balloonGame");
+    balScoreSection = document.getElementById("balloonsScoreSection");
     balCountVideo = document.querySelector("#balCount");
     balSound = document.querySelector("#balExplotion");
+    theBalloon = document.getElementById("theBalloon");
     hiddenBalloon = theBalloon.getElementsByClassName("hidden");
     balGameSection.style.display="block";
-    theBalloon.style.position="absolute";
-    theBalloon.classList.add("bottomBalloon");
-
+    theBalloon.classList.toggle("bottomBalloon");
+    balGameSection.classList.remove("animationOut");
+    balScoreSection.classList.remove("animationIn");
+    balScoreSection.style.display="none";
+    theBalloon.style.display="block";
+    
+    
     this.balloons = 50;
     this.balloonsArr = [];
     var height = window.innerHeight;
@@ -48,10 +52,11 @@ function startBalloonGame() {
         this.id = balloonsArr.length;
 
         this.animate = function() {
-            TweenMax.to("#balloon" + this.id, ballTime[Math.floor(Math.random() * ballTime.length)], {
+            var tweenAnimation=TweenMax.to("#balloon" + this.id, ballTime[Math.floor(Math.random() * ballTime.length)], {
                 ease: Power0.easeOut,
                 top: ballPos[Math.floor(Math.random() * ballPos.length)]
             });
+            tweenAnimation.restart();
         };
 
         this.ball = function() {
@@ -64,17 +69,12 @@ function startBalloonGame() {
             balloonsArr.push(this);
 
             this.animate();
+
+            image.addEventListener('click',tap);
+
         };
     }
 
-    
-    var manager = new Hammer.Manager(theBalloon);
-    var Tap = new Hammer.Tap({
-        taps: 1
-    });
-
-    manager.add(Tap);
-    manager.on("tap", tap);
     function tap(e) {
         balSound.load();
         balSound.play();
@@ -87,6 +87,7 @@ function startBalloonGame() {
 }
 
 function endBalloonsGame() {
+    theBalloon.style.display="none";
     balGameSection.classList.remove("animationIn");
     balGameSection.classList.add("animationOut");
     balScoreSection.style.display = "block";
@@ -94,11 +95,23 @@ function endBalloonsGame() {
     balScoreSection.classList.add("animationIn");
     backgroundMusic.pause();
     var milagroUnlocked = localStorage.getItem("Milagro");
-    if (balPartialScore == 0 && milagroUnlocked == 0) {
-        victory("Milagro", 0);
-
-    } else {
-        victory("Milagro", 1);
-        // setTimeout(finalizeGame(true),3000); ;
+    if(balPartialScore > 0 && milagroUnlocked==true){
+        victory("Milagro",1);
+    }else if(balPartialScore!=0 || 
+        (balPartialScore != 0 && milagroUnlocked==false)){
+        setTimeout(videoVictoryGame, 5000);
+        victory("Milagro",1);
+    }else if(balPartialScore==0 && 
+        milagroUnlocked==1){
+        victory("Milagro",1);
+    }else if(balPartialScore==0 && 
+        milagroUnlocked==0){
+        victory("Milagro",0);
     }
+    theBalloon.classList.remove("bottomBalloon");
+}
+
+function videoVictoryGame() {
+    backgroundMusic.pause();
+    finalizeGame(true);
 }
