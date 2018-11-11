@@ -132,8 +132,8 @@ function openRunnerGame() {
             "touchstart",
             () => {
                 if (touchN < 2) {
-                    yVelocity = -3;
-                    playerY -= 10;
+					yVelocity = -3.5;
+                    playerY -= 6;
                 }
                 touchN++;
             },
@@ -142,7 +142,7 @@ function openRunnerGame() {
     }
 
     gravity = function(velocity) {
-        return velocity + 0.055;
+        return velocity + 0.09;
     };
 
     clearScreen = function() {
@@ -153,11 +153,12 @@ function openRunnerGame() {
 
     main = function() {
         if (playerY == yLimit && yVelocity < 0) {
-        } else if (playerY < yLimit) {
+		} 
+		else if (playerY < yLimit) {
             yVelocity = gravity(yVelocity);
             playerY += yVelocity;
-        } else if (playerY == yLimit - 20) {
-            yVelocity = 3;
+        // } else if (playerY == yLimit - 10) {
+        //     yVelocity = 4;
         } else {
             touchN = 0;
         }
@@ -174,8 +175,7 @@ function openRunnerGame() {
                         progress = 11;
                     }
                     collitionsN++;
-                    // if (collitionsN > 8) {
-                    // }
+                    
                 } else {
                     collitionsN = 0;
                 }
@@ -188,7 +188,7 @@ function openRunnerGame() {
             finalizeGame(true);
             victoria = true;
         }
-        setTimeout(main, 10);
+        setTimeout(main, 5);
     };
 
     startup();
