@@ -324,6 +324,7 @@ function finalizeGame(isWinner) {
                 break;
             case 4:
                 hide("runnerScreen");
+                closeRunnerGame();
                 break;
         }
         document.getElementById("playAgain").style.display = "block";

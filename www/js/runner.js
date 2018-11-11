@@ -21,7 +21,7 @@ function openRunnerGame() {
     var barraX = barraEnergiaLeft + 30;
     var barraRadius = 20;
     var barraWidth = 220;
-    var dmg = 2.5;
+    var dmg = 3.5;
 
     // Variables de personaje
     var playerX = cWidth * 0.15;
