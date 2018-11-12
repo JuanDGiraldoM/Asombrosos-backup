@@ -1,12 +1,13 @@
+var wordsWinner = false,
+    wordsActive = false;
+
 function openWordsGame() {
-    (height = window.innerHeight), (width = window.innerWidth);
-    wordsContainer = document.querySelector(".wordsContainer");
-    wordScreen = document.querySelector("#wordsScreen");
-    winner = false;
-    active = false;
-    wordsScore = 0;
-    timeFall = 8;
-    timeLaunch = 1250;
+    var height = window.innerHeight,
+        width = window.innerWidth,
+        wordsContainer = document.querySelector(".wordsContainer"),
+        wordsScore = 0,
+        timeFall = 8,
+        timeLaunch = 1250;
     wordsContainer.style.visibility = "visible";
     animateWords();
     updateScore();
@@ -131,8 +132,9 @@ function openWordsGame() {
                     validateScore();
                 } else if (posCircleY >= positionSusy.bottom && !word.className.includes("animated")) {
                     word.className = "word animated flash faster";
-                    winner = false;
-                    active = true;
+                    shakeVibration();
+                    wordsWinner = false;
+                    wordsActive = true;
                     setTimeout(finalizeWordsGame, 500);
                 }
             });
@@ -152,10 +154,14 @@ function openWordsGame() {
 
     function validateScore() {
         if (wordsScore >= 100) {
-            winner = true;
-            active = true;
+            wordsWinner = true;
+            wordsActive = true;
             finalizeWordsGame();
         }
+    }
+
+    function shakeVibration() {
+        navigator.vibrate([100, 50, 100]);
     }
 }
 
@@ -166,20 +172,19 @@ function finalizeWordsGame() {
     var canvas = document.querySelector("#words");
     canvas.innerHTML = "";
 
-    if (active) {
-        active = false;
-        if (winner) {
+    if (wordsActive) {
+        wordsActive = false;
+        if (wordsWinner) {
             victory("Susy", 1);
             setTimeout(function() {
                 finalizeGame(true);
             }, 600);
         } else {
             var susyUnlocked = localStorage.getItem("Susy");
-            if(susyUnlocked == 0){
-                victory("Susy",1);
-            }
-            else{
-                victory("Susy",0); 
+            if (susyUnlocked == 0) {
+                victory("Susy", 1);
+            } else {
+                victory("Susy", 0);
             }
             setTimeout(function() {
                 finalizeGame(false);
