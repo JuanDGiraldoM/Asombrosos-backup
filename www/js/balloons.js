@@ -63,7 +63,7 @@ function startBalloonGame() {
     }
     gameTime=setTimeout(endBalloonsGame, 15000);
 }
-
+var showGalleryTime;
 function endBalloonsGame() {
     clearInterval(gameTime);
     theBalloon.innerHTML = "";
@@ -76,17 +76,22 @@ function endBalloonsGame() {
     backgroundMusic.pause();
     var milagroUnlocked = localStorage.getItem("Milagro");
     if (balPartialScore > 0 && milagroUnlocked == true) {
+        showGalleryTime = setTimeout(showGallery,7000);
         victory("Milagro", 1);
     } else if (balPartialScore != 0 || (balPartialScore != 0 && milagroUnlocked == false)) {
         setTimeout(videoVictoryGame, 5000);
         victory("Milagro", 1);
-    } else if (balPartialScore == 0 && milagroUnlocked == 1) {
+    } else if (balPartialScore == 0 && milagroUnlocked == true) {
+        showGalleryTime = setTimeout(showGallery,7000);
         victory("Milagro", 1);
-    } else if (balPartialScore == 0 && milagroUnlocked == 0) {
-        victory("Milagro", 0);
+    } else if (balPartialScore == 0 && milagroUnlocked == false) {
+        showGalleryTime = setTimeout(showGallery,7000);
+        showGalleryTime = victory("Milagro", 0);
+        
     }
     theBalloon.classList.remove("bottomBalloon");
     balScore.style.visibility = "hidden";
+        
 }
 
 function videoVictoryGame() {
@@ -120,4 +125,6 @@ function resetGame() {
     theBalloon.style.display = "block";
     balScore.style.visibility = "visible";
     balScores.innerHTML = "<p>Puntaje: 0</p>";
+    balFinalScore.innerHTML=0;
+    clearInterval(showGalleryTime);
 }

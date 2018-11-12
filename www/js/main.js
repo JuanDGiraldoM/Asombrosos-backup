@@ -436,3 +436,14 @@ function toMenu() {
     hide("tutorial");
     show("levelp");
 }
+
+function showGallery(){
+    switch (indexGame) {
+        case 3:
+            hide("balloonsScreen");
+            show("galleryp");
+            break;
+    }
+
+    getUnlockedCharacters();
+}
