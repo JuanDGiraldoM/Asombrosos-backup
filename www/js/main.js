@@ -11,6 +11,7 @@ var app = {
     },
     receivedEvent: function(id) {}
 };
+var musicOn = true;
 app.initialize();
 
 function init() {
@@ -155,8 +156,9 @@ function init() {
         getUnlockedCharacters();
     });
 
-    gallerypSoundOffButton = document.querySelector("#bsoundoff");
+    gallerypSoundOffButton = document.querySelector("#bToggleSound");
     gallerypSoundOffButton.addEventListener("click", function() {
+<<<<<<< HEAD
 
         backgroundMusic.pause();
     });
@@ -166,8 +168,20 @@ function init() {
 
         backgroundMusic.play();
     });
+=======
+       
+       if(musicOn) {
+           backgroundMusic.pause();
+           gallerypSoundOffButton.src = "assets/img/buttons/SoundOff.png";      
+       } else {           
+           backgroundMusic.play();
+           gallerypSoundOffButton.src = "assets/img/buttons/SoundOn.png";  
+       }
+>>>>>>> 38fa5e902a9675b26bfea0b5c6763b3b78aa24b5
 
+       musicOn = !musicOn;
 
+    });
 
     fuperButton = document.querySelector("#btnFuper");
     fuperButton.addEventListener("click", navigate("aboutp", "fuperp"));

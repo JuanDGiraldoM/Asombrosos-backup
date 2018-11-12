@@ -80,15 +80,7 @@ video {
    
 }
 
-#bsoundon {
-    position: fixed;
-    left: 83%;
-    top: 1%;
-    height: 13%;
-    
-}
-
-#bsoundoff {
+#bToggleSound {
     position: fixed;
     left: 91%;
     top: 1%;
