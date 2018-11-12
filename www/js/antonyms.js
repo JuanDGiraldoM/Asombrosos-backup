@@ -11,6 +11,7 @@ var changeCard;
 var cardHeight;
 var cardWidth;
 var cardsArray;
+var ma_fn;
 
 function openAntonymsGame(){
 
@@ -21,12 +22,16 @@ function openAntonymsGame(){
     }
 
     TweenMax.killAll();
-
+    ma_currentImg=undefined;
     MA_COUNT=0;
     MA_PAIRS = 4;
     renderCards();
     setCardsDimensions();
-    setTimeout(maCountEnd,20000);
+    //setTimeout(maCountEnd,20000);
+
+    ma_fn=setTimeout(function(){
+      maCountEnd();
+    },20000);
 
 
 }
@@ -116,6 +121,7 @@ function completePairs() {
   if(MA_COUNT == MA_COUNTFINAL && MA_PAIRS == 0){
       console.log("Ganaste");
       victory("Gatuna",1);
+      clearTimeout(ma_fn);
       finalizeGame(true);
   }
 }
