@@ -125,7 +125,8 @@ function openRunnerGame() {
         ctx.canvas.height = ctx.canvas.offsetHeight;
 
         ctx.globalCompositeOperation = "source-over";
-        ctx.drawImage(frame.buffer, playerX, playerY, playerWidth, playerHeight);
+		ctx.drawImage(frame.buffer, playerX, playerY, playerWidth, playerHeight);
+        drawRect(barraX, barraY, barraWidth, 27, barraRadius);		
         for (var i = 0; i < barrelsX.length; i++) {
             barrelsX[i] += xBarrelVelocity;
             ctx.drawImage(barrel, barrelsX[i], barrelY, barrelWidth, barrelHeight);
@@ -138,7 +139,6 @@ function openRunnerGame() {
         
         metaX += xBarrelVelocity;
         ctx.drawImage(meta, metaX, metaY, metaWidth, metaHeight);
-        drawRect(barraX, barraY, barraWidth, 27, barraRadius);
 
         frames++;
 	}
