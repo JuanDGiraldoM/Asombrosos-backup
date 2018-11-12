@@ -35,7 +35,7 @@ function startBalloonGame() {
                     top: ballPos[Math.floor(Math.random() * ballPos.length)]
                 }
             );
-            tweenAnimation.restart();
+            //tweenAnimation.restart();
         };
 
         this.ball = function() {
