@@ -34,7 +34,7 @@ video {
 }
 
 .phoneinfo {
-    background-image: url("../assets/img/backgrounds/BackgroundCredits.png");
+    background-image: url("../assets/img/credits/Credits1.png");
     background-size: cover;
 }
 
@@ -49,13 +49,28 @@ video {
 }
 
 .phoneCredits {
-    background-image: url("../assets/img/backgrounds/BackgroundCredits.png");
+    background-image: url("../assets/img/credits/Credits1.png");
     background-size: cover;
 }
 
 .phoneagallery {
     background: url("../assets/img/backgrounds/BackgroundGallery.png");
     background-size: cover;
+}
+
+.creditsButtons {
+    position: fixed;
+    width: 10%;
+    top: 43%;
+}
+
+#creditsBack {
+    visibility: hidden;
+    left: 1%;
+}
+
+#creditsNext {
+    right: 1%;
 }
 
 #btnPlay {
@@ -77,7 +92,6 @@ video {
     left: 9%;
     top: 1%;
     height: 13%;
-   
 }
 
 #bToggleSound {

@@ -189,6 +189,22 @@ function init() {
     creditsBackButton = document.querySelector("#creditsBackButton");
     creditsBackButton.addEventListener("click", navigate("creditsp", "aboutp"));
 
+    creditsScreen = document.querySelector("#creditsp");
+    creditsNextButton = document.querySelector("#creditsNext");
+    creditsBackButton = document.querySelector("#creditsBack");
+
+    creditsNextButton.addEventListener("click", () => {
+        creditsScreen.style.backgroundImage = "url('assets/img/credits/Credits2.png')";
+        creditsNextButton.style.visibility = "hidden";
+        creditsBackButton.style.visibility = "visible";
+    });
+
+    creditsBackButton.addEventListener("click", () => {
+        creditsScreen.style.backgroundImage = "url('assets/img/credits/Credits1.png')";
+        creditsNextButton.style.visibility = "visible";
+        creditsBackButton.style.visibility = "hidden";
+    });
+
     aboutCreditsButton = document.querySelector("#btnCredits");
     aboutCreditsButton.addEventListener("click", navigate("aboutp", "creditsp"));
 
