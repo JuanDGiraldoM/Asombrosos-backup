@@ -11,7 +11,6 @@ var app = {
     },
     receivedEvent: function(id) {}
 };
-var musicOn = true;
 app.initialize();
 
 function init() {
@@ -32,6 +31,7 @@ function init() {
         btnPlayAgain,
         btnUnlockBack,
         btnUnlockGallery;
+    var gallerypSoundOffButton;
     var btntoPage;
     gameVideo = document.getElementById("gameVideo");
     countVideo = document.getElementById("countVideo");
@@ -56,9 +56,14 @@ function init() {
     splashScreen.onended = function() {
         document.getElementById("loadp").style.display = "none";
         document.getElementById("menup").style.display = "block";
-        backgroundMusic.volume = 0.1;
-        backgroundMusic.play();
+        backgroundMusic.volume = 0.5;
+        playBackgroundMusic();
     };
+
+    gallerypSoundOffButton = document.querySelector("#bToggleSound");
+    gallerypSoundOffButton.src = localStorage.getItem("Muted")
+        ? "assets/img/buttons/SoundOff.png"
+        : "assets/img/buttons/SoundOn.png";
 
     jugarButton = document.querySelector("#jugarButton");
     jugarButton.addEventListener("click", function() {
@@ -118,12 +123,8 @@ function init() {
     btnUnlockBack = document.getElementById("unlockBackButton");
     btnUnlockBack.addEventListener("click", function() {
         gameVideo.pause();
-        backgroundMusic.volume = 0.1;
-        if (musicOn == false) {
-            backgroundMusic.pause();
-        } else {
-            backgroundMusic.play();
-        }
+        backgroundMusic.volume = 0.5;
+        playBackgroundMusic();
         hide("gameVideoScreen");
         show("levelp");
         this.style.display = "none";
@@ -165,17 +166,17 @@ function init() {
         getUnlockedCharacters();
     });
 
-    gallerypSoundOffButton = document.querySelector("#bToggleSound");
     gallerypSoundOffButton.addEventListener("click", function() {
-        if (musicOn) {
-            backgroundMusic.pause();
-            gallerypSoundOffButton.src = "assets/img/buttons/SoundOff.png";
+        if (localStorage.getItem("Muted")) {
+            localStorage.setItem("Muted", 0);
+            playBackgroundMusic();
         } else {
-            backgroundMusic.play();
-            gallerypSoundOffButton.src = "assets/img/buttons/SoundOn.png";
+            localStorage.setItem("Muted", 1);
+            backgroundMusic.pause();
         }
-
-        musicOn = !musicOn;
+        gallerypSoundOffButton.src = localStorage.getItem("Muted")
+            ? "assets/img/buttons/SoundOff.png"
+            : "assets/img/buttons/SoundOn.png";
     });
 
     fuperButton = document.querySelector("#btnFuper");
@@ -284,12 +285,8 @@ function playGame() {
     countVideo.play();
     countVideo.onended = function() {
         hide("countVideoScreen");
-        if (musicOn == false) {
-            backgroundMusic.pause();
-        } else {
-            backgroundMusic.play();
-        }
-        backgroundMusic.volume = 0.5;
+        playBackgroundMusic();
+        backgroundMusic.volume = 1;
         switch (indexGame) {
             case 1:
                 show("antonymsScreen");
@@ -313,14 +310,6 @@ function playGame() {
 
 function finalizeGame(isWinner) {
     backgroundMusic.pause();
-
-    /*if(musicOn == false) {
-            backgroundMusic.pause();
-            
-        } else {
-            backgroundMusic.play();
-        }*/
-
     if (isWinner) {
         switch (indexGame) {
             case 1:
@@ -371,7 +360,7 @@ function finalizeGame(isWinner) {
 }
 
 function closeGame() {
-    backgroundMusic.volume = 0.1;
+    backgroundMusic.volume = 0.5;
     gameVideo.pause();
 
     switch (indexGame) {
@@ -404,12 +393,7 @@ function playAgain() {
     countVideo.play();
     countVideo.onended = function() {
         hide("countVideoScreen");
-        if (musicOn == false) {
-            backgroundMusic.pause();
-        } else {
-            backgroundMusic.play();
-        }
-
+        playBackgroundMusic();
         switch (indexGame) {
             case 1:
                 show("antonymsScreen");
@@ -459,7 +443,7 @@ function skipIntro1() {
 }
 
 function toMenu() {
-    backgroundMusic.play();
+    playBackgroundMusic();
     tutorialVideo.pause();
     hide("tutorial");
     show("levelp");
@@ -474,4 +458,10 @@ function showGallery() {
     }
 
     getUnlockedCharacters();
+}
+
+function playBackgroundMusic() {
+    if (!localStorage.getItem("Muted")) {
+        backgroundMusic.play();
+    }
 }

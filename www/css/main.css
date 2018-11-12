@@ -169,7 +169,8 @@ audio {
     ========================================================================== */
 
 .darkness {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("../assets/img/backgrounds/BackgroundGallery.png");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+        url("../assets/img/backgrounds/BackgroundGallery.png");
 }
 
 #characters {
@@ -269,6 +270,7 @@ section {
     position: absolute;
     top: 61%;
     left: 23%;
+    z-index: 1;
 }
 
 #ugb {
