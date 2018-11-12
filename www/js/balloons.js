@@ -14,11 +14,9 @@ var ballPos = [-1000, -950];
 var balScores = document.querySelector("#balloonsScore");
 function startBalloonGame() {
     resetGame();
-    
+
     this.balloons = 50;
     this.balloonsArr = [];
-    var height = window.innerHeight;
-    var ancho = screen.height;
 
     for (i = 0; i < this.balloons; i++) {
         var newBalloon = new Balloon();
@@ -69,7 +67,7 @@ function startBalloonGame() {
 function endBalloonsGame() {
     var canvas = document.querySelector("#theBalloon");
     canvas.innerHTML = "";
-    theBalloon.style.display="none";
+    theBalloon.style.display = "none";
     balGameSection.classList.remove("animationIn");
     balGameSection.classList.add("animationOut");
     balScoreSection.style.display = "block";
@@ -88,23 +86,22 @@ function endBalloonsGame() {
         victory("Milagro", 0);
     }
     theBalloon.classList.remove("bottomBalloon");
-    balScore.style.visibility="hidden";
+    balScore.style.visibility = "hidden";
 }
 
 function videoVictoryGame() {
     backgroundMusic.pause();
     finalizeGame(true);
 }
-function setScore(partialScore){
-    
+function setScore(partialScore) {
     balScores.innerHTML = "<p>Puntaje: " + String(partialScore) + "</p>";
     balScores.className = "animated pulse faster";
     setTimeout(function() {
         balScores.className = "";
     }, 500);
-    partialScore=0;
+    partialScore = 0;
 }
-function resetGame(){
+function resetGame() {
     balPartialScore = 0;
     balFinalScore = 0;
     balScore = document.querySelector("#balloonsScore");
@@ -115,12 +112,12 @@ function resetGame(){
     balSound = document.querySelector("#balExplotion");
     theBalloon = document.getElementById("theBalloon");
     hiddenBalloon = theBalloon.getElementsByClassName("hidden");
-    balGameSection.style.display="block";
+    balGameSection.style.display = "block";
     theBalloon.classList.toggle("bottomBalloon");
     balGameSection.classList.remove("animationOut");
     balScoreSection.classList.remove("animationIn");
-    balScoreSection.style.display="none";
-    theBalloon.style.display="block";
-    balScore.style.visibility="visible";
-    balScores.innerHTML = "<p>Puntaje: " + 0 + "</p>";
+    balScoreSection.style.display = "none";
+    theBalloon.style.display = "block";
+    balScore.style.visibility = "visible";
+    balScores.innerHTML = "<p>Puntaje: 0</p>";
 }
