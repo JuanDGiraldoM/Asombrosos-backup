@@ -168,14 +168,6 @@ function init() {
 
     });
 
-    
-
-    //<img src="assets/img/buttons/SoundOn.png" id="unmute"/>
-    //<img src="assets/img/buttons/SoundOff.png" id="mute"/>
-
-
-
-
     fuperButton = document.querySelector("#btnFuper");
     fuperButton.addEventListener("click", navigate("aboutp", "fuperp"));
 
