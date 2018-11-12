@@ -31,8 +31,6 @@ function init() {
         btnPlayAgain,
         btnUnlockBack,
         btnUnlockGallery;
-    // unlockBackBtn,
-    // fromUnlockToG;
     var btntoPage;
     gameVideo = document.getElementById("gameVideo");
     countVideo = document.getElementById("countVideo");
@@ -133,11 +131,9 @@ function init() {
     });
 
     runnerScreenBackButton = document.querySelector("#runnerScreenBackButton");
-    runnerScreenBackButton.addEventListener("click", ()=> {
-        //navigate("runnerScreen", "levelp");
+    runnerScreenBackButton.addEventListener("click", () => {
         console.log("cerro runner");
         closeGame();
-
     });
 
     aboutpBackButton = document.querySelector("#aboutpBackButton");
@@ -237,27 +233,43 @@ function hide(id) {
 // Gallery
 
 function toBackSusy() {
-    susyCertificate.style.display = "none";
+    susyCertificate.classList.add("zoomOut");
     gallery.style.display = "block";
     galleryBackground.classList.remove("darkness");
+    setTimeout(() => {
+        susyCertificate.classList.remove("zoomOut", "zoomIn");
+        susyCertificate.style.display = "none";
+    }, 500);
 }
 
 function toBackMilagro() {
-    milagroCertificate.style.display = "none";
+    milagroCertificate.classList.add("zoomOut");
     gallery.style.display = "block";
     galleryBackground.classList.remove("darkness");
+    setTimeout(() => {
+        milagroCertificate.classList.remove("zoomOut", "zoomIn");
+        milagroCertificate.style.display = "none";
+    }, 500);
 }
 
 function toBackRayo() {
-    rayoCertificate.style.display = "none";
+    rayoCertificate.classList.add("zoomOut");
     gallery.style.display = "block";
     galleryBackground.classList.remove("darkness");
+    setTimeout(() => {
+        rayoCertificate.classList.remove("zoomOut", "zoomIn");
+        rayoCertificate.style.display = "none";
+    }, 500);
 }
 
 function toBackGatuna() {
-    gatunaCertificate.style.display = "none";
+    gatunaCertificate.classList.add("zoomOut");
     gallery.style.display = "block";
     galleryBackground.classList.remove("darkness");
+    setTimeout(() => {
+        gatunaCertificate.classList.remove("zoomOut", "zoomIn");
+        gatunaCertificate.style.display = "none";
+    }, 500);
 }
 
 //Game functions
@@ -301,7 +313,7 @@ function finalizeGame(isWinner) {
             case 1:
                 hide("antonymsScreen");
                 break;
-            case 2:     
+            case 2:
                 hide("wordsScreen");
                 break;
             case 3:
@@ -434,7 +446,7 @@ function toMenu() {
     show("levelp");
 }
 
-function showGallery(){
+function showGallery() {
     switch (indexGame) {
         case 3:
             hide("balloonsScreen");
