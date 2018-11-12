@@ -127,11 +127,11 @@ function openWordsGame() {
                     explotion.load();
                     explotion.play();
                     wordsScore += 5;
-                    word.className = "word animated fadeOut faster";
+                    word.classList.add("animated", "fadeOut", "faster");
                     updateScore();
                     validateScore();
                 } else if (posCircleY >= positionSusy.bottom && !word.className.includes("animated")) {
-                    word.className = "word animated flash faster";
+                    word.classList.add("animated", "flash", "faster");
                     shakeVibration();
                     wordsWinner = false;
                     wordsActive = true;
@@ -146,9 +146,9 @@ function openWordsGame() {
     function updateScore() {
         var scoreContainer = document.querySelector("#wordsScore");
         scoreContainer.innerHTML = "<p>Puntaje: " + String(wordsScore) + "</p>";
-        scoreContainer.className = "animated pulse faster";
+        scoreContainer.classList.add("animated", "pulse", "faster");
         setTimeout(function() {
-            scoreContainer.className = "";
+            scoreContainer.classList.remove("pulse");
         }, 500);
     }
 
