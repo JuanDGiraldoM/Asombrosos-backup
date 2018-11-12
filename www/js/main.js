@@ -158,26 +158,15 @@ function init() {
 
     gallerypSoundOffButton = document.querySelector("#bToggleSound");
     gallerypSoundOffButton.addEventListener("click", function() {
-<<<<<<< HEAD
 
-        backgroundMusic.pause();
-    });
-
-    gallerypSoundOnButton = document.querySelector("#bsoundon");
-    gallerypSoundOnButton.addEventListener("click", function() {
-
-        backgroundMusic.play();
-    });
-=======
-       
        if(musicOn) {
            backgroundMusic.pause();
-           gallerypSoundOffButton.src = "assets/img/buttons/SoundOff.png";      
-       } else {           
+           gallerypSoundOffButton.src = "assets/img/buttons/SoundOff.png";
+       } else {
            backgroundMusic.play();
-           gallerypSoundOffButton.src = "assets/img/buttons/SoundOn.png";  
+           gallerypSoundOffButton.src = "assets/img/buttons/SoundOn.png";
        }
->>>>>>> 38fa5e902a9675b26bfea0b5c6763b3b78aa24b5
+
 
        musicOn = !musicOn;
 
