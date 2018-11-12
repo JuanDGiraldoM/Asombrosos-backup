@@ -196,27 +196,27 @@ function init() {
     btnSusy.addEventListener("click", () => {
         gallery.style.display = "none";
         susyCertificate.style.display = "block";
-        susyCertificate.className = "animated zoomIn faster";
+        susyCertificate.classList.add("animated", "zoomIn", "faster");
         galleryBackground.classList.add("darkness");
     });
     btnRayo.addEventListener("click", () => {
         gallery.style.display = "none";
         rayoCertificate.style.display = "block";
-        rayoCertificate.className = "animated zoomIn faster";
+        rayoCertificate.classList.add("animated", "zoomIn", "faster");
         galleryBackground.classList.add("darkness");
     });
 
     btnMilagro.addEventListener("click", () => {
         gallery.style.display = "none";
         milagroCertificate.style.display = "block";
-        milagroCertificate.className = "animated zoomIn faster";
+        milagroCertificate.classList.add("animated", "zoomIn", "faster");
         galleryBackground.classList.add("darkness");
     });
 
     btnGatuna.addEventListener("click", () => {
         gallery.style.display = "none";
         gatunaCertificate.style.display = "block";
-        gatunaCertificate.className = "animated zoomIn faster";
+        gatunaCertificate.classList.add("animated", "zoomIn", "faster");
         galleryBackground.classList.add("darkness");
     });
 
@@ -232,6 +232,7 @@ function init() {
         gameVideo.src = introVideoSrc;
         hide("levelp");
         show("gameVideoScreen");
+        gameVideo.onclick = playGame;
         gameVideo.style.display = "block";
         gameVideo.load();
         gameVideo.play();
@@ -307,11 +308,6 @@ function playGame() {
     };
 }
 
-function endVideo() {
-    var vid = document.getElementById('gameVideo');
-    vid.currentTime = vid.duration;
-}
-
 function finalizeGame(isWinner) {
     backgroundMusic.pause();
     if (isWinner) {
@@ -331,6 +327,7 @@ function finalizeGame(isWinner) {
                 break;
         }
         show("gameVideoScreen");
+        gameVideo.onclick = null;
         gameVideo.src = unlockVideoSrc;
         gameVideo.style.display = "block";
         gameVideo.load();
@@ -449,4 +446,15 @@ function toMenu() {
     tutorialVideo.pause();
     hide("tutorial");
     show("levelp");
+}
+
+function showGallery(){
+    switch (indexGame) {
+        case 3:
+            hide("balloonsScreen");
+            show("galleryp");
+            break;
+    }
+
+    getUnlockedCharacters();
 }
