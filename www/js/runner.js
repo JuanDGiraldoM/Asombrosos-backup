@@ -1,8 +1,12 @@
 function openRunnerGame() {
-    var canvasNode = document.createElement('canvas');
+	var canvasNode = document.createElement('canvas');
+	var barraNode = document.createElement('img');
     canvasNode.setAttribute("id", "runnerCanvas");
-    canvasNode.setAttribute("class", "noPikachu");
+	canvasNode.setAttribute("class", "noPikachu");
+	barraNode.setAttribute("id", "barraEnergia");
+	barraNode.setAttribute("src", "assets/img/runner/Barra.png");
     document.getElementById("runnerScreen").appendChild(canvasNode);
+    document.getElementById("runnerScreen").appendChild(barraNode);
     var canvas = document.getElementById("runnerCanvas");
     var ctx = canvas.getContext("2d");
     var cWidth = ctx.canvas.offsetWidth;
@@ -10,7 +14,8 @@ function openRunnerGame() {
     var yLimit = cHeight * 0.55;
     var touchN = 0;
     var frames = 0;
-    var collitionsN = 0;
+	var collitionsN = 0;
+	var choqueSonido = document.getElementById('choqueRunner');
 
     // Variables barra de energia
 	var barraEnergia = document.getElementById("barraEnergia");
@@ -176,16 +181,21 @@ function openRunnerGame() {
         }
 
         for (var i = 0; i < barrelsX.length; i++) {
-            if (
-                playerX + playerWidth * 0.9 >= barrelsX[i] &&
+			if (
+				playerX + playerWidth * 0.9 >= barrelsX[i] &&
                 playerX + playerWidth * 0.9 <= barrelsX[i] + barrelWidth
-            ) {
-                if (playerY + playerHeight * 0.95 >= barrelY) {
+				) {
+				if (playerY + playerHeight * 0.95 >= barrelY) {
+					if(playerY + playerHeight * 1.5 >= barrelY){
+						choqueSonido.load();
+						choqueSonido.play();
+						shakeVibration();
+					}
                     console.log("chocaste" + barrelsX.length + "  progress: " + progress);
                     progress -= dmg;
                     if (progress < 16) {
                         progress = 11;
-                    }
+					}
                     collitionsN++;
                     
                 } else {
@@ -204,7 +214,7 @@ function openRunnerGame() {
 			victory("Rayo", 0);
 			finalizeGame(false);
 		}
-        setTimeout(main, 5);
+        setTimeout(main, 3);
 	};
 
     startup();
@@ -214,8 +224,7 @@ function openRunnerGame() {
 
 function closeRunnerGame() {
     var canvas = document.getElementById("runnerCanvas");
-    barraEnergia.style.display = "none";
+    // barraEnergia.style.display = "none";
     canvas.parentNode.removeChild(canvas);
     clearInterval(main);
-    console.log("funciona");
 }
