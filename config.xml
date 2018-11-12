@@ -27,5 +27,9 @@
     <preference name="Orientation" value="sensorLandscape" />
     <preference name="Fullscreen" value="true" />
     <preference name="HideKeyboardFormAccessoryBar" value="true" />
+    <plugin name="cordova-plugin-vibration" spec="^3.1.0" />
+    <feature name="Vibration">
+        <param name="android-package" value="org.apache.cordova.vibration.Vibration" />
+    </feature>
     <engine name="android" spec="^7.1.1" />
 </widget>

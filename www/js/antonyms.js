@@ -43,16 +43,18 @@ function shuffle(a) {
 function verifyMatch(e){
     cardHeight = e.target.height;
     cardWidth = e.target.width;
-
+console.log(e);
     if(!ma_currentImg){
         ma_currentImg=e.target;
         new TweenMax.fromTo(ma_currentImg, 0.1, {width:cardWidth, height:cardHeight, borderColor:'rgba(15,94,94,0)', borderStyle:'none', ease:Power0.easeIn}, {width:cardHeight+10, height:cardHeight+10,
           borderStyle:'solid', borderColor:'rgba(15,94,94,1.0)', ease:Power0.easeOut});
         initialImg = ma_currentImg;
     }else if(ma_currentImg.id != e.target.id){
+        lastImg = e.target;
+        blockCards(true, cardsArray, initialImg.id, lastImg.id);
         if(!compareArrays(cardsPairs,[parseInt(ma_currentImg.id),parseInt(e.target.id)])){
-            new TweenMax.fromTo(ma_currentImg, 0.1, {width:cardHeight+10, height:cardHeight+10, borderStyle:'solid', borderColor:'rgba(15,94,94,1.0)', ease:Power0.easeIn}, {width:cardWidth, height:cardHeight, borderStyle:'none',
-              borderColor:'rgba(15,94,94,0)', ease:Power0.easeOut});
+            new TweenMax.fromTo(e.target, 0.1, {width:cardWidth, height:cardHeight, borderStyle:'none', borderColor:'rgba(15,94,94,0)',
+            ease:Power0.easeIn, onStart:removeCardsEvent(true)}, {width:cardHeight+10, height:cardHeight+10, borderStyle:'solid', borderColor:'rgba(15,94,94,1.0)', ease:Power0.easeOut, onComplete:shakeCards});
         }else{
           lastImg = e.target;
           blockCards(true, cardsArray, initialImg.id, lastImg.id);
@@ -61,7 +63,7 @@ function verifyMatch(e){
               borderColor:'rgba(15,94,94,1.0)', borderStyle:'solid', ease:Power0.easeOut, onComplete: function(){
               changeCard = new TweenMax.to([initialImg, e.target], 0.7, {delay:0.4, rotationY:'-180', onComplete:resizeCards});
               new TweenMax.set([initialImg, e.target], {delay:0.6, borderStyle:'none', onStart:changeForWood});
-              e.target.onclick = null;
+              lastImg.onclick = null;
               initialImg.onclick = null;
             }});
             MA_COUNT++;
@@ -71,10 +73,38 @@ function verifyMatch(e){
     }
 }
 
+function removeCardsEvent(option) {
+  initialImg.onclick = option ? null : verifyMatch;
+  lastImg.onclick = option ? null : verifyMatch;
+}
+
+function shakeCards() {
+  new TweenMax.to([initialImg, lastImg], 0.1, {x:'+=10', onStart:shakeVibration, onComplete:function(){
+    new TweenMax.to([initialImg, lastImg], 0.1, {x:'-=20', onComplete:function(){
+      new TweenMax.to([initialImg, lastImg], 0.1, {x:'+=10', onComplete:function(){
+        new TweenMax.fromTo([initialImg, lastImg], 0.1, {width:cardHeight+10, height:cardHeight+10, borderStyle:'solid', borderColor:'rgba(15,94,94,1.0)', ease:Power0.easeIn}, {width:cardWidth, height:cardHeight,
+          borderColor:'rgba(15,94,94,0)', borderStyle:'none', ease:Power0.easeOut, onComplete:function(){
+            blockCards(false, cardsArray, initialImg.id, lastImg.id);
+          }});
+      }});
+    }});
+  }});
+}
+
+function shakeVibration() {
+  navigator.vibrate([100,50,100]);
+}
+
 function blockCards(option, array, card1, card2) {
   for(var i=0; i<array.length; i++){
-    if (array[i].id != card1 && array[i].id != card2) {
+    if (array[i].currentSrc.includes('wood')) {
+      array[i].onclick = null;
+    }
+    else if (array[i].id != card1 && array[i].id != card2) {
       array[i].onclick = option ? null : verifyMatch;
+    }
+    else {
+      array[i].onclick = verifyMatch;
     }
   }
 }

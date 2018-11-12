@@ -3,8 +3,8 @@
     src: url("../dist/Carnival\ Centenary.otf");
 }
 
-html {
-    overflow: hidden !important;
+* {
+    overflow: hidden;
 }
 
 body {
@@ -65,8 +65,6 @@ video {
 }
 
 .imgleftback {
-    content: " ";
-    display: table;
     position: fixed;
     left: 1%;
     top: 1%;
@@ -148,6 +146,8 @@ audio {
     gallery
     ========================================================================== */
 
+/* filter: brightness(0.5); */
+
 #characters {
     position: fixed;
     top: 38%;
@@ -160,6 +160,8 @@ audio {
 #susyCertificate {
     justify-content: flex-end;
     background-image: url("../assets/img/navigation/CertSusy.png");
+    margin: auto;
+    width: 75%;
     height: 100%;
     background-size: 100% 100%;
     background-repeat: no-repeat;

@@ -1,10 +1,3 @@
-var balScore;
-var balGameSection, balScoreSection, btnToScore, btnToGame;
-var hiddenBalloon;
-var balPartialScore = 0;
-var balFinalScore = 0;
-var theBalloon;
-theBalloon = document.getElementById("theBalloon");
 var ballColours = [
     "balMorado.png",
     "balRosa.png",
@@ -18,22 +11,10 @@ var ballColours = [
 ];
 var ballTime = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 var ballPos = [-1000, -950];
-var balSound;
-
+var balScores = document.querySelector("#balloonsScore");
 function startBalloonGame() {
-    balPartialScore = 0;
-    balFinalScore = 0;
-    balScore = document.querySelector("#balloonsScore");
-    balFinalScore = document.querySelector("#balFinalScore");
-    balGameSection = document.querySelector("#balloonGame");
-    balScoreSection = document.querySelector("#balloonsScoreSection");
-    balCountVideo = document.querySelector("#balCount");
-    balSound = document.querySelector("#balExplotion");
-    hiddenBalloon = theBalloon.getElementsByClassName("hidden");
-    balGameSection.style.display="block";
-    theBalloon.style.position="absolute";
-    theBalloon.classList.add("bottomBalloon");
-
+    resetGame();
+    
     this.balloons = 50;
     this.balloonsArr = [];
     var height = window.innerHeight;
@@ -48,10 +29,11 @@ function startBalloonGame() {
         this.id = balloonsArr.length;
 
         this.animate = function() {
-            TweenMax.to("#balloon" + this.id, ballTime[Math.floor(Math.random() * ballTime.length)], {
+            var tweenAnimation=TweenMax.to("#balloon" + this.id, ballTime[Math.floor(Math.random() * ballTime.length)], {
                 ease: Power0.easeOut,
                 top: ballPos[Math.floor(Math.random() * ballPos.length)]
             });
+            tweenAnimation.restart();
         };
 
         this.ball = function() {
@@ -64,29 +46,27 @@ function startBalloonGame() {
             balloonsArr.push(this);
 
             this.animate();
+
+            image.addEventListener('click',tap);
+
         };
     }
 
-    
-    var manager = new Hammer.Manager(theBalloon);
-    var Tap = new Hammer.Tap({
-        taps: 1
-    });
-
-    manager.add(Tap);
-    manager.on("tap", tap);
     function tap(e) {
         balSound.load();
         balSound.play();
         e.target.classList.toggle("hidden");
         balPartialScore = hiddenBalloon.length;
-        balScore.innerHTML = "<p>Puntaje: " + String(balPartialScore) + "</p>";
+        setScore(balPartialScore);
         balFinalScore.innerHTML = balPartialScore;
     }
     setTimeout(endBalloonsGame, 15000);
 }
 
 function endBalloonsGame() {
+    var canvas = document.querySelector("#theBalloon");
+    canvas.innerHTML = "";
+    theBalloon.style.display="none";
     balGameSection.classList.remove("animationIn");
     balGameSection.classList.add("animationOut");
     balScoreSection.style.display = "block";
@@ -94,11 +74,53 @@ function endBalloonsGame() {
     balScoreSection.classList.add("animationIn");
     backgroundMusic.pause();
     var milagroUnlocked = localStorage.getItem("Milagro");
-    if (balPartialScore == 0 && milagroUnlocked == 0) {
-        victory("Milagro", 0);
-
-    } else {
-        victory("Milagro", 1);
-        // setTimeout(finalizeGame(true),3000); ;
+    if(balPartialScore > 0 && milagroUnlocked==true){
+        victory("Milagro",1);
+    }else if(balPartialScore!=0 || 
+        (balPartialScore != 0 && milagroUnlocked==false)){
+        setTimeout(videoVictoryGame, 5000);
+        victory("Milagro",1);
+    }else if(balPartialScore==0 && 
+        milagroUnlocked==1){
+        victory("Milagro",1);
+    }else if(balPartialScore==0 && 
+        milagroUnlocked==0){
+        victory("Milagro",0);
     }
+    theBalloon.classList.remove("bottomBalloon");
+    balScore.style.visibility="hidden";
+}
+
+function videoVictoryGame() {
+    backgroundMusic.pause();
+    finalizeGame(true);
+}
+function setScore(partialScore){
+    
+    balScores.innerHTML = "<p>Puntaje: " + String(partialScore) + "</p>";
+    balScores.className = "animated pulse faster";
+    setTimeout(function() {
+        balScores.className = "";
+    }, 500);
+    partialScore=0;
+}
+function resetGame(){
+    balPartialScore = 0;
+    balFinalScore = 0;
+    balScore = document.querySelector("#balloonsScore");
+    balFinalScore = document.querySelector("#balFinalScore");
+    balGameSection = document.getElementById("balloonGame");
+    balScoreSection = document.getElementById("balloonsScoreSection");
+    balCountVideo = document.querySelector("#balCount");
+    balSound = document.querySelector("#balExplotion");
+    theBalloon = document.getElementById("theBalloon");
+    hiddenBalloon = theBalloon.getElementsByClassName("hidden");
+    balGameSection.style.display="block";
+    theBalloon.classList.toggle("bottomBalloon");
+    balGameSection.classList.remove("animationOut");
+    balScoreSection.classList.remove("animationIn");
+    balScoreSection.style.display="none";
+    theBalloon.style.display="block";
+    balScore.style.visibility="visible";
+    balScores.innerHTML = "<p>Puntaje: " + 0 + "</p>";
 }
