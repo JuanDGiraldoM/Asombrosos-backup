@@ -12,6 +12,7 @@ var ballColours = [
 var ballTime = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 var ballPos = [-1000, -950];
 var balScores = document.querySelector("#balloonsScore");
+
 function startBalloonGame() {
     resetGame();
 
@@ -35,7 +36,6 @@ function startBalloonGame() {
                     top: ballPos[Math.floor(Math.random() * ballPos.length)]
                 }
             );
-            //tweenAnimation.restart();
         };
 
         this.ball = function() {
@@ -63,6 +63,7 @@ function startBalloonGame() {
     }
     gameTime=setTimeout(endBalloonsGame, 15000);
 }
+
 var showGalleryTime;
 var bl_videoVic;
 function endBalloonsGame() {
@@ -99,13 +100,11 @@ function balloonsCloseGame(){
     clearTimeout(showGalleryTime);
     clearTimeout(bl_videoVic);
     clearTimeout(gameTime);
-    victory("Milagro", 1);
     theBalloon.innerHTML = "";
     theBalloon.style.display = "none";
     balloonGame.style.display = "none";
     theBalloon.classList.remove("bottomBalloon");
     balScore.style.visibility = "hidden";
-
 }
 
 function videoVictoryGame() {
@@ -113,6 +112,7 @@ function videoVictoryGame() {
     finalizeGame(true);
     
 }
+
 function setScore(partialScore) {
     balScores.innerHTML = "<p>Puntaje: " + String(partialScore) + "</p>";
     balScores.className = "animated pulse faster";
@@ -121,6 +121,7 @@ function setScore(partialScore) {
     }, 500);
     partialScore = 0;
 }
+
 function resetGame() {
     balPartialScore = 0;
     balFinalScore = 0;
