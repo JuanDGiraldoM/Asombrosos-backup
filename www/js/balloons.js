@@ -64,6 +64,7 @@ function startBalloonGame() {
     gameTime=setTimeout(endBalloonsGame, 15000);
 }
 var showGalleryTime;
+var bl_videoVic;
 function endBalloonsGame() {
     clearInterval(gameTime);
     theBalloon.innerHTML = "";
@@ -79,7 +80,7 @@ function endBalloonsGame() {
         showGalleryTime = setTimeout(showGallery,7000);
         victory("Milagro", 1);
     } else if (balPartialScore != 0 || (balPartialScore != 0 && milagroUnlocked == false)) {
-        setTimeout(videoVictoryGame, 5000);
+        bl_videoVic=setTimeout(videoVictoryGame, 5000);
         victory("Milagro", 1);
     } else if (balPartialScore == 0 && milagroUnlocked == true) {
         showGalleryTime = setTimeout(showGallery,7000);
@@ -97,6 +98,7 @@ function endBalloonsGame() {
 function videoVictoryGame() {
     backgroundMusic.pause();
     finalizeGame(true);
+    
 }
 function setScore(partialScore) {
     balScores.innerHTML = "<p>Puntaje: " + String(partialScore) + "</p>";
