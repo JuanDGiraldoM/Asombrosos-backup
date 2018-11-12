@@ -11,6 +11,7 @@ var app = {
     },
     receivedEvent: function(id) {}
 };
+var musicOn = true;
 app.initialize();
 
 function init() {
@@ -115,6 +116,9 @@ function init() {
 
     btnUnlockBack = document.getElementById("unlockBackButton");
     btnUnlockBack.addEventListener("click", function() {
+        gameVideo.pause();
+        backgroundMusic.volume = 0.1;
+        backgroundMusic.play();
         hide("gameVideoScreen");
         show("levelp");
         this.style.display = "none";
@@ -152,19 +156,21 @@ function init() {
         getUnlockedCharacters();
     });
 
-    gallerypSoundOffButton = document.querySelector("#bsoundoff");
+    gallerypSoundOffButton = document.querySelector("#bToggleSound");
     gallerypSoundOffButton.addEventListener("click", function() {
-       
-        backgroundMusic.pause();
+
+       if(musicOn) {
+           backgroundMusic.pause();
+           gallerypSoundOffButton.src = "assets/img/buttons/SoundOff.png";
+       } else {
+           backgroundMusic.play();
+           gallerypSoundOffButton.src = "assets/img/buttons/SoundOn.png";
+       }
+
+
+       musicOn = !musicOn;
+
     });
-
-    gallerypSoundOnButton = document.querySelector("#bsoundon");
-    gallerypSoundOnButton.addEventListener("click", function() {
-       
-        backgroundMusic.play();
-    });
-
-
 
     fuperButton = document.querySelector("#btnFuper");
     fuperButton.addEventListener("click", navigate("aboutp", "fuperp"));
