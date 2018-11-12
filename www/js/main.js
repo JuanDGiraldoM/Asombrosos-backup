@@ -121,9 +121,8 @@ function init() {
     btnUnlockBack.addEventListener("click", function() {
         gameVideo.pause();
         backgroundMusic.volume = 0.1;
-        if(musicOn == false) {
+        if (musicOn == false) {
             backgroundMusic.pause();
-            
         } else {
             backgroundMusic.play();
         }
@@ -132,11 +131,6 @@ function init() {
         this.style.display = "none";
         btnUnlockGallery.style.display = "none";
     });
-
-    
-
-
-
 
     btnUnlockGallery = document.getElementById("unlockGalleryButton");
     btnUnlockGallery.addEventListener("click", function() {
@@ -160,7 +154,11 @@ function init() {
     backButtonplayAgain.addEventListener("click", navigate("playAgain", "levelp"));
 
     galleryBackButton = document.querySelector("#gallerypBackButton");
-    galleryBackButton.addEventListener("click", navigate("galleryp", "levelp"));
+    galleryBackButton.addEventListener("click", () => {
+        toBackCert();
+        hide("galleryp");
+        show("levelp");
+    });
 
     gallerypBackButton = document.querySelector("#imggallery");
     gallerypBackButton.addEventListener("click", function() {
@@ -171,18 +169,15 @@ function init() {
 
     gallerypSoundOffButton = document.querySelector("#bToggleSound");
     gallerypSoundOffButton.addEventListener("click", function() {
+        if (musicOn) {
+            backgroundMusic.pause();
+            gallerypSoundOffButton.src = "assets/img/buttons/SoundOff.png";
+        } else {
+            backgroundMusic.play();
+            gallerypSoundOffButton.src = "assets/img/buttons/SoundOn.png";
+        }
 
-       if(musicOn) {
-           backgroundMusic.pause();
-           gallerypSoundOffButton.src = "assets/img/buttons/SoundOff.png";
-       } else {
-           backgroundMusic.play();
-           gallerypSoundOffButton.src = "assets/img/buttons/SoundOn.png";
-       }
-
-
-       musicOn = !musicOn;
-
+        musicOn = !musicOn;
     });
 
     fuperButton = document.querySelector("#btnFuper");
@@ -199,41 +194,19 @@ function init() {
 
     gallery = document.querySelector(".gallery");
     galleryBackground = document.querySelector("#galleryp");
-    var susyCertificate = document.querySelector("#susyCertificate");
-    var rayoCertificate = document.querySelector("#rayoCertificate");
-    var milagroCertificate = document.querySelector("#milagroCertificate");
-    var gatunaCertificate = document.querySelector("#gatunaCertificate");
-    var btnSusy = document.querySelector("#btnSusy");
-    var btnRayo = document.querySelector("#btnRayo");
-    var btnMilagro = document.querySelector("#btnMilagro");
-    var btnGatuna = document.querySelector("#btnGatuna");
+    certificates = [
+        document.querySelector("#gatunaCertificate"),
+        document.querySelector("#susyCertificate"),
+        document.querySelector("#milagroCertificate"),
+        document.querySelector("#rayoCertificate")
+    ];
 
-    btnSusy.addEventListener("click", () => {
-        gallery.style.display = "none";
-        susyCertificate.style.display = "block";
-        susyCertificate.classList.add("animated", "zoomIn", "faster");
-        galleryBackground.classList.add("darkness");
-    });
-    btnRayo.addEventListener("click", () => {
-        gallery.style.display = "none";
-        rayoCertificate.style.display = "block";
-        rayoCertificate.classList.add("animated", "zoomIn", "faster");
-        galleryBackground.classList.add("darkness");
-    });
-
-    btnMilagro.addEventListener("click", () => {
-        gallery.style.display = "none";
-        milagroCertificate.style.display = "block";
-        milagroCertificate.classList.add("animated", "zoomIn", "faster");
-        galleryBackground.classList.add("darkness");
-    });
-
-    btnGatuna.addEventListener("click", () => {
-        gallery.style.display = "none";
-        gatunaCertificate.style.display = "block";
-        gatunaCertificate.classList.add("animated", "zoomIn", "faster");
-        galleryBackground.classList.add("darkness");
-    });
+    certButtons = [
+        document.querySelector("#btnGatuna"),
+        document.querySelector("#btnSusy"),
+        document.querySelector("#btnMilagro"),
+        document.querySelector("#btnRayo")
+    ];
 
     btntoPage = document.querySelector("#btnToFuper");
     btntoPage.addEventListener("click", function() {
@@ -265,44 +238,25 @@ function hide(id) {
 
 // Gallery
 
-function toBackSusy() {
-    susyCertificate.classList.add("zoomOut");
-    gallery.style.display = "block";
-    galleryBackground.classList.remove("darkness");
-    setTimeout(() => {
-        susyCertificate.classList.remove("zoomOut", "zoomIn");
-        susyCertificate.style.display = "none";
-    }, 500);
+function showCert(indexCharacter) {
+    gallery.style.display = "none";
+    certificates[indexCharacter - 1].style.display = "block";
+    certificates[indexCharacter - 1].classList.add("animated", "zoomIn", "faster");
+    galleryBackground.classList.add("darkness");
 }
 
-function toBackMilagro() {
-    milagroCertificate.classList.add("zoomOut");
-    gallery.style.display = "block";
-    galleryBackground.classList.remove("darkness");
-    setTimeout(() => {
-        milagroCertificate.classList.remove("zoomOut", "zoomIn");
-        milagroCertificate.style.display = "none";
-    }, 500);
-}
-
-function toBackRayo() {
-    rayoCertificate.classList.add("zoomOut");
-    gallery.style.display = "block";
-    galleryBackground.classList.remove("darkness");
-    setTimeout(() => {
-        rayoCertificate.classList.remove("zoomOut", "zoomIn");
-        rayoCertificate.style.display = "none";
-    }, 500);
-}
-
-function toBackGatuna() {
-    gatunaCertificate.classList.add("zoomOut");
-    gallery.style.display = "block";
-    galleryBackground.classList.remove("darkness");
-    setTimeout(() => {
-        gatunaCertificate.classList.remove("zoomOut", "zoomIn");
-        gatunaCertificate.style.display = "none";
-    }, 500);
+function toBackCert() {
+    certificates.forEach(element => {
+        if (element.className.includes("zoomIn")) {
+            element.classList.add("zoomOut");
+            gallery.style.display = "block";
+            galleryBackground.classList.remove("darkness");
+            setTimeout(() => {
+                element.classList.remove("zoomOut", "zoomIn");
+                element.style.display = "none";
+            }, 500);
+        }
+    });
 }
 
 //Game functions
@@ -316,9 +270,8 @@ function playGame() {
     countVideo.play();
     countVideo.onended = function() {
         hide("countVideoScreen");
-        if(musicOn == false) {
+        if (musicOn == false) {
             backgroundMusic.pause();
-            
         } else {
             backgroundMusic.play();
         }
@@ -346,14 +299,14 @@ function playGame() {
 
 function finalizeGame(isWinner) {
     backgroundMusic.pause();
-    
+
     /*if(musicOn == false) {
             backgroundMusic.pause();
             
         } else {
             backgroundMusic.play();
         }*/
-    
+
     if (isWinner) {
         switch (indexGame) {
             case 1:
@@ -395,10 +348,10 @@ function finalizeGame(isWinner) {
                 closeRunnerGame();
                 break;
         }
-        
+
         document.getElementById("playAgain").style.display = "block";
         document.getElementById("againVideo").play();
-        
+
         getUnlockedCharacters();
     }
 }
@@ -437,9 +390,8 @@ function playAgain() {
     countVideo.play();
     countVideo.onended = function() {
         hide("countVideoScreen");
-        if(musicOn == false) {
+        if (musicOn == false) {
             backgroundMusic.pause();
-            
         } else {
             backgroundMusic.play();
         }
