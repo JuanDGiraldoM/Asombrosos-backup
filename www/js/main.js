@@ -108,6 +108,9 @@ function init() {
     });
     balloonsScreenBackButton = document.querySelector("#balloonsScreenBackButton");
     balloonsScreenBackButton.addEventListener("click", function() {
+        clearTimeout(showGalleryTime);
+        clearTimeout(bl_videoVic);
+        victory("Milagro", 1);
         closeGame();
     });
 
@@ -368,7 +371,7 @@ function closeGame() {
             show("levelp");
             break;
         case 3:
-            endBalloonsGame();
+            //endBalloonsGame();
             hide("balloonsScreen");
             show("levelp");
             break;
