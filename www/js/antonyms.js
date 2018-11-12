@@ -20,8 +20,6 @@ function openAntonymsGame(){
       canvas.removeChild(canvas.firstChild);
     }
 
-    initialImg = null;
-    lastImg = null;
     TweenMax.killAll();
 
     MA_COUNT=0;
