@@ -169,6 +169,7 @@ function init() {
     aboutCreditsButton.addEventListener("click", navigate("aboutp", "creditsp"));
 
     gallery = document.querySelector(".gallery");
+    galleryBackground = document.querySelector("#galleryp");
     var susyCertificate = document.querySelector("#susyCertificate");
     var rayoCertificate = document.querySelector("#rayoCertificate");
     var milagroCertificate = document.querySelector("#milagroCertificate");
@@ -181,20 +182,28 @@ function init() {
     btnSusy.addEventListener("click", () => {
         gallery.style.display = "none";
         susyCertificate.style.display = "block";
+        susyCertificate.className = "animated zoomIn faster";
+        galleryBackground.classList.add("darkness");
     });
     btnRayo.addEventListener("click", () => {
         gallery.style.display = "none";
         rayoCertificate.style.display = "block";
+        rayoCertificate.className = "animated zoomIn faster";
+        galleryBackground.classList.add("darkness");
     });
 
     btnMilagro.addEventListener("click", () => {
         gallery.style.display = "none";
         milagroCertificate.style.display = "block";
+        milagroCertificate.className = "animated zoomIn faster";
+        galleryBackground.classList.add("darkness");
     });
 
     btnGatuna.addEventListener("click", () => {
         gallery.style.display = "none";
         gatunaCertificate.style.display = "block";
+        gatunaCertificate.className = "animated zoomIn faster";
+        galleryBackground.classList.add("darkness");
     });
 
     btntoPage = document.querySelector("#btnToFuper");
@@ -229,21 +238,25 @@ function hide(id) {
 function toBackSusy() {
     susyCertificate.style.display = "none";
     gallery.style.display = "block";
+    galleryBackground.classList.remove("darkness");
 }
 
 function toBackMilagro() {
     milagroCertificate.style.display = "none";
     gallery.style.display = "block";
+    galleryBackground.classList.remove("darkness");
 }
 
 function toBackRayo() {
     rayoCertificate.style.display = "none";
     gallery.style.display = "block";
+    galleryBackground.classList.remove("darkness");
 }
 
 function toBackGatuna() {
     gatunaCertificate.style.display = "none";
     gallery.style.display = "block";
+    galleryBackground.classList.remove("darkness");
 }
 
 //Game functions
