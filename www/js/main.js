@@ -115,6 +115,9 @@ function init() {
 
     btnUnlockBack = document.getElementById("unlockBackButton");
     btnUnlockBack.addEventListener("click", function() {
+        gameVideo.pause();
+        backgroundMusic.volume = 0.1;
+        backgroundMusic.play();
         hide("gameVideoScreen");
         show("levelp");
         this.style.display = "none";
@@ -154,13 +157,13 @@ function init() {
 
     gallerypSoundOffButton = document.querySelector("#bsoundoff");
     gallerypSoundOffButton.addEventListener("click", function() {
-       
+
         backgroundMusic.pause();
     });
 
     gallerypSoundOnButton = document.querySelector("#bsoundon");
     gallerypSoundOnButton.addEventListener("click", function() {
-       
+
         backgroundMusic.play();
     });
 
