@@ -95,6 +95,19 @@ function endBalloonsGame() {
         
 }
 
+function balloonsCloseGame(){
+    clearTimeout(showGalleryTime);
+    clearTimeout(bl_videoVic);
+    clearTimeout(gameTime);
+    victory("Milagro", 1);
+    theBalloon.innerHTML = "";
+    theBalloon.style.display = "none";
+    balloonGame.style.display = "none";
+    theBalloon.classList.remove("bottomBalloon");
+    balScore.style.visibility = "hidden";
+
+}
+
 function videoVictoryGame() {
     backgroundMusic.pause();
     finalizeGame(true);
