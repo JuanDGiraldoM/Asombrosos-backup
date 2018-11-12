@@ -10,7 +10,8 @@ function openRunnerGame() {
     var yLimit = cHeight * 0.55;
     var touchN = 0;
     var frames = 0;
-    var collitionsN = 0;
+	var collitionsN = 0;
+	var choqueSonido = document.getElementById('choqueRunner');
 
     // Variables barra de energia
 	var barraEnergia = document.getElementById("barraEnergia");
@@ -176,16 +177,20 @@ function openRunnerGame() {
         }
 
         for (var i = 0; i < barrelsX.length; i++) {
-            if (
-                playerX + playerWidth * 0.9 >= barrelsX[i] &&
+			if (
+				playerX + playerWidth * 0.9 >= barrelsX[i] &&
                 playerX + playerWidth * 0.9 <= barrelsX[i] + barrelWidth
-            ) {
-                if (playerY + playerHeight * 0.95 >= barrelY) {
+				) {
+				if (playerY + playerHeight * 0.95 >= barrelY) {
+					if(playerY + playerHeight * 1.2 >= barrelY){
+						choqueSonido.load();
+						choqueSonido.play();
+					}
                     console.log("chocaste" + barrelsX.length + "  progress: " + progress);
                     progress -= dmg;
                     if (progress < 16) {
                         progress = 11;
-                    }
+					}
                     collitionsN++;
                     
                 } else {
@@ -204,7 +209,7 @@ function openRunnerGame() {
 			victory("Rayo", 0);
 			finalizeGame(false);
 		}
-        setTimeout(main, 5);
+        setTimeout(main, 3);
 	};
 
     startup();
