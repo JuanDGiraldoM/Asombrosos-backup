@@ -1,9 +1,3 @@
-var balScore;
-var balGameSection, balScoreSection, btnToScore, btnToGame;
-var hiddenBalloon;
-var balPartialScore = 0;
-var balFinalScore = 0;
-var theBalloon;
 var ballColours = [
     "balMorado.png",
     "balRosa.png",
@@ -17,25 +11,9 @@ var ballColours = [
 ];
 var ballTime = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 var ballPos = [-1000, -950];
-var balSound;
-
+var balScores = document.querySelector("#balloonsScore");
 function startBalloonGame() {
-    
-    balScore = document.querySelector("#balloonsScore");
-    balFinalScore = document.querySelector("#balFinalScore");
-    balGameSection = document.getElementById("balloonGame");
-    balScoreSection = document.getElementById("balloonsScoreSection");
-    balCountVideo = document.querySelector("#balCount");
-    balSound = document.querySelector("#balExplotion");
-    theBalloon = document.getElementById("theBalloon");
-    hiddenBalloon = theBalloon.getElementsByClassName("hidden");
-    balGameSection.style.display="block";
-    theBalloon.classList.toggle("bottomBalloon");
-    balGameSection.classList.remove("animationOut");
-    balScoreSection.classList.remove("animationIn");
-    balScoreSection.style.display="none";
-    theBalloon.style.display="block";
-
+    resetGame();
     
     this.balloons = 50;
     this.balloonsArr = [];
@@ -64,8 +42,7 @@ function startBalloonGame() {
             image.className = "balloon";
             image.src = "assets/img/balloons/" + ballColours[Math.floor(Math.random() * ballColours.length)];
             image.style.left = Math.floor(Math.random() * 600) + "px";
-            //document.getElementById("theBalloon").insertAdjacentElement("beforeend", image);
-            document.getElementById("theBalloon").appendChild(image);
+            document.getElementById("theBalloon").insertAdjacentElement("beforeend", image);
             balloonsArr.push(this);
 
             this.animate();
@@ -80,7 +57,7 @@ function startBalloonGame() {
         balSound.play();
         e.target.classList.toggle("hidden");
         balPartialScore = hiddenBalloon.length;
-        balScore.innerHTML = "<p>Puntaje: " + String(balPartialScore) + "</p>";
+        setScore(balPartialScore);
         balFinalScore.innerHTML = balPartialScore;
     }
     setTimeout(endBalloonsGame, 15000);
@@ -89,16 +66,6 @@ function startBalloonGame() {
 function endBalloonsGame() {
     var canvas = document.querySelector("#theBalloon");
     canvas.innerHTML = "";
-    // var balloonId;
-    // for(k = 0; k < 50; k++)
-    // {
-    //     balloonId =  document.getElementById("balloon" + k);
-    //     if(balloonId.classList.contains("hidden") == true){
-    //         balloonId.classList.remove("hidden");
-    //         balloonId.parentNode.removeChild(balloonId);
-    //     }
-        
-    // }
     theBalloon.style.display="none";
     balGameSection.classList.remove("animationIn");
     balGameSection.classList.add("animationOut");
@@ -120,12 +87,40 @@ function endBalloonsGame() {
         milagroUnlocked==0){
         victory("Milagro",0);
     }
-    console.log(hiddenBalloon.length);
-    
     theBalloon.classList.remove("bottomBalloon");
+    balScore.style.visibility="hidden";
 }
 
 function videoVictoryGame() {
     backgroundMusic.pause();
     finalizeGame(true);
+}
+function setScore(partialScore){
+    
+    balScores.innerHTML = "<p>Puntaje: " + String(partialScore) + "</p>";
+    balScores.className = "animated pulse faster";
+    setTimeout(function() {
+        balScores.className = "";
+    }, 500);
+    partialScore=0;
+}
+function resetGame(){
+    balPartialScore = 0;
+    balFinalScore = 0;
+    balScore = document.querySelector("#balloonsScore");
+    balFinalScore = document.querySelector("#balFinalScore");
+    balGameSection = document.getElementById("balloonGame");
+    balScoreSection = document.getElementById("balloonsScoreSection");
+    balCountVideo = document.querySelector("#balCount");
+    balSound = document.querySelector("#balExplotion");
+    theBalloon = document.getElementById("theBalloon");
+    hiddenBalloon = theBalloon.getElementsByClassName("hidden");
+    balGameSection.style.display="block";
+    theBalloon.classList.toggle("bottomBalloon");
+    balGameSection.classList.remove("animationOut");
+    balScoreSection.classList.remove("animationIn");
+    balScoreSection.style.display="none";
+    theBalloon.style.display="block";
+    balScore.style.visibility="visible";
+    balScores.innerHTML = "<p>Puntaje: " + 0 + "</p>";
 }

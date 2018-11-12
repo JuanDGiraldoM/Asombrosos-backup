@@ -320,7 +320,7 @@ function finalizeGame(isWinner) {
                 hide("wordsScreen");
                 break;
             case 3:
-                hide("balloonsScoreSection");
+                hide("balloonsScreen");
                 break;
             case 4:
                 hide("runnerScreen");
