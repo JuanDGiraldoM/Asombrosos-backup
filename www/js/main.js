@@ -118,12 +118,22 @@ function init() {
     btnUnlockBack.addEventListener("click", function() {
         gameVideo.pause();
         backgroundMusic.volume = 0.1;
-        backgroundMusic.play();
+        if(musicOn == false) {
+            backgroundMusic.pause();
+            
+        } else {
+            backgroundMusic.play();
+        }
         hide("gameVideoScreen");
         show("levelp");
         this.style.display = "none";
         btnUnlockGallery.style.display = "none";
     });
+
+    
+
+
+
 
     btnUnlockGallery = document.getElementById("unlockGalleryButton");
     btnUnlockGallery.addEventListener("click", function() {
@@ -303,7 +313,12 @@ function playGame() {
     countVideo.play();
     countVideo.onended = function() {
         hide("countVideoScreen");
-        backgroundMusic.play();
+        if(musicOn == false) {
+            backgroundMusic.pause();
+            
+        } else {
+            backgroundMusic.play();
+        }
         backgroundMusic.volume = 0.5;
         switch (indexGame) {
             case 1:
@@ -328,6 +343,14 @@ function playGame() {
 
 function finalizeGame(isWinner) {
     backgroundMusic.pause();
+    
+    /*if(musicOn == false) {
+            backgroundMusic.pause();
+            
+        } else {
+            backgroundMusic.play();
+        }*/
+    
     if (isWinner) {
         switch (indexGame) {
             case 1:
@@ -369,8 +392,10 @@ function finalizeGame(isWinner) {
                 closeRunnerGame();
                 break;
         }
+        
         document.getElementById("playAgain").style.display = "block";
         document.getElementById("againVideo").play();
+        
         getUnlockedCharacters();
     }
 }
@@ -409,7 +434,12 @@ function playAgain() {
     countVideo.play();
     countVideo.onended = function() {
         hide("countVideoScreen");
-        backgroundMusic.play();
+        if(musicOn == false) {
+            backgroundMusic.pause();
+            
+        } else {
+            backgroundMusic.play();
+        }
 
         switch (indexGame) {
             case 1:
