@@ -152,6 +152,20 @@ function init() {
         getUnlockedCharacters();
     });
 
+    gallerypSoundOffButton = document.querySelector("#bsoundoff");
+    gallerypSoundOffButton.addEventListener("click", function() {
+       
+        backgroundMusic.pause();
+    });
+
+    gallerypSoundOnButton = document.querySelector("#bsoundon");
+    gallerypSoundOnButton.addEventListener("click", function() {
+       
+        backgroundMusic.play();
+    });
+
+
+
     fuperButton = document.querySelector("#btnFuper");
     fuperButton.addEventListener("click", navigate("aboutp", "fuperp"));
 
