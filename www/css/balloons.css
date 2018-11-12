@@ -28,10 +28,6 @@
     visibility: hidden;
 }
 
-/* #theBalloon {
-    position: absolute;
-    bottom: -300px;
-} */
 .bottomBalloon{
     position: absolute;
     bottom: -300px;
@@ -45,7 +41,6 @@
     font-size: 1.5rem;
     color: #e83e55;
     text-shadow: 2px 2px 0 #94528f;
-    visibility: hidden;
 }
 
 #balloonsScore p {

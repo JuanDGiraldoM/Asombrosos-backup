@@ -61,12 +61,12 @@ function startBalloonGame() {
         setScore(balPartialScore);
         balFinalScore.innerHTML = balPartialScore;
     }
-    setTimeout(endBalloonsGame, 15000);
+    gameTime=setTimeout(endBalloonsGame, 15000);
 }
 
 function endBalloonsGame() {
-    var canvas = document.querySelector("#theBalloon");
-    canvas.innerHTML = "";
+    clearInterval(gameTime);
+    theBalloon.innerHTML = "";
     theBalloon.style.display = "none";
     balGameSection.classList.remove("animationIn");
     balGameSection.classList.add("animationOut");
