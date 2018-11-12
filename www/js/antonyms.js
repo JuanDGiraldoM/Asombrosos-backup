@@ -20,6 +20,8 @@ function openAntonymsGame(){
       canvas.removeChild(canvas.firstChild);
     }
 
+    TweenMax.killAll();
+
     MA_COUNT=0;
     MA_PAIRS = 4;
     renderCards();
@@ -43,7 +45,7 @@ function shuffle(a) {
 function verifyMatch(e){
     cardHeight = e.target.height;
     cardWidth = e.target.width;
-console.log(e);
+
     if(!ma_currentImg){
         ma_currentImg=e.target;
         new TweenMax.fromTo(ma_currentImg, 0.1, {width:cardWidth, height:cardHeight, borderColor:'rgba(15,94,94,0)', borderStyle:'none', ease:Power0.easeIn}, {width:cardHeight+10, height:cardHeight+10,
