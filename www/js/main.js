@@ -151,7 +151,11 @@ function init() {
     backButtonplayAgain.addEventListener("click", navigate("playAgain", "levelp"));
 
     galleryBackButton = document.querySelector("#gallerypBackButton");
-    galleryBackButton.addEventListener("click", navigate("galleryp", "levelp"));
+    galleryBackButton.addEventListener("click", () => {
+        toBackCert();
+        hide("galleryp");
+        show("levelp");
+    });
 
     gallerypBackButton = document.querySelector("#imggallery");
     gallerypBackButton.addEventListener("click", function() {
