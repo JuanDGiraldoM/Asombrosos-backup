@@ -77,6 +77,22 @@ video {
     left: 9%;
     top: 1%;
     height: 13%;
+   
+}
+
+#bsoundon {
+    position: fixed;
+    left: 83%;
+    top: 1%;
+    height: 13%;
+    
+}
+
+#bsoundoff {
+    position: fixed;
+    left: 91%;
+    top: 1%;
+    height: 13%;
 }
 
 #btnAbout {
