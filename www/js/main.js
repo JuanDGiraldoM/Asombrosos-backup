@@ -218,6 +218,7 @@ function init() {
         gameVideo.src = introVideoSrc;
         hide("levelp");
         show("gameVideoScreen");
+        gameVideo.onclick = playGame;
         gameVideo.style.display = "block";
         gameVideo.load();
         gameVideo.play();
@@ -293,11 +294,6 @@ function playGame() {
     };
 }
 
-function endVideo() {
-    var vid = document.getElementById('gameVideo');
-    vid.currentTime = vid.duration;
-}
-
 function finalizeGame(isWinner) {
     backgroundMusic.pause();
     if (isWinner) {
@@ -317,6 +313,7 @@ function finalizeGame(isWinner) {
                 break;
         }
         show("gameVideoScreen");
+        gameVideo.onclick = null;
         gameVideo.src = unlockVideoSrc;
         gameVideo.style.display = "block";
         gameVideo.load();
