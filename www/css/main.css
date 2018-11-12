@@ -146,10 +146,9 @@ audio {
     gallery
     ========================================================================== */
 
-/* filter: brightness(0.5); */
-
 .darkness {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("../assets/img/backgrounds/BackgroundGallery.png");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+        url("../assets/img/backgrounds/BackgroundGallery.png");
 }
 
 #characters {
@@ -235,7 +234,9 @@ audio {
 }
 
 .btnBackGaleria {
+    position: relative;
     width: 11%;
+    margin: 0 auto;
 }
 
 section {
