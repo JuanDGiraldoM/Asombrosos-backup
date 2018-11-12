@@ -11,6 +11,7 @@ var app = {
     },
     receivedEvent: function(id) {}
 };
+var musicOn = true;
 app.initialize();
 
 function init() {
@@ -156,17 +157,26 @@ function init() {
         getUnlockedCharacters();
     });
 
-    gallerypSoundOffButton = document.querySelector("#bsoundoff");
+    gallerypSoundOffButton = document.querySelector("#bToggleSound");
     gallerypSoundOffButton.addEventListener("click", function() {
        
-        backgroundMusic.pause();
+       if(musicOn) {
+           backgroundMusic.pause();
+           gallerypSoundOffButton.src = "assets/img/buttons/SoundOff.png";      
+       } else {           
+           backgroundMusic.play();
+           gallerypSoundOffButton.src = "assets/img/buttons/SoundOn.png";  
+       }
+
+       musicOn = !musicOn;
+
     });
 
-    gallerypSoundOnButton = document.querySelector("#bsoundon");
-    gallerypSoundOnButton.addEventListener("click", function() {
-       
-        backgroundMusic.play();
-    });
+    
+
+    //<img src="assets/img/buttons/SoundOn.png" id="unmute"/>
+    //<img src="assets/img/buttons/SoundOff.png" id="mute"/>
+
 
 
 
