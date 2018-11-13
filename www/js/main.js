@@ -48,6 +48,7 @@ function init() {
     for (let i = 0; i < videos.length; i++) {
         videos[i].poster = "assets/img/backgrounds/BackgroundVideo.png";
     }
+    muteResources(localStorage.getItem("Muted") === "1");
 
     // Navigation
     document.getElementById("loadp").style.display = "block";
@@ -60,6 +61,9 @@ function init() {
         playBackgroundMusic();
     };
 
+    if (!localStorage.getItem("Muted")) {
+        localStorage.setItem("Muted", 0);
+    }
     gallerypSoundOffButton = document.querySelector("#bToggleSound");
     gallerypSoundOffButton.src =
         localStorage.getItem("Muted") === "1" ? "assets/img/buttons/SoundOff.png" : "assets/img/buttons/SoundOn.png";
@@ -166,15 +170,19 @@ function init() {
     });
 
     gallerypSoundOffButton.addEventListener("click", () => {
+        var muted;
         if (localStorage.getItem("Muted") === "1") {
             localStorage.setItem("Muted", 0);
             playBackgroundMusic();
             gallerypSoundOffButton.src = "assets/img/buttons/SoundOn.png";
+            muted = false;
         } else {
             localStorage.setItem("Muted", 1);
             backgroundMusic.pause();
             gallerypSoundOffButton.src = "assets/img/buttons/SoundOff.png";
+            muted = true;
         }
+        muteResources(muted);
     });
 
     fuperButton = document.querySelector("#btnFuper");
@@ -226,6 +234,17 @@ function init() {
         window.open("http://fundacionfuper.org/", "_blank");
     });
 
+    function muteResources(muted) {
+        var videos = document.getElementsByTagName("video");
+        for (let i = 0; i < videos.length; i++) {
+            videos[i].muted = muted;
+        }
+        var audios = document.getElementsByTagName("audio");
+        for (let i = 0; i < audios.length; i++) {
+            audios[i].muted = muted;
+        }
+    }
+
     function openGame(index, introVideoSrc, unlockVidSrc) {
         indexGame = index;
         unlockVideoSrc = unlockVidSrc;
@@ -259,14 +278,14 @@ function showCert(indexCharacter) {
 }
 
 function toBackCert() {
-    certificates.forEach(element => {
-        if (element.className.includes("zoomIn")) {
-            element.classList.add("zoomOut");
+    certificates.forEach(certificate => {
+        if (certificate.className.includes("zoomIn")) {
+            certificate.classList.add("zoomOut");
             gallery.style.display = "block";
             galleryBackground.classList.remove("darkness");
             setTimeout(() => {
-                element.classList.remove("zoomOut", "zoomIn");
-                element.style.display = "none";
+                certificate.classList.remove("zoomOut", "zoomIn");
+                certificate.style.display = "none";
             }, 500);
         }
     });
