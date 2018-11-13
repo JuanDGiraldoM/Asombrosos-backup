@@ -185,6 +185,10 @@ function openRunnerGame() {
         choqueRunnerSound.play();
     }
 
+    shakeVibrationRunner = function() {
+        navigator.vibrate(1000);
+    }
+
     main = function() {
         if (playerY == yLimit && yVelocity < 0) {
             //console.log("1 " + yVelocity);
@@ -217,6 +221,7 @@ function openRunnerGame() {
                     }
                     collitionsN++;
                     playChoqueRunnerSound();
+                    shakeVibrationRunner();
                     // if (collitionsN > 8) {
                     // }
                 } else {
@@ -238,6 +243,7 @@ function openRunnerGame() {
                     }
                     collitionsN++;
                     playChoqueRunnerSound();
+                    shakeVibrationRunner();
                     // if (collitionsN > 8) {
                     // }
                 } else {
