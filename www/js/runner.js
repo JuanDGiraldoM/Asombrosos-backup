@@ -26,8 +26,8 @@ function openRunnerGame() {
 
     // Variables de personaje
     var playerX = cWidth * 0.15;
-    var playerY = cHeight * 0.2;
-    var yVelocity = 0.3;
+    var playerY = cHeight * 0.4;
+    var yVelocity = -1;
     var ratioW = 166 / cWidth;
     var ratioH = 288 / cHeight;
     var playerWidth = cWidth * ratioW * 0.4;
@@ -47,7 +47,7 @@ function openRunnerGame() {
     var barrelBig = document.getElementById("barrelBig");
 
     var barrelY = cHeight * 0.7;
-    var xBarrelVelocity = 0;
+    var xBarrelVelocity = -8;
     var ratioBarrelW = 152 / cWidth,
         ratioBarrelH = 201 / cHeight;
     var barrelWidth = cWidth * ratioBarrelW * 0.3;
@@ -75,17 +75,20 @@ function openRunnerGame() {
         cWidth + 3000 + barrelBigWidth,
         cWidth + 3000 + barrelBigWidth * 2,
     ];
-
+/*
     setTimeout(() => {
         xBarrelVelocity = -5;
+        //console.log(1);
         setTimeout(() => {
             xBarrelVelocity = -8;
+        //console.log(2);
         }, 6000);
         setTimeout(() => {
             xBarrelVelocity = -10;
+        //console.log(3);
         }, 13000);
     }, 1000);
-
+*/
     drawRect = function(x, y, w, h, radius) {
         var canvas = document.getElementById("runnerCanvas");
         var ctx = canvas.getContext("2d");
@@ -112,7 +115,7 @@ function openRunnerGame() {
         if(progress <= 12){
             ctx.clearRect(barraEnergiaLeft + 21, barraEnergiaTop, cWidth, 32);  
             victory("Rayo",0); 
-            finalizeGame(false); 
+            finalizeGame(false);
         }
     };
 
@@ -145,13 +148,13 @@ function openRunnerGame() {
     }
 
     function startup() {
-        var el = document.getElementsByTagName("canvas")[0];
-        el.addEventListener(
+        var bichito = document.getElementById("runnerCanvas");
+        bichito.addEventListener(
             "touchstart",
             () => {
                 if (touchN < 2) {
-                    yVelocity = -3;
-                    playerY -= 10;
+                    yVelocity = -3.3;
+                    playerY -= 15;
                 }
                 touchN++;
             },
@@ -159,8 +162,8 @@ function openRunnerGame() {
         );
     }
 
-    gravity = function(velocity) {
-        return velocity + 0.055;
+    gravity = function(velocity, rate) {
+        return velocity + rate;
     };
 
     clearScreen = function() {
@@ -171,13 +174,21 @@ function openRunnerGame() {
 
     main = function() {
         if (playerY == yLimit && yVelocity < 0) {
+            console.log("1 " + yVelocity);
         } else if (playerY < yLimit) {
-            yVelocity = gravity(yVelocity);
+            if(yVelocity < 0){
+                yVelocity = gravity(yVelocity, 0.07);
+            }else {
+                yVelocity = gravity(yVelocity, 0.1);
+            }
             playerY += yVelocity;
+            console.log("2 " + yVelocity);
         } else if (playerY == yLimit - 20) {
             yVelocity = 3;
+            console.log("3 " + yVelocity);
         } else {
             touchN = 0;
+            console.log("4 " + yVelocity);
         }
 
         for (var i = 0; i < barrelsX.length; i++) {
@@ -186,7 +197,7 @@ function openRunnerGame() {
                 playerX + playerWidth * 0.9 <= barrelsX[i] + barrelWidth
             ) {
                 if (playerY + playerHeight * 0.95 >= barrelY) {
-                    console.log("chocaste" + barrelsX.length + "  progress: " + progress);
+                   // console.log("chocaste" + barrelsX.length + "  progress: " + progress);
                     progress -= dmg;
                     if (progress < 16) {
                         progress = 11;
@@ -206,7 +217,7 @@ function openRunnerGame() {
                 playerX + playerWidth * 0.9 <= barrelsBigX[i] + barrelBigWidth
             ) {
                 if (playerY + playerHeight * 0.95 >= barrelBigY) {
-                    console.log("chocaste" + barrelsBigX.length + "  progress: " + progress);
+                    //console.log("chocaste" + barrelsBigX.length + "  progress: " + progress);
                     progress -= dmg;
                     if (progress < 16) {
                         progress = 11;
@@ -238,5 +249,9 @@ function closeRunnerGame() {
     barraEnergia.style.display = "none";
     canvas.parentNode.removeChild(canvas);
     clearInterval(main);
+    var id = window.setTimeout(()=>{},0);
+    while(id--){
+        window.clearTimeout(id);
+    }
     console.log("funciona");
 }
