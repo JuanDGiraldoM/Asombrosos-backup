@@ -136,6 +136,7 @@ function init() {
 
     btnUnlockGallery = document.getElementById("unlockGalleryButton");
     btnUnlockGallery.addEventListener("click", function () {
+        backgroundMusic.volume = 0.5;
         backgroundMusic.play();
         hide("gameVideoScreen");
         show("galleryp");
@@ -466,6 +467,8 @@ function toMenu() {
 }
 
 function showGallery() {
+    backgroundMusic.volume = 0.5;
+    backgroundMusic.play();
     switch (indexGame) {
         case 3:
             hide("balloonsScreen");
