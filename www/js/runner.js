@@ -1,8 +1,12 @@
 function openRunnerGame() {
-    var canvasNode = document.createElement('canvas');
+	var canvasNode = document.createElement('canvas');
+	var barraNode = document.createElement('img');
     canvasNode.setAttribute("id", "runnerCanvas");
-    canvasNode.setAttribute("class", "noPikachu");
+	canvasNode.setAttribute("class", "noPikachu");
+	barraNode.setAttribute("id", "barraEnergia");
+	barraNode.setAttribute("src", "assets/img/runner/Barra.png");
     document.getElementById("runnerScreen").appendChild(canvasNode);
+    document.getElementById("runnerScreen").appendChild(barraNode);
     var canvas = document.getElementById("runnerCanvas");
     var ctx = canvas.getContext("2d");
     var cWidth = ctx.canvas.offsetWidth;
@@ -10,11 +14,11 @@ function openRunnerGame() {
     var yLimit = cHeight * 0.55;
     var touchN = 0;
     var frames = 0;
-    var collitionsN = 0;
+	var collitionsN = 0;
+	var choqueSonido = document.getElementById('choqueRunner');
 
     // Variables barra de energia
-    var barraEnergia = document.getElementById("barraEnergia");
-    barraEnergia.style.display = "block";
+	var barraEnergia = document.getElementById("barraEnergia");
     var barraEnergiaLeft = barraEnergia.getBoundingClientRect().x;
     var barraEnergiaTop = barraEnergia.getBoundingClientRect().y;
     var progress = 224;
@@ -22,17 +26,17 @@ function openRunnerGame() {
     var barraX = barraEnergiaLeft + 30;
     var barraRadius = 20;
     var barraWidth = 220;
-    var dmg = 2;
+    var dmg = 3.5;
 
     // Variables de personaje
     var playerX = cWidth * 0.15;
-    var playerY = cHeight * 0.4;
-    var yVelocity = -1;
+    var playerY = cHeight * 0.2;
+    var yVelocity = 0.3;
     var ratioW = 166 / cWidth;
     var ratioH = 288 / cHeight;
     var playerWidth = cWidth * ratioW * 0.4;
-    var playerHeight = cHeight * ratioH * 0.4;
-
+	var playerHeight = cHeight * ratioH * 0.4;
+	
     // Variables para la imagen de meta
     var meta = document.getElementById("meta");
     var ratioMetaW = 538 / cWidth;
@@ -41,19 +45,19 @@ function openRunnerGame() {
     var metaHeight = cHeight * ratioMetaH * 0.45;
     var metaY = cHeight * 0.12;
     var metaX = cWidth + 3700;
-
+	
     // Variables para los barriles
     var barrel = document.getElementById("barrel");
     var barrelBig = document.getElementById("barrelBig");
-
+	
     var barrelY = cHeight * 0.7;
-    var xBarrelVelocity = -5;
+    var xBarrelVelocity = 0;
     var ratioBarrelW = 152 / cWidth,
-        ratioBarrelH = 201 / cHeight;
+	ratioBarrelH = 201 / cHeight;
     var barrelWidth = cWidth * ratioBarrelW * 0.3;
     var barrelHeight = cHeight * ratioBarrelH * 0.3;
     var barrelsX = [
-        cWidth + 50,
+		cWidth + 50,
         cWidth + 750,
         cWidth + 750 + barrelWidth,
         cWidth + 1100,
@@ -64,31 +68,29 @@ function openRunnerGame() {
         cWidth + 2300 + barrelWidth * 2,
         cWidth + 2750
     ];
-
+	
     var barrelBigY = cHeight * 0.61;
     var ratioBarrelBigW = 164 / cWidth,
-        ratioBarrelBigH = 328 / cHeight;
+	ratioBarrelBigH = 328 / cHeight;
     var barrelBigWidth = cWidth * ratioBarrelBigW * 0.35;
     var barrelBigHeight = cHeight * ratioBarrelBigH * 0.3;
     var barrelsBigX = [
-        cWidth + 3000,
+		cWidth + 3000,
         cWidth + 3000 + barrelBigWidth,
         cWidth + 3000 + barrelBigWidth * 2,
-    ];
-/*
+	];
+	
+
     setTimeout(() => {
         xBarrelVelocity = -5;
-        //console.log(1);
         setTimeout(() => {
             xBarrelVelocity = -8;
-        //console.log(2);
         }, 6000);
         setTimeout(() => {
             xBarrelVelocity = -10;
-        //console.log(3);
         }, 13000);
     }, 1000);
-*/
+
     drawRect = function(x, y, w, h, radius) {
         var canvas = document.getElementById("runnerCanvas");
         var ctx = canvas.getContext("2d");
@@ -111,12 +113,7 @@ function openRunnerGame() {
         ctx.lineWidth = barraRadius;
         ctx.strokeRect(barraX + barraRadius / 2, barraY + barraRadius / 2, progress - barraRadius, 27 - barraRadius);
         ctx.fillRect(barraX + barraRadius / 2, barraY + barraRadius / 2, progress - barraRadius, 27 - barraRadius);
-
-        if(progress <= 12){
-            ctx.clearRect(barraEnergiaLeft + 21, barraEnergiaTop, cWidth, 32);  
-            victory("Rayo",0); 
-            finalizeGame(false);
-        }
+        
     };
 
     gifler("assets/img/runner/RAYO-CORRIENDO-PERSONAJE.gif").frames("canvas.noPikachu", onDrawFrame);
@@ -129,7 +126,8 @@ function openRunnerGame() {
         ctx.canvas.height = ctx.canvas.offsetHeight;
 
         ctx.globalCompositeOperation = "source-over";
-        ctx.drawImage(frame.buffer, playerX, playerY, playerWidth, playerHeight);
+		ctx.drawImage(frame.buffer, playerX, playerY, playerWidth, playerHeight);
+        drawRect(barraX, barraY, barraWidth, 27, barraRadius);		
         for (var i = 0; i < barrelsX.length; i++) {
             barrelsX[i] += xBarrelVelocity;
             ctx.drawImage(barrel, barrelsX[i], barrelY, barrelWidth, barrelHeight);
@@ -142,19 +140,18 @@ function openRunnerGame() {
         
         metaX += xBarrelVelocity;
         ctx.drawImage(meta, metaX, metaY, metaWidth, metaHeight);
-        drawRect(barraX, barraY, barraWidth, 27, barraRadius);
 
         frames++;
-    }
+	}
 
     function startup() {
-        var bichito = document.getElementById("runnerCanvas");
-        bichito.addEventListener(
+        var el = document.getElementsByTagName("canvas")[0];
+        el.addEventListener(
             "touchstart",
             () => {
                 if (touchN < 2) {
-                    yVelocity = -3.3;
-                    playerY -= 15;
+					yVelocity = -15;
+					playerY -= 25;
                 }
                 touchN++;
             },
@@ -162,8 +159,8 @@ function openRunnerGame() {
         );
     }
 
-    gravity = function(velocity, rate) {
-        return velocity + rate;
+    gravity = function(velocity) {
+        return velocity + 2;
     };
 
     clearScreen = function() {
@@ -173,58 +170,32 @@ function openRunnerGame() {
     };
 
     main = function() {
-        if (playerY == yLimit && yVelocity < 0) {
-            console.log("1 " + yVelocity);
-        } else if (playerY < yLimit) {
-            if(yVelocity < 0){
-                yVelocity = gravity(yVelocity, 0.07);
-            }else {
-                yVelocity = gravity(yVelocity, 0.1);
-            }
+
+		if (playerY < yLimit) {
+            yVelocity = gravity(yVelocity);
             playerY += yVelocity;
-            console.log("2 " + yVelocity);
-        } else if (playerY == yLimit - 20) {
-            yVelocity = 3;
-            console.log("3 " + yVelocity);
-        } else {
+        }else {
             touchN = 0;
-            console.log("4 " + yVelocity);
-        }
-
+		}
+		
         for (var i = 0; i < barrelsX.length; i++) {
-            if (
-                playerX + playerWidth * 0.9 >= barrelsX[i] &&
+			if (
+				playerX + playerWidth * 0.9 >= barrelsX[i] &&
                 playerX + playerWidth * 0.9 <= barrelsX[i] + barrelWidth
-            ) {
-                if (playerY + playerHeight * 0.95 >= barrelY) {
-                   // console.log("chocaste" + barrelsX.length + "  progress: " + progress);
+				) {
+				if (playerY + playerHeight * 0.95 >= barrelY) {
+					if(playerY + playerHeight * 1.5 >= barrelY){
+						choqueSonido.load();
+						choqueSonido.play();
+						shakeVibration();
+					}
+                    console.log("chocaste" + barrelsX.length + "  progress: " + progress);
                     progress -= dmg;
                     if (progress < 16) {
                         progress = 11;
-                    }
+					}
                     collitionsN++;
-                    // if (collitionsN > 8) {
-                    // }
-                } else {
-                    collitionsN = 0;
-                }
-            }
-        }
-
-        for (var i = 0; i < barrelsBigX.length; i++) {
-            if (
-                playerX + playerWidth * 0.9 >= barrelsBigX[i] &&
-                playerX + playerWidth * 0.9 <= barrelsBigX[i] + barrelBigWidth
-            ) {
-                if (playerY + playerHeight * 0.95 >= barrelBigY) {
-                    //console.log("chocaste" + barrelsBigX.length + "  progress: " + progress);
-                    progress -= dmg;
-                    if (progress < 16) {
-                        progress = 11;
-                    }
-                    collitionsN++;
-                    // if (collitionsN > 8) {
-                    // }
+                    
                 } else {
                     collitionsN = 0;
                 }
@@ -247,7 +218,7 @@ function openRunnerGame() {
 			}
 			finalizeGame(false);
 		}
-        setTimeout(main, 10);
+        setTimeout(main, 20);
 	};
 
     startup();
@@ -257,12 +228,9 @@ function openRunnerGame() {
 
 function closeRunnerGame() {
     var canvas = document.getElementById("runnerCanvas");
-    barraEnergia.style.display = "none";
+    var barraEnergia = document.getElementById("barraEnergia");
+    // barraEnergia.style.display = "none";
     canvas.parentNode.removeChild(canvas);
+    barraEnergia.parentNode.removeChild(barraEnergia);
     clearInterval(main);
-    var id = window.setTimeout(()=>{},0);
-    while(id--){
-        window.clearTimeout(id);
-    }
-    console.log("funciona");
 }
