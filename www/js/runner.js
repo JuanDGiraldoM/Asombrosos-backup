@@ -35,8 +35,8 @@ function openRunnerGame() {
     var ratioW = 166 / cWidth;
     var ratioH = 288 / cHeight;
     var playerWidth = cWidth * ratioW * 0.4;
-    var playerHeight = cHeight * ratioH * 0.4;
-
+	var playerHeight = cHeight * ratioH * 0.4;
+	
     // Variables para la imagen de meta
     var meta = document.getElementById("meta");
     var ratioMetaW = 538 / cWidth;
@@ -45,19 +45,19 @@ function openRunnerGame() {
     var metaHeight = cHeight * ratioMetaH * 0.45;
     var metaY = cHeight * 0.12;
     var metaX = cWidth + 3700;
-
+	
     // Variables para los barriles
     var barrel = document.getElementById("barrel");
     var barrelBig = document.getElementById("barrelBig");
-
+	
     var barrelY = cHeight * 0.7;
     var xBarrelVelocity = 0;
     var ratioBarrelW = 152 / cWidth,
-        ratioBarrelH = 201 / cHeight;
+	ratioBarrelH = 201 / cHeight;
     var barrelWidth = cWidth * ratioBarrelW * 0.3;
     var barrelHeight = cHeight * ratioBarrelH * 0.3;
     var barrelsX = [
-        cWidth + 50,
+		cWidth + 50,
         cWidth + 750,
         cWidth + 750 + barrelWidth,
         cWidth + 1100,
@@ -68,17 +68,18 @@ function openRunnerGame() {
         cWidth + 2300 + barrelWidth * 2,
         cWidth + 2750
     ];
-
+	
     var barrelBigY = cHeight * 0.61;
     var ratioBarrelBigW = 164 / cWidth,
-        ratioBarrelBigH = 328 / cHeight;
+	ratioBarrelBigH = 328 / cHeight;
     var barrelBigWidth = cWidth * ratioBarrelBigW * 0.35;
     var barrelBigHeight = cHeight * ratioBarrelBigH * 0.3;
     var barrelsBigX = [
-        cWidth + 3000,
+		cWidth + 3000,
         cWidth + 3000 + barrelBigWidth,
         cWidth + 3000 + barrelBigWidth * 2,
-    ];
+	];
+	
 
     setTimeout(() => {
         xBarrelVelocity = -5;
@@ -149,8 +150,8 @@ function openRunnerGame() {
             "touchstart",
             () => {
                 if (touchN < 2) {
-					yVelocity = -3.5;
-                    playerY -= 10;
+					yVelocity = -15;
+					playerY -= 25;
                 }
                 touchN++;
             },
@@ -159,7 +160,7 @@ function openRunnerGame() {
     }
 
     gravity = function(velocity) {
-        return velocity + 0.09;
+        return velocity + 2;
     };
 
     clearScreen = function() {
@@ -169,17 +170,14 @@ function openRunnerGame() {
     };
 
     main = function() {
-        if (playerY == yLimit && yVelocity < 0) {
-		} 
-		else if (playerY < yLimit) {
+
+		if (playerY < yLimit) {
             yVelocity = gravity(yVelocity);
             playerY += yVelocity;
-        // } else if (playerY == yLimit - 10) {
-        //     yVelocity = 4;
-        } else {
+        }else {
             touchN = 0;
-        }
-
+		}
+		
         for (var i = 0; i < barrelsX.length; i++) {
 			if (
 				playerX + playerWidth * 0.9 >= barrelsX[i] &&
@@ -214,7 +212,7 @@ function openRunnerGame() {
 			victory("Rayo", 0);
 			finalizeGame(false);
 		}
-        setTimeout(main, 3);
+        setTimeout(main, 20);
 	};
 
     startup();
@@ -224,7 +222,6 @@ function openRunnerGame() {
 
 function closeRunnerGame() {
     var canvas = document.getElementById("runnerCanvas");
-    // barraEnergia.style.display = "none";
     canvas.parentNode.removeChild(canvas);
     clearInterval(main);
 }
