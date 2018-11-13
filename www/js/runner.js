@@ -209,7 +209,13 @@ function openRunnerGame() {
 		}
 		if (progress <= 12) {
 			ctx.clearRect(barraEnergiaLeft + 21, barraEnergiaTop, cWidth, 32);
-			victory("Rayo", 0);
+			var rayoUnlocked = localStorage.getItem("Rayo");
+			if(rayoUnlocked == 1){
+				victory("Rayo",1);
+			}
+			else{
+				victory("Rayo",0);
+			}
 			finalizeGame(false);
 		}
         setTimeout(main, 20);
