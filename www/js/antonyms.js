@@ -29,6 +29,10 @@ function openAntonymsGame(){
     setCardsDimensions();
     //setTimeout(maCountEnd,20000);
 
+    if(ma_fn){
+      clearTimeout(ma_fn);
+    }
+
     ma_fn=setTimeout(function(){
       maCountEnd();
     },20000);
