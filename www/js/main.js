@@ -61,9 +61,8 @@ function init() {
     };
 
     gallerypSoundOffButton = document.querySelector("#bToggleSound");
-    gallerypSoundOffButton.src = localStorage.getItem("Muted")
-        ? "assets/img/buttons/SoundOff.png"
-        : "assets/img/buttons/SoundOn.png";
+    gallerypSoundOffButton.src =
+        localStorage.getItem("Muted") === "1" ? "assets/img/buttons/SoundOff.png" : "assets/img/buttons/SoundOn.png";
 
     jugarButton = document.querySelector("#jugarButton");
     jugarButton.addEventListener("click", function() {
@@ -166,17 +165,16 @@ function init() {
         getUnlockedCharacters();
     });
 
-    gallerypSoundOffButton.addEventListener("click", function() {
-        if (localStorage.getItem("Muted")) {
+    gallerypSoundOffButton.addEventListener("click", () => {
+        if (localStorage.getItem("Muted") === "1") {
             localStorage.setItem("Muted", 0);
             playBackgroundMusic();
+            gallerypSoundOffButton.src = "assets/img/buttons/SoundOn.png";
         } else {
             localStorage.setItem("Muted", 1);
             backgroundMusic.pause();
+            gallerypSoundOffButton.src = "assets/img/buttons/SoundOff.png";
         }
-        gallerypSoundOffButton.src = localStorage.getItem("Muted")
-            ? "assets/img/buttons/SoundOff.png"
-            : "assets/img/buttons/SoundOn.png";
     });
 
     fuperButton = document.querySelector("#btnFuper");
@@ -461,7 +459,7 @@ function showGallery() {
 }
 
 function playBackgroundMusic() {
-    if (!localStorage.getItem("Muted")) {
+    if (localStorage.getItem("Muted") === "0") {
         backgroundMusic.play();
     }
 }
