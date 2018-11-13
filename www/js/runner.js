@@ -180,7 +180,7 @@ function openRunnerGame() {
 
     main = function() {
         if (playerY == yLimit && yVelocity < 0) {
-            console.log("1 " + yVelocity);
+            //console.log("1 " + yVelocity);
         } else if (playerY < yLimit) {
             if(yVelocity < 0){
                 yVelocity = gravity(yVelocity, 0.07);
@@ -188,13 +188,13 @@ function openRunnerGame() {
                 yVelocity = gravity(yVelocity, 0.1);
             }
             playerY += yVelocity;
-            console.log("2 " + yVelocity);
+            //console.log("2 " + yVelocity);
         } else if (playerY == yLimit - 20) {
             yVelocity = 3;
-            console.log("3 " + yVelocity);
+            //console.log("3 " + yVelocity);
         } else {
             touchN = 0;
-            console.log("4 " + yVelocity);
+            //console.log("4 " + yVelocity);
         }
 
         for (var i = 0; i < barrelsX.length; i++) {
@@ -261,5 +261,5 @@ function closeRunnerGame() {
     while(id--){
         window.clearTimeout(id);
     }
-    console.log("funciona");
+    //console.log("funciona");
 }
