@@ -222,6 +222,9 @@ function openRunnerGame() {
 
 function closeRunnerGame() {
     var canvas = document.getElementById("runnerCanvas");
+    var barraEnergia = document.getElementById("barraEnergia");
+    // barraEnergia.style.display = "none";
     canvas.parentNode.removeChild(canvas);
+    barraEnergia.parentNode.removeChild(barraEnergia);
     clearInterval(main);
 }
