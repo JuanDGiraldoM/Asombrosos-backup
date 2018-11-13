@@ -3,6 +3,8 @@ function openRunnerGame() {
     canvasNode.setAttribute("id", "runnerCanvas");
     canvasNode.setAttribute("class", "noPikachu");
     document.getElementById("runnerScreen").appendChild(canvasNode);
+    var choqueRunnerSound = document.getElementById("choqueRunnerSound");
+    choqueRunnerSound.load();
     var canvas = document.getElementById("runnerCanvas");
     var ctx = canvas.getContext("2d");
     var cWidth = ctx.canvas.offsetWidth;
@@ -172,6 +174,10 @@ function openRunnerGame() {
         ctx.clearRect(0, 0, cWidth, cHeight);
     };
 
+    playChoqueRunnerSound = function(){
+        choqueRunnerSound.play();
+    }
+
     main = function() {
         if (playerY == yLimit && yVelocity < 0) {
             console.log("1 " + yVelocity);
@@ -203,6 +209,7 @@ function openRunnerGame() {
                         progress = 11;
                     }
                     collitionsN++;
+                    playChoqueRunnerSound();
                     // if (collitionsN > 8) {
                     // }
                 } else {
@@ -223,6 +230,7 @@ function openRunnerGame() {
                         progress = 11;
                     }
                     collitionsN++;
+                    playChoqueRunnerSound();
                     // if (collitionsN > 8) {
                     // }
                 } else {
