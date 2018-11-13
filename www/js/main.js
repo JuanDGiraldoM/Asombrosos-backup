@@ -172,6 +172,7 @@ function init() {
         var muted;
         if (localStorage.getItem("Muted") === "1") {
             localStorage.setItem("Muted", 0);
+            backgroundMusic.play();
             gallerypSoundOffButton.src = "assets/img/buttons/SoundOn.png";
             muted = false;
         } else {
