@@ -47,7 +47,7 @@ function openRunnerGame() {
     var barrelBig = document.getElementById("barrelBig");
 
     var barrelY = cHeight * 0.7;
-    var xBarrelVelocity = -8;
+    var xBarrelVelocity = -5;
     var ratioBarrelW = 152 / cWidth,
         ratioBarrelH = 201 / cHeight;
     var barrelWidth = cWidth * ratioBarrelW * 0.3;
