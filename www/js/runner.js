@@ -163,7 +163,7 @@ function openRunnerGame() {
             () => {
                 if (touchN < 2) {
                     yVelocity = -3.3;
-                    playerY -= 15;
+                    playerY -= 60;
                 }
                 touchN++;
             },
@@ -190,14 +190,14 @@ function openRunnerGame() {
             //console.log("1 " + yVelocity);
         } else if (playerY < yLimit) {
             if(yVelocity < 0){
-                yVelocity = gravity(yVelocity, 0.07);
+                yVelocity = gravity(yVelocity, 0.2);
             }else {
                 yVelocity = gravity(yVelocity, 0.1);
             }
             playerY += yVelocity;
             //console.log("2 " + yVelocity);
         } else if (playerY == yLimit - 20) {
-            yVelocity = 3;
+            yVelocity = 3.3;
             //console.log("3 " + yVelocity);
         } else {
             touchN = 0;
