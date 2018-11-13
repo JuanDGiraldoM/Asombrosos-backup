@@ -135,7 +135,9 @@ function init() {
     });
 
     btnUnlockGallery = document.getElementById("unlockGalleryButton");
-    btnUnlockGallery.addEventListener("click", function() {
+    btnUnlockGallery.addEventListener("click", function () {
+        backgroundMusic.volume = 0.5;
+        backgroundMusic.play();
         hide("gameVideoScreen");
         show("galleryp");
         this.style.display = "none";
@@ -369,14 +371,14 @@ function finalizeGame(isWinner) {
 
         document.getElementById("playAgain").style.display = "block";
         document.getElementById("againVideo").play();
-
         getUnlockedCharacters();
     }
 }
 
 function closeGame() {
-    backgroundMusic.volume = 0.5;
     gameVideo.pause();
+    backgroundMusic.volume = 0.5;
+    backgroundMusic.play();
 
     switch (indexGame) {
         case 1:
@@ -458,19 +460,20 @@ function skipIntro1() {
 }
 
 function toMenu() {
-    backgroundMusic.play();
     tutorialVideo.pause();
+    backgroundMusic.play();
     hide("tutorial");
     show("levelp");
 }
 
 function showGallery() {
+    backgroundMusic.volume = 0.5;
+    backgroundMusic.play();
     switch (indexGame) {
         case 3:
             hide("balloonsScreen");
             show("galleryp");
             break;
     }
-
     getUnlockedCharacters();
 }
