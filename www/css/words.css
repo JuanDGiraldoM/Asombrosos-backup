@@ -1,49 +1,49 @@
 #wordsScreen {
-    font-family: "Carnival Centenary";
-    height: 100%;
+  font-family: "Carnival Centenary";
+  height: 100%;
 }
 
 .wordsContainer {
-    display: flex;
-    justify-content: flex-end;
-    background-image: url("../assets/img/words/BackgroundWords.png");
-    height: 100%;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    visibility: hidden;
+  display: flex;
+  justify-content: flex-end;
+  background-image: url("../assets/img/words/BackgroundWords.png");
+  height: 100%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  visibility: hidden;
 }
 
 #wordsPlayer img {
-    width: 15%;
-    position: absolute;
-    bottom: 4%;
-    left: 0;
+  width: 15%;
+  position: absolute;
+  bottom: 4%;
+  left: 0;
 }
 
 .word {
-    position: absolute;
-    width: 14%;
-    bottom: 100%;
+  position: absolute;
+  width: 14%;
+  bottom: 100%;
 }
 
 #wordsScore {
-    overflow: visible;
-    display: flex;
-    padding: 0 2%;
-    height: 0;
-    font-size: 1.5rem;
-    color: #e83e55;
-    text-shadow: 2px 2px 0 #94528f;
-    z-index: 1;
+  overflow: visible;
+  display: flex;
+  padding: 0 2%;
+  height: 0;
+  font-size: 1.5rem;
+  color: #e83e55;
+  text-shadow: 2px 2px 0 #94528f;
+  z-index: 1;
 }
 
 #wordsScore p {
-    overflow: visible;
-    z-index: 1;
-    margin: 0;
-    font-size: 150%;
+  overflow: visible;
+  z-index: 1;
+  margin: 0;
+  font-size: 150%;
 }
 
 #explotion {
-    visibility: hidden;
+  visibility: hidden;
 }

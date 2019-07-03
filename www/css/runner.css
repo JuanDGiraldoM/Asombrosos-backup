@@ -1,34 +1,42 @@
 #runnerScreen {
-    width: 100%;
-    height: 100%;
-    padding: 0px;
-    margin: 0px;
-    overflow: hidden;
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+  overflow: hidden;
+}
+
+#runnerCanvas {
+  width: 100%;
+  height: 100%;
+  background-image: url("../assets/img/runner/Runner.png");
+  animation: l_2_r 10000s linear infinite;
+  background-size: cover;
+}
+
+@-webkit-keyframes l_2_r {
+  from {
+    background-position: -50% 0;
   }
-  
-  #runnerCanvas {
-      width: 100%;
-      height: 100%;
-      background-image: url('../assets/img/runner/Runner.png');
-      animation: l_2_r 10000s linear infinite;
-      background-size: cover;
+  to {
+    background-position: 100000% 0;
   }
-  
-  @-webkit-keyframes l_2_r {
-      from {background-position: -50% 0;}
-      to {background-position: 100000% 0;}
+}
+
+@keyframes moveIt {
+  from {
+    background-position: bottom left;
   }
-  
-  @keyframes moveIt {
-    from {background-position: bottom left;}
-    to {background-position: top right;}
+  to {
+    background-position: top right;
   }
-  
-  /* --------------------------------------------------------------------------
+}
+
+/* --------------------------------------------------------------------------
   Runners Health bar
   -------------------------------------------------------------------------- */
-  #barraEnergia{
-    position: absolute;
-    right: 7px;
-    top: 7px;
-  }
+#barraEnergia {
+  position: absolute;
+  right: 7px;
+  top: 7px;
+}

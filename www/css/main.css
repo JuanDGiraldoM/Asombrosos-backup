@@ -1,17 +1,17 @@
 @font-face {
-    font-family: "Carnival Centenary";
-    src: url("../dist/Carnival\ Centenary.otf");
+  font-family: "Carnival Centenary";
+  src: url("../dist/Carnival\ Centenary.otf");
 }
 
 * {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    width: 100vw;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
 }
 
 /* ==========================================================================
@@ -19,149 +19,149 @@ body {
     ========================================================================== */
 
 video {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 }
 
 .phonemenu {
-    background-image: url("../assets/img/backgrounds/BackgroundSplashScreen.gif");
-    background-size: cover;
+  background-image: url("../assets/img/backgrounds/BackgroundSplashScreen.gif");
+  background-size: cover;
 }
 
 .phonelevel {
-    background-image: url("../assets/img/backgrounds/BackgroundLevels.png");
-    background-size: cover;
+  background-image: url("../assets/img/backgrounds/BackgroundLevels.png");
+  background-size: cover;
 }
 
 .phoneinfo {
-    background-image: url("../assets/img/credits/Credits1.png");
-    background-size: cover;
+  background-image: url("../assets/img/credits/Credits1.png");
+  background-size: cover;
 }
 
 .phoneabout {
-    background-image: url("../assets/img/backgrounds/BackgroundInfo.png");
-    background-size: cover;
+  background-image: url("../assets/img/backgrounds/BackgroundInfo.png");
+  background-size: cover;
 }
 
 .phoneFuper {
-    background-image: url("../assets/img/backgrounds/BackgroundFuper.png");
-    background-size: cover;
+  background-image: url("../assets/img/backgrounds/BackgroundFuper.png");
+  background-size: cover;
 }
 
 .phoneCredits {
-    background-image: url("../assets/img/credits/Credits1.png");
-    background-size: cover;
+  background-image: url("../assets/img/credits/Credits1.png");
+  background-size: cover;
 }
 
 .phoneagallery {
-    background: url("../assets/img/backgrounds/BackgroundGallery.png");
-    background-size: cover;
+  background: url("../assets/img/backgrounds/BackgroundGallery.png");
+  background-size: cover;
 }
 
 .creditsButtons {
-    position: fixed;
-    width: 10%;
-    top: 43%;
+  position: fixed;
+  width: 10%;
+  top: 43%;
 }
 
 #creditsBack {
-    visibility: hidden;
-    left: 1%;
+  visibility: hidden;
+  left: 1%;
 }
 
 #creditsNext {
-    right: 1%;
+  right: 1%;
 }
 
 #btnPlay {
-    position: fixed;
-    bottom: 25%;
-    right: 40%;
+  position: fixed;
+  bottom: 25%;
+  right: 40%;
 }
 
 .imgleftback {
-    position: fixed;
-    left: 1%;
-    top: 1%;
-    height: 13%;
-    z-index: 1;
+  position: fixed;
+  left: 1%;
+  top: 1%;
+  height: 13%;
+  z-index: 1;
 }
 
 #imggallery {
-    position: fixed;
-    left: 9%;
-    top: 1%;
-    height: 13%;
+  position: fixed;
+  left: 9%;
+  top: 1%;
+  height: 13%;
 }
 
 #bToggleSound {
-    position: fixed;
-    right: 1%;
-    top: 1%;
-    height: 13%;
+  position: fixed;
+  right: 1%;
+  top: 1%;
+  height: 13%;
 }
 
 #btnAbout {
-    position: fixed;
-    bottom: 10%;
-    right: 40%;
+  position: fixed;
+  bottom: 10%;
+  right: 40%;
 }
 
 .carpas {
-    width: 16%;
-    height: 46%;
+  width: 16%;
+  height: 46%;
 }
 
 #carpa1 {
-    left: 27%;
-    top: 3%;
-    position: absolute;
+  left: 27%;
+  top: 3%;
+  position: absolute;
 }
 
 #carpa2 {
-    left: 62%;
-    top: 3%;
-    position: absolute;
+  left: 62%;
+  top: 3%;
+  position: absolute;
 }
 
 #carpa3 {
-    left: 47%;
-    bottom: 20%;
-    position: absolute;
+  left: 47%;
+  bottom: 20%;
+  position: absolute;
 }
 
 #carpa4 {
-    right: 4%;
-    bottom: 12%;
-    position: absolute;
+  right: 4%;
+  bottom: 12%;
+  position: absolute;
 }
 
 #btnFuper {
-    position: fixed;
-    left: 40%;
-    top: 40%;
+  position: fixed;
+  left: 40%;
+  top: 40%;
 }
 
 #btnCredits {
-    position: fixed;
-    left: 30%;
-    top: 60%;
+  position: fixed;
+  left: 30%;
+  top: 60%;
 }
 
 #btnLegal {
-    position: fixed;
-    top: 60%;
-    right: 30%;
+  position: fixed;
+  top: 60%;
+  right: 30%;
 }
 
 #btnToFuper {
-    position: fixed;
-    bottom: 10%;
-    right: 10%;
+  position: fixed;
+  bottom: 10%;
+  right: 10%;
 }
 
 audio {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 /* ==========================================================================
@@ -169,114 +169,114 @@ audio {
     ========================================================================== */
 
 .darkness {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-        url("../assets/img/backgrounds/BackgroundGallery.png");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url("../assets/img/backgrounds/BackgroundGallery.png");
 }
 
 #characters {
-    position: fixed;
-    top: 38%;
-    left: 16.7%;
-    width: 66.5%;
-    height: 55%;
+  position: fixed;
+  top: 38%;
+  left: 16.7%;
+  width: 66.5%;
+  height: 55%;
 }
 
 .certificate {
-    justify-content: flex-end;
-    position: relative;
-    margin: auto;
-    top: 2%;
-    width: 80%;
-    height: 95%;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    display: none;
+  justify-content: flex-end;
+  position: relative;
+  margin: auto;
+  top: 2%;
+  width: 80%;
+  height: 95%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: none;
 }
 
 #susyCertificate {
-    background-image: url("../assets/img/navigation/CertSusy.png");
+  background-image: url("../assets/img/navigation/CertSusy.png");
 }
 
 #rayoCertificate {
-    background-image: url("../assets/img/navigation/CertRayo.png");
+  background-image: url("../assets/img/navigation/CertRayo.png");
 }
 
 #milagroCertificate {
-    background-image: url("../assets/img/navigation/CertMilagro.png");
+  background-image: url("../assets/img/navigation/CertMilagro.png");
 }
 
 #gatunaCertificate {
-    background-image: url("../assets/img/navigation/CertGatuna.png");
+  background-image: url("../assets/img/navigation/CertGatuna.png");
 }
 
 .btnCharacter {
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 24%;
-    height: 80%;
-    border: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 24%;
+  height: 80%;
+  border: 0;
 }
 
 .btnUnCharacter {
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 24%;
-    height: 80%;
-    border: 0;
-    visibility: hidden;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 24%;
+  height: 80%;
+  border: 0;
+  visibility: hidden;
 }
 
 #charactersUnlocked {
-    position: absolute;
-    visibility: hidden;
+  position: absolute;
+  visibility: hidden;
 }
 
 #charactersLocked {
-    position: absolute;
-    visibility: visible;
+  position: absolute;
+  visibility: visible;
 }
 
 .btnBackGaleria {
-    width: 11%;
+  width: 11%;
 }
 
 section {
-    max-width: 100%;
-    max-height: 100%;
-    display: none;
-    width: 100%;
-    height: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-    background-size: 365px 645px;
-    /*background-size: 720px 1280px;*/
-    text-align: center;
+  max-width: 100%;
+  max-height: 100%;
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: 365px 645px;
+  /*background-size: 720px 1280px;*/
+  text-align: center;
 }
 
 #btnPlayAgain {
-    position: fixed;
-    top: 37%;
-    left: 39%;
+  position: fixed;
+  top: 37%;
+  left: 39%;
 }
 
 #unlockBackButton {
-    display: none;
-    position: absolute;
+  display: none;
+  position: absolute;
 }
 
 #unlockGalleryButton {
-    display: none;
-    position: absolute;
-    top: 61%;
-    left: 23%;
-    z-index: 1;
+  display: none;
+  position: absolute;
+  top: 61%;
+  left: 23%;
+  z-index: 1;
 }
 
 #ugb {
-    position: fixed;
-    height: 15%;
-    width: 22%;
-    top: 60%;
-    left: 39%;
+  position: fixed;
+  height: 15%;
+  width: 22%;
+  top: 60%;
+  left: 39%;
 }

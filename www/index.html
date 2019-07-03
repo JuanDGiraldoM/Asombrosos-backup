@@ -1,175 +1,321 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="dist/animate.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/balloons.css" />
+    <link rel="stylesheet" type="text/css" href="css/antonyms.css" />
+    <link rel="stylesheet" type="text/css" href="css/words.css" />
+    <link rel="stylesheet" type="text/css" href="css/runner.css" />
+    <title>Asombrosos</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"
+    />
+  </head>
 
-    <head>
-        <meta charset="utf-8"/>
-        <link rel="stylesheet" type="text/css" href="css/main.css"/>
-        <link rel="stylesheet" type="text/css" href="dist/animate.min.css"/>
-        <link rel="stylesheet" type="text/css" href="css/balloons.css"/>
-        <link rel="stylesheet" type="text/css" href="css/antonyms.css"/>
-        <link rel="stylesheet" type="text/css" href="css/words.css"/>
-        <link rel="stylesheet" type="text/css" href="css/runner.css"/>
-        <title>Asombrosos</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-    </head>
+  <body>
+    <!-- Music -->
+    <audio
+      src="assets/audio/Cuphead OST - Carnival Kerfuffle.mp3"
+      loop="true"
+      id="backgroundMusic"
+    ></audio>
 
-    <body>
+    <!-- Navigation -->
 
-        <!-- Music -->
-        <audio src="assets/audio/Cuphead OST - Carnival Kerfuffle.mp3" loop="true" id="backgroundMusic"></audio>
+    <section class="phoneload" id="loadp">
+      <video
+        src="assets/video/SplashScreen.mp4"
+        id="splashScreen"
+        poster="assets/img/backgrounds/BackgroundVideo.png"
+      ></video>
+    </section>
 
-        <!-- Navigation -->
+    <section class="phonemenu" id="menup">
+      <div id="jugarButton">
+        <img src="assets/img/buttons/ButtonPlay.png" id="btnPlay" />
+      </div>
+      <div id="aboutButton">
+        <img src="assets/img/buttons/ButtonAbout.png" id="btnAbout" />
+      </div>
+    </section>
 
-        <section class="phoneload" id="loadp">
-            <video src="assets/video/SplashScreen.mp4" id="splashScreen" poster="assets/img/backgrounds/BackgroundVideo.png"></video>
-        </section>
+    <section class="phoneVideo" id="tutorial">
+      <video id="tutorialVideo"></video>
+    </section>
 
-        <section class="phonemenu" id="menup">
-            <div id="jugarButton"><img src="assets/img/buttons/ButtonPlay.png" id="btnPlay"/></div>
-            <div id="aboutButton"><img src="assets/img/buttons/ButtonAbout.png" id="btnAbout"/></div>
-        </section>
+    <section class="phonelevel" id="levelp">
+      <div id="gallery">
+        <img src="assets/img/buttons/Gallery.png" id="imggallery" />
+      </div>
+      <div id="levelpBackButton">
+        <img src="assets/img/buttons/About.png" class="imgleftback" />
+      </div>
+      <div id="lvl1Button">
+        <img
+          src="assets/img/navigation/CARPA1.gif"
+          id="carpa1"
+          class="carpas"
+        />
+      </div>
+      <div id="lvl2Button">
+        <img
+          src="assets/img/navigation/CARPA2.gif"
+          id="carpa2"
+          class="carpas"
+        />
+      </div>
+      <div id="lvl3Button">
+        <img
+          src="assets/img/navigation/CARPA3.gif"
+          id="carpa3"
+          class="carpas"
+        />
+      </div>
+      <div id="lvl4Button">
+        <img
+          src="assets/img/navigation/CARPA4.gif"
+          id="carpa4"
+          class="carpas"
+        />
+      </div>
+      <div id="soundon"><img id="bToggleSound" /></div>
+    </section>
 
-        <section class="phoneVideo" id="tutorial">
-            <video id="tutorialVideo"></video>
-        </section>
+    <section class="phoneinfo" id="infop">
+      <div id="infopBackButton">
+        <img src="assets/img/buttons/ButtonBack.png" class="imgleftback" />
+      </div>
+    </section>
 
-        <section class="phonelevel" id="levelp">
-            <div id="gallery"><img src="assets/img/buttons/Gallery.png" id="imggallery"/></div>
-            <div id="levelpBackButton"><img src="assets/img/buttons/About.png" class="imgleftback"/></div>
-            <div id="lvl1Button"><img src="assets/img/navigation/CARPA1.gif" id="carpa1" class="carpas"/></div>
-            <div id="lvl2Button"><img src="assets/img/navigation/CARPA2.gif" id="carpa2" class="carpas"/></div>
-            <div id="lvl3Button"><img src="assets/img/navigation/CARPA3.gif" id="carpa3" class="carpas"/></div>
-            <div id="lvl4Button"><img src="assets/img/navigation/CARPA4.gif" id="carpa4" class="carpas"/></div>
-            <div id="soundon"><img id="bToggleSound"/></div>
+    <section class="phoneabout" id="aboutp">
+      <div id="aboutpBackButton">
+        <img src="assets/img/buttons/ButtonBack.png" class="imgleftback" />
+      </div>
+      <div id="aboutpFuperButton">
+        <img src="assets/img/buttons/ButtonFuper.png" id="btnFuper" />
+      </div>
+      <div id="aboutpCreditsButton">
+        <img src="assets/img/buttons/ButtonCredits.png" id="btnCredits" />
+      </div>
+      <div id="aboutpLegalButton">
+        <img src="assets/img/buttons/ButtonLegal.png" id="btnLegal" />
+      </div>
+    </section>
 
-        </section>
+    <section class="phoneFuper" id="fuperp">
+      <div id="fuperBackButton">
+        <img src="assets/img/buttons/ButtonBack.png" class="imgleftback" />
+      </div>
+      <div id="toFuperPage">
+        <img src="assets/img/buttons/ButtonAboutUs.png" id="btnToFuper" />
+      </div>
+    </section>
 
-        <section class="phoneinfo" id="infop">
-            <div id="infopBackButton"><img src="assets/img/buttons/ButtonBack.png" class="imgleftback"/></div>
-        </section>
+    <section class="phoneCredits" id="creditsp">
+      <div id="creditsBackButton">
+        <img src="assets/img/buttons/ButtonBack.png" class="imgleftback" />
+      </div>
+      <img
+        src="assets/img/buttons/ButtonBack2.png"
+        id="creditsBack"
+        class="creditsButtons"
+      />
+      <img
+        src="assets/img/buttons/ButtonNext2.png"
+        id="creditsNext"
+        class="creditsButtons"
+      />
+    </section>
 
-        <section class="phoneabout" id="aboutp">
-            <div id="aboutpBackButton"><img src="assets/img/buttons/ButtonBack.png" class="imgleftback"/></div>
-            <div id="aboutpFuperButton"><img src="assets/img/buttons/ButtonFuper.png" id="btnFuper"/></div>
-            <div id="aboutpCreditsButton"><img src="assets/img/buttons/ButtonCredits.png" id="btnCredits"/></div>
-            <div id="aboutpLegalButton"><img src="assets/img/buttons/ButtonLegal.png" id="btnLegal"/></div>
-        </section>
+    <!-- Gallery -->
 
-        <section class="phoneFuper" id="fuperp">
-            <div id="fuperBackButton"><img src="assets/img/buttons/ButtonBack.png" class="imgleftback"/></div>
-            <div id="toFuperPage"><img src="assets/img/buttons/ButtonAboutUs.png" id="btnToFuper"/></div>
-        </section>
+    <section class="phoneagallery" id="galleryp">
+      <div id="gallerypBackButton">
+        <img src="assets/img/buttons/ButtonBack.png" class="imgleftback" />
+      </div>
+      <div id="characters" class="gallery">
+        <div id="charactersLocked">
+          <img
+            id="btnUnGatuna"
+            class="btnCharacter"
+            src="assets/img/navigation/UnGatuna.png"
+          />
+          <img
+            id="btnUnSusy"
+            class="btnCharacter"
+            src="assets/img/navigation/UnSusy.png"
+          />
+          <img
+            id="btnUnMilagro"
+            class="btnCharacter"
+            src="assets/img/navigation/UnMilagro.png"
+          />
+          <img
+            id="btnUnRayo"
+            class="btnCharacter"
+            src="assets/img/navigation/UnRayo.png"
+          />
+        </div>
+        <div id="charactersUnlocked">
+          <img
+            id="btnGatuna"
+            class="btnUnCharacter"
+            src="assets/img/navigation/Gatuna.png"
+            onclick="showCert(1)"
+          />
+          <img
+            id="btnSusy"
+            class="btnUnCharacter"
+            src="assets/img/navigation/Susy.png"
+            onclick="showCert(2)"
+          />
+          <img
+            id="btnMilagro"
+            class="btnUnCharacter"
+            src="assets/img/navigation/Milagro.png"
+            onclick="showCert(3)"
+          />
+          <img
+            id="btnRayo"
+            class="btnUnCharacter"
+            src="assets/img/navigation/Rayo.png"
+            onclick="showCert(4)"
+          />
+        </div>
+      </div>
+      <div id="susyCertificate" class="certificate">
+        <img
+          src="assets/img/buttons/ButtonBack2.png"
+          class="btnBackGaleria"
+          onclick="toBackCert()"
+        />
+      </div>
+      <div id="rayoCertificate" class="certificate">
+        <img
+          src="assets/img/buttons/ButtonBack2.png"
+          class="btnBackGaleria"
+          onclick="toBackCert()"
+        />
+      </div>
+      <div id="milagroCertificate" class="certificate">
+        <img
+          src="assets/img/buttons/ButtonBack2.png"
+          class="btnBackGaleria"
+          onclick="toBackCert()"
+        />
+      </div>
+      <div id="gatunaCertificate" class="certificate">
+        <img
+          src="assets/img/buttons/ButtonBack2.png"
+          class="btnBackGaleria"
+          onclick="toBackCert()"
+        />
+      </div>
+    </section>
 
-        <section class="phoneCredits" id="creditsp">
-            <div id="creditsBackButton"><img src="assets/img/buttons/ButtonBack.png" class="imgleftback"/></div>
-            <img src="assets/img/buttons/ButtonBack2.png" id="creditsBack" class="creditsButtons">
-            <img src="assets/img/buttons/ButtonNext2.png" id="creditsNext" class="creditsButtons">
-        </section>
+    <!-- Game's Videos -->
 
-        <!-- Gallery -->
+    <section class="phoneVideo" id="gameVideoScreen">
+      <div id="unlockBackButton">
+        <img src="assets/img/buttons/ButtonBack.png" class="imgleftback" />
+      </div>
+      <div id="unlockGalleryButton">
+        <img id="ugb" src="assets/img/buttons/ButtonToGallery.png" />
+      </div>
+      <video src="" id="gameVideo"></video>
+    </section>
 
-        <section class="phoneagallery" id="galleryp">
-            <div id="gallerypBackButton"><img src="assets/img/buttons/ButtonBack.png" class="imgleftback"/></div>
-            <div id="characters" class="gallery">
-                <div id="charactersLocked">
-                    <img id="btnUnGatuna" class="btnCharacter" src="assets/img/navigation/UnGatuna.png"/>
-                    <img id="btnUnSusy" class="btnCharacter" src="assets/img/navigation/UnSusy.png"/>
-                    <img id="btnUnMilagro" class="btnCharacter" src="assets/img/navigation/UnMilagro.png">
-                    <img id="btnUnRayo" class="btnCharacter" src="assets/img/navigation/UnRayo.png"/>
+    <section class="phoneVideo" id="countVideoScreen">
+      <video src="assets/video/Count.mp4" id="countVideo"></video>
+    </section>
 
-                </div>
-                <div id="charactersUnlocked">
-                    <img id="btnGatuna" class="btnUnCharacter" src="assets/img/navigation/Gatuna.png" onclick="showCert(1)"/>
-                    <img id="btnSusy" class="btnUnCharacter" src="assets/img/navigation/Susy.png" onclick="showCert(2)"/>
-                    <img id="btnMilagro" class="btnUnCharacter" src="assets/img/navigation/Milagro.png" onclick="showCert(3)"/>
-                    <img id="btnRayo" class="btnUnCharacter" src="assets/img/navigation/Rayo.png" onclick="showCert(4)"/>
-                </div>
-            </div>
-            <div id="susyCertificate" class="certificate">
-                <img src="assets/img/buttons/ButtonBack2.png" class="btnBackGaleria" onclick="toBackCert()">
-            </div>
-            <div id="rayoCertificate" class="certificate">
-                <img src="assets/img/buttons/ButtonBack2.png" class="btnBackGaleria" onclick="toBackCert()">
-            </div>
-            <div id="milagroCertificate" class="certificate">
-                <img src="assets/img/buttons/ButtonBack2.png" class="btnBackGaleria" onclick="toBackCert()">
-            </div>
-            <div id="gatunaCertificate" class="certificate">
-                <img src="assets/img/buttons/ButtonBack2.png" class="btnBackGaleria" onclick="toBackCert()">
-            </div>
-        </section>
+    <!-- Play Again -->
 
-        <!-- Game's Videos -->
+    <section class="phoneVideo" id="playAgain">
+      <div id="playAgainBackButton">
+        <img src="assets/img/buttons/ButtonBack.png" class="imgleftback" />
+      </div>
+      <video src="assets/video/again.mp4" id="againVideo"></video>
+      <div id="btnPlayAgainDiv">
+        <img src="assets/img/buttons/ButtonPlay.png" id="btnPlayAgain" />
+      </div>
+    </section>
 
-        <section class="phoneVideo" id="gameVideoScreen">
-            <div id="unlockBackButton"><img src="assets/img/buttons/ButtonBack.png" class="imgleftback"/></div>
-            <div id="unlockGalleryButton"><img id="ugb" src="assets/img/buttons/ButtonToGallery.png"/></div>
-            <video src="" id="gameVideo"></video>
-        </section>
+    <!-- Games -->
 
-        <section class="phoneVideo" id="countVideoScreen">
-            <video src="assets/video/Count.mp4" id="countVideo"></video>
-        </section>
+    <section class="phonegame1" id="antonymsScreen">
+      <div id="antonymsScreenBackButton">
+        <img src="assets/img/buttons/ButtonBack.png" class="imgleftback" />
+      </div>
+      <div class="imgBackground">
+        <div class="cardsContainer" id="cardsContainer"></div>
+      </div>
+    </section>
 
-        <!-- Play Again -->
+    <section class="phonegame2" id="wordsScreen">
+      <div id="wordsScreenBackButton">
+        <img src="assets/img/buttons/ButtonBack.png" class="imgleftback" />
+      </div>
+      <audio id="explotion" src="assets/audio/bubble.mp3"></audio>
+      <div id="wordsGame" class="wordsContainer">
+        <div id="wordsScore"></div>
+        <div id="words"></div>
+        <div id="wordsPlayer">
+          <img
+            id="susy"
+            src="assets/img/words/susy_canasta.png"
+            alt="susy_canasta.png"
+          />
+        </div>
+      </div>
+    </section>
 
-        <section class="phoneVideo" id="playAgain">
-            <div id="playAgainBackButton"><img src="assets/img/buttons/ButtonBack.png" class="imgleftback"/></div>
-            <video src="assets/video/again.mp4" id="againVideo"></video>
-            <div id="btnPlayAgainDiv"><img src="assets/img/buttons/ButtonPlay.png" id="btnPlayAgain"/></div>
-        </section>
+    <section class="phonegame3" id="balloonsScreen">
+      <div id="balloonsScreenBackButton">
+        <img src="assets/img/buttons/ButtonBack.png" class="imgleftback" />
+      </div>
+      <div id="balloonGame">
+        <div id="balloonsScore"></div>
+        <div id="theBalloon"></div>
+        <audio id="balExplotion" src="assets/audio/balloon.mp3"></audio>
+      </div>
+      <div id="balloonsScoreSection" class="balScoreBackground">
+        <h1 id="balFinalScore">0</h1>
+      </div>
+    </section>
 
-        <!-- Games -->
+    <section class="phonegame4" id="runnerScreen">
+      <div id="runnerScreenBackButton">
+        <img src="assets/img/buttons/ButtonBack.png" class="imgleftback" />
+      </div>
+      <img
+        id="barrel"
+        src="assets/img/runner/Barril-Obstaculos.png"
+        style="display: none;"
+      />
+      <img
+        id="barrelBig"
+        src="assets/img/runner/Barril-Largo.png"
+        style="display: none;"
+      />
+      <img id="meta" src="assets/img/runner/meta.png" style="display: none;" />
+      <img id="barraEnergia" src="assets/img/runner/Barra.png" alt="" />
+      <audio id="choqueRunnerSound" src="assets/audio/runner.mp3"></audio>
+    </section>
 
-        <section class="phonegame1" id="antonymsScreen">
-            <div id="antonymsScreenBackButton"><img src="assets/img/buttons/ButtonBack.png" class="imgleftback"/></div>
-            <div class="imgBackground">
-                <div class="cardsContainer" id="cardsContainer"></div>
-            </div>
-        </section>
+    <!-- Scripts -->
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/words.js"></script>
+    <script type="text/javascript" src="js/balloons.js"></script>
+    <script type="text/javascript" src="js/antonyms.js"></script>
+    <script type="text/javascript" src="js/runner.js"></script>
 
-        <section class="phonegame2" id="wordsScreen">
-            <div id="wordsScreenBackButton"><img src="assets/img/buttons/ButtonBack.png" class="imgleftback"/></div>
-            <audio id="explotion" src="assets/audio/bubble.mp3"></audio>
-            <div id="wordsGame" class="wordsContainer">
-                <div id="wordsScore"></div>
-                <div id="words"></div>
-                <div id="wordsPlayer"><img id="susy" src="assets/img/words/susy_canasta.png" alt="susy_canasta.png"/></div>
-            </div>
-        </section>
-
-        <section class="phonegame3" id="balloonsScreen">
-            <div id="balloonsScreenBackButton"><img src="assets/img/buttons/ButtonBack.png" class="imgleftback"/></div>
-            <div id="balloonGame">
-                <div id="balloonsScore"></div>
-                <div id="theBalloon"></div>
-                <audio id="balExplotion" src="assets/audio/balloon.mp3"></audio>
-            </div>
-            <div id="balloonsScoreSection" class="balScoreBackground">
-                <h1 id="balFinalScore">0</h1>
-            </div>
-        </section>
-
-        <section class="phonegame4" id="runnerScreen">
-            <div id="runnerScreenBackButton"><img src="assets/img/buttons/ButtonBack.png" class="imgleftback"/></div>
-            <img id="barrel" src="assets/img/runner/Barril-Obstaculos.png" style="display: none;">
-            <img id="barrelBig" src="assets/img/runner/Barril-Largo.png" style="display: none;">
-            <img id="meta" src="assets/img/runner/meta.png" style="display: none;">
-            <img id="barraEnergia" src="assets/img/runner/Barra.png" alt="">
-            <audio id="choqueRunnerSound" src="assets/audio/runner.mp3"></audio>
-        </section>
-
-        <!-- Scripts -->
-        <script type="text/javascript" src="js/main.js"></script>
-        <script type="text/javascript" src="js/words.js"></script>
-        <script type="text/javascript" src="js/balloons.js"></script>
-        <script type="text/javascript" src="js/antonyms.js"></script>
-        <script type="text/javascript" src="js/runner.js"></script>
-
-        <!-- Scripts Dist -->
-        <script type="text/javascript" src="dist/hammer.min.js"></script>
-        <script type="text/javascript" src="dist/TweenMax.min.js"></script>
-        <script type="text/javascript" src="dist/gifler.min.js"></script>
-    </body>
-
+    <!-- Scripts Dist -->
+    <script type="text/javascript" src="dist/hammer.min.js"></script>
+    <script type="text/javascript" src="dist/TweenMax.min.js"></script>
+    <script type="text/javascript" src="dist/gifler.min.js"></script>
+  </body>
 </html>
